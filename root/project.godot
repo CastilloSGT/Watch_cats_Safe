@@ -87,3 +87,7 @@ ui_end={
 "deadzone": 0.5,
 "events": [  ]
 }
+
+[mono]
+
+project/assembly_name="Watch_cats"
