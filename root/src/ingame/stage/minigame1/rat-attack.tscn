@@ -1,0 +1,189 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://src/ingame/stage/minigame1/ship.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/ingame/stage/minigame1/enemy-ship.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/art/ingame/stage/minigame 1/tileset.png" type="Texture" id=3]
+[ext_resource path="res://assets/art/ingame/stage/minigame 1/fundo-rat-attack.png" type="Texture" id=4]
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="TileSet" id=1]
+0/name = "tileset.png 0"
+0/texture = ExtResource( 3 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 16, 16 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 2 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 5 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+
+[node name="rat-attack" type="Node2D"]
+
+[node name="Fundo-rat-attack" type="Sprite" parent="."]
+position = Vector2( -1, 0 )
+texture = ExtResource( 4 )
+
+[node name="ship" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, 102 )
+
+[node name="camera" type="Camera2D" parent="."]
+position = Vector2( 0, 1 )
+current = true
+zoom = Vector2( 0.5, 0.5 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 1 )
+cell_size = Vector2( 16, 16 )
+show_collision = true
+collision_layer = 2
+collision_mask = 16
+format = 1
+tile_data = PoolIntArray( -589836, 0, 0, -589835, 0, 0, -589834, -2147483648, 0, -589833, -2147483648, 0, -589832, -2147483648, 0, -589831, -2147483648, 0, -589830, -2147483648, 0, -589829, -2147483648, 0, -589828, -2147483648, 0, -589827, -2147483648, 0, -589826, -2147483648, 0, -589825, -2147483648, 0, -655360, -2147483648, 0, -655359, -2147483648, 0, -655358, -2147483648, 0, -655357, -2147483648, 0, -655356, -2147483648, 0, -655355, -2147483648, 0, -655354, -2147483648, 0, -655353, -2147483648, 0, -655352, -2147483648, 0, -655351, -2147483648, 0, -655350, 0, 0, -655349, 0, 0, -524300, 0, 0, -589813, 0, 0, -458764, 0, 0, -524277, 0, 0, -393228, 0, 0, -458741, 0, 0, -327692, 0, 0, -393205, 0, 0, -262156, 0, 0, -327669, 0, 0, -196620, 0, 0, -262133, 0, 0, -131084, 0, 0, -196597, 0, 0, -65548, 0, 0, -65547, 0, 0, -65545, 0, 0, -65543, 0, 0, -65541, 0, 0, -65539, 0, 0, -65537, 0, 0, -131071, 0, 0, -131069, 0, 0, -131067, 0, 0, -131065, 0, 0, -131063, 0, 0, -131061, 0, 0, -12, 0, 0, -10, 0, 0, -8, 0, 0, -6, 0, 0, -4, 0, 0, -2, 0, 0, -65536, 0, 0, -65534, 0, 0, -65532, 0, 0, -65530, 0, 0, -65528, 0, 0, -65526, 0, 0, -65525, 0, 0, 65524, 0, 0, 11, 0, 0, 131060, 0, 0, 65547, 0, 0, 196596, 0, 0, 131083, 0, 0, 262132, 0, 0, 196619, 0, 0, 327668, 0, 0, 262155, 0, 0, 393204, 0, 0, 327691, 0, 0, 458740, 0, 0, 393227, 0, 0, 524276, 0, 0, 458763, 0, 0, 589812, 0, 0, 524299, 0, 0, 655348, 0, 0, 655349, 0, 0, 655350, 0, 0, 655351, -536870912, 0, 655352, -536870912, 0, 655353, -536870912, 0, 655354, -536870912, 0, 655355, -536870912, 0, 655356, -536870912, 0, 655357, -536870912, 0, 655358, -536870912, 0, 655359, -536870912, 0, 589824, -1610612736, 0, 589825, -1610612736, 0, 589826, -1610612736, 0, 589827, -1610612736, 0, 589828, -1610612736, 0, 589829, -1610612736, 0, 589830, -1610612736, 0, 589831, -1610612736, 0, 589832, -1610612736, 0, 589833, -2147483648, 0, 589834, 0, 0, 589835, 0, 0 )
+
+[node name="enemies" type="Node2D" parent="."]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="enemy-ship11" parent="enemies" instance=ExtResource( 2 )]
+position = Vector2( 115, -125 )
+
+[node name="enemy-ship" parent="enemies" instance=ExtResource( 2 )]
+position = Vector2( -120, -125 )
+
+[node name="enemy-ship2" parent="enemies" instance=ExtResource( 2 )]
+position = Vector2( -94, -125 )
+
+[node name="enemy-ship3" parent="enemies" instance=ExtResource( 2 )]
+position = Vector2( -68, -125 )
+
+[node name="enemy-ship4" parent="enemies" instance=ExtResource( 2 )]
+position = Vector2( -42, -125 )
+
+[node name="enemy-ship5" parent="enemies" instance=ExtResource( 2 )]
+position = Vector2( -16, -125 )
+
+[node name="enemy-ship6" parent="enemies" instance=ExtResource( 2 )]
+position = Vector2( 10, -125 )
+
+[node name="enemy-ship7" parent="enemies" instance=ExtResource( 2 )]
+position = Vector2( 36, -125 )
+
+[node name="enemy-ship8" parent="enemies" instance=ExtResource( 2 )]
+position = Vector2( 62, -125 )
+
+[node name="enemy-ship10" parent="enemies" instance=ExtResource( 2 )]
+position = Vector2( 89, -125 )
+
+[node name="enemies2" type="Node2D" parent="."]
+position = Vector2( -11, 34 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="enemy-ship11" parent="enemies2" instance=ExtResource( 2 )]
+position = Vector2( 115, -125 )
+
+[node name="enemy-ship" parent="enemies2" instance=ExtResource( 2 )]
+position = Vector2( -120, -125 )
+
+[node name="enemy-ship2" parent="enemies2" instance=ExtResource( 2 )]
+position = Vector2( -94, -125 )
+
+[node name="enemy-ship3" parent="enemies2" instance=ExtResource( 2 )]
+position = Vector2( -68, -125 )
+
+[node name="enemy-ship4" parent="enemies2" instance=ExtResource( 2 )]
+position = Vector2( -42, -125 )
+
+[node name="enemy-ship5" parent="enemies2" instance=ExtResource( 2 )]
+position = Vector2( -16, -125 )
+
+[node name="enemy-ship6" parent="enemies2" instance=ExtResource( 2 )]
+position = Vector2( 10, -125 )
+
+[node name="enemy-ship7" parent="enemies2" instance=ExtResource( 2 )]
+position = Vector2( 36, -125 )
+
+[node name="enemy-ship8" parent="enemies2" instance=ExtResource( 2 )]
+position = Vector2( 62, -125 )
+
+[node name="enemy-ship10" parent="enemies2" instance=ExtResource( 2 )]
+position = Vector2( 89, -125 )
+
+[node name="enemies3" type="Node2D" parent="."]
+position = Vector2( 8, 66 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="enemy-ship11" parent="enemies3" instance=ExtResource( 2 )]
+position = Vector2( 115, -125 )
+
+[node name="enemy-ship" parent="enemies3" instance=ExtResource( 2 )]
+position = Vector2( -120, -125 )
+
+[node name="enemy-ship2" parent="enemies3" instance=ExtResource( 2 )]
+position = Vector2( -94, -125 )
+
+[node name="enemy-ship3" parent="enemies3" instance=ExtResource( 2 )]
+position = Vector2( -68, -125 )
+
+[node name="enemy-ship4" parent="enemies3" instance=ExtResource( 2 )]
+position = Vector2( -42, -125 )
+
+[node name="enemy-ship5" parent="enemies3" instance=ExtResource( 2 )]
+position = Vector2( -16, -125 )
+
+[node name="enemy-ship6" parent="enemies3" instance=ExtResource( 2 )]
+position = Vector2( 10, -125 )
+
+[node name="enemy-ship7" parent="enemies3" instance=ExtResource( 2 )]
+position = Vector2( 36, -125 )
+
+[node name="enemy-ship8" parent="enemies3" instance=ExtResource( 2 )]
+position = Vector2( 62, -125 )
+
+[node name="enemy-ship10" parent="enemies3" instance=ExtResource( 2 )]
+position = Vector2( 89, -125 )
