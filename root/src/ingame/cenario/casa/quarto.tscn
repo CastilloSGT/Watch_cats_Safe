@@ -955,6 +955,7 @@ __meta__ = {
 position = Vector2( 0, -2 )
 texture = ExtResource( 8 )
 hframes = 2
+frame = 1
 
 [node name="Animation" type="AnimationPlayer" parent="Objetos/computador"]
 anims/RESET = SubResource( 100 )

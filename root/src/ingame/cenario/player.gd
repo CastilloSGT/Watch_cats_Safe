@@ -18,8 +18,8 @@ func _physics_process(_delta: float) -> void: #roda durante todo nosso jogo
 func mexe() -> void:
 	# move ele em 8 direcoes mui pica
 	var direcao: Vector2 = Vector2 (
-		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
-		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
+		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	).normalized()
 	
 	velocidade = direcao * speed

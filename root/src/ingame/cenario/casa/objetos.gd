@@ -6,7 +6,7 @@ func hackeando():
 	get_tree().change_scene("res://src/ingame/stage/minigame1/rat-attack.tscn")
 
 func _physics_process(_delta: float) -> void:
-	if(Input.is_action_just_pressed("action")):
+	if(Input.is_action_just_pressed("ui_select")):
 		if (onarea == true):
 			hackeando()
 	

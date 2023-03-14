@@ -19,14 +19,14 @@ export(int) var speed = 150
 func _physics_process(_delta: float) -> void: #roda durante todo nosso jogo
 	moverNave()
 	
-	if (Input.is_action_just_pressed("action")):	
+	if (Input.is_action_just_pressed("ui_select")):	
 		tirosDisponiveis()
 		
 # faz a nave se mexer
 func moverNave() -> void:
 	var direcao: Vector2 = Vector2 (
-		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
-		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")).normalized()
+		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
+		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")).normalized()
 	
 	velocidade = direcao * speed
 	velocidade = move_and_slide(velocidade)
