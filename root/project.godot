@@ -16,7 +16,6 @@ run/main_scene="res://src/interface/menu.tscn"
 [autoload]
 
 Global="*res://src/Global.gd"
-SignalBus="*res://src/SignalBus.gd"
 
 [display]
 

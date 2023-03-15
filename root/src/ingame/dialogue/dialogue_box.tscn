@@ -1,82 +1,93 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/art/interface/dialogo/box.png" type="Texture" id=1]
 [ext_resource path="res://assets/fonts/PressStart2P.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://src/ingame/dialogue/dialogue_box.gd" type="Script" id=3]
 
-[sub_resource type="GDScript" id=3]
-script/source = "extends CanvasLayer
-
-# VARIAVEIS
-export (String, FILE, \"*json\") var scene_text_file
-
-var scene_text = {}
-var select_text = []
-var in_progress = false
-
-onready var background = $Background
-onready var label = $Background/Label
-
-#FUNÇÕES QUE LEEM O JSON
-func _ready():
-	background.visible = false
-	scene_text = load_scene_text()
-	SignalBus.connect(\"display_dialog\", self, \"on_display_dialog\")
-
-func load_scene_text():
-	var file = File.new()
-	if file.file_exists(scene_text_file):
-		file.open(scene_text_file, File.READ)
-		return parse_json(file.get_as_text())
-
-#FUNÇÕES QUE SEPARAM OS DIALOGOS
-
-func show_text():
-	label.text = select_text.pop_front()
-	
-func next_line():
-	if select_text.size() > 0:
-		show_text()
-	else:
-		finish()
-		
-func finish():
-	label.text = \"\"
-	background.visible = false
-	in_progress = false
-	get_tree().paused = false
-
-func on_display_dialog(text_key):
-	if in_progress:
-		next_line()
-	else:
-		get_tree().paused = true
-		background.visible = true
-		in_progress = true
-		select_text = scene_text[text_key].duplicate()
-		show_text()
-"
-
-[sub_resource type="Theme" id=1]
-
-[sub_resource type="DynamicFont" id=2]
-size = 10
+[sub_resource type="DynamicFont" id=12]
+size = 8
 font_data = ExtResource( 2 )
 
+[sub_resource type="Theme" id=11]
+default_font = SubResource( 12 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 8
+font_data = ExtResource( 2 )
+
+[sub_resource type="Theme" id=9]
+default_font = SubResource( 13 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 6
+font_data = ExtResource( 2 )
+
+[sub_resource type="Theme" id=7]
+default_font = SubResource( 14 )
+
+[sub_resource type="DynamicFont" id=15]
+size = 8
+font_data = ExtResource( 2 )
+
+[sub_resource type="Theme" id=5]
+default_font = SubResource( 15 )
+
 [node name="caixa" type="CanvasLayer"]
-script = SubResource( 3 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_vertical_guides_": [  ]
+}
+dialogue_file = "res://src/ingame/dialogue/dialogue.json"
 
 [node name="Background" type="TextureRect" parent="."]
-margin_left = 1.0
-margin_right = 201.0
-margin_bottom = 100.0
+margin_left = 287.0
+margin_top = 447.0
+margin_right = 489.0
+margin_bottom = 503.0
 texture = ExtResource( 1 )
+expand = true
+stretch_mode = 1
 
-[node name="Label" type="Label" parent="Background"]
+[node name="caixinha" type="HBoxContainer" parent="Background"]
+margin_left = 27.0
+margin_top = 36.0
+margin_right = 180.0
+margin_bottom = 52.0
+size_flags_stretch_ratio = 0.0
+alignment = 1
+
+[node name="positive" type="Button" parent="Background/caixinha"]
+margin_left = 38.0
+margin_right = 74.0
+margin_bottom = 16.0
+focus_neighbour_left = NodePath("../negative")
+focus_neighbour_right = NodePath("../negative")
+theme = SubResource( 11 )
+text = "Sim"
+flat = true
+
+[node name="negative" type="Button" parent="Background/caixinha"]
+margin_left = 78.0
+margin_right = 114.0
+margin_bottom = 16.0
+focus_neighbour_left = NodePath("../positive")
+focus_neighbour_right = NodePath("../positive")
+theme = SubResource( 9 )
+text = "Não"
+flat = true
+
+[node name="Name" type="RichTextLabel" parent="Background"]
+margin_left = 11.0
+margin_top = 7.0
+margin_right = 193.0
+margin_bottom = 20.0
+theme = SubResource( 7 )
+text = "Name"
+
+[node name="Message" type="RichTextLabel" parent="Background"]
 margin_left = 10.0
-margin_top = 10.0
-margin_right = 191.0
-margin_bottom = 90.0
-theme = SubResource( 1 )
-custom_fonts/font = SubResource( 2 )
-valign = 1
-autowrap = true
+margin_top = 18.0
+margin_right = 195.0
+margin_bottom = 38.0
+theme = SubResource( 5 )
+text = "Messageaaaaaaaaaaaaaaaaaaaaaaaa"

@@ -1,17 +1,19 @@
 extends Area2D
 
-export var dialog_key = ""
+onready var entrou = 0
+onready var dialogo = $caixa
 
-var area_active = false
-
-func _input(event):
-	if (area_active and Input.is_action_pressed("ui_accept")):
-		SignalBus.emit_signal("display_dialog", dialog_key)
-
+func _physics_process(_delta: float) -> void:
+	if entrou == 1:
+		$caixa/Background.show()
+		$caixa.play()
+	else:
+		$caixa/Background.hide()
+			
 
 func _on_dialogue_area_area_entered(area):
-	area_active = true
-
+	entrou = 1
 
 func _on_dialogue_area_area_exited(area):
-	area_active = false
+	entrou = 0
+	

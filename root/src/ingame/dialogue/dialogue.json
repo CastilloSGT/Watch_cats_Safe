@@ -1,9 +1,6 @@
-{
-	"computador": [
-		"Logando .."
-	],
-
-	"cama": [
-		"Dormindo .."
-	],
-}
+[
+	{"name": "Computador", "text": "Logar no Computador?","positive": "Sim", "negative": "Não"},
+	{"name": "Cama", "text": "Dormir?", "positive": "Sim", "negative": "Não"},
+	{"name": "Cama", "text": "teste?", "positive": "Sim", "negative": "Não"},
+	{"name": "Cama", "text": "teste2?", "positive": "Sim", "negative": "Não"}
+]
