@@ -16,6 +16,7 @@ run/main_scene="res://src/interface/menu.tscn"
 [autoload]
 
 Global="*res://src/Global.gd"
+SignalBus="*res://src/SignalBus.gd"
 
 [display]
 
@@ -87,6 +88,10 @@ ui_end={
 "deadzone": 0.5,
 "events": [  ]
 }
+
+[layer_names]
+
+2d_physics/layer_6="dialogo"
 
 [mono]
 

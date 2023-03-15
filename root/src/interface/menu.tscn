@@ -150,6 +150,7 @@ custom_styles/normal = SubResource( 11 )
 action_mode = 0
 enabled_focus_mode = 1
 text = "Start"
+icon_align = 1
 
 [node name="btn_load" type="Button" parent="menu"]
 margin_top = 47.0
@@ -166,6 +167,7 @@ custom_styles/focus = SubResource( 14 )
 custom_styles/disabled = SubResource( 15 )
 custom_styles/normal = SubResource( 16 )
 text = "Load"
+icon_align = 1
 
 [node name="btn_options" type="Button" parent="menu"]
 margin_top = 94.0
@@ -181,6 +183,7 @@ custom_styles/pressed = SubResource( 18 )
 custom_styles/focus = SubResource( 19 )
 custom_styles/normal = SubResource( 21 )
 text = "Options"
+icon_align = 1
 
 [connection signal="focus_entered" from="menu/btn_start" to="." method="_on_btn_start_focus_entered"]
 [connection signal="focus_exited" from="menu/btn_start" to="." method="_on_btn_start_focus_exited"]
