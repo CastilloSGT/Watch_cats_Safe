@@ -713,8 +713,8 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="RectangleShape2D" id=81]
-extents = Vector2( 15.5, 24 )
+[sub_resource type="RectangleShape2D" id=106]
+extents = Vector2( 16.5, 17.5 )
 
 [sub_resource type="RectangleShape2D" id=103]
 extents = Vector2( 14, 16 )
@@ -821,6 +821,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
+[node name="dialogue_cama" parent="Objetos/cama" instance=ExtResource( 14 )]
+position = Vector2( 1, 8 )
+
 [node name="Camas" type="Sprite" parent="Objetos/cama"]
 position = Vector2( 0, -2 )
 texture = ExtResource( 13 )
@@ -832,8 +835,8 @@ anims/dormindo = SubResource( 79 )
 anims/vazia = SubResource( 80 )
 
 [node name="colisao-cama" type="CollisionShape2D" parent="Objetos/cama"]
-position = Vector2( 0.5, 0 )
-shape = SubResource( 81 )
+position = Vector2( 0.5, 7.5 )
+shape = SubResource( 106 )
 
 [node name="computador" type="Area2D" parent="Objetos"]
 position = Vector2( 109, 48 )
@@ -861,16 +864,11 @@ frame = 1
 position = Vector2( 0, -2 )
 shape = SubResource( 103 )
 
-[node name="dialogue_area" parent="." instance=ExtResource( 14 )]
-position = Vector2( 62, 109 )
-
 [node name="sala" parent="." instance=ExtResource( 11 )]
 position = Vector2( 104, 152 )
 
 [node name="salapos" type="Position2D" parent="."]
 position = Vector2( 104, 117 )
 
-[connection signal="body_entered" from="Objetos/cama" to="Objetos/cama" method="_on_cama_body_entered"]
-[connection signal="body_exited" from="Objetos/cama" to="Objetos/cama" method="_on_cama_body_exited"]
 [connection signal="body_entered" from="Objetos/computador" to="Objetos/computador" method="_on_computador_body_entered"]
 [connection signal="body_exited" from="Objetos/computador" to="Objetos/computador" method="_on_computador_body_exited"]

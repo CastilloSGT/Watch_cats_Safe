@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/ingame/dialogue/dialogue_area.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/PressStart2P.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://src/ingame/dialogue/dialogue_box.gd" type="Script" id=3]
 [ext_resource path="res://assets/art/interface/dialogo/box.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -45,7 +44,6 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="caixa" type="CanvasLayer" parent="."]
-script = ExtResource( 3 )
 
 [node name="Background" type="TextureRect" parent="caixa"]
 margin_left = 287.0
