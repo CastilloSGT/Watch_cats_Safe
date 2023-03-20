@@ -63,23 +63,23 @@ size_flags_stretch_ratio = 0.0
 alignment = 1
 
 [node name="positive" type="Button" parent="caixa/Background/caixinha"]
-margin_left = 38.0
+margin_left = 6.0
 margin_right = 74.0
 margin_bottom = 16.0
 focus_neighbour_left = NodePath("../negative")
 focus_neighbour_right = NodePath("../negative")
 theme = SubResource( 3 )
-text = "Sim"
+text = "Sim (Z)"
 flat = true
 
 [node name="negative" type="Button" parent="caixa/Background/caixinha"]
 margin_left = 78.0
-margin_right = 114.0
+margin_right = 146.0
 margin_bottom = 16.0
 focus_neighbour_left = NodePath("../positive")
 focus_neighbour_right = NodePath("../positive")
 theme = SubResource( 5 )
-text = "Não"
+text = "Não (X)"
 flat = true
 
 [node name="Name" type="RichTextLabel" parent="caixa/Background"]

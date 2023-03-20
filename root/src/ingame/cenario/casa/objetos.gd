@@ -1,11 +1,9 @@
 extends Area2D
 # COLISAO?
-var onareaComp = false
-
-onready var computador = $Computador
-onready var programando = $Programando
 onready var player = $"../../player"
-onready var cama_animation = $Animation
+
+onready var cama_animation = $"../cama/Animation"
+onready var comp_animation = $"../computador/Animation"
 onready var janela_animation = $"../janelas/Animation"
 		
 func hackeando():
@@ -13,34 +11,36 @@ func hackeando():
 
 func _physics_process(_delta: float) -> void:
 	caixaAberta()
-	if(Input.is_action_just_pressed("ui_select")):
-		if (onareaComp == true):
-			hackeando()
-	
-func _on_computador_body_exited(body):
-	onareaComp = false
-	programando.hide()
-	computador.show()
-	player.visible = true
-	
-func _on_computador_body_entered(body):
-	onareaComp = true
-	programando.show()
-	computador.hide()
-	player.visible = false
 	
 func caixaAberta():
 	if(Global.btnSim == true):
-		dormiu()
+		match Global.obj:
+			"cama":
+				dormiu()
+			"computador":
+				programando()
 	else:
-		acordou()
+		match Global.obj:
+			"cama":
+				acordou()
+			"computador":
+				nao_programando()
 
+#ANIMAÇÕES
 func dormiu():
-	#cama_animation.play("dormindo")
-	#janela_animation.play("noite")
+	janela_animation.play("noite")
+	cama_animation.play("dormindo")
 	player.visible = false
 
 func acordou():
-	#cama_animation.play("vazia")
-	#janela_animation.play("dia")
+	janela_animation.play("dia")
+	cama_animation.play("vazia")
+	player.visible = true
+
+func programando():
+	comp_animation.play("programando")
+	player.visible = false
+	
+func nao_programando():
+	comp_animation.play("vazio")
 	player.visible = true
