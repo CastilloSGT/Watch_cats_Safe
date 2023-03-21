@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/fonts/PressStart2P.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/art/interface/menu/menu.png" type="Texture" id=2]
@@ -34,83 +34,27 @@ outline_color = Color( 0, 0, 0, 1 )
 extra_spacing_bottom = 9
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=7]
-bg_color = Color( 0.713726, 0.811765, 0.482353, 1 )
-border_color = Color( 0.0313726, 0.027451, 0.027451, 1 )
-
-[sub_resource type="StyleBoxFlat" id=8]
-bg_color = Color( 0.713726, 0.811765, 0.482353, 1 )
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color( 0, 0, 0, 1 )
-
 [sub_resource type="StyleBoxFlat" id=9]
-bg_color = Color( 0.713726, 0.811765, 0.482353, 1 )
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+draw_center = false
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
-border_color = Color( 0.941176, 0.631373, 0.258824, 1 )
+border_color = Color( 0.8, 0.8, 0.8, 0 )
 
-[sub_resource type="StyleBoxFlat" id=10]
-bg_color = Color( 0.713726, 0.811765, 0.482353, 1 )
-
-[sub_resource type="StyleBoxFlat" id=11]
-bg_color = Color( 0.713726, 0.811765, 0.482353, 1 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 0, 0, 0, 1 )
-
-[sub_resource type="StyleBoxFlat" id=12]
-bg_color = Color( 0.611765, 0.752941, 0.517647, 1 )
-
-[sub_resource type="StyleBoxFlat" id=13]
-bg_color = Color( 0.611765, 0.752941, 0.517647, 1 )
-
-[sub_resource type="StyleBoxFlat" id=14]
-bg_color = Color( 0.611765, 0.752941, 0.517647, 1 )
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color( 0.94902, 0.768627, 0.27451, 1 )
-
-[sub_resource type="StyleBoxFlat" id=15]
-bg_color = Color( 0.611765, 0.752941, 0.517647, 1 )
-
-[sub_resource type="StyleBoxFlat" id=16]
-bg_color = Color( 0.611765, 0.752941, 0.517647, 1 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 0, 0, 0, 1 )
-
-[sub_resource type="StyleBoxFlat" id=17]
-bg_color = Color( 0.482353, 0.682353, 0.623529, 1 )
-
-[sub_resource type="StyleBoxFlat" id=18]
-bg_color = Color( 0.0196078, 0.105882, 0.372549, 1 )
+[sub_resource type="StyleBoxFlat" id=22]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+draw_center = false
+border_color = Color( 0.8, 0.8, 0.8, 0 )
 
 [sub_resource type="StyleBoxFlat" id=19]
-bg_color = Color( 0.482353, 0.682353, 0.623529, 1 )
+bg_color = Color( 0.482353, 0.682353, 0.623529, 0 )
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
-border_color = Color( 0.94902, 0.768627, 0.27451, 1 )
-
-[sub_resource type="StyleBoxFlat" id=21]
-bg_color = Color( 0.482353, 0.682353, 0.623529, 1 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 0, 0, 0, 1 )
+border_color = Color( 0.8, 0.8, 0.8, 0 )
 
 [node name="Menu" type="Control"]
 script = ExtResource( 3 )
@@ -133,54 +77,49 @@ __meta__ = {
 
 [node name="btn_start" type="Button" parent="menu"]
 margin_right = 222.0
-margin_bottom = 43.0
-grow_horizontal = 2
+margin_bottom = 45.0
+grow_horizontal = 0
 grow_vertical = 2
 focus_neighbour_top = NodePath("../btn_options")
 focus_neighbour_bottom = NodePath("../btn_load")
 focus_mode = 1
 theme = SubResource( 3 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0.713726, 0.811765, 0.482353, 1 )
 custom_fonts/font = SubResource( 4 )
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 8 )
 custom_styles/focus = SubResource( 9 )
-custom_styles/disabled = SubResource( 10 )
-custom_styles/normal = SubResource( 11 )
 action_mode = 0
 enabled_focus_mode = 1
 text = "Start"
+flat = true
+icon_align = 1
 
 [node name="btn_load" type="Button" parent="menu"]
-margin_top = 47.0
+margin_top = 49.0
 margin_right = 222.0
-margin_bottom = 90.0
+margin_bottom = 94.0
 focus_neighbour_top = NodePath("../btn_start")
 focus_neighbour_bottom = NodePath("../btn_options")
 theme = SubResource( 3 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0.611765, 0.752941, 0.517647, 1 )
 custom_fonts/font = SubResource( 4 )
-custom_styles/hover = SubResource( 12 )
-custom_styles/pressed = SubResource( 13 )
-custom_styles/focus = SubResource( 14 )
-custom_styles/disabled = SubResource( 15 )
-custom_styles/normal = SubResource( 16 )
+custom_styles/focus = SubResource( 22 )
 text = "Load"
+flat = true
+icon_align = 1
 
 [node name="btn_options" type="Button" parent="menu"]
-margin_top = 94.0
+margin_top = 98.0
 margin_right = 222.0
-margin_bottom = 137.0
+margin_bottom = 143.0
 focus_neighbour_top = NodePath("../btn_load")
 focus_neighbour_bottom = NodePath("../btn_start")
 theme = SubResource( 3 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0.482353, 0.682353, 0.623529, 1 )
 custom_fonts/font = SubResource( 4 )
-custom_styles/hover = SubResource( 17 )
-custom_styles/pressed = SubResource( 18 )
 custom_styles/focus = SubResource( 19 )
-custom_styles/normal = SubResource( 21 )
 text = "Options"
+flat = true
+icon_align = 1
 
 [connection signal="focus_entered" from="menu/btn_start" to="." method="_on_btn_start_focus_entered"]
 [connection signal="focus_exited" from="menu/btn_start" to="." method="_on_btn_start_focus_exited"]

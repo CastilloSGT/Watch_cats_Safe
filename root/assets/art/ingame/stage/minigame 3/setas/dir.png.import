@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/villain.png-f58602a9c151b2a4a7e3b9dd0f14d204.stex"
+path="res://.import/dir.png-fefb6b356f094d070cf8f0f600fe9d3a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/ingame/scenario/villain.png"
-dest_files=[ "res://.import/villain.png-f58602a9c151b2a4a7e3b9dd0f14d204.stex" ]
+source_file="res://assets/art/ingame/stage/minigame 3/setas/dir.png"
+dest_files=[ "res://.import/dir.png-fefb6b356f094d070cf8f0f600fe9d3a.stex" ]
 
 [params]
 
@@ -20,16 +20,16 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
-process/fix_alpha_border=false
+process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0

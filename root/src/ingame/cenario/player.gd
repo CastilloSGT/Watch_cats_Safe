@@ -1,7 +1,6 @@
 extends KinematicBody2D
 
 # VARIAVEIS
-
 var velocidade: Vector2
 export(int) var speed = 60 #var para mover personagem
 # var de animacao
