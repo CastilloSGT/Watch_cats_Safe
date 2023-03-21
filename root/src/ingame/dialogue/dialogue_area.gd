@@ -9,14 +9,14 @@ onready var msg = $caixa/Background/Message
 
 func _physics_process(_delta: float) -> void:
 	caixa.hide()
+	sair()
+	
 	if entrouArea == true && fechou == false:
 		caixaAberta()
 	else:
 		caixa.hide()
 		
-	if entrouArea == false:
-		Global.btnSim = false
-		fechou = false
+	
 
 # FUNÇÃO BASICAS DA CAIXA
 func caixaAberta():
@@ -33,6 +33,20 @@ func apertou():
 	if Input.is_action_pressed("btnNao"):
 		caixa.hide()
 		fechou = true
+		
+func sair():
+	match Global.obj:
+		"cama":
+			print("a")
+			if Input.is_action_just_pressed("ui_right"):
+				Global.btnSim = false
+				fechou = false
+		"computador":
+			print("b")
+			if Input.is_action_just_pressed("ui_down") || Input.is_action_just_pressed("ui_left"):
+				Global.btnSim = false
+				fechou = false
+			
 
 # VERIFICAÇÃO DE AREA
 func _on_dialogue_area_area_entered(area):
