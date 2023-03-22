@@ -10,6 +10,7 @@ func hackeando():
 	get_tree().change_scene("res://src/ingame/stage/minigame1/rat-attack.tscn")
 
 func _physics_process(_delta: float) -> void:
+	nao_programando() #forçando vazio por bug
 	caixaAberta()
 	
 func caixaAberta():

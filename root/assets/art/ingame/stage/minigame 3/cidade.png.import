@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player.png-256dfdb2c6ecb83ae723580933ecfc8f.stex"
+path="res://.import/cidade.png-381d31640f144de60624e57e9ff01ecf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/ingame/stage/minigame 3/player.png"
-dest_files=[ "res://.import/player.png-256dfdb2c6ecb83ae723580933ecfc8f.stex" ]
+source_file="res://assets/art/ingame/stage/minigame 3/cidade.png"
+dest_files=[ "res://.import/cidade.png-381d31640f144de60624e57e9ff01ecf.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

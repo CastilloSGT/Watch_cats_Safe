@@ -16,8 +16,6 @@ func _physics_process(_delta: float) -> void:
 	else:
 		caixa.hide()
 		
-	
-
 # FUNÇÃO BASICAS DA CAIXA
 func caixaAberta():
 	caixa.show()
@@ -37,17 +35,14 @@ func apertou():
 func sair():
 	match Global.obj:
 		"cama":
-			print("a")
 			if Input.is_action_just_pressed("ui_right"):
 				Global.btnSim = false
 				fechou = false
 		"computador":
-			print("b")
 			if Input.is_action_just_pressed("ui_down") || Input.is_action_just_pressed("ui_left"):
 				Global.btnSim = false
 				fechou = false
 			
-
 # VERIFICAÇÃO DE AREA
 func _on_dialogue_area_area_entered(area):
 	#pega o nome do obj onde o gatinho entrou
@@ -61,8 +56,8 @@ func _on_dialogue_area_area_exited(area):
 func texto():
 	match Global.obj:
 		"cama":
-			nome.set_text(str("Cama"))
+			nome.set_text(str(""))
 			msg.set_text(str("Ir Dormir?"))
 		"computador":
-			nome.set_text(str("Computador"))
+			nome.set_text(str(""))
 			msg.set_text(str("Logar no computador?"))
