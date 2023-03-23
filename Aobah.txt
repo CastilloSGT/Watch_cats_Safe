@@ -1,1 +1,13 @@
 Castillo ! Benê
+
+//Comandos Git
+// excluir um branch no local
+git branch -d nomeDoBranchLocal
+
+// excluir um branch remoto
+git push origin --delete nomeDoBranchRemoto
+
+git pull origin nomeDBranch --rebase
+
+// reseta commit? or Configs no proojeto.
+git reset --hard
