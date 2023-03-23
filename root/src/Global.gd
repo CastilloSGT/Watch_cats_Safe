@@ -6,3 +6,10 @@ var lugar
 # DIALOGO
 var obj
 var btnSim
+
+# MINIGAME 2
+var Score = 0
+var sensorDown
+var sensorTop
+var sensorLeft
+var sensorRight
