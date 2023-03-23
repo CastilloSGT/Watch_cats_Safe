@@ -10,7 +10,7 @@ var RNG = RandomNumberGenerator.new()
 
 func _process(delta):
 	$ScoreNode/lblScore.text = str(Global.Score)
-	
+	#as
 
 func _on_Timer_timeout():
 	$Control_spaw.start()
