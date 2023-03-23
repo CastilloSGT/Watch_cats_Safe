@@ -15,8 +15,6 @@ func _physics_process(_delta: float) -> void:
 		caixaAberta()
 	else:
 		caixa.hide()
-		
-	
 
 # FUNÇÃO BASICAS DA CAIXA
 func caixaAberta():
@@ -37,12 +35,10 @@ func apertou():
 func sair():
 	match Global.obj:
 		"cama":
-			print("a")
 			if Input.is_action_just_pressed("ui_right"):
 				Global.btnSim = false
 				fechou = false
 		"computador":
-			print("b")
 			if Input.is_action_just_pressed("ui_down") || Input.is_action_just_pressed("ui_left"):
 				Global.btnSim = false
 				fechou = false
