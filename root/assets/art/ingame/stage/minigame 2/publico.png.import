@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cenario.png-5b75c633bff47eb97da32582abfe3e4f.stex"
+path="res://.import/publico.png-062b12cfe09dd94a8d97c58dc9ed48b0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/ingame/stage/minigame 2/cenario.png"
-dest_files=[ "res://.import/cenario.png-5b75c633bff47eb97da32582abfe3e4f.stex" ]
+source_file="res://assets/art/ingame/stage/minigame 2/publico.png"
+dest_files=[ "res://.import/publico.png-062b12cfe09dd94a8d97c58dc9ed48b0.stex" ]
 
 [params]
 
@@ -20,16 +20,16 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

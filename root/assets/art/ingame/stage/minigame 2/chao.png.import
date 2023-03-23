@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cidade.png-381d31640f144de60624e57e9ff01ecf.stex"
+path="res://.import/chao.png-aaf53be53505100bcb6c1d84c9fc26d1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/ingame/stage/minigame 3/cidade.png"
-dest_files=[ "res://.import/cidade.png-381d31640f144de60624e57e9ff01ecf.stex" ]
+source_file="res://assets/art/ingame/stage/minigame 2/chao.png"
+dest_files=[ "res://.import/chao.png-aaf53be53505100bcb6c1d84c9fc26d1.stex" ]
 
 [params]
 
@@ -20,28 +20,16 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-<<<<<<< HEAD
-flags/filter=true
-flags/mipmaps=false
-flags/anisotropic=false
-flags/srgb=2
-process/fix_alpha_border=true
-=======
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=false
->>>>>>> 1f7b55f60599a1fe4e4d6b2c937c9fe8d8385c1b
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-<<<<<<< HEAD
-detect_3d=true
-=======
 detect_3d=false
->>>>>>> 1f7b55f60599a1fe4e4d6b2c937c9fe8d8385c1b
 svg/scale=1.0

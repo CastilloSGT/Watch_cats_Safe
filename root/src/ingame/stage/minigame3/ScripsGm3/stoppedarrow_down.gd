@@ -2,7 +2,7 @@ extends Area2D
 
 onready var animp = $Stop_down_Anim
 var sensor = 0
-
+#merda
 func _process(delta):
 	if sensor == 1:
 		if Input.is_action_just_pressed("ui_down"):
