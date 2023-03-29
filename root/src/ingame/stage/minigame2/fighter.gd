@@ -2,36 +2,54 @@ extends KinematicBody2D
 # VARIAVEIS
 var velocidade: Vector2
 export(int) var speed = 60 #var para mover personagem
+onready var animacao = $animation
 
-onready var estado_animado: AnimationTree = get_node("AnimationTree")
-onready var vetor = Vector2(0,0)
+# TIMER
+onready var my_timer = get_node("Timer")
+
+var wait_time = 0
+var reduction = 0.2
+var is_timer_running = false #sensor
 
 func _physics_process(_delta: float) -> void: #roda durante todo nosso jogo
 	mexe()
 	animacao()
+	_on_Timer_timeout()
 	
 # move personagem
 func mexe() -> void:
 	var direcao: Vector2 = Vector2 (Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
-	 Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up"))
+	 Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")).normalized()
 	
-	#sobrepoe os outros vetores colocar uma var action = 0 que recebe 1 (sensor)
-	#quando qualquer tecla for pressionada e retorna a zero depois de uns segundos!!!!
-	if direcao != Vector2.ZERO:
-		vetor = Vector2(5,0)
-	else:
-		vetor = Vector2(4,0)
+	if direcao != Vector2.ZERO && !is_timer_running:
+		animacao.play("walk")
+		velocidade = direcao * speed
+		velocidade = move_and_slide(velocidade)
 		
-	velocidade = direcao * speed
-	velocidade = move_and_slide(velocidade)
+	if direcao == Vector2.ZERO && !is_timer_running:
+		animacao.play("idle")
 	
 func animacao():
 	#descobrir porque a animação nao funciona
-	estado_animado.set("parameters/estado/blend_position", vetor);
-	if (Input.is_action_just_pressed("desvia")):
-		vetor = Vector2(1,0)
-	if (Input.is_action_just_pressed("soco")):
-		vetor = Vector2(2,0)
-	if (Input.is_action_just_pressed("soco-forte")):
-		vetor = Vector2(3,0)
+	if (Input.is_action_just_pressed("desvia") && !is_timer_running):
+		animacao.play("desvio")
+		wait_time = 10
 		
+	if (Input.is_action_just_pressed("soco") && !is_timer_running):
+		animacao.play("soco")
+		wait_time = 10
+		
+	if (Input.is_action_just_pressed("soco-forte") && !is_timer_running):
+		animacao.play("soco-forte")
+		wait_time = 20
+		
+func _on_Timer_timeout():
+	wait_time -= reduction
+	
+	if(wait_time > 0.0):
+		my_timer.set_wait_time(wait_time)
+		is_timer_running = true
+	else:
+		wait_time = 0
+		is_timer_running = false
+	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/art/ingame/stage/minigame 2/player_sprite.png" type="Texture" id=1]
 [ext_resource path="res://src/ingame/stage/minigame2/fighter.gd" type="Script" id=2]
@@ -119,47 +119,6 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 16 )
 
-[sub_resource type="AnimationNodeAnimation" id=9]
-animation = "desmaio"
-
-[sub_resource type="AnimationNodeAnimation" id=10]
-animation = "desvio"
-
-[sub_resource type="AnimationNodeAnimation" id=11]
-animation = "idle"
-
-[sub_resource type="AnimationNodeAnimation" id=12]
-animation = "walk"
-
-[sub_resource type="AnimationNodeAnimation" id=13]
-animation = "soco"
-
-[sub_resource type="AnimationNodeAnimation" id=14]
-animation = "soco-forte"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id=15]
-blend_point_0/node = SubResource( 9 )
-blend_point_0/pos = Vector2( 0, 0 )
-blend_point_1/node = SubResource( 10 )
-blend_point_1/pos = Vector2( 1, 0 )
-blend_point_2/node = SubResource( 11 )
-blend_point_2/pos = Vector2( 4, 0 )
-blend_point_3/node = SubResource( 12 )
-blend_point_3/pos = Vector2( 5, 0 )
-blend_point_4/node = SubResource( 13 )
-blend_point_4/pos = Vector2( 2, 0 )
-blend_point_5/node = SubResource( 14 )
-blend_point_5/pos = Vector2( 3, 0 )
-min_space = Vector2( 0, -1 )
-max_space = Vector2( 5, 1 )
-blend_mode = 1
-
-[sub_resource type="AnimationNodeStateMachine" id=16]
-states/estado/node = SubResource( 15 )
-states/estado/position = Vector2( 200.333, 56.3333 )
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id=17]
-
 [node name="fighter" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
@@ -181,9 +140,5 @@ vframes = 6
 position = Vector2( -1, 0 )
 shape = SubResource( 1 )
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 16 )
-anim_player = NodePath("../animation")
-active = true
-parameters/playback = SubResource( 17 )
-parameters/estado/blend_position = Vector2( 4.00718, -0.0173612 )
+[node name="Timer" type="Timer" parent="."]
+pause_mode = 1
