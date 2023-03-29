@@ -6,3 +6,7 @@ var lugar
 # DIALOGO
 var obj
 var btnSim
+
+
+#MINIGAME 2
+var dano_player # 0 = desvia, 1 = soco fraco, 2 = soco forte

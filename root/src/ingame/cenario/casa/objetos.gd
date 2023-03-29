@@ -11,7 +11,6 @@ func hackeando():
 
 func _physics_process(_delta: float) -> void:
 	caixaAberta()
-	programando()
 	
 func caixaAberta():
 	if(Global.btnSim == true):

@@ -722,7 +722,7 @@ extents = Vector2( 14, 16 )
 [sub_resource type="Animation" id=110]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Computador:frame")
+tracks/0/path = NodePath("Computador:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -731,7 +731,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 1 ]
+"values": [ Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=111]
@@ -895,7 +895,6 @@ scale = Vector2( 0.833333, 0.83871 )
 position = Vector2( 109, 46 )
 texture = ExtResource( 8 )
 hframes = 2
-frame = 1
 
 [node name="colisao-computador" type="CollisionShape2D" parent="Objetos/computador"]
 position = Vector2( 109, 46 )

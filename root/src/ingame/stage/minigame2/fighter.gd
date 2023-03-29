@@ -16,6 +16,7 @@ func _physics_process(_delta: float) -> void: #roda durante todo nosso jogo
 	animacao()
 	_on_Timer_timeout()
 	
+	
 # move personagem
 func mexe() -> void:
 	var direcao: Vector2 = Vector2 (Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
@@ -30,18 +31,20 @@ func mexe() -> void:
 		animacao.play("idle")
 	
 func animacao():
-	#descobrir porque a animação nao funciona
 	if (Input.is_action_just_pressed("desvia") && !is_timer_running):
 		animacao.play("desvio")
 		wait_time = 10
+		Global.dano_player = 0
 		
 	if (Input.is_action_just_pressed("soco") && !is_timer_running):
 		animacao.play("soco")
 		wait_time = 10
+		Global.dano_player = 1
 		
 	if (Input.is_action_just_pressed("soco-forte") && !is_timer_running):
 		animacao.play("soco-forte")
 		wait_time = 20
+		Global.dano_player = 2
 		
 func _on_Timer_timeout():
 	wait_time -= reduction
