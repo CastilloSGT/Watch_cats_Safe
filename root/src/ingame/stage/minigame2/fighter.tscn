@@ -30,6 +30,7 @@ extents = Vector2( 10, 16 )
 [node name="fighter" type="KinematicBody2D"]
 pause_mode = 2
 physics_interpolation_mode = 2
+collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="animation" type="AnimationPlayer" parent="."]

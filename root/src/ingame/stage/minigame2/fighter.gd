@@ -54,5 +54,6 @@ func _on_Timer_timeout():
 		is_timer_running = true
 	else:
 		wait_time = 0
+		Global.dano_player = -1
 		is_timer_running = false
 	
