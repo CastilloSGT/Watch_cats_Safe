@@ -9,4 +9,7 @@ var btnSim
 
 
 #MINIGAME 2
-var dano_player # 0 = desvia, 1 = soco fraco, 2 = soco forte
+var tipo_dano = -1 # 0 = desvia, 1 = soco fraco, 2 = soco forte
+var area_enemy = false #sensor
+var pontos_dano = 0 #exibe na tela a quantidade de dano causado
+var round_atual = 1 #seta o round

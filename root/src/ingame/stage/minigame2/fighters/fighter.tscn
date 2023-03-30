@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/art/ingame/stage/minigame 2/player_sprite.png" type="Texture" id=1]
-[ext_resource path="res://src/ingame/stage/minigame2/fighter.gd" type="Script" id=2]
+[ext_resource path="res://src/ingame/stage/minigame2/fighters/fighter.gd" type="Script" id=2]
 [ext_resource path="res://assets/art/ingame/stage/minigame 2/animacoes/Player_idle.tres" type="Animation" id=3]
 [ext_resource path="res://assets/art/ingame/stage/minigame 2/animacoes/Player_soco-forte.tres" type="Animation" id=4]
 [ext_resource path="res://assets/art/ingame/stage/minigame 2/animacoes/Player_desmaio.tres" type="Animation" id=5]
@@ -30,7 +30,7 @@ extents = Vector2( 10, 16 )
 [node name="fighter" type="KinematicBody2D"]
 pause_mode = 2
 physics_interpolation_mode = 2
-collision_mask = 0
+collision_mask = 16
 script = ExtResource( 2 )
 
 [node name="animation" type="AnimationPlayer" parent="."]
