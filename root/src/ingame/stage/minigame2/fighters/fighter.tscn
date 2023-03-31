@@ -1,0 +1,55 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/art/ingame/stage/minigame 2/player_sprite.png" type="Texture" id=1]
+[ext_resource path="res://src/ingame/stage/minigame2/fighters/fighter.gd" type="Script" id=2]
+[ext_resource path="res://assets/art/ingame/stage/minigame 2/animacoes/Player_idle.tres" type="Animation" id=3]
+[ext_resource path="res://assets/art/ingame/stage/minigame 2/animacoes/Player_soco-forte.tres" type="Animation" id=4]
+[ext_resource path="res://assets/art/ingame/stage/minigame 2/animacoes/Player_desmaio.tres" type="Animation" id=5]
+[ext_resource path="res://assets/art/ingame/stage/minigame 2/animacoes/Player_desvio.tres" type="Animation" id=6]
+[ext_resource path="res://assets/art/ingame/stage/minigame 2/animacoes/Player_walk.tres" type="Animation" id=7]
+[ext_resource path="res://assets/art/ingame/stage/minigame 2/animacoes/Player_soco.tres" type="Animation" id=8]
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 16 )
+
+[node name="fighter" type="KinematicBody2D"]
+pause_mode = 2
+physics_interpolation_mode = 2
+collision_mask = 16
+script = ExtResource( 2 )
+
+[node name="animation" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 8 )
+anims/desmaio = ExtResource( 5 )
+anims/desvio = ExtResource( 6 )
+anims/idle = ExtResource( 3 )
+anims/soco = ExtResource( 8 )
+anims/soco-forte = ExtResource( 4 )
+anims/walk = ExtResource( 7 )
+
+[node name="PlayerSprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 4
+vframes = 6
+
+[node name="colisao" type="CollisionShape2D" parent="."]
+position = Vector2( -1, 0 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+pause_mode = 1

@@ -7,11 +7,13 @@ onready var comp_animation = $"../computador/Animation"
 onready var janela_animation = $"../janelas/Animation"
 		
 func hackeando():
-	get_tree().change_scene("res://src/ingame/stage/minigame1/rat-attack.tscn")
+	if(Input.is_action_just_pressed("game1")):
+		get_tree().change_scene("res://src/ingame/stage/minigame1/rat-attack.tscn")
+	if(Input.is_action_just_pressed("game2")):
+		get_tree().change_scene("res://src/ingame/stage/minigame2/monkey-out.tscn")
 
 func _physics_process(_delta: float) -> void:
 	caixaAberta()
-	programando()
 	
 func caixaAberta():
 	if(Global.btnSim == true):
@@ -41,6 +43,7 @@ func acordou():
 func programando():
 	comp_animation.play("programando")
 	player.visible = false
+	hackeando()
 	
 func nao_programando():
 	comp_animation.play("vazio")
