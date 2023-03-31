@@ -21,16 +21,13 @@ func mexe() -> void:
 	var direcao: Vector2 = Vector2 (Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
 	 Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")).normalized()
 	
-	if direcao != Vector2.ZERO && !is_timer_running && !Global.freeze:
+	if direcao != Vector2.ZERO && !is_timer_running:
 		animacao.play("walk")
 		velocidade = direcao * speed
 		velocidade = move_and_slide(velocidade)
 		
 	if direcao == Vector2.ZERO && !is_timer_running:
 		animacao.play("idle")
-		
-	if(Global.freeze):
-		animacao.play("RESET")
 
 func animacao():
 	if (Input.is_action_just_pressed("desvia") && !is_timer_running):

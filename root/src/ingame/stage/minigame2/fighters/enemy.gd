@@ -16,9 +16,6 @@ func animacao():
 	if (Global.tipo_dano == -1 && !is_timer_running):
 		animacao.play("idle")
 		
-	if(Global.freeze):
-			animacao.play("RESET")
-	
 	if (Global.area_enemy == true):
 		if (Global.tipo_dano == 1  && !is_timer_running):
 			animacao.play("dano")

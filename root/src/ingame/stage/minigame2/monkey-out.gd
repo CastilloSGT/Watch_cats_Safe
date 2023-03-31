@@ -3,6 +3,7 @@ extends Node2D
 onready var points = $legendas/lblPoints
 onready var _round = $legendas/lblRound
 onready var _modulate = $modulate
+onready var status = $"label-colorida"
 
 var round_atual = 1
 
@@ -36,17 +37,16 @@ func getRound():
 			points.hide()
 			
 func rounds():
-	if (Global.pontos_dano == 500 && round_atual == 1 && !is_timer_running):
+	if (Global.pontos_dano > 500 && round_atual == 1 && !is_timer_running):
 		round_atual = 2
 		waiting()
 		
-	if (Global.pontos_dano == 1000 && round_atual == 2 && !is_timer_running):
+	if (Global.pontos_dano > 1000 && round_atual == 2 && !is_timer_running):
 		round_atual = 3
 		waiting()
 		
-	if (Global.pontos_dano == 1500 && round_atual == 3 && !is_timer_running):
-		round_atual = 0
-		waiting()
+	if (Global.pontos_dano > 1500 && round_atual == 3 && !is_timer_running):
+		get_tree().change_scene("res://src/interface/fim_prototipo.tscn")
 		
 func waiting():
 	wait_time = 50
@@ -55,10 +55,13 @@ func waiting():
 func modulate_check():
 	if(wait_time > 0):
 		_modulate.show()
-		Global.freeze = true
+		status.show()
+		status.set_text(str("Você ganhou esse Round!!"))
+		get_tree().paused = true
 	else:
 		_modulate.hide()
-		Global.freeze = false
+		status.hide()
+		get_tree().paused = false
 	
 func _on_Timer_timeout():
 	wait_time -= reduction
@@ -69,3 +72,5 @@ func _on_Timer_timeout():
 	else:
 		wait_time = 0
 		is_timer_running = false
+		
+
