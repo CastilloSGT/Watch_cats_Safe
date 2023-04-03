@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/ingame/stage/minigame3/CensSets/stoppedarrow_left.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/ingame/stage/minigame3/CensSets/stoppedarrow_down.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/ingame/stage/minigame3/MuuGame.gd" type="Script" id=3]
 [ext_resource path="res://src/ingame/stage/minigame3/CensSets/stoppedarrow_right.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/ingame/stage/minigame3/CensSets/stoppedarrow_up.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/ingame/stage/minigame3/CensPersonagens/Gatito_canta.tscn" type="PackedScene" id=6]
 
 [sub_resource type="TileSet" id=1]
 
@@ -54,5 +55,8 @@ position = Vector2( 128, 64 )
 
 [node name="Control_spaw" type="Timer" parent="."]
 autostart = true
+
+[node name="Gatito_canta" parent="." instance=ExtResource( 6 )]
+position = Vector2( 167, 327 )
 
 [connection signal="timeout" from="Control_spaw" to="." method="_on_Timer_timeout"]

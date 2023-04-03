@@ -8,10 +8,12 @@ func _process(delta):
 		if Input.is_action_just_pressed("ui_right"):
 			animp.play("Good_right")
 			Global.Score += 1
+			Global.teste = 1;
 
 	if sensor == 0:
 		if Input.is_action_just_pressed("ui_right"):
-			animp.play("")
+			animp.play()
+			Global.teste = 3;
 
 func _on_stoppedarrow_right_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	sensor = 1

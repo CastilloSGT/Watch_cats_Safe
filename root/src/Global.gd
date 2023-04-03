@@ -13,3 +13,4 @@ var sensorDown
 var sensorTop
 var sensorLeft
 var sensorRight
+var teste = 0
