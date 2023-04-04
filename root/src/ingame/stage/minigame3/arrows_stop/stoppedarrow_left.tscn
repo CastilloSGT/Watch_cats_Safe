@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/art/ingame/stage/minigame 3/setas/esq.png" type="Texture" id=1]
+[ext_resource path="res://src/ingame/stage/minigame3/arrows_stop/stoppedarrow_left.gd" type="Script" id=2]
+[ext_resource path="res://assets/art/ingame/stage/minigame 3/animacoes/CensSetsGood_left.tres" type="Animation" id=3]
+
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 9 )
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Stop_left_Good:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="stoppedarrow_left" type="Area2D"]
+script = ExtResource( 2 )
+
+[node name="Stop_left_norm" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 3
+
+[node name="Stop_left_Good" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+texture = ExtResource( 1 )
+hframes = 3
+frame = 2
+
+[node name="Stop_left_Bad" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 1 )
+hframes = 3
+
+[node name="Stop_left_Colision" type="CollisionShape2D" parent="."]
+position = Vector2( -1, 0 )
+shape = SubResource( 1 )
+
+[node name="Stop_left_Anim" type="AnimationPlayer" parent="."]
+anims/Good_left = ExtResource( 3 )
+anims/RESET = SubResource( 3 )
+
+[connection signal="area_shape_entered" from="." to="." method="_on_stoppedarrow_left_area_shape_entered"]
+[connection signal="area_shape_exited" from="." to="." method="_on_stoppedarrow_left_area_shape_exited"]

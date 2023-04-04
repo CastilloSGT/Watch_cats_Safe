@@ -1,0 +1,187 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://src/ingame/stage/minigame3/arrows_stop/stoppedarrow_left.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/ingame/stage/minigame3/arrows_stop/stoppedarrow_down.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/ingame/stage/minigame3/MuuGame.gd" type="Script" id=3]
+[ext_resource path="res://src/ingame/stage/minigame3/arrows_stop/stoppedarrow_right.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/ingame/stage/minigame3/arrows_stop/stoppedarrow_up.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/ingame/stage/minigame3/singers/player-singer.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/art/ingame/stage/minigame 3/tileset.png" type="Texture" id=7]
+
+[sub_resource type="TileSet" id=1]
+0/name = "tileset.png 0"
+0/texture = ExtResource( 7 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 32, 32, 32 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "tileset.png 1"
+1/texture = ExtResource( 7 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 32, 32, 32, 32 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+2/name = "tileset.png 2"
+2/texture = ExtResource( 7 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 64, 32, 32, 32 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+3/name = "tileset.png 3"
+3/texture = ExtResource( 7 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 96, 32, 32, 32 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape_one_way = false
+3/shape_one_way_margin = 0.0
+3/shapes = [  ]
+3/z_index = 0
+4/name = "tileset.png 4"
+4/texture = ExtResource( 7 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 0, 0, 32, 32 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape_one_way = false
+4/shape_one_way_margin = 0.0
+4/shapes = [  ]
+4/z_index = 0
+5/name = "tileset.png 5"
+5/texture = ExtResource( 7 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 32, 0, 32, 32 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape_one_way = false
+5/shape_one_way_margin = 0.0
+5/shapes = [  ]
+5/z_index = 0
+6/name = "tileset.png 6"
+6/texture = ExtResource( 7 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 64, 0, 32, 32 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 0, 0 )
+6/navigation_offset = Vector2( 0, 0 )
+6/shape_offset = Vector2( 0, 0 )
+6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+6/shape_one_way = false
+6/shape_one_way_margin = 0.0
+6/shapes = [  ]
+6/z_index = 0
+7/name = "tileset.png 7"
+7/texture = ExtResource( 7 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 0, 64, 32, 32 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shape_offset = Vector2( 0, 0 )
+7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+7/shape_one_way = false
+7/shape_one_way_margin = 0.0
+7/shapes = [  ]
+7/z_index = 0
+
+[node name="MuuGame" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="ScoreNode" type="Node2D" parent="."]
+
+[node name="lblScore" type="Label" parent="ScoreNode"]
+margin_left = 520.0
+margin_top = 192.0
+margin_right = 640.0
+margin_bottom = 256.0
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 458751, 4, 0, 393216, 5, 0, 393217, 5, 0, 393218, 5, 0, 393219, 5, 0, 393220, 5, 0, 393221, 5, 0, 393222, 5, 0, 393223, 5, 0, 393224, 5, 0, 393225, 5, 0, 393226, 5, 0, 393227, 5, 0, 393228, 6, 0, 524287, 3, 0, 458752, 0, 0, 458753, 1, 0, 458754, 1, 0, 458755, 1, 0, 458756, 1, 0, 458757, 1, 0, 458758, 1, 0, 458759, 1, 0, 458760, 1, 0, 458761, 1, 0, 458762, 1, 0, 458763, 2, 0, 458764, 3, 0, 589823, 3, 0, 524288, 3, 0, 524289, 3, 0, 524290, 3, 0, 524291, 3, 0, 524292, 3, 0, 524293, 3, 0, 524294, 3, 0, 524295, 3, 0, 524296, 3, 0, 524297, 3, 0, 524298, 3, 0, 524299, 3, 0, 524300, 3, 0, 655359, 3, 0, 589824, 3, 0, 589825, 3, 0, 589826, 3, 0, 589827, 3, 0, 589828, 3, 0, 589829, 3, 0, 589830, 3, 0, 589831, 3, 0, 589832, 3, 0, 589833, 3, 0, 589834, 3, 0, 589835, 3, 0, 589836, 3, 0 )
+
+[node name="Control_spaw" type="Timer" parent="."]
+autostart = true
+
+[node name="player-singer" parent="." instance=ExtResource( 6 )]
+position = Vector2( 287, 214 )
+
+[node name="camera" type="Camera2D" parent="."]
+position = Vector2( 199, 149 )
+current = true
+zoom = Vector2( 0.5, 0.5 )
+
+[node name="player_arrows" type="Node2D" parent="."]
+position = Vector2( 74, -17 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ArrowsStop" type="Node2D" parent="player_arrows"]
+
+[node name="stoppedarrow_down" parent="player_arrows/ArrowsStop" instance=ExtResource( 2 )]
+position = Vector2( 304, 64 )
+
+[node name="stoppedarrow_left" parent="player_arrows/ArrowsStop" instance=ExtResource( 1 )]
+position = Vector2( 112, 64 )
+
+[node name="stoppedarrow_right" parent="player_arrows/ArrowsStop" instance=ExtResource( 4 )]
+position = Vector2( 240, 64 )
+
+[node name="stoppedarrow_up" parent="player_arrows/ArrowsStop" instance=ExtResource( 5 )]
+position = Vector2( 176, 64 )
+
+[node name="SpawArrow" type="Node2D" parent="player_arrows"]
+
+[node name="Position_left" type="Position2D" parent="player_arrows/SpawArrow"]
+position = Vector2( 114, 322 )
+
+[node name="Position_up" type="Position2D" parent="player_arrows/SpawArrow"]
+position = Vector2( 178, 322 )
+
+[node name="Position_right" type="Position2D" parent="player_arrows/SpawArrow"]
+position = Vector2( 242, 322 )
+
+[node name="Position_down" type="Position2D" parent="player_arrows/SpawArrow"]
+position = Vector2( 306, 322 )
+
+[connection signal="timeout" from="Control_spaw" to="." method="_on_Timer_timeout"]
