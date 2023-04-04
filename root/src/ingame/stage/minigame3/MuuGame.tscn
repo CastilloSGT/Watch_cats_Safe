@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/ingame/stage/minigame3/CensSets/stoppedarrow_left.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/ingame/stage/minigame3/CensSets/stoppedarrow_down.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/ingame/stage/minigame3/MuuGame.gd" type="Script" id=3]
+[ext_resource path="res://src/ingame/stage/minigame3/CensSets/stoppedarrow_right.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/ingame/stage/minigame3/CensSets/stoppedarrow_up.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/ingame/stage/minigame3/CensPersonagens/Gatito_canta.tscn" type="PackedScene" id=6]
+
+[sub_resource type="TileSet" id=1]
+
+[node name="MuuGame" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="ScoreNode" type="Node2D" parent="."]
+
+[node name="lblScore" type="Label" parent="ScoreNode"]
+margin_left = 520.0
+margin_top = 192.0
+margin_right = 640.0
+margin_bottom = 256.0
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+
+[node name="SpawArrow" type="Node2D" parent="."]
+
+[node name="Position_left" type="Position2D" parent="SpawArrow"]
+position = Vector2( 64, 512 )
+
+[node name="Position_up" type="Position2D" parent="SpawArrow"]
+position = Vector2( 128, 512 )
+
+[node name="Position_right" type="Position2D" parent="SpawArrow"]
+position = Vector2( 192, 512 )
+
+[node name="Position_down" type="Position2D" parent="SpawArrow"]
+position = Vector2( 256, 512 )
+
+[node name="ArrowsStop" type="Node2D" parent="."]
+
+[node name="stoppedarrow_down" parent="ArrowsStop" instance=ExtResource( 2 )]
+position = Vector2( 256, 64 )
+
+[node name="stoppedarrow_left" parent="ArrowsStop" instance=ExtResource( 1 )]
+position = Vector2( 64, 64 )
+
+[node name="stoppedarrow_right" parent="ArrowsStop" instance=ExtResource( 4 )]
+position = Vector2( 192, 64 )
+
+[node name="stoppedarrow_up" parent="ArrowsStop" instance=ExtResource( 5 )]
+position = Vector2( 128, 64 )
+
+[node name="Control_spaw" type="Timer" parent="."]
+autostart = true
+
+[node name="Gatito_canta" parent="." instance=ExtResource( 6 )]
+position = Vector2( 167, 327 )
+
+[connection signal="timeout" from="Control_spaw" to="." method="_on_Timer_timeout"]
