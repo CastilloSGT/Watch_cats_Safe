@@ -6,9 +6,11 @@ var sensor = false
 func _process(delta):
 	position.y -= speed * delta
 	
-	if position.y < -50:
+	if position.y < -30:
 		queue_free()
-	if sensor == true:
+		Global.Score -= 50
+		Global.combo -= 1
+	if sensor:
 		if Global.sensorRight:
 			if Input.is_action_just_pressed("ui_right"):
 				queue_free()

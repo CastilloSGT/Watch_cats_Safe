@@ -10,6 +10,11 @@ var is_timer_running = false #sensor
 func _process(delta):
 	animation()
 	_on_Timer_timeout()
+
+func combo():
+	if (Global.maxCombo):
+		animation.play("yes")
+		wait_time = 10
 	
 func animation():
 	if(!is_timer_running):
@@ -26,7 +31,7 @@ func animation():
 	if(Input.is_action_just_pressed("ui_up")):
 		if Global.sensorTop:
 			animation.play("up")
-			wait_time = 20
+			wait_time = 10
 		else:
 			animation.play("up_fail")
 			wait_time = 10
@@ -34,7 +39,7 @@ func animation():
 	if(Input.is_action_just_pressed("ui_left")):
 		if Global.sensorLeft:
 			animation.play("left")
-			wait_time = 20
+			wait_time = 10
 		else:
 			animation.play("left_fail")
 			wait_time = 10
@@ -42,7 +47,7 @@ func animation():
 	if(Input.is_action_just_pressed("ui_right")):
 		if Global.sensorRight:
 			animation.play("right")
-			wait_time = 20
+			wait_time = 10
 		else:
 			animation.play("right_fail")
 			wait_time = 10

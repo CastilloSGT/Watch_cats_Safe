@@ -9,8 +9,30 @@ var selectrandom_sets = 0
 var RNG = RandomNumberGenerator.new()
 
 func _process(delta):
-	$ScoreNode/lblScore.text = str(Global.Score)
-	#as
+	maxCombo()
+	setLabels()
+	
+func setLabels():
+	$Labels/lblScore.text = str("Score: ",Global.Score)
+	$Labels/lblCombo.text = str("x",Global.combo)
+	$"Labels/label-colorida".text = str("MAX COMBO")
+		
+func maxCombo():
+	if(Global.combo == 5):
+		Global.maxCombo = true
+	else:
+		Global.maxCombo = false
+	
+	if (Global.maxCombo):
+		$Labels/lblCombo.hide()
+		$"Labels/label-colorida".show()
+	else:
+		$"Labels/label-colorida".hide()
+		if(Global.combo >= 2):
+			$Labels/lblCombo.show()
+		else:
+			$Labels/lblCombo.hide()
+	
 func _on_Timer_timeout():
 	$Control_spaw.start()
 	RNG.randomize()
@@ -31,6 +53,7 @@ func _on_Timer_timeout():
 		var Right = right.instance()
 		get_parent().add_child(Right)
 		Right.position = $player_arrows/SpawArrow/Position_right.global_position
+		
 	if selectrandom_sets == 4:
 		var Down = down.instance()
 		get_parent().add_child(Down)

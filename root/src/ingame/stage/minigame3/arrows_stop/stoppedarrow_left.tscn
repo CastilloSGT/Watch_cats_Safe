@@ -4,7 +4,6 @@
 [ext_resource path="res://src/ingame/stage/minigame3/arrows_stop/stoppedarrow_left.gd" type="Script" id=2]
 [ext_resource path="res://assets/art/ingame/stage/minigame 3/animacoes/CensSetsGood_left.tres" type="Animation" id=3]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 9 )
 
