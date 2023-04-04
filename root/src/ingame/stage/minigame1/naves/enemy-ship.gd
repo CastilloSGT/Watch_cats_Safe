@@ -1,6 +1,7 @@
 extends Area2D
 
 func _physics_process(_delta: float) -> void:
+	$AnimationPlayer.play("enemy_idle")
 	var inimigos_restantes = get_tree().get_nodes_in_group("enemies").size()
 	
 	if (inimigos_restantes == 1):
