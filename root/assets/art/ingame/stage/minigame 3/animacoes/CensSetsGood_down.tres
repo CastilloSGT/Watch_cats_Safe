@@ -3,7 +3,7 @@
 [resource]
 resource_name = "Good_down"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Stop_down_Good:modulate")
+tracks/0/path = NodePath("arrow_down/Stop_down_Good:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false

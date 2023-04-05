@@ -1,10 +1,7 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://src/ingame/stage/minigame3/arrows_stop/stoppedarrow_left.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/ingame/stage/minigame3/arrows_stop/stoppedarrow_down.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/ingame/stage/minigame3/stopped_arrow.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/ingame/stage/minigame3/MuuGame.gd" type="Script" id=3]
-[ext_resource path="res://src/ingame/stage/minigame3/arrows_stop/stoppedarrow_right.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/ingame/stage/minigame3/arrows_stop/stoppedarrow_up.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/ingame/stage/minigame3/singers/player-singer.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/art/ingame/stage/minigame 3/tileset.png" type="Texture" id=7]
 [ext_resource path="res://src/utils/label-colorida.tscn" type="PackedScene" id=8]
@@ -415,20 +412,6 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="ArrowsStop" type="Node2D" parent="player_arrows"]
-
-[node name="stoppedarrow_down" parent="player_arrows/ArrowsStop" instance=ExtResource( 2 )]
-position = Vector2( 249, 63 )
-
-[node name="stoppedarrow_left" parent="player_arrows/ArrowsStop" instance=ExtResource( 1 )]
-position = Vector2( 153, 63 )
-
-[node name="stoppedarrow_right" parent="player_arrows/ArrowsStop" instance=ExtResource( 4 )]
-position = Vector2( 217, 63 )
-
-[node name="stoppedarrow_up" parent="player_arrows/ArrowsStop" instance=ExtResource( 5 )]
-position = Vector2( 185, 63 )
-
 [node name="SpawArrow" type="Node2D" parent="player_arrows"]
 
 [node name="Position_left" type="Position2D" parent="player_arrows/SpawArrow"]
@@ -443,9 +426,32 @@ position = Vector2( 219, 321 )
 [node name="Position_down" type="Position2D" parent="player_arrows/SpawArrow"]
 position = Vector2( 251, 321 )
 
+[node name="ArrowStop" type="Node2D" parent="player_arrows"]
+position = Vector2( -104, 32 )
+
+[node name="left_arrow" parent="player_arrows/ArrowStop" instance=ExtResource( 2 )]
+position = Vector2( 256, 32 )
+
+[node name="right_arrow" parent="player_arrows/ArrowStop" instance=ExtResource( 2 )]
+position = Vector2( 320, 32 )
+
+[node name="up_arrow" parent="player_arrows/ArrowStop" instance=ExtResource( 2 )]
+position = Vector2( 288, 32 )
+
+[node name="down_arrow" parent="player_arrows/ArrowStop" instance=ExtResource( 2 )]
+position = Vector2( 352, 32 )
+
 [node name="camera" type="Camera2D" parent="."]
 position = Vector2( 184, 152 )
 current = true
 zoom = Vector2( 0.5, 0.5 )
 
 [connection signal="timeout" from="Control_spaw" to="." method="_on_Timer_timeout"]
+[connection signal="area_shape_entered" from="player_arrows/ArrowStop/left_arrow" to="player_arrows/ArrowStop/left_arrow" method="_on_left_arrow_area_shape_entered"]
+[connection signal="area_shape_exited" from="player_arrows/ArrowStop/left_arrow" to="player_arrows/ArrowStop/left_arrow" method="_on_left_arrow_area_shape_exited"]
+[connection signal="area_shape_entered" from="player_arrows/ArrowStop/right_arrow" to="player_arrows/ArrowStop/right_arrow" method="_on_right_arrow_area_shape_entered"]
+[connection signal="area_shape_exited" from="player_arrows/ArrowStop/right_arrow" to="player_arrows/ArrowStop/right_arrow" method="_on_right_arrow_area_shape_exited"]
+[connection signal="area_shape_entered" from="player_arrows/ArrowStop/up_arrow" to="player_arrows/ArrowStop/up_arrow" method="_on_up_arrow_area_shape_entered"]
+[connection signal="area_shape_exited" from="player_arrows/ArrowStop/up_arrow" to="player_arrows/ArrowStop/up_arrow" method="_on_up_arrow_area_shape_exited"]
+[connection signal="area_shape_entered" from="player_arrows/ArrowStop/down_arrow" to="player_arrows/ArrowStop/down_arrow" method="_on_down_arrow_area_shape_entered"]
+[connection signal="area_shape_exited" from="player_arrows/ArrowStop/down_arrow" to="player_arrows/ArrowStop/down_arrow" method="_on_down_arrow_area_shape_exited"]
