@@ -1,0 +1,103 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/ingame/stage/minigame4/bicho.tscn" type="PackedScene" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://src/ingame/stage/minigame4/Quiz.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32.0688, 31.6222 )
+
+[node name="Stag" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+allQuest = {
+"1 Quest": [ "Res 1", "Res 2", "Res 3", "Res 4", 0 ],
+"2 quest": [ "Res2", "Res4", "Res3", "Res1", 3 ]
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 452.0
+margin_bottom = 264.0
+
+[node name="Pergunt" type="Label" parent="."]
+margin_left = 26.0
+margin_top = 30.0
+margin_right = 232.0
+margin_bottom = 75.0
+rect_scale = Vector2( 2, 2 )
+text = "O q eu quero"
+valign = 1
+autowrap = true
+
+[node name="Tempo" type="Label" parent="."]
+margin_left = 282.0
+margin_top = 16.0
+margin_right = 359.0
+margin_bottom = 56.0
+rect_scale = Vector2( 2, 2 )
+text = "TEMPO
+99"
+align = 1
+valign = 1
+
+[node name="Ponts" type="Label" parent="."]
+margin_left = 288.0
+margin_top = 106.0
+margin_right = 365.0
+margin_bottom = 146.0
+rect_scale = Vector2( 2, 2 )
+text = "Pontos
+00"
+align = 1
+valign = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_top = 266.0
+margin_right = 226.0
+margin_bottom = 430.0
+rect_scale = Vector2( 2, 2 )
+
+[node name="quest_1" type="CheckBox" parent="VBoxContainer"]
+margin_right = 226.0
+margin_bottom = 24.0
+text = "Quest 1"
+
+[node name="quest_2" type="CheckBox" parent="VBoxContainer"]
+margin_top = 28.0
+margin_right = 226.0
+margin_bottom = 52.0
+text = "Quest 2"
+
+[node name="quest_3" type="CheckBox" parent="VBoxContainer"]
+margin_top = 56.0
+margin_right = 226.0
+margin_bottom = 80.0
+text = "Quest 3"
+
+[node name="quest_4" type="CheckBox" parent="VBoxContainer"]
+margin_top = 84.0
+margin_right = 226.0
+margin_bottom = 108.0
+text = "Quest 3"
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 655, 542 )
+scale = Vector2( 1.13672, 1.00391 )
+texture = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="Sprite" groups=["Sprite"]]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Area2D"]
+visible = false
+position = Vector2( 0.481018, -0.996094 )
+scale = Vector2( 1, 1 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Bich" type="Node2D" parent="."]
+
+[node name="Area2D" parent="Bich" instance=ExtResource( 1 )]
+position = Vector2( 589, 59 )
