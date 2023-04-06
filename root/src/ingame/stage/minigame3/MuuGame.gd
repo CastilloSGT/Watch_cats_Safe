@@ -5,7 +5,16 @@ const up = preload("res://src/ingame/stage/minigame3/arrows_move/movearrow_up.ts
 const right = preload("res://src/ingame/stage/minigame3/arrows_move/movearrow_right.tscn")
 const down = preload("res://src/ingame/stage/minigame3/arrows_move/movearrow_down.tscn")
 
-var RNG = RandomNumberGenerator.new()
+#NOTAS
+var sequence = [
+	[1,2,3,4,-1,-1], [1,2,3,4,-1,-1],
+	[1,1,1,4,2,1,-1,-1,-1], [1,1,1,4,2,1,-1,-1,-1],
+	[1,2,2,3,2,1,1,-1,-1,-1], [1,2,2,3,2,1,1,-1,-1,-1],
+]
+#os -1 não são lidos e dão um tempo
+#ja que nao conseguimos controlar o tempo por algum motivo
+var i = 0
+var j = 0
 
 func _process(delta):
 	maxCombo()
@@ -34,13 +43,39 @@ func maxCombo():
 	
 func _on_Timer_timeout():
 	$Control_spaw.start()
-	RNG.randomize()
-	var random_int = RNG.randi_range(0,4)
-	if(Global.turno):
-		playerArrows(random_int)
-	else:
-		enemyArrows(random_int)
+	var maxItem = sequence.size()
+	var maxSubItem = sequence[i].size()
+	
+	if(j == maxSubItem):
+		i += 1
+		j = 0
+		Global.turno = !Global.turno
+	if(i == maxItem):
+		i = -1
 		
+	if (i == 2):
+		chanceCenario()
+		
+	if(i != -1):
+		if(Global.turno):
+			playerArrows(sequence[i][j])
+		else:
+			enemyArrows(sequence[i][j])
+		j += 1
+		
+func reset():
+	get_tree().change_scene("res://src/interface/fim_prototipo.tscn")
+	Global.Score = 0
+	Global.combo = 0
+	
+func chanceCenario():
+	$cenario/Cidade.hide()
+	$cenario/ceu_round.hide()
+	$cenario/chao_round.hide()
+	$cenario/chao_round2.show()
+	$cenario/ceu_round2.show()
+		
+	
 func playerArrows(select_sets):
 	if select_sets == 1:
 		var Left = left.instance()

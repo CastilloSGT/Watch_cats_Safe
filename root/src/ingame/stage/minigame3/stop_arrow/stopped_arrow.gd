@@ -14,7 +14,8 @@ onready var arrowName = self.name
 
 func _process(delta):
 	showArrows()
-	marcaPontos()
+	if(Global.turno):
+		marcaPontos()
 
 func showArrows():
 	match arrowName:
