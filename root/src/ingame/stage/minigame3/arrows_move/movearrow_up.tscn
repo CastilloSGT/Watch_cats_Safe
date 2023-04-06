@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://src/ingame/stage/minigame3/arrows_move/movearrow_up.gd" type="Script" id=1]
+[ext_resource path="res://src/ingame/stage/minigame3/arrows_move/move_arrow.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/ingame/stage/minigame 3/setas/cima.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]

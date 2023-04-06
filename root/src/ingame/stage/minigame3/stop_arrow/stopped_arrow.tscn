@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/art/ingame/stage/minigame 3/animacoes/CensSetsGood_down.tres" type="Animation" id=1]
-[ext_resource path="res://src/ingame/stage/minigame3/stopped_arrow.gd" type="Script" id=2]
+[ext_resource path="res://src/ingame/stage/minigame3/stop_arrow/stopped_arrow.gd" type="Script" id=2]
 [ext_resource path="res://assets/art/ingame/stage/minigame 3/setas/baixo.png" type="Texture" id=3]
 [ext_resource path="res://assets/art/ingame/stage/minigame 3/setas/esq.png" type="Texture" id=4]
 [ext_resource path="res://assets/art/ingame/stage/minigame 3/setas/cima.png" type="Texture" id=5]

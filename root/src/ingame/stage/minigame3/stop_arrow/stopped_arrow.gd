@@ -59,7 +59,7 @@ func marcaPontos():
 					animUp.play("Good_up")
 					ganhaPontos()
 			else:
-				if Input.is_action_just_pressed("ui_down"):
+				if Input.is_action_just_pressed("ui_up"):
 					perdePontos()
 					
 		"left_arrow":

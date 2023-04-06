@@ -11,6 +11,8 @@ func hackeando():
 		get_tree().change_scene("res://src/ingame/stage/minigame1/rat-attack.tscn")
 	if(Input.is_action_just_pressed("game2")):
 		get_tree().change_scene("res://src/ingame/stage/minigame2/monkey-out.tscn")
+	if(Input.is_action_just_pressed("game3")):
+		get_tree().change_scene("res://src/ingame/stage/minigame3/MuuGame.tscn")
 
 func _physics_process(_delta: float) -> void:
 	caixaAberta()

@@ -5,7 +5,6 @@ const up = preload("res://src/ingame/stage/minigame3/arrows_move/movearrow_up.ts
 const right = preload("res://src/ingame/stage/minigame3/arrows_move/movearrow_right.tscn")
 const down = preload("res://src/ingame/stage/minigame3/arrows_move/movearrow_down.tscn")
 
-var selectrandom_sets = 0 
 var RNG = RandomNumberGenerator.new()
 
 func _process(delta):
@@ -37,24 +36,50 @@ func _on_Timer_timeout():
 	$Control_spaw.start()
 	RNG.randomize()
 	var random_int = RNG.randi_range(0,4)
-	var selectrandom_sets = random_int
-
-	if selectrandom_sets == 1:
+	if(Global.turno):
+		playerArrows(random_int)
+	else:
+		enemyArrows(random_int)
+		
+func playerArrows(select_sets):
+	if select_sets == 1:
 		var Left = left.instance()
 		get_parent().add_child(Left)
 		Left.position = $player_arrows/SpawArrow/Position_left.global_position
 
-	if selectrandom_sets == 2:
+	if select_sets == 2:
 		var Up = up.instance()
 		get_parent().add_child(Up)
 		Up.position = $player_arrows/SpawArrow/Position_up.global_position
 
-	if selectrandom_sets == 3:
+	if select_sets == 3:
 		var Right = right.instance()
 		get_parent().add_child(Right)
 		Right.position = $player_arrows/SpawArrow/Position_right.global_position
 		
-	if selectrandom_sets == 4:
+	if select_sets == 4:
 		var Down = down.instance()
 		get_parent().add_child(Down)
 		Down.position = $player_arrows/SpawArrow/Position_down.global_position
+
+func enemyArrows(select_sets):
+	if select_sets == 1:
+		var Left = left.instance()
+		get_parent().add_child(Left)
+		Left.position = $enemy_arrows/SpawArrow/Position_left.global_position
+
+	if select_sets == 2:
+		var Up = up.instance()
+		get_parent().add_child(Up)
+		Up.position = $enemy_arrows/SpawArrow/Position_up.global_position
+		
+	if select_sets == 3:
+		var Right = right.instance()
+		get_parent().add_child(Right)
+		Right.position = $enemy_arrows/SpawArrow/Position_right.global_position
+		
+	if select_sets == 4:
+		var Down = down.instance()
+		get_parent().add_child(Down)
+		Down.position = $enemy_arrows/SpawArrow/Position_down.global_position
+

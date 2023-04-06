@@ -17,7 +17,10 @@ var pontos_dano = 0 #exibe na tela a quantidade de dano causado
 var combo = 0
 var maxCombo
 var Score = 0
+
 var sensorDown
 var sensorTop
 var sensorLeft
 var sensorRight
+
+var turno = false

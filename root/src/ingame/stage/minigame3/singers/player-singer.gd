@@ -20,37 +20,38 @@ func animation():
 	if(!is_timer_running):
 		animation.play("idle")
 	
-	if(Input.is_action_just_pressed("ui_down")):
-		if Global.sensorDown:
-			animation.play("down")
-			wait_time = 20
-		else:
-			animation.play("down_fail")
-			wait_time = 10
+	if(Global.turno):
+		if(Input.is_action_just_pressed("ui_down")):
+			if Global.sensorDown:
+				animation.play("down")
+				wait_time = 20
+			else:
+				animation.play("down_fail")
+				wait_time = 10
+				
+		if(Input.is_action_just_pressed("ui_up")):
+			if Global.sensorTop:
+				animation.play("up")
+				wait_time = 10
+			else:
+				animation.play("up_fail")
+				wait_time = 10
 			
-	if(Input.is_action_just_pressed("ui_up")):
-		if Global.sensorTop:
-			animation.play("up")
-			wait_time = 10
-		else:
-			animation.play("up_fail")
-			wait_time = 10
-		
-	if(Input.is_action_just_pressed("ui_left")):
-		if Global.sensorLeft:
-			animation.play("left")
-			wait_time = 10
-		else:
-			animation.play("left_fail")
-			wait_time = 10
-		
-	if(Input.is_action_just_pressed("ui_right")):
-		if Global.sensorRight:
-			animation.play("right")
-			wait_time = 10
-		else:
-			animation.play("right_fail")
-			wait_time = 10
+		if(Input.is_action_just_pressed("ui_left")):
+			if Global.sensorLeft:
+				animation.play("left")
+				wait_time = 10
+			else:
+				animation.play("left_fail")
+				wait_time = 10
+			
+		if(Input.is_action_just_pressed("ui_right")):
+			if Global.sensorRight:
+				animation.play("right")
+				wait_time = 10
+			else:
+				animation.play("right_fail")
+				wait_time = 10
 
 func _on_Timer_timeout():
 	wait_time -= reduction
