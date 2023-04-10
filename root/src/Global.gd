@@ -25,3 +25,4 @@ var sensorRight
 
 var turno = false
 var yes = false
+
