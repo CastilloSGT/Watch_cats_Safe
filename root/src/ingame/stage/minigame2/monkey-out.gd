@@ -56,7 +56,6 @@ func modulate_check():
 	if(wait_time > 0):
 		_modulate.show()
 		status.show()
-		status.set_text(str("Você ganhou esse Round!!"))
 		get_tree().paused = true
 	else:
 		_modulate.hide()

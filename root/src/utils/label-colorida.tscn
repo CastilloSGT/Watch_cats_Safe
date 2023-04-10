@@ -10,7 +10,10 @@ font_data = ExtResource( 2 )
 [sub_resource type="Theme" id=2]
 default_font = SubResource( 1 )
 
-[node name="label-colorida" type="Label"]
+[node name="label-colorida" type="RichTextLabel"]
 theme = SubResource( 2 )
-text = "aaaaaaaaaaaa"
+bbcode_enabled = true
 script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}

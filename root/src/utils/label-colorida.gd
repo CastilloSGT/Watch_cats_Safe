@@ -1,4 +1,4 @@
-extends Label
+extends RichTextLabel
 #LABEL
 var count = 0.0
 var cor_anterior
