@@ -60,7 +60,7 @@ border_color = Color( 0.8, 0.8, 0.8, 0 )
 script = ExtResource( 3 )
 
 [node name="spr_Menu" type="Sprite" parent="."]
-position = Vector2( 401, 300 )
+position = Vector2( 403, 301 )
 texture = ExtResource( 2 )
 
 [node name="menu" type="VBoxContainer" parent="."]

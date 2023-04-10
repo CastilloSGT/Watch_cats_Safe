@@ -1,0 +1,211 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://assets/art/ingame/stage/minigame 3/animacoes/CensSetsGood_down.tres" type="Animation" id=1]
+[ext_resource path="res://src/ingame/stage/minigame3/stop_arrow/stopped_arrow.gd" type="Script" id=2]
+[ext_resource path="res://assets/art/ingame/stage/minigame 3/setas/baixo.png" type="Texture" id=3]
+[ext_resource path="res://assets/art/ingame/stage/minigame 3/setas/esq.png" type="Texture" id=4]
+[ext_resource path="res://assets/art/ingame/stage/minigame 3/setas/cima.png" type="Texture" id=5]
+[ext_resource path="res://assets/art/ingame/stage/minigame 3/setas/dir.png" type="Texture" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 9, 10 )
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("arrow_down/Stop_down_Good:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "Good_up"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Stop_up_Good:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Stop_up_Good:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Good_left"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Stop_left_Good:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Stop_left_Good:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "Good_right"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Stop_right_Good:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Stop_right_Good:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="stopped_arrow" type="Area2D"]
+script = ExtResource( 2 )
+
+[node name="colision" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 1 )
+shape = SubResource( 1 )
+
+[node name="arrow_down" type="Node2D" parent="."]
+
+[node name="Stop_down_Anim" type="AnimationPlayer" parent="arrow_down"]
+root_node = NodePath("../..")
+anims/Good_down = ExtResource( 1 )
+anims/RESET = SubResource( 2 )
+
+[node name="Stop_down_Norm" type="Sprite" parent="arrow_down"]
+texture = ExtResource( 3 )
+hframes = 3
+
+[node name="Stop_down_Good" type="Sprite" parent="arrow_down"]
+modulate = Color( 1, 1, 1, 0 )
+texture = ExtResource( 3 )
+hframes = 3
+frame = 2
+
+[node name="Stop_down_Bad" type="Sprite" parent="arrow_down"]
+visible = false
+texture = ExtResource( 3 )
+hframes = 3
+
+[node name="arrow_up" type="Node2D" parent="."]
+
+[node name="Stop_up_Anim" type="AnimationPlayer" parent="arrow_up"]
+anims/Good_up = SubResource( 11 )
+anims/RESET = SubResource( 12 )
+
+[node name="Stop_up_Norm" type="Sprite" parent="arrow_up"]
+texture = ExtResource( 5 )
+hframes = 3
+
+[node name="Stop_up_Good" type="Sprite" parent="arrow_up"]
+modulate = Color( 1, 1, 1, 0 )
+texture = ExtResource( 5 )
+hframes = 3
+frame = 2
+
+[node name="Stop_up_Bad" type="Sprite" parent="arrow_up"]
+visible = false
+texture = ExtResource( 5 )
+hframes = 3
+
+[node name="arrow_left" type="Node2D" parent="."]
+
+[node name="Stop_left_Anim" type="AnimationPlayer" parent="arrow_left"]
+anims/Good_left = SubResource( 9 )
+anims/RESET = SubResource( 10 )
+
+[node name="Stop_left_Norm" type="Sprite" parent="arrow_left"]
+texture = ExtResource( 4 )
+hframes = 3
+
+[node name="Stop_left_Good" type="Sprite" parent="arrow_left"]
+modulate = Color( 1, 1, 1, 0 )
+texture = ExtResource( 4 )
+hframes = 3
+frame = 2
+
+[node name="Stop_left_Bad" type="Sprite" parent="arrow_left"]
+visible = false
+texture = ExtResource( 4 )
+hframes = 3
+
+[node name="arrow_right" type="Node2D" parent="."]
+
+[node name="Stop_right_Anim" type="AnimationPlayer" parent="arrow_right"]
+anims/Good_right = SubResource( 13 )
+anims/RESET = SubResource( 14 )
+
+[node name="Stop_right_Norm" type="Sprite" parent="arrow_right"]
+texture = ExtResource( 6 )
+hframes = 3
+
+[node name="Stop_right_Good" type="Sprite" parent="arrow_right"]
+modulate = Color( 1, 1, 1, 0 )
+texture = ExtResource( 6 )
+hframes = 3
+frame = 2
+
+[node name="Stop_right_Bad" type="Sprite" parent="arrow_right"]
+visible = false
+texture = ExtResource( 6 )
+hframes = 3
+
+[connection signal="area_shape_entered" from="." to="." method="_on_stoppedarrow_down_area_shape_entered"]
+[connection signal="area_shape_exited" from="." to="." method="_on_stoppedarrow_down_area_shape_exited"]
