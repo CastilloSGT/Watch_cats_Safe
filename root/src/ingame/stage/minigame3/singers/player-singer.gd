@@ -11,11 +11,6 @@ func _process(delta):
 	animation()
 	_on_Timer_timeout()
 
-func combo():
-	if (Global.maxCombo):
-		animation.play("yes")
-		wait_time = 10
-	
 func animation():
 	if(!is_timer_running):
 		animation.play("idle")
@@ -52,6 +47,10 @@ func animation():
 			else:
 				animation.play("right_fail")
 				wait_time = 10
+				
+		if (Global.maxCombo && Global.yes):
+			animation.play("yes")
+			wait_time = 10
 
 func _on_Timer_timeout():
 	wait_time -= reduction
