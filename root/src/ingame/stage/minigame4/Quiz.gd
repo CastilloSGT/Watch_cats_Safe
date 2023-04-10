@@ -4,9 +4,7 @@ export (Dictionary) var allQuest
 var QuestAtt = 0
 var totQuests = 0
 var pontos = 0
-var destVal = 2
 var enemy = load("res://src/ingame/stage/minigame4/bicho.tscn")
-#var checkChances = false
 
 func _ready():
 	totQuests = allQuest.size() #Tamanho total do Dictionary
@@ -21,41 +19,6 @@ func _physics_process(delta):
 	$Tempo.text = "Timer\n" + str(int($Timer_1.time_left))
 	$Ponts.text = "Pontos\n" + str(pontos)
 	
-	#checkChances = false
-	
-	
-	"""
-	if destVal <= 0:
-		prox_quest()
-		if $Bich.get_child_count() <= 0:
-			spawn_bichinh(2)
-		else:
-			spawn_bichinh(int($Bich.get_child_count()/2))
-			for i in $Bich.get_child_count():
-				$Bich.get_child(i).canMove = false
-				$Bich.get_child(i).canDestr = true
-		checkChances = true
-	
-	if checkChances:
-		if $Bich.get_child_count() > 2:
-			destVal = 3
-		elif $Bich.get_child_count() == 2:
-			destVal = 2
-		elif $Bich.get_child_count() == 1:
-			destVal = 1
-		checkChances = false
-	
-#Adicionando bichinhos a posição de Control/Spaw_Bicho
-
-func spawn_bichinh(val):
-	#val = 2
-	#0 - 2 = exec
-	for i in val:
-		var bich_instnc = enemy.instance()
-		$Bich.add_child(bich_instnc)
-		randomize()
-		bich_instnc.position = $Spaw_Bicho.get_child(rand_range(0,$Spaw_Bicho.get_child_count()-1)).position
-"""
 #Seleção de perguntas/Cambio
 func prox_quest():
 	$Timer_1.paused = false
@@ -75,15 +38,7 @@ func prox_quest():
 		totQuests -= 1
 	else:
 		get_tree().change_scene_to(load(""))
-"""
-#TimerOut Criado
-func _on_Timer_1_timeout():
-	checkChances = true #CheckarChances
-	if $Bich.get_child_count() <= 0: #Multiplicação de Node/Bich
-		spawn_bichinh(2)
-	else:
-		spawn_bichinh(int($Bich.get_child_count()/2))
-"""
+
 func _on_item_toggled(button_pressed, questMark):
 	if button_pressed: #se button == true
 		if $Timer_1.time_left > 0:
