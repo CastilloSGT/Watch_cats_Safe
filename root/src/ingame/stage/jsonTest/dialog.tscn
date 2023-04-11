@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/ingame/stage/jsonTest/dialog.gd" type="Script" id=2]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource( 2 )
+dialog_file = "res://src/ingame/stage/jsonTest/dialog.json"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+margin_right = 128.0
+margin_bottom = 64.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 72.0
+margin_bottom = 24.0
+tab_size = 1
+text = "Ques"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="NinePatchRect"]
+margin_left = 8.0
+margin_top = 32.0
+margin_right = 64.0
+margin_bottom = 48.0
+tab_size = 1
+text = "Pergunt"
