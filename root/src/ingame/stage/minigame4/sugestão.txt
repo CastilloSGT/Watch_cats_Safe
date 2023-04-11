@@ -104,3 +104,5 @@ func _on_item_toggled(button_pressed, questMark):
 					spawn_bichin(int($Bich.get_child_count()/2))
 				prox_quest()
 
+
+123
