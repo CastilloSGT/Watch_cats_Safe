@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pergunta.png-f5b0ceb3376e03d6c8844001618dcde3.stex"
+path="res://.import/check.png-a0aaeee716175f8cb3413c0be3493d10.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/ingame/stage/minigame 4/pergunta.png"
-dest_files=[ "res://.import/pergunta.png-f5b0ceb3376e03d6c8844001618dcde3.stex" ]
+source_file="res://assets/art/ingame/stage/minigame 4/check.png"
+dest_files=[ "res://.import/check.png-a0aaeee716175f8cb3413c0be3493d10.stex" ]
 
 [params]
 
