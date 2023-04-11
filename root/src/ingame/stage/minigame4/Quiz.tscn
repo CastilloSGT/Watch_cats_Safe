@@ -1,0 +1,125 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://src/ingame/stage/minigame4/Quiz.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32.0688, 31.6222 )
+
+[node name="Stag" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 1.01142, 1 )
+script = ExtResource( 3 )
+allQuest = {
+"1 Quest": [ "Res 1", "Res 2", "Res 3", "Res 4", 0 ],
+"2 quest": [ "Res2", "Res4", "Res3", "Res1", 3 ],
+"3 quest": [ "resp 3", "resp 2", "resp 1", "resp 4", 2 ]
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 1072.0
+margin_bottom = 240.0
+
+[node name="Pergunt" type="Label" parent="."]
+margin_left = 26.0
+margin_top = 30.0
+margin_right = 232.0
+margin_bottom = 75.0
+rect_scale = Vector2( 2, 2 )
+text = "O q eu quero"
+valign = 1
+autowrap = true
+
+[node name="Tempo" type="Label" parent="."]
+margin_left = 282.0
+margin_top = 16.0
+margin_right = 359.0
+margin_bottom = 56.0
+rect_scale = Vector2( 2, 2 )
+text = "TEMPO
+99"
+align = 1
+valign = 1
+
+[node name="Ponts" type="Label" parent="."]
+margin_left = 288.0
+margin_top = 106.0
+margin_right = 365.0
+margin_bottom = 146.0
+rect_scale = Vector2( 2, 2 )
+text = "Pontos
+00"
+align = 1
+valign = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 488.0
+margin_top = 32.0
+margin_right = 648.0
+margin_bottom = 124.0
+rect_scale = Vector2( 2, 2 )
+
+[node name="quest_1" type="CheckBox" parent="VBoxContainer"]
+margin_right = 160.0
+margin_bottom = 24.0
+text = "Quest 1"
+
+[node name="quest_2" type="CheckBox" parent="VBoxContainer"]
+margin_top = 28.0
+margin_right = 160.0
+margin_bottom = 52.0
+text = "Quest 2"
+
+[node name="quest_3" type="CheckBox" parent="VBoxContainer"]
+margin_top = 56.0
+margin_right = 160.0
+margin_bottom = 80.0
+text = "Quest 3"
+
+[node name="quest_4" type="CheckBox" parent="VBoxContainer"]
+margin_top = 84.0
+margin_right = 160.0
+margin_bottom = 108.0
+text = "Quest 3"
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( 48, 552 )
+scale = Vector2( 1.06836, 1.00195 )
+texture = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="Sprite" groups=["Sprite"]]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Area2D"]
+visible = false
+position = Vector2( 0.481018, -0.996094 )
+shape = SubResource( 1 )
+
+[node name="Timer_1" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Bich" type="Node2D" parent="."]
+visible = false
+
+[node name="Spaw_Bicho" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Sp1" type="Node2D" parent="Spaw_Bicho"]
+position = Vector2( 920, 384 )
+
+[node name="Sp3" type="Node2D" parent="Spaw_Bicho"]
+position = Vector2( 920, 552 )
+
+[node name="Sp4" type="Node2D" parent="Spaw_Bicho"]
+position = Vector2( 920, 448 )
+
+[connection signal="toggled" from="VBoxContainer/quest_1" to="." method="_on_item_toggled" binds= [ 0 ]]
+[connection signal="toggled" from="VBoxContainer/quest_2" to="." method="_on_item_toggled" binds= [ 1 ]]
+[connection signal="toggled" from="VBoxContainer/quest_3" to="." method="_on_item_toggled" binds= [ 2 ]]
+[connection signal="toggled" from="VBoxContainer/quest_4" to="." method="_on_item_toggled" binds= [ 3 ]]
+[connection signal="timeout" from="Timer_1" to="." method="_on_Timer_1_timeout"]
