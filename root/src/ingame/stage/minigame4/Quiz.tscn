@@ -1,27 +1,200 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/PressStart2P.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/art/ingame/stage/minigame 4/resposta.png" type="Texture" id=2]
 [ext_resource path="res://src/ingame/stage/minigame4/Quiz.gd" type="Script" id=3]
+[ext_resource path="res://assets/art/ingame/stage/minigame 4/coelha-sprites.png" type="Texture" id=4]
+[ext_resource path="res://assets/art/ingame/stage/minigame 4/pergunta.png" type="Texture" id=5]
+[ext_resource path="res://assets/art/ingame/stage/minigame 4/tela.png" type="Texture" id=6]
+[ext_resource path="res://assets/art/ingame/stage/minigame 4/barra-progresso.png" type="Texture" id=7]
+[ext_resource path="res://assets/art/ingame/stage/minigame 4/check.png" type="Texture" id=8]
+[ext_resource path="res://src/ingame/stage/minigame4/angry.tres" type="Animation" id=9]
+[ext_resource path="res://src/ingame/stage/minigame4/ok.tres" type="Animation" id=10]
+[ext_resource path="res://src/ingame/stage/minigame4/sus.tres" type="Animation" id=11]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32.0688, 31.6222 )
+[sub_resource type="DynamicFont" id=1]
+size = 8
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[sub_resource type="TileSet" id=8]
+0/name = "mao"
+0/texture = ExtResource( 7 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 16, 16, 16 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "ini-vazio"
+1/texture = ExtResource( 7 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 48, 16, 16, 16 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 1
+2/name = "ini-cheio"
+2/texture = ExtResource( 7 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 16, 16, 16, 16 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 2
+3/name = "meio-vazio"
+3/texture = ExtResource( 7 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 32, 0, 16, 16 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape_one_way = false
+3/shape_one_way_margin = 0.0
+3/shapes = [  ]
+3/z_index = 3
+4/name = "meio-meio"
+4/texture = ExtResource( 7 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 48, 0, 16, 16 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape_one_way = false
+4/shape_one_way_margin = 0.0
+4/shapes = [  ]
+4/z_index = 4
+5/name = "meio-cheio"
+5/texture = ExtResource( 7 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 64, 0, 16, 16 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape_one_way = false
+5/shape_one_way_margin = 0.0
+5/shapes = [  ]
+5/z_index = 5
+6/name = "fim-vazio"
+6/texture = ExtResource( 7 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 16, 0, 16, 16 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 0, 0 )
+6/navigation_offset = Vector2( 0, 0 )
+6/shape_offset = Vector2( 0, 0 )
+6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+6/shape_one_way = false
+6/shape_one_way_margin = 0.0
+6/shapes = [  ]
+6/z_index = 6
+7/name = "fim-cheio"
+7/texture = ExtResource( 7 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 64, 16, 16, 16 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shape_offset = Vector2( 0, 0 )
+7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+7/shape_one_way = false
+7/shape_one_way_margin = 0.0
+7/shapes = [  ]
+7/z_index = 7
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Coelha-sprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=7]
+default_font = SubResource( 6 )
 
 [node name="Stag" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_scale = Vector2( 1.01142, 1 )
+theme = SubResource( 2 )
 script = ExtResource( 3 )
 allQuest = {
 "1 Quest": [ "Res 1", "Res 2", "Res 3", "Res 4", 0 ],
+"10 quest": [ "resp 3", "resp 1", "resp 4", "resp 2", 1 ],
 "2 quest": [ "Res2", "Res4", "Res3", "Res1", 3 ],
-"3 quest": [ "resp 3", "resp 2", "resp 1", "resp 4", 2 ]
+"3 quest": [ "resp 3", "resp 2", "resp 1", "resp 4", 2 ],
+"4 quest": [ "a", "b", "c", "d", 2 ],
+"5 quest": [ "resp 2", "resp 4", "resp 3", "resp 1", 3 ],
+"6 quest": [ "resp 1", "resp 4", "resp 2", "resp 3", 0 ],
+"7 quest": [ "resp 2", "resp 1", "resp 3", "resp 4", 1 ],
+"8 quest": [ "resp 1", "resp 4", "resp 2", "resp 3", 0 ],
+"9 quest": [ "resp 4", "resp 3", "resp 2", "resp 1", 3 ]
 }
 
-[node name="Panel" type="Panel" parent="."]
-margin_right = 1072.0
-margin_bottom = 240.0
+[node name="tempo" type="Node2D" parent="."]
 
-[node name="Pergunt" type="Label" parent="."]
+[node name="Tempo" type="Label" parent="tempo"]
+margin_left = 296.0
+margin_top = 64.0
+margin_right = 373.0
+margin_bottom = 104.0
+rect_scale = Vector2( 2, 2 )
+text = "TEMPO
+99"
+align = 1
+valign = 1
+
+[node name="Timer" type="Timer" parent="tempo"]
+autostart = true
+
+[node name="pergunta" type="Node2D" parent="."]
+position = Vector2( 88, 192 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Pergunt" type="Label" parent="pergunta"]
 margin_left = 26.0
 margin_top = 30.0
 margin_right = 232.0
@@ -31,95 +204,103 @@ text = "O q eu quero"
 valign = 1
 autowrap = true
 
-[node name="Tempo" type="Label" parent="."]
-margin_left = 282.0
-margin_top = 16.0
-margin_right = 359.0
-margin_bottom = 56.0
-rect_scale = Vector2( 2, 2 )
-text = "TEMPO
-99"
-align = 1
-valign = 1
+[node name="Pergunta" type="Sprite" parent="pergunta"]
+position = Vector2( 114.69, 58 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 5 )
 
-[node name="Ponts" type="Label" parent="."]
-margin_left = 288.0
-margin_top = 106.0
-margin_right = 365.0
-margin_bottom = 146.0
-rect_scale = Vector2( 2, 2 )
-text = "Pontos
-00"
-align = 1
-valign = 1
+[node name="barra-progresso" type="Node2D" parent="."]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 488.0
-margin_top = 32.0
-margin_right = 648.0
-margin_bottom = 124.0
-rect_scale = Vector2( 2, 2 )
+[node name="TileMap" type="TileMap" parent="barra-progresso"]
+scale = Vector2( 4, 4 )
+tile_set = SubResource( 8 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 1, 1, 0, 2, 3, 0, 3, 3, 0, 4, 3, 0, 5, 3, 0, 6, 3, 0, 7, 3, 0, 8, 3, 0, 9, 3, 0, 10, 6, 0 )
 
-[node name="quest_1" type="CheckBox" parent="VBoxContainer"]
-margin_right = 160.0
-margin_bottom = 24.0
-text = "Quest 1"
+[node name="inimigo" type="Node2D" parent="."]
+position = Vector2( -64, 88 )
+scale = Vector2( 4, 4 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="quest_2" type="CheckBox" parent="VBoxContainer"]
-margin_top = 28.0
-margin_right = 160.0
-margin_bottom = 52.0
-text = "Quest 2"
+[node name="Tela" type="Sprite" parent="inimigo"]
+position = Vector2( 152.756, 41 )
+texture = ExtResource( 6 )
 
-[node name="quest_3" type="CheckBox" parent="VBoxContainer"]
-margin_top = 56.0
-margin_right = 160.0
-margin_bottom = 80.0
-text = "Quest 3"
+[node name="Coelha-sprites" type="Sprite" parent="inimigo"]
+position = Vector2( 138, 40 )
+texture = ExtResource( 4 )
+hframes = 2
+vframes = 3
 
-[node name="quest_4" type="CheckBox" parent="VBoxContainer"]
-margin_top = 84.0
-margin_right = 160.0
-margin_bottom = 108.0
-text = "Quest 3"
+[node name="animation" type="AnimationPlayer" parent="inimigo"]
+anims/RESET = SubResource( 9 )
+anims/angry = ExtResource( 9 )
+anims/ok = ExtResource( 10 )
+anims/sus = ExtResource( 11 )
 
-[node name="Sprite" type="Sprite" parent="."]
-visible = false
-position = Vector2( 48, 552 )
-scale = Vector2( 1.06836, 1.00195 )
+[node name="resposta" type="Node2D" parent="."]
+position = Vector2( -8, -16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Resposta" type="Sprite" parent="resposta"]
+position = Vector2( 379.664, 496 )
+scale = Vector2( 9, 2.5 )
 texture = ExtResource( 2 )
 
-[node name="Area2D" type="Area2D" parent="Sprite" groups=["Sprite"]]
-visible = false
+[node name="VBoxContainer" type="VBoxContainer" parent="resposta"]
+margin_left = 48.0
+margin_top = 432.0
+margin_right = 720.0
+margin_bottom = 560.0
+rect_clip_content = true
+theme = SubResource( 7 )
+custom_constants/separation = 5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Area2D"]
-visible = false
-position = Vector2( 0.481018, -0.996094 )
-shape = SubResource( 1 )
+[node name="quest_1" type="CheckBox" parent="resposta/VBoxContainer"]
+margin_right = 672.0
+margin_bottom = 26.0
+custom_colors/font_color_hover = Color( 0.0823529, 0.160784, 0.407843, 1 )
+custom_icons/unchecked = ExtResource( 8 )
+text = "aaaaaaaaaaa"
+flat = true
 
-[node name="Timer_1" type="Timer" parent="."]
-wait_time = 3.0
-autostart = true
+[node name="quest_2" type="CheckBox" parent="resposta/VBoxContainer"]
+margin_top = 31.0
+margin_right = 672.0
+margin_bottom = 57.0
+custom_colors/font_color_hover = Color( 0.0823529, 0.160784, 0.407843, 1 )
+custom_icons/unchecked = ExtResource( 8 )
+text = "aaaaaaaaaaaaaa"
+flat = true
 
-[node name="Bich" type="Node2D" parent="."]
-visible = false
+[node name="quest_3" type="CheckBox" parent="resposta/VBoxContainer"]
+margin_top = 62.0
+margin_right = 672.0
+margin_bottom = 88.0
+custom_colors/font_color_hover = Color( 0.0823529, 0.160784, 0.407843, 1 )
+custom_icons/unchecked = ExtResource( 8 )
+text = "aaaaaaaaaaaaa"
+flat = true
 
-[node name="Spaw_Bicho" type="Control" parent="."]
-visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="quest_4" type="CheckBox" parent="resposta/VBoxContainer"]
+margin_top = 93.0
+margin_right = 672.0
+margin_bottom = 119.0
+custom_colors/font_color_hover = Color( 0.0823529, 0.160784, 0.407843, 1 )
+custom_icons/unchecked = ExtResource( 8 )
+text = "aaaaaa"
+flat = true
 
-[node name="Sp1" type="Node2D" parent="Spaw_Bicho"]
-position = Vector2( 920, 384 )
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 376, 280 )
+current = true
 
-[node name="Sp3" type="Node2D" parent="Spaw_Bicho"]
-position = Vector2( 920, 552 )
-
-[node name="Sp4" type="Node2D" parent="Spaw_Bicho"]
-position = Vector2( 920, 448 )
-
-[connection signal="toggled" from="VBoxContainer/quest_1" to="." method="_on_item_toggled" binds= [ 0 ]]
-[connection signal="toggled" from="VBoxContainer/quest_2" to="." method="_on_item_toggled" binds= [ 1 ]]
-[connection signal="toggled" from="VBoxContainer/quest_3" to="." method="_on_item_toggled" binds= [ 2 ]]
-[connection signal="toggled" from="VBoxContainer/quest_4" to="." method="_on_item_toggled" binds= [ 3 ]]
-[connection signal="timeout" from="Timer_1" to="." method="_on_Timer_1_timeout"]
+[connection signal="toggled" from="resposta/VBoxContainer/quest_1" to="." method="_on_item_toggled" binds= [ 0 ]]
+[connection signal="toggled" from="resposta/VBoxContainer/quest_2" to="." method="_on_item_toggled" binds= [ 1 ]]
+[connection signal="toggled" from="resposta/VBoxContainer/quest_3" to="." method="_on_item_toggled" binds= [ 2 ]]
+[connection signal="toggled" from="resposta/VBoxContainer/quest_4" to="." method="_on_item_toggled" binds= [ 3 ]]
