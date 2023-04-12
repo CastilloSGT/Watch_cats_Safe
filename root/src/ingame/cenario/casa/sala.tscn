@@ -429,6 +429,7 @@ extents = Vector2( 23.5, 11 )
 extents = Vector2( 13, 6 )
 
 [node name="sala" type="Node2D"]
+scale = Vector2( 1.5, 1.5 )
 script = ExtResource( 9 )
 
 [node name="player" parent="." instance=ExtResource( 7 )]

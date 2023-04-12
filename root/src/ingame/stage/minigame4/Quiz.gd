@@ -32,6 +32,7 @@ func _physics_process(delta):
 	changeProgressBar()
 	changeBunnyExpression()
 	gameOver()
+	print(totQuests)
 
 func quest(QuestAtt):
 	pergunta.text = allQuest.keys()[QuestAtt] 
@@ -42,14 +43,15 @@ func quest(QuestAtt):
 	
 func prox_quest():
 	QuestAtt += 1 #Contagem da questão atual
-	
 	for i in resposta.get_children(): #Disabled checkbox durante a select
 		i.disabled = false
 		i.pressed = false
 	
 	if totQuests > 1: #Se ainda exist Questões no Dictionary atualiza o conteudo da VBoxContainer
 		quest(QuestAtt)
-		totQuests -= 1	
+		totQuests -= 1
+	else:
+		gameOver()
 
 func _on_item_toggled(button_pressed, questMark):
 	if button_pressed: #se button == true
@@ -124,6 +126,6 @@ func gameOver():
 		tempo.wait_time = 3.0
 		tempo.start()
 		
-	if(tempo.wait_time == 3.0 && tempo.time_left < 1):
+	if((tempo.wait_time == 3.0 && tempo.time_left < 1) || totQuests <= 1):
 		get_tree().paused = false
 		get_tree().change_scene("res://src/interface/fim_prototipo.tscn")

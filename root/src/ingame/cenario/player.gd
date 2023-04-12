@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 # VARIAVEIS
 var velocidade: Vector2
-export(int) var speed = 60 #var para mover personagem
+export(int) var speed = 90 #var para mover personagem
 # var de animacao
 onready var animation_tree: AnimationTree = get_node("AnimationTree")
 onready var estado_animado = animation_tree.get("parameters/playback")

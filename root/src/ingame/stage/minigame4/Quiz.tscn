@@ -184,8 +184,7 @@ theme = SubResource( 2 )
 script = ExtResource( 3 )
 allQuest = {
 "1 Quest": [ "Res 1", "Res 2", "Res 3", "Res 4", 0 ],
-"10 quest": [ "resp 3", "resp 1", "resp 4", "resp 2", 1 ],
-"2 quest": [ "Res2", "Res4", "Res3", "Res1", 3 ],
+"2 quest": [ "Res6", "Res4", "Res3", "Res1", 3 ],
 "3 quest": [ "resp 3", "resp 2", "resp 1", "resp 4", 2 ],
 "4 quest": [ "resp2", "resp3", "resp1", "resp4", 2 ],
 "5 quest": [ "resp 2", "resp 4", "resp 3", "resp 1", 3 ],

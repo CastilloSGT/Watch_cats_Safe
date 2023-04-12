@@ -571,6 +571,7 @@ load_path = "res://.import/janela-pequena.png-cba219b89769a04ee3dad42412fbee81.s
 
 [node name="banheiro" type="Node2D"]
 position = Vector2( 0, -1 )
+scale = Vector2( 1.5, 1.5 )
 script = ExtResource( 8 )
 __meta__ = {
 "_edit_group_": true
