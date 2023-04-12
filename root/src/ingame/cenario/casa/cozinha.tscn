@@ -581,6 +581,7 @@ extents = Vector2( 19, 8.5 )
 
 [node name="cozinha" type="Node2D"]
 position = Vector2( 1, 0 )
+scale = Vector2( 1.5, 1.5 )
 script = ExtResource( 12 )
 __meta__ = {
 "_edit_group_": true

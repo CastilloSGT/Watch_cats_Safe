@@ -767,6 +767,7 @@ tracks/0/keys = {
 
 [node name="quarto" type="Node2D"]
 position = Vector2( 23, 0 )
+scale = Vector2( 1.5, 1.5 )
 script = ExtResource( 12 )
 
 [node name="player" parent="." instance=ExtResource( 10 )]
@@ -846,7 +847,6 @@ shape = SubResource( 45 )
 position = Vector2( 119, 98 )
 collision_layer = 2
 collision_mask = 4
-mode = 2
 __meta__ = {
 "_edit_group_": true
 }
