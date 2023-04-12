@@ -13,6 +13,7 @@ default_font = SubResource( 1 )
 [node name="label-colorida" type="RichTextLabel"]
 theme = SubResource( 2 )
 bbcode_enabled = true
+text = "AAAAAAAAAAAAAA"
 script = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": ""
