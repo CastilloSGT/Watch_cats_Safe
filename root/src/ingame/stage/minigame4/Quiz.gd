@@ -17,7 +17,7 @@ onready var tilemap = $"barra-progresso/TileMap"
 onready var inimigo = $inimigo/animation
 
 func _ready():
-	tempo.wait_time = 20.0
+	tempo.wait_time = 30.0
 	tempo.start()
 	
 	totQuests = allQuest.size() #Tamanho total do Dictionary
@@ -31,6 +31,7 @@ func _physics_process(delta):
 	lbltempo.text = "Timer\n" + str(int(tempo.time_left))
 	changeProgressBar()
 	changeBunnyExpression()
+	gameOver()
 
 func quest(QuestAtt):
 	pergunta.text = allQuest.keys()[QuestAtt] 
@@ -48,9 +49,7 @@ func prox_quest():
 	
 	if totQuests > 1: #Se ainda exist Questões no Dictionary atualiza o conteudo da VBoxContainer
 		quest(QuestAtt)
-		totQuests -= 1
-	else:
-		gameOver()
+		totQuests -= 1	
 
 func _on_item_toggled(button_pressed, questMark):
 	if button_pressed: #se button == true
@@ -68,7 +67,12 @@ func _on_item_toggled(button_pressed, questMark):
 			prox_quest()
 		else:
 			posX -= 1
-			tempo.wait_time -= 10.0
+			if(tempo.time_left < 10.0):
+				tempo.wait_time = 1.0
+				get_tree().paused = true
+			else:
+				tempo.wait_time -= 10.0
+				
 			tempo.start()
 			prox_quest()
 
@@ -114,7 +118,12 @@ func changeBunnyExpression():
 		inimigo.play("angry")
 
 func gameOver():
-	if(posX == 0 || tempo.time_left == 0):
+	if(posX == 0 || tempo.time_left == 0.0):
 		tempo.stop()
-		$gameover/modulate.show()
-		$"gameover/label-colorida".show()
+		$gameover.show()
+		tempo.wait_time = 3.0
+		tempo.start()
+		
+	if(tempo.wait_time == 3.0 && tempo.time_left < 1):
+		get_tree().paused = false
+		get_tree().change_scene("res://src/interface/fim_prototipo.tscn")
