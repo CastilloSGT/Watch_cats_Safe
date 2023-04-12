@@ -17,6 +17,9 @@ onready var tilemap = $"barra-progresso/TileMap"
 onready var inimigo = $inimigo/animation
 
 func _ready():
+	tempo.wait_time = 20.0
+	tempo.start()
+	
 	totQuests = allQuest.size() #Tamanho total do Dictionary
 	quest(QuestAtt)
 	tilemap.set_cell(4,0,5)
@@ -28,7 +31,6 @@ func _physics_process(delta):
 	lbltempo.text = "Timer\n" + str(int(tempo.time_left))
 	changeProgressBar()
 	changeBunnyExpression()
-	print(posX)
 
 func quest(QuestAtt):
 	pergunta.text = allQuest.keys()[QuestAtt] 
@@ -48,7 +50,7 @@ func prox_quest():
 		quest(QuestAtt)
 		totQuests -= 1
 	else:
-		get_tree().change_scene_to(load("res://src/interface/fim_prototipo.tscn"))
+		gameOver()
 
 func _on_item_toggled(button_pressed, questMark):
 	if button_pressed: #se button == true
@@ -58,12 +60,16 @@ func _on_item_toggled(button_pressed, questMark):
 				posX = 10
 			else:
 				posX += 1
-				
 			for i in resposta.get_child_count(): #Disabled checkbox durante a select
 				resposta.get_child(i).disabled = true
+				
+			tempo.wait_time += 10.0
+			tempo.start() #godot burrinha tem que dar start no timer toda hora
 			prox_quest()
 		else:
 			posX -= 1
+			tempo.wait_time -= 10.0
+			tempo.start()
 			prox_quest()
 
 func changeProgressBar():
@@ -106,3 +112,9 @@ func changeBunnyExpression():
 		inimigo.play("sus")
 	if (posX < 3):
 		inimigo.play("angry")
+
+func gameOver():
+	if(posX == 0 || tempo.time_left == 0):
+		tempo.stop()
+		$gameover/modulate.show()
+		$"gameover/label-colorida".show()
