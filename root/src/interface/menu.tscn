@@ -124,3 +124,6 @@ icon_align = 1
 
 [connection signal="focus_entered" from="menu/btn_start" to="." method="_on_btn_start_focus_entered"]
 [connection signal="focus_exited" from="menu/btn_start" to="." method="_on_btn_start_focus_exited"]
+[connection signal="pressed" from="menu/btn_load" to="." method="_on_btn_load_pressed"]
+[connection signal="focus_entered" from="menu/btn_options" to="." method="_on_btn_options_focus_entered"]
+[connection signal="focus_exited" from="menu/btn_options" to="." method="_on_btn_options_focus_exited"]
