@@ -73,8 +73,7 @@ focus_neighbour_top = NodePath("btn_options")
 size_flags_vertical = 3
 alignment = 1
 __meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": true
+"_edit_group_": true
 }
 
 [node name="btn_start" type="Button" parent="menu"]
