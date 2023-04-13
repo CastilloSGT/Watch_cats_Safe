@@ -1,43 +1,75 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/ingame/stage/computador/tela-computador.gd" type="Script" id=1]
+[ext_resource path="res://assets/art/interface/telas/computador/tela-computador.png" type="Texture" id=2]
+[ext_resource path="res://assets/art/interface/telas/computador/lixo.png" type="Texture" id=3]
+[ext_resource path="res://assets/art/interface/telas/computador/file-exe.png" type="Texture" id=4]
+[ext_resource path="res://assets/art/interface/telas/computador/chat.png" type="Texture" id=5]
+[ext_resource path="res://assets/art/interface/telas/computador/IDE.png" type="Texture" id=6]
+[ext_resource path="res://assets/art/interface/telas/computador/browser.png" type="Texture" id=8]
 
 [node name="tela-computador" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="Panel" type="Panel" parent="."]
-margin_right = 184.0
-margin_bottom = 120.0
+[node name="Tela-computador" type="Sprite" parent="."]
+position = Vector2( 400, 290 )
+scale = Vector2( 4.5, 4.5 )
+texture = ExtResource( 2 )
 
-[node name="game1" type="Button" parent="Panel"]
-margin_left = 64.0
-margin_top = 16.0
-margin_right = 128.0
-margin_bottom = 36.0
-text = "GAME1"
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 400, 280 )
+current = true
+zoom = Vector2( 0.5, 0.5 )
 
-[node name="game2" type="Button" parent="Panel"]
-margin_left = 64.0
-margin_top = 40.0
-margin_right = 128.0
-margin_bottom = 60.0
-text = "GAME2"
+[node name="icons" type="Node2D" parent="."]
 
-[node name="game3" type="Button" parent="Panel"]
-margin_left = 64.0
-margin_top = 64.0
-margin_right = 128.0
-margin_bottom = 84.0
-text = "GAME3"
+[node name="chat" type="Button" parent="icons"]
+margin_left = 496.0
+margin_top = 168.0
+margin_right = 524.0
+margin_bottom = 190.0
+rect_scale = Vector2( 1.5, 1.5 )
+icon = ExtResource( 5 )
+flat = true
 
-[node name="game4" type="Button" parent="Panel"]
-margin_left = 64.0
-margin_top = 88.0
-margin_right = 128.0
-margin_bottom = 108.0
-text = "GAME 4"
+[node name="IDE" type="Button" parent="icons"]
+margin_left = 264.0
+margin_top = 200.0
+margin_right = 292.0
+margin_bottom = 222.0
+rect_scale = Vector2( 1.5, 1.5 )
+icon = ExtResource( 6 )
+flat = true
 
-[connection signal="pressed" from="Panel/game1" to="." method="_on_game1_pressed"]
-[connection signal="pressed" from="Panel/game2" to="." method="_on_game2_pressed"]
-[connection signal="pressed" from="Panel/game3" to="." method="_on_game3_pressed"]
-[connection signal="pressed" from="Panel/game4" to="." method="_on_game4_pressed"]
+[node name="lixo" type="Button" parent="icons"]
+margin_left = 264.0
+margin_top = 168.0
+margin_right = 292.0
+margin_bottom = 190.0
+rect_scale = Vector2( 1.5, 1.5 )
+icon = ExtResource( 4 )
+flat = true
+
+[node name="file" type="Button" parent="icons"]
+margin_left = 496.0
+margin_top = 232.0
+margin_right = 524.0
+margin_bottom = 254.0
+rect_scale = Vector2( 1.5, 1.5 )
+icon = ExtResource( 3 )
+flat = true
+clip_text = true
+
+[node name="browser" type="Button" parent="icons"]
+margin_left = 496.0
+margin_top = 200.0
+margin_right = 524.0
+margin_bottom = 222.0
+rect_scale = Vector2( 1.5, 1.5 )
+icon = ExtResource( 8 )
+flat = true
+
+[connection signal="pressed" from="icons/chat" to="." method="_on_game4_pressed"]
+[connection signal="pressed" from="icons/IDE" to="." method="_on_game3_pressed"]
+[connection signal="pressed" from="icons/lixo" to="." method="_on_game2_pressed"]
+[connection signal="pressed" from="icons/file" to="." method="_on_game1_pressed"]

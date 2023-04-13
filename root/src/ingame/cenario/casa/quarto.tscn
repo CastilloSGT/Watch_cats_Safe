@@ -910,3 +910,8 @@ position = Vector2( 104, 152 )
 
 [node name="salapos" type="Position2D" parent="."]
 position = Vector2( 104, 117 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="Objetos/computador" method="_on_Timer_timeout"]
