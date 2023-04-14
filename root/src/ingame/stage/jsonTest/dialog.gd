@@ -5,7 +5,7 @@ export(String, FILE, "*.json") var dialog_file
 var dialogues = []
 
 func _ready():
-	var i = 0
+	var i = 3
 	play()
 	$NinePatchRect/RichTextLabel.text = dialogues[i]["pergunt"]
 	$NinePatchRect/RichTextLabel2.text = dialogues[i]["opstions"]
