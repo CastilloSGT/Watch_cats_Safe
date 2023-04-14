@@ -111,19 +111,19 @@ icon = ExtResource( 8 )
 flat = true
 
 [node name="pos_chat" type="Position2D" parent="icons"]
-position = Vector2( 128, 120 )
+position = Vector2( 152, 128 )
 
 [node name="pos_IDE" type="Position2D" parent="icons"]
-position = Vector2( 176, 136 )
+position = Vector2( 200, 136 )
 
 [node name="pos_lixo" type="Position2D" parent="icons"]
-position = Vector2( 232, 72 )
+position = Vector2( 208, 80 )
 
 [node name="pos_file" type="Position2D" parent="icons"]
-position = Vector2( 248, 128 )
+position = Vector2( 256, 104 )
 
 [node name="pos_browser" type="Position2D" parent="icons"]
-position = Vector2( 176, 88 )
+position = Vector2( 144, 88 )
 
 [connection signal="pressed" from="icons/chat" to="." method="_on_chat_pressed"]
 [connection signal="pressed" from="icons/IDE" to="." method="_on_IDE_pressed"]
