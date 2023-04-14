@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/ingame/stage/computador/pop-out.gd" type="Script" id=1]
+[ext_resource path="res://assets/art/ingame/stage/minigame 4/tela.png" type="Texture" id=2]
+
+[node name="pop-out" type="Node2D" groups=["pop-outs"]]
+script = ExtResource( 1 )
+
+[node name="Tela" type="Sprite" parent="."]
+texture = ExtResource( 2 )
