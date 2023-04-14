@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/menu_screen.png-f858244e46333c9af9d2b2f49ad565d6.stex"
+path="res://.import/menu_screen.png-b4b6322b86674a0bc48e2ec0bf374db6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/interface/telas/menu_screen.png"
-dest_files=[ "res://.import/menu_screen.png-f858244e46333c9af9d2b2f49ad565d6.stex" ]
+source_file="res://assets/art/interface/menu/menu_screen.png"
+dest_files=[ "res://.import/menu_screen.png-b4b6322b86674a0bc48e2ec0bf374db6.stex" ]
 
 [params]
 

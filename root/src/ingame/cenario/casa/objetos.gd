@@ -5,13 +5,11 @@ onready var player = $"../../player"
 onready var cama_animation = $"../cama/Animation"
 onready var comp_animation = $"../computador/Animation"
 onready var janela_animation = $"../janelas/Animation"
-		
-func hackeando():
-	if(Input.is_action_just_pressed("ui_accept")):
-		get_tree().change_scene("res://src/ingame/stage/computador/tela-computador.tscn")
+onready var timer = $"../../Timer"
 
 func _physics_process(_delta: float) -> void:
 	caixaAberta()
+	print(timer.time_left)
 	
 func caixaAberta():
 	if(Global.btnSim == true):
@@ -41,8 +39,10 @@ func acordou():
 func programando():
 	comp_animation.play("programando")
 	player.visible = false
-	hackeando()
 	
 func nao_programando():
 	comp_animation.play("vazio")
 	player.visible = true
+	
+func _on_Timer_timeout():
+	get_tree().change_scene("res://src/ingame/stage/computador/tela-computador.tscn")

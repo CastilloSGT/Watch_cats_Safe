@@ -7,7 +7,7 @@ git branch -d nomeDoBranchLocal
 // excluir um branch remoto
 git push origin --delete nomeDoBranchRemoto
 
-git pull origin nomeDBranch --rebase
+git pull origin main --rebase
 
 // reseta commit? or Configs no proojeto.
 git reset --hard
