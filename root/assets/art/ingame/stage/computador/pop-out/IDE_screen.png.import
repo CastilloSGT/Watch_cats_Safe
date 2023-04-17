@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/chat.png-06efd39bf11a9a5ad0e05a5d3b4ec390.stex"
+path="res://.import/IDE_screen.png-e289185096cfed68952effbc28493c7e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/interface/telas/computador/chat.png"
-dest_files=[ "res://.import/chat.png-06efd39bf11a9a5ad0e05a5d3b4ec390.stex" ]
+source_file="res://assets/art/ingame/stage/computador/pop-out/IDE_screen.png"
+dest_files=[ "res://.import/IDE_screen.png-e289185096cfed68952effbc28493c7e.stex" ]
 
 [params]
 
