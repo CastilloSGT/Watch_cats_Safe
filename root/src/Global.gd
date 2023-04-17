@@ -26,3 +26,5 @@ var sensorRight
 var turno = false
 var yes = false
 
+#Music
+var c = 1

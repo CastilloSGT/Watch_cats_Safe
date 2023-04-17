@@ -8,7 +8,7 @@ dialog_file = "res://src/ingame/stage/jsonTest/dialog.json"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 margin_right = 128.0
-margin_bottom = 64.0
+margin_bottom = 128.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect"]
 margin_left = 8.0
@@ -20,8 +20,8 @@ text = "Ques"
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="NinePatchRect"]
 margin_left = 8.0
-margin_top = 32.0
+margin_top = 72.0
 margin_right = 64.0
-margin_bottom = 48.0
+margin_bottom = 88.0
 tab_size = 1
 text = "Pergunt"
