@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/lixo.png-d2e67b27006ff383fde7bb3434562ce5.stex"
+path="res://.import/lixo.png-610494bcee8adce5657347199bd937d4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/interface/telas/computador/lixo.png"
-dest_files=[ "res://.import/lixo.png-d2e67b27006ff383fde7bb3434562ce5.stex" ]
+source_file="res://assets/art/ingame/stage/computador/icons/lixo.png"
+dest_files=[ "res://.import/lixo.png-610494bcee8adce5657347199bd937d4.stex" ]
 
 [params]
 
