@@ -6,6 +6,7 @@ var visblMus = Global.visibl
 func _ready():
 	$Control.visible = false
 	$TextureRect.visible = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func play_music(x,c):
 	if  Global.c == 1:

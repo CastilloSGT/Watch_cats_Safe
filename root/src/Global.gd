@@ -29,3 +29,8 @@ var yes = false
 #Music Cens
 var c = 1
 var visibl = false
+
+
+func _process(delta):
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().quit()

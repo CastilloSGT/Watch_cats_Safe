@@ -14,6 +14,7 @@ size = 20
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=3]
+size = 20
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 3 )
 
@@ -32,6 +33,13 @@ stream = ExtResource( 4 )
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -21.0
+margin_top = -284.0
+margin_right = -21.0
+margin_bottom = -284.0
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 anchor_top = 1.0
@@ -41,10 +49,13 @@ margin_left = 32.0
 margin_top = 344.0
 margin_right = 432.0
 margin_bottom = 416.0
+custom_constants/separation = 10
 
 [node name="Mute" type="CheckBox" parent="Control/VBoxContainer"]
 margin_right = 400.0
 margin_bottom = 28.0
+focus_neighbour_top = NodePath("../btnVoltar")
+focus_neighbour_bottom = NodePath("../ControleMusic")
 custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 0.0705882, 0.803922, 0.741176, 1 )
@@ -55,26 +66,31 @@ text = "Music ON OFF"
 align = 1
 
 [node name="Label" type="Label" parent="Control/VBoxContainer"]
-margin_top = 32.0
+margin_top = 38.0
 margin_right = 400.0
-margin_bottom = 52.0
+margin_bottom = 58.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Volume"
 align = 1
 
 [node name="ControleMusic" type="HSlider" parent="Control/VBoxContainer"]
-margin_top = 56.0
+margin_top = 68.0
 margin_right = 400.0
-margin_bottom = 72.0
+margin_bottom = 84.0
+focus_neighbour_top = NodePath("../Mute")
+focus_neighbour_bottom = NodePath("../btnVoltar")
 
 [node name="btnVoltar" type="Button" parent="Control/VBoxContainer"]
-margin_top = 76.0
+margin_top = 94.0
 margin_right = 400.0
-margin_bottom = 99.0
+margin_bottom = 120.0
+focus_neighbour_top = NodePath("../ControleMusic")
+focus_neighbour_bottom = NodePath("../Mute")
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 3 )
 text = "Voltar"
+flat = true
 
 [connection signal="toggled" from="Control/VBoxContainer/Mute" to="." method="_on_Mute_toggled"]
 [connection signal="pressed" from="Control/VBoxContainer/btnVoltar" to="." method="_on_btnVoltar_pressed"]
