@@ -30,3 +30,8 @@ var yes = false
 var Telas = false
 var AUX = 0
 var visibl = false
+
+
+func _process(delta):
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().quit()

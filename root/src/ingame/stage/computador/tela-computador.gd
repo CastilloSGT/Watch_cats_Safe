@@ -10,6 +10,9 @@ var pop_out
 var pop_out_name
 var _position
 
+func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
 func openModal():
 	var pop_out_group = get_tree().get_nodes_in_group(pop_out_name).size() 
 	# ABRE SÓ UM POP-OUT

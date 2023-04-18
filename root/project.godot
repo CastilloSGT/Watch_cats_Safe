@@ -12,6 +12,8 @@ config_version=4
 
 config/name="Watch_cats"
 run/main_scene="res://src/interface/menu.tscn"
+boot_splash/show_image=false
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
 
 [autoload]
 

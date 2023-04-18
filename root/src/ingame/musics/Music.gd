@@ -6,6 +6,7 @@ var visblMus = Global.visibl
 
 func _ready():
 	visib(visblMus)
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func play_music(Scene, id):
 	if id == 1 && Scene == false:
