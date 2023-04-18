@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://assets/fonts/PressStart2P.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/fonts/MonsterFriendFore - Opstions.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/interface/menu.gd" type="Script" id=3]
 [ext_resource path="res://assets/art/interface/menu/menu_screen.png" type="Texture" id=4]
 

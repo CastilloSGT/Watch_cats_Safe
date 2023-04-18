@@ -940,7 +940,9 @@ margin_left = -94.0
 margin_top = 5.0
 margin_right = 112.0
 margin_bottom = 21.0
+rect_clip_content = false
 bbcode_text = "[wave]Você ganhou esse Round!![/wave]"
 text = "Você ganhou esse Round!!"
+scroll_active = false
 
 [node name="Timer" type="Timer" parent="."]
