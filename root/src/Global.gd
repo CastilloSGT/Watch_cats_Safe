@@ -26,5 +26,6 @@ var sensorRight
 var turno = false
 var yes = false
 
-#Music
+#Music Cens
 var c = 1
+var visibl = false

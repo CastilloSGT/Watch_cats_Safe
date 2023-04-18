@@ -1,6 +1,7 @@
 extends Node2D
 
 var batids_menu = load("res://src/ingame/musics/musics/menu.ogg")
+var visblMus = Global.visibl
 
 func _ready():
 	$Control.visible = false
@@ -13,17 +14,21 @@ func play_music(x,c):
 		print(Global.c)
 	 
 func scens(bt):
-	#$Musics.stream = batids_menu
-	#$Musics.play()
-	if bt == 2:
-		$Control.visible = true 
-		$TextureRect.visible = true
+	if bt == true:
+		visib(bt)
 	else:
 		$Musics.stop()
 
 func _on_Mute_toggled(button_pressed):
 	AudioServer.set_bus_mute(0, !button_pressed)
 
+func visib(x):
+	if x == true:
+		$Control.visible = x
+		$TextureRect.visible = x
+	else:
+		$Control.visible = x
+		$TextureRect.visible = x
 
 func _on_btnVoltar_pressed():
 	"""
@@ -32,4 +37,5 @@ func _on_btnVoltar_pressed():
 	$myStreamPlayer2D.play()
 	$myStreamPlayer2D.seek(temp)
 	"""
+	visib(visblMus)
 	get_tree().change_scene("res://src/interface/menu.tscn")
