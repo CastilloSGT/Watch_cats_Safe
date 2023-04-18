@@ -19,7 +19,7 @@ func _physics_process(_delta: float) -> void:
 func getPos():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	var num = rng.randi_range(1,6)
+	var num = rng.randi_range(1,3)
 	match num:
 		1:
 			_position = $posicoes/pos_1
