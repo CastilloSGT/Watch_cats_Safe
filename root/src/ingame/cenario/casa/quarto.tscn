@@ -911,6 +911,7 @@ position = Vector2( 104, 152 )
 position = Vector2( 104, 117 )
 
 [node name="Timer" type="Timer" parent="."]
-one_shot = true
 
+[connection signal="body_entered" from="Objetos/computador" to="Objetos/computador" method="_on_computador_body_entered"]
+[connection signal="body_exited" from="Objetos/computador" to="Objetos/computador" method="_on_computador_body_exited"]
 [connection signal="timeout" from="Timer" to="Objetos/computador" method="_on_Timer_timeout"]

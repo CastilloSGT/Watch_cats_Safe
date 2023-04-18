@@ -9,7 +9,7 @@ func _ready():
 	
 
 func _process(delta):
-	if Input.is_action_pressed("ui_select"):
+	if Input.is_action_pressed("ui_accept"):
 		if (entrou == true):
 			get_tree().change_scene("res://src/ingame/cenario/casa/quarto.tscn")
 		elif opts == true && entrou == false:

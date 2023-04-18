@@ -7,6 +7,7 @@ onready var comp_animation = $"../computador/Animation"
 onready var janela_animation = $"../janelas/Animation"
 onready var timer = $"../../Timer"
 
+
 func _physics_process(_delta: float) -> void:
 	caixaAberta()
 	print(timer.time_left)
@@ -46,3 +47,4 @@ func nao_programando():
 	
 func _on_Timer_timeout():
 	get_tree().change_scene("res://src/ingame/stage/computador/tela-computador.tscn")
+

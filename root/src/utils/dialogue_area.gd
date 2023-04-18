@@ -5,7 +5,6 @@ onready var bol = $Bol
 onready var animation = $animation
 onready var key = $Bol/Label
 
-
 func _ready():
 	bol.hide()
 	key.hide()
@@ -16,6 +15,7 @@ func _physics_process(_delta: float) -> void:
 func animation():
 	if Input.is_action_pressed("ui_accept"):
 		Global.btnSim = true
+		hideKey()
 		
 	match Global.obj:
 		"cama":
@@ -31,6 +31,7 @@ func showKey():
 	animation.play("flutuati")
 	
 func createKey():
+	bol.show()
 	animation.play("apir")
 	yield(animation,"animation_finished")
 	showKey()

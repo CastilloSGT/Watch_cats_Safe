@@ -6,6 +6,7 @@ var lugar
 # DIALOGO
 var obj
 var btnSim
+var queue
 
 #MINIGAME 2
 var tipo_dano = -1 # 0 = desvia, 1 = soco fraco, 2 = soco forte
