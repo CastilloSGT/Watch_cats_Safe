@@ -13,17 +13,17 @@ func _physics_process(_delta: float) -> void:
 	animation()
 
 func animation():
-	if Input.is_action_pressed("ui_accept"):
-		Global.btnSim = true
+	if Input.is_action_pressed("ui_accept") && entrouArea:
+		Global.areaOn = true
 		hideKey()
 		
 	match Global.obj:
 		"cama":
 			if Input.is_action_just_pressed("ui_right"):
-				Global.btnSim = false
+				Global.areaOn = false
 		"computador":
 			if Input.is_action_just_pressed("ui_down") || Input.is_action_just_pressed("ui_left"):
-				Global.btnSim = false
+				Global.areaOn = false
 
 # LETRINHA FLUTUANDO
 func showKey():
