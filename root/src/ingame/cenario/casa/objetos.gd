@@ -9,10 +9,9 @@ onready var timer = $"../../Timer"
 
 func _physics_process(_delta: float) -> void:
 	caixaAberta()
-	print(timer.time_left)
 	
 func caixaAberta():
-	if(Global.btnSim == true):
+	if(Global.areaOn == true):
 		match Global.obj:
 			"cama":
 				dormiu()

@@ -3,7 +3,6 @@
 [resource]
 resource_name = "soco-forte"
 length = 1.5
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1

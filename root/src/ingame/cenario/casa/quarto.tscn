@@ -11,7 +11,7 @@
 [ext_resource path="res://src/ingame/cenario/casa/porta.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/ingame/cenario/casa/casa.gd" type="Script" id=12]
 [ext_resource path="res://assets/art/ingame/scenario/home/bedroom/camas.png" type="Texture" id=13]
-[ext_resource path="res://src/ingame/dialogue/dialogue_area.tscn" type="PackedScene" id=14]
+[ext_resource path="res://src/utils/dialogue_area.tscn" type="PackedScene" id=14]
 
 [sub_resource type="ConvexPolygonShape2D" id=46]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -865,7 +865,7 @@ collision_mask = 0
 script = ExtResource( 9 )
 
 [node name="dialogue_area" parent="Objetos/cama" instance=ExtResource( 14 )]
-position = Vector2( 10, 76 )
+position = Vector2( 9.33333, 30.9485 )
 scale = Vector2( 1.0084, 0.967806 )
 
 [node name="Camas" type="Sprite" parent="Objetos/cama"]
@@ -888,8 +888,7 @@ collision_mask = 0
 script = ExtResource( 9 )
 
 [node name="dialogue_area" parent="Objetos/computador" instance=ExtResource( 14 )]
-position = Vector2( 109, 48 )
-scale = Vector2( 0.833333, 0.83871 )
+position = Vector2( 109.333, 12 )
 
 [node name="Computador" type="Sprite" parent="Objetos/computador"]
 position = Vector2( 109, 46 )
@@ -912,6 +911,7 @@ position = Vector2( 104, 152 )
 position = Vector2( 104, 117 )
 
 [node name="Timer" type="Timer" parent="."]
-one_shot = true
 
+[connection signal="body_entered" from="Objetos/computador" to="Objetos/computador" method="_on_computador_body_entered"]
+[connection signal="body_exited" from="Objetos/computador" to="Objetos/computador" method="_on_computador_body_exited"]
 [connection signal="timeout" from="Timer" to="Objetos/computador" method="_on_Timer_timeout"]

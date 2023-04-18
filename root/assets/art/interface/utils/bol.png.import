@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/box.png-1ada862b275cce0b623a88e6d2f75180.stex"
+path="res://.import/bol.png-8c67cc0dfcb5eca1504d9b2f040287d9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/interface/dialogo/box.png"
-dest_files=[ "res://.import/box.png-1ada862b275cce0b623a88e6d2f75180.stex" ]
+source_file="res://assets/art/interface/utils/bol.png"
+dest_files=[ "res://.import/bol.png-8c67cc0dfcb5eca1504d9b2f040287d9.stex" ]
 
 [params]
 
@@ -20,16 +20,16 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

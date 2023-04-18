@@ -2,7 +2,6 @@
 
 [resource]
 resource_name = "dano"
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("EnemySprite:frame")
 tracks/0/interp = 1
