@@ -5,18 +5,17 @@ var opts = false
 
 func _ready():
 	btnStart.grab_focus()
-	Music.play_music(1, Global.c)
-	
+	Music.play_music(Global.Telas, 1)
 func _process(delta):
 	if Input.is_action_pressed("ui_accept"):
 		if (entrou == true):
+			Music.play_music(Global.Telas, 2)
 			get_tree().change_scene("res://src/ingame/cenario/casa/quarto.tscn")
-		elif opts == true && entrou == false:
-			Music.scens(true)
+		elif opts == true:
+			Music.scens(opts)
 			get_tree().change_scene("res://src/ingame/musics/Music.tscn")
 		else:
 			return;
-	
 
 func _on_btn_start_focus_entered():
 	entrou = true

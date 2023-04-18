@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/casa.ogg-26ed607bdf1e71cf2a8f60473566e258.oggstr"
+
+[deps]
+
+source_file="res://src/ingame/musics/musics/casa.ogg"
+dest_files=[ "res://.import/casa.ogg-26ed607bdf1e71cf2a8f60473566e258.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

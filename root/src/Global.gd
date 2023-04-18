@@ -27,5 +27,6 @@ var turno = false
 var yes = false
 
 #Music Cens
-var c = 1
+var Telas = false
+var AUX = 0
 var visibl = false
