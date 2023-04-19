@@ -9,7 +9,7 @@ func _ready():
 	Music.play_music(Global.Telas, 1)
 	
 func _process(delta):
-	if Input.is_action_pressed("ui_accept"):
+	if Input.is_action_pressed("ui_select"):
 		if (entrou == true):
 			Music.play_music(Global.Telas, 2)
 			get_tree().change_scene("res://src/ingame/cenario/casa/quarto.tscn")
