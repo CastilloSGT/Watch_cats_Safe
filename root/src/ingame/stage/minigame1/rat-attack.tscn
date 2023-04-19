@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/ingame/stage/minigame1/naves/ship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/ingame/stage/minigame1/rat-attack.gd" type="Script" id=2]
 [ext_resource path="res://assets/art/ingame/stage/minigame 1/tileset.png" type="Texture" id=3]
 [ext_resource path="res://assets/fonts/PressStart2P.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/art/ingame/stage/minigame 1/tiro.png" type="Texture" id=5]
 
 [sub_resource type="ConvexPolygonShape2D" id=7]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -80,13 +81,6 @@ font_data = ExtResource( 4 )
 [sub_resource type="Theme" id=4]
 default_font = SubResource( 3 )
 
-[sub_resource type="DynamicFont" id=5]
-size = 8
-font_data = ExtResource( 4 )
-
-[sub_resource type="Theme" id=6]
-default_font = SubResource( 5 )
-
 [node name="rat-attack" type="Node2D"]
 script = ExtResource( 2 )
 
@@ -110,7 +104,7 @@ current = true
 zoom = Vector2( 0.5, 0.5 )
 
 [node name="posicoes" type="Node2D" parent="."]
-position = Vector2( 200, -64 )
+position = Vector2( 240, -72 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -124,33 +118,39 @@ position = Vector2( 2, 50 )
 [node name="pos_1" type="Position2D" parent="posicoes"]
 position = Vector2( 2, 2 )
 
-[node name="labels" type="Node2D" parent="."]
-position = Vector2( -160, -128 )
+[node name="UI" type="Node2D" parent="."]
 
-[node name="pacotes" type="Label" parent="labels"]
-margin_left = -24.0
-margin_right = 32.0
-margin_bottom = 14.0
+[node name="tiros" type="TextureRect" parent="UI"]
+margin_left = 72.0
+margin_top = -133.0
+margin_right = 84.0
+margin_bottom = -124.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 2
+
+[node name="pacotes" type="Label" parent="UI"]
+margin_left = -184.0
+margin_top = -128.0
+margin_right = -128.0
+margin_bottom = -114.0
 theme = SubResource( 4 )
 text = "pacotes"
 
-[node name="tempo" type="Label" parent="labels"]
-margin_left = 136.0
-margin_right = 192.0
-margin_bottom = 14.0
+[node name="tempo" type="Label" parent="UI"]
+margin_left = -24.0
+margin_top = -128.0
+margin_right = 32.0
+margin_bottom = -114.0
 theme = SubResource( 4 )
 text = "tempo"
 
-[node name="tiros" type="Label" parent="labels"]
-margin_left = -24.0
-margin_top = 16.0
-margin_right = 16.0
-margin_bottom = 30.0
-theme = SubResource( 6 )
-text = "tiros"
-
-[node name="Timer" type="Timer" parent="."]
+[node name="spawn-enemy" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
 
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="spawn-enemy" to="." method="_on_spawnenemy_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

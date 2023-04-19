@@ -4,8 +4,6 @@ extends KinematicBody2D
 const PRE_TIRO= preload("res://src/ingame/stage/minigame1/tiro.tscn")
 # var especificos da nave
 var qntd_tiro: int = 5
-var dano: int = 5
-
 var velocidade: Vector2
 export(int) var speed = 150
 
@@ -13,7 +11,7 @@ export(int) var speed = 150
 func _physics_process(_delta: float) -> void: #roda durante todo nosso jogo
 	moverNave()
 	
-	if (Input.is_action_just_pressed("ui_select")):	
+	if Input.is_action_just_pressed("ui_space"):	
 		tirosDisponiveis()
 		
 func moverNave() -> void:

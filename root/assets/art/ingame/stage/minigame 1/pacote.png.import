@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/nave_enemy2.png-0f646d7cf09e243fd0b915466f978a36.stex"
+path="res://.import/pacote.png-29f5b52f306ce00cec5a4f6b78fd53b5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/ingame/stage/minigame 1/nave_enemy2.png"
-dest_files=[ "res://.import/nave_enemy2.png-0f646d7cf09e243fd0b915466f978a36.stex" ]
+source_file="res://assets/art/ingame/stage/minigame 1/pacote.png"
+dest_files=[ "res://.import/pacote.png-29f5b52f306ce00cec5a4f6b78fd53b5.stex" ]
 
 [params]
 
