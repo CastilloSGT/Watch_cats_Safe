@@ -9,6 +9,7 @@ var areaOn
 
 #MINIGAME 1
 var pacotes = 0
+var dano = 5
 
 #MINIGAME 2
 var tipo_dano = -1 # 0 = desvia, 1 = soco fraco, 2 = soco forte

@@ -1,20 +1,34 @@
 extends Node2D
 
-onready var lblpacotes = $labels/pacotes
-onready var lbltiros = $labels/tiros
-var _position
+onready var lblpacotes = $UI/pacotes
+onready var tempo = $Timer
+onready var lbltempo = $UI/tempo
+onready var tiros = $UI/tiros
 
 var PRE_inimigo = preload("res://src/ingame/stage/minigame1/naves/enemy-ship.tscn").duplicate()
+var _position
+var minuto
+
+func _ready():
+	tempo.wait_time = 120
+	tempo.start()
 
 func _physics_process(_delta: float) -> void:
-	var tiros_disparados = get_tree().get_nodes_in_group("tiros").size()
+	showTiros()
 	
-	lbltiros.set_text(str("tiros: ", 5 - tiros_disparados))
+	var minutes = tempo.time_left / 60
+	var seconds = fmod(tempo.time_left, 60)
+	var msg = "%02d:%02d" % [minutes, seconds]
+	
 	lblpacotes.set_text(str("pacotes: ", Global.pacotes))
+	lbltempo.set_text(msg)
 	
 	if (Global.pacotes < 0):
 		get_tree().change_scene("res://src/interface/fim_prototipo.tscn")
 
+func showTiros():
+	var tiros_disparados = 5 - get_tree().get_nodes_in_group("tiros").size()
+	tiros.rect_size.x = 12 * tiros_disparados 
 
 func getPos():
 	var rng = RandomNumberGenerator.new()
@@ -34,8 +48,11 @@ func invocarRato():
 	get_parent().add_child(inimigo)
 	inimigo.position = _position.global_position
 	
-func _on_Timer_timeout():
+func _on_spawnenemy_timeout():
 	var inimigos = get_tree().get_nodes_in_group("enemies").size()
-	print(inimigos)
 	if(inimigos < 10):
 		invocarRato()
+		
+func _on_Timer_timeout():
+	lbltempo.set_text(str("0:00"))
+	tempo.stop()
