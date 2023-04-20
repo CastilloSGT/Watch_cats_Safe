@@ -10,7 +10,7 @@ var _position
 var minuto
 
 func _ready():
-	tempo.wait_time = 10
+	tempo.wait_time = 30
 	tempo.start()
 
 func _physics_process(_delta: float) -> void:
