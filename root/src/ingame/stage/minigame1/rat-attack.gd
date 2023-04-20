@@ -10,7 +10,7 @@ var _position
 var minuto
 
 func _ready():
-	tempo.wait_time = 120
+	tempo.wait_time = 10
 	tempo.start()
 
 func _physics_process(_delta: float) -> void:
@@ -20,7 +20,7 @@ func _physics_process(_delta: float) -> void:
 	var seconds = fmod(tempo.time_left, 60)
 	var msg = "%02d:%02d" % [minutes, seconds]
 	
-	lblpacotes.set_text(str("pacotes: ", Global.pacotes))
+	lblpacotes.set_text(str(Global.pacotes))
 	lbltempo.set_text(msg)
 	
 	if (Global.pacotes < 0):
@@ -45,8 +45,9 @@ func getPos():
 func invocarRato():
 	getPos()
 	var inimigo = PRE_inimigo.instance() #inicia o tiro
-	get_parent().add_child(inimigo)
-	inimigo.position = _position.global_position
+	if(tempo.time_left > 3):
+		get_parent().add_child(inimigo)
+		inimigo.position = _position.global_position
 	
 func _on_spawnenemy_timeout():
 	var inimigos = get_tree().get_nodes_in_group("enemies").size()
@@ -54,5 +55,5 @@ func _on_spawnenemy_timeout():
 		invocarRato()
 		
 func _on_Timer_timeout():
-	lbltempo.set_text(str("0:00"))
 	tempo.stop()
+	lbltempo.hide()

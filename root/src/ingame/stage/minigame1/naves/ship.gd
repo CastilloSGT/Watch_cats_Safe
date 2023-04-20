@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 # VARIAVEIS
 const PRE_TIRO= preload("res://src/ingame/stage/minigame1/tiro.tscn")
+
 # var especificos da nave
 var qntd_tiro: int = 5
 var velocidade: Vector2
