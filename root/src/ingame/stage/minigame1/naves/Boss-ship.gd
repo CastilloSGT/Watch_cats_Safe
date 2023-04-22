@@ -1,20 +1,14 @@
 extends Area2D
 
-var life = Global.dano * 10
+var life = Global.dano * 50
 var dano = 2
 var speed = 100
 var attack = false
-var go = false
 
-func _ready():
-	Global.pacotes = 1000
-	
+signal boss_killed()
 
 func _physics_process(delta):
 	go_forward(delta)
-
-	if Input.is_action_pressed("ui_accept"):
-		attack = true
 
 func go_forward(delta):
 	var target = $"../ship".global_position
@@ -32,7 +26,11 @@ func _on_Bossship_area_shape_entered(area_rid, area, area_shape_index, local_sha
 	life -= Global.dano
 	if life < 0:
 		queue_free()
+		emit_signal("boss_killed")
 
 func _on_Bossship_body_entered(body):
 	Global.pacotes -= dano
 	attack = !attack
+
+func _on_Timer_timeout():
+	attack = true
