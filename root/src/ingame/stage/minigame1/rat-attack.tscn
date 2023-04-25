@@ -131,6 +131,7 @@ position = Vector2( -215, -145 )
 scale = Vector2( 1.5, 1.5 )
 
 [node name="pacotes" type="Label" parent="UI"]
+pause_mode = 1
 margin_left = 50.667
 margin_top = 8.0
 margin_right = 82.667
@@ -146,6 +147,7 @@ position = Vector2( -10, 2 )
 texture = ExtResource( 6 )
 
 [node name="tempo" type="Label" parent="UI"]
+pause_mode = 1
 margin_left = 122.667
 margin_top = 7.33334
 margin_right = 162.667
@@ -154,6 +156,7 @@ theme = SubResource( 4 )
 text = "tempo"
 
 [node name="tiros" type="TextureRect" parent="UI"]
+pause_mode = 1
 margin_left = 206.0
 margin_top = 8.0
 margin_right = 218.0
@@ -171,6 +174,7 @@ autostart = true
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Boss-ship" parent="." instance=ExtResource( 7 )]
+pause_mode = 1
 position = Vector2( 0, -101 )
 
 [node name="label-colorida" parent="." instance=ExtResource( 8 )]
@@ -180,14 +184,22 @@ margin_top = -9.0
 margin_right = 29.0
 rect_scale = Vector2( 1.5, 1.5 )
 rect_clip_content = false
-bbcode_text = "[wave] VOCÊ GANHOU[wave]"
-text = " VOCÊ GANHOU"
+bbcode_text = "[wave] [wave]"
+text = " "
 scroll_active = false
 
 [node name="modulate" type="CanvasModulate" parent="."]
 pause_mode = 2
 color = Color( 0.807843, 0.839216, 0.909804, 1 )
 
+[node name="gameOver" type="Timer" parent="."]
+pause_mode = 2
+process_mode = 0
+wait_time = 5.0
+one_shot = true
+
 [connection signal="timeout" from="spawn-enemy" to="." method="_on_spawnenemy_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="boss_killed" from="Boss-ship" to="." method="_on_Bossship_boss_killed"]
+[connection signal="player_killed" from="Boss-ship" to="." method="_on_Bossship_player_killed"]
+[connection signal="timeout" from="gameOver" to="." method="_on_gameOver_timeout"]
