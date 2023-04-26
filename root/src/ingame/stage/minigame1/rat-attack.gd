@@ -1,7 +1,7 @@
 extends Node2D
 
 onready var lblpacotes = $UI/pacotes
-onready var tempo = $Timer
+onready var tempo = $timers/Timer
 onready var lbltempo = $UI/tempo
 onready var tiros = $UI/tiros
 
@@ -11,12 +11,10 @@ var _position
 func _ready():
 	$"label-colorida".hide()
 	$modulate.hide()
-	Global.pacotes = 100
-	
 	get_node("Boss-ship/colisao").disabled = true
 	get_node("Boss-ship").hide()
 	
-	tempo.wait_time = 1
+	tempo.wait_time = 120
 	tempo.start()
 	
 	var EMITTER = get_node("Boss-ship")
@@ -60,7 +58,7 @@ func gameOver():
 	$"label-colorida".show()
 	$modulate.show()
 	get_tree().paused = true
-	$gameOver.start()
+	$timers/gameOver.start()
 
 func _on_spawnenemy_timeout():
 	var inimigos = get_tree().get_nodes_in_group("enemies").size()
@@ -76,14 +74,16 @@ func _on_Timer_timeout():
 
 # BOSS DERROTADO
 func _on_Bossship_boss_killed():
-	$"label-colorida".text = str("VOCÊ GANHOU")
+	$"label-colorida".set_bbcode("[wave]VOCÊ GANHOU")
 	gameOver()
 	
 func _on_Bossship_player_killed():
-	$"label-colorida".text = str("VOCÊ PERDEU")
+	$"label-colorida".set_bbcode("[wave]VOCÊ PERDEU")
 	gameOver()	
 
 func _on_gameOver_timeout():
 	get_tree().change_scene("res://src/ingame/stage/computador/tela-computador.tscn")
 	get_tree().paused = false
 
+func _on_tutorial_timeout():
+	$UI/tutorial.hide()

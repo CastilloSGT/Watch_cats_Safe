@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/ingame/stage/minigame1/naves/ship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/ingame/stage/minigame1/rat-attack.gd" type="Script" id=2]
@@ -84,6 +84,13 @@ font_data = ExtResource( 4 )
 [sub_resource type="Theme" id=4]
 default_font = SubResource( 3 )
 
+[sub_resource type="DynamicFont" id=8]
+size = 8
+font_data = ExtResource( 4 )
+
+[sub_resource type="Theme" id=9]
+default_font = SubResource( 8 )
+
 [node name="rat-attack" type="Node2D"]
 pause_mode = 2
 script = ExtResource( 2 )
@@ -166,16 +173,46 @@ texture = ExtResource( 5 )
 expand = true
 stretch_mode = 2
 
-[node name="spawn-enemy" type="Timer" parent="."]
+[node name="tutorial" type="RichTextLabel" parent="UI"]
+margin_left = 65.0
+margin_top = 85.0
+margin_right = 233.0
+margin_bottom = 108.0
+rect_clip_content = false
+theme = SubResource( 9 )
+bbcode_enabled = true
+bbcode_text = "[wave][Espaço] para atirar
+
+[A][D] para se mover"
+text = "[Espaço] para atirar
+
+[A][D] para se mover"
+scroll_active = false
+
+[node name="timers" type="Node2D" parent="."]
+
+[node name="tutorial" type="Timer" parent="timers"]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="gameOver" type="Timer" parent="timers"]
+pause_mode = 2
+process_mode = 0
+wait_time = 5.0
+one_shot = true
+
+[node name="Timer" type="Timer" parent="timers"]
+
+[node name="spawn-enemy" type="Timer" parent="timers"]
 pause_mode = 1
 wait_time = 2.0
 autostart = true
 
-[node name="Timer" type="Timer" parent="."]
-
 [node name="Boss-ship" parent="." instance=ExtResource( 7 )]
 pause_mode = 1
 position = Vector2( 0, -101 )
+scale = Vector2( 1.5, 1.5 )
 
 [node name="label-colorida" parent="." instance=ExtResource( 8 )]
 pause_mode = 2
@@ -184,7 +221,7 @@ margin_top = -9.0
 margin_right = 29.0
 rect_scale = Vector2( 1.5, 1.5 )
 rect_clip_content = false
-bbcode_text = "[wave] [wave]"
+bbcode_text = "[wave] "
 text = " "
 scroll_active = false
 
@@ -192,14 +229,9 @@ scroll_active = false
 pause_mode = 2
 color = Color( 0.807843, 0.839216, 0.909804, 1 )
 
-[node name="gameOver" type="Timer" parent="."]
-pause_mode = 2
-process_mode = 0
-wait_time = 5.0
-one_shot = true
-
-[connection signal="timeout" from="spawn-enemy" to="." method="_on_spawnenemy_timeout"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="timers/tutorial" to="." method="_on_tutorial_timeout"]
+[connection signal="timeout" from="timers/gameOver" to="." method="_on_gameOver_timeout"]
+[connection signal="timeout" from="timers/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="timers/spawn-enemy" to="." method="_on_spawnenemy_timeout"]
 [connection signal="boss_killed" from="Boss-ship" to="." method="_on_Bossship_boss_killed"]
 [connection signal="player_killed" from="Boss-ship" to="." method="_on_Bossship_player_killed"]
-[connection signal="timeout" from="gameOver" to="." method="_on_gameOver_timeout"]
