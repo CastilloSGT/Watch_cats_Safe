@@ -11,6 +11,7 @@ var _position
 func _ready():
 	$"label-colorida".hide()
 	$modulate.hide()
+	Global.pacotes = 100
 	
 	get_node("Boss-ship/colisao").disabled = true
 	get_node("Boss-ship").hide()
