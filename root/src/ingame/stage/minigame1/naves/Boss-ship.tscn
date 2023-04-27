@@ -1,0 +1,88 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/art/ingame/stage/minigame 1/boss.png" type="Texture" id=1]
+[ext_resource path="res://src/ingame/stage/minigame1/naves/Boss-ship.gd" type="Script" id=2]
+[ext_resource path="res://assets/art/ingame/stage/minigame 1/animacoes/boss_idle.tres" type="Animation" id=3]
+[ext_resource path="res://assets/art/ingame/stage/minigame 1/animacoes/boss_pain.tres" type="Animation" id=4]
+[ext_resource path="res://assets/art/ingame/stage/minigame 1/animacoes/boss_attack.tres" type="Animation" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 13.5, 20 )
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Boss:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "dead"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Boss:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 8 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "win"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Boss:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 10, 11 ]
+}
+
+[node name="Boss-ship" type="Area2D"]
+pause_mode = 2
+collision_layer = 4
+collision_mask = 3
+script = ExtResource( 2 )
+
+[node name="Boss" type="Sprite" parent="."]
+pause_mode = 2
+texture = ExtResource( 1 )
+hframes = 2
+vframes = 6
+
+[node name="colisao" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+pause_mode = 2
+anims/RESET = SubResource( 2 )
+anims/attack = ExtResource( 6 )
+anims/dead = SubResource( 3 )
+anims/idle = ExtResource( 3 )
+anims/pain = ExtResource( 4 )
+anims/win = SubResource( 4 )
+
+[connection signal="area_shape_entered" from="." to="." method="_on_Bossship_area_shape_entered"]
+[connection signal="body_entered" from="." to="." method="_on_Bossship_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

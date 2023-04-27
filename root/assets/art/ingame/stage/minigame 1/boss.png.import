@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tiro3.png-8749029874f03575cc2d78712b402300.stex"
+path="res://.import/boss.png-c102c811631c0c1a42247060bf7dfcf0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/ingame/stage/minigame 1/tiro3.png"
-dest_files=[ "res://.import/tiro3.png-8749029874f03575cc2d78712b402300.stex" ]
+source_file="res://assets/art/ingame/stage/minigame 1/boss.png"
+dest_files=[ "res://.import/boss.png-c102c811631c0c1a42247060bf7dfcf0.stex" ]
 
 [params]
 
