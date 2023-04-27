@@ -11,13 +11,13 @@ var _position
 func _ready():
 	$"label-colorida".hide()
 	$modulate.hide()
-	get_node("Boss-ship/colisao").disabled = true
-	get_node("Boss-ship").hide()
-	
-	tempo.wait_time = 120
+	get_node("boss/Boss-ship/colisao").disabled = true
+	$boss.hide()
+
+	tempo.wait_time = 60
 	tempo.start()
 	
-	var EMITTER = get_node("Boss-ship")
+	var EMITTER = get_node("boss/Boss-ship")
 	EMITTER.connect("boss_killed", self, "kill")
 	EMITTER.connect("player_killed", self, "kill")
 
@@ -68,9 +68,14 @@ func _on_spawnenemy_timeout():
 func _on_Timer_timeout():
 	tempo.stop()
 	lbltempo.hide()
-	get_node("Boss-ship").show()
-	get_node("Boss-ship/colisao").disabled = false
-	get_node("Boss-ship/Timer").start()
+	
+	if(Global.pacotes <= 0):
+		$"label-colorida".set_bbcode("[wave]VOCÊ PERDEU")
+		gameOver()
+	else:
+		$boss.show()
+		get_node("boss/Boss-ship/colisao").disabled = false
+		get_node("boss/Boss-ship/Timer").start()
 
 # BOSS DERROTADO
 func _on_Bossship_boss_killed():

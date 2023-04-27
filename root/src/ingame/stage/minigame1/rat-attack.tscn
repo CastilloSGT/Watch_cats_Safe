@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://src/ingame/stage/minigame1/naves/ship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/ingame/stage/minigame1/rat-attack.gd" type="Script" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://assets/art/ingame/stage/minigame 1/pacote.png" type="Texture" id=6]
 [ext_resource path="res://src/ingame/stage/minigame1/naves/Boss-ship.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/utils/label-colorida.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/art/ingame/stage/minigame 1/boss_life.png" type="Texture" id=9]
+[ext_resource path="res://assets/art/ingame/stage/minigame 1/life.png" type="Texture" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=7]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -91,6 +93,64 @@ font_data = ExtResource( 4 )
 [sub_resource type="Theme" id=9]
 default_font = SubResource( 8 )
 
+[sub_resource type="TileSet" id=10]
+0/name = "boss_life.png 0"
+0/texture = ExtResource( 9 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 16, 16 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "boss_life.png 1"
+1/texture = ExtResource( 9 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 16, 0, 16, 16 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+2/name = "boss_life.png 2"
+2/texture = ExtResource( 9 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 16, 16, 16 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+3/name = "boss_life.png 3"
+3/texture = ExtResource( 9 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 16, 16, 16, 16 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape_one_way = false
+3/shape_one_way_margin = 0.0
+3/shapes = [  ]
+3/z_index = 0
+
 [node name="rat-attack" type="Node2D"]
 pause_mode = 2
 script = ExtResource( 2 )
@@ -103,12 +163,13 @@ show_collision = true
 collision_layer = 2
 collision_mask = 16
 format = 1
-tile_data = PoolIntArray( -262151, 3, 0, -262150, 3, 0, -262149, 3, 0, -262148, 3, 0, -262147, 3, 0, -262146, 3, 0, -262145, 3, 0, -327680, 3, 0, -327679, 3, 0, -327678, 3, 0, -327677, 3, 0, -327676, 3, 0, -327675, 3, 0, -327674, 3, 0, -196615, 3, 0, -196614, 3, 0, -196613, 2, 0, -196612, 3, 0, -196611, 3, 0, -196610, 0, 0, -196609, 3, 0, -262144, 3, 0, -262143, 0, 0, -262142, 3, 0, -262141, 3, 0, -262140, 2, 0, -262139, 3, 0, -262138, 3, 0, -131079, 3, 0, -131078, 3, 0, -131077, 3, 0, -131076, 3, 0, -131075, 3, 0, -131074, 3, 0, -131073, 3, 0, -196608, 3, 0, -196607, 3, 0, -196606, 3, 0, -196605, 3, 0, -196604, 3, 0, -196603, 3, 0, -196602, 3, 0, -65543, 3, 0, -65542, 3, 0, -65541, 3, 0, -65540, 3, 0, -65539, 3, 0, -65538, 3, 0, -65537, 3, 0, -131072, 3, 0, -131071, 3, 0, -131070, 3, 0, -131069, 3, 0, -131068, 3, 0, -131067, 2, 0, -131066, 3, 0, -7, 3, 0, -6, 2, 0, -5, 3, 0, -4, 3, 0, -3, 0, 0, -2, 3, 0, -1, 2, 0, -65536, 3, 0, -65535, 3, 0, -65534, 3, 0, -65533, 3, 0, -65532, 3, 0, -65531, 3, 0, -65530, 3, 0, 65529, 2, 0, 65530, 3, 0, 65531, 3, 0, 65532, 3, 0, 65533, 2, 0, 65534, 3, 0, 65535, 3, 0, 0, 3, 0, 1, 3, 0, 2, 3, 0, 3, 3, 0, 4, 3, 0, 5, 3, 0, 6, 2, 0, 131065, 3, 0, 131066, 3, 0, 131067, 3, 0, 131068, 3, 0, 131069, 3, 0, 131070, 3, 0, 131071, 3, 0, 65536, 3, 0, 65537, 3, 0, 65538, 3, 0, 65539, 2, 0, 65540, 3, 0, 65541, 3, 0, 65542, 0, 0, 196601, 0, 0, 196602, 3, 0, 196603, 2, 0, 196604, 3, 0, 196605, 3, 0, 196606, 3, 0, 196607, 3, 0, 131072, 3, 0, 131073, 3, 0, 131074, 3, 0, 131075, 3, 0, 131076, 3, 0, 131077, 3, 0, 131078, 3, 0, 262137, 1, 0, 262138, 3, 0, 262139, 3, 0, 262140, 3, 0, 262141, 3, 0, 262142, 3, 0, 262143, 3, 0, 196608, 3, 0, 196609, 3, 0, 196610, 3, 0, 196611, 3, 0, 196612, 3, 0, 196613, 3, 0, 196614, 1, 0, 327673, 3, 0, 327674, 3, 0, 327675, 3, 0, 327676, 3, 0, 327677, 3, 0, 327678, 0, 0, 327679, 3, 0, 262144, 3, 0, 262145, 3, 0, 262146, 3, 0, 262147, 3, 0, 262148, 0, 0, 262149, 3, 0, 262150, 2, 0 )
+tile_data = PoolIntArray( -262151, 3, 0, -262150, 3, 0, -262149, 3, 0, -262148, 3, 0, -262147, 3, 0, -262146, 3, 0, -262145, 3, 0, -327680, 3, 0, -327679, 3, 0, -327678, 3, 0, -327677, 3, 0, -327676, 3, 0, -327675, 3, 0, -327674, 3, 0, -196615, 3, 0, -196614, 3, 0, -196613, 2, 0, -196612, 3, 0, -196611, 3, 0, -196610, 0, 0, -196609, 3, 0, -262144, 3, 0, -262143, 0, 0, -262142, 3, 0, -262141, 3, 0, -262140, 2, 0, -262139, 3, 0, -262138, 3, 0, -131079, 3, 0, -131078, 3, 0, -131077, 3, 0, -131076, 3, 0, -131075, 3, 0, -131074, 3, 0, -131073, 3, 0, -196608, 3, 0, -196607, 3, 0, -196606, 3, 0, -196605, 3, 0, -196604, 3, 0, -196603, 3, 0, -196602, 3, 0, -65543, 3, 0, -65542, 3, 0, -65541, 3, 0, -65540, 3, 0, -65539, 3, 0, -65538, 3, 0, -65537, 3, 0, -131072, 3, 0, -131071, 3, 0, -131070, 3, 0, -131069, 3, 0, -131068, 3, 0, -131067, 2, 0, -131066, 3, 0, -7, 3, 0, -6, 2, 0, -5, 3, 0, -4, 3, 0, -3, 0, 0, -2, 3, 0, -1, 2, 0, -65536, 3, 0, -65535, 3, 0, -65534, 3, 0, -65533, 3, 0, -65532, 3, 0, -65531, 3, 0, -65530, 3, 0, 65529, 2, 0, 65530, 3, 0, 65531, 3, 0, 65532, 3, 0, 65533, 2, 0, 65534, 3, 0, 65535, 3, 0, 0, 3, 0, 1, 3, 0, 2, 3, 0, 3, 3, 0, 4, 3, 0, 5, 3, 0, 6, 2, 0, 131065, 3, 0, 131066, 3, 0, 131067, 3, 0, 131068, 3, 0, 131069, 3, 0, 131070, 3, 0, 131071, 3, 0, 65536, 3, 0, 65537, 3, 0, 65538, 3, 0, 65539, 2, 0, 65540, 3, 0, 65541, 3, 0, 65542, 0, 0, 196601, 1, 0, 196602, 3, 0, 196603, 2, 0, 196604, 3, 0, 196605, 3, 0, 196606, 3, 0, 196607, 3, 0, 131072, 3, 0, 131073, 3, 0, 131074, 3, 0, 131075, 3, 0, 131076, 3, 0, 131077, 3, 0, 131078, 1, 0, 262137, 1, 0, 262138, 3, 0, 262139, 3, 0, 262140, 3, 0, 262141, 3, 0, 262142, 3, 0, 262143, 3, 0, 196608, 3, 0, 196609, 3, 0, 196610, 3, 0, 196611, 3, 0, 196612, 3, 0, 196613, 3, 0, 196614, 1, 0, 327673, 3, 0, 327674, 3, 0, 327675, 3, 0, 327676, 3, 0, 327677, 3, 0, 327678, 0, 0, 327679, 3, 0, 262144, 3, 0, 262145, 3, 0, 262146, 3, 0, 262147, 3, 0, 262148, 0, 0, 262149, 3, 0, 262150, 2, 0 )
 
 [node name="ship" parent="." instance=ExtResource( 1 )]
 pause_mode = 1
-position = Vector2( 0, 112 )
+position = Vector2( 0, 88 )
 scale = Vector2( 1.5, 1.5 )
+z_index = 9
 
 [node name="camera" type="Camera2D" parent="."]
 position = Vector2( 0, 1 )
@@ -136,6 +197,7 @@ position = Vector2( 2, 2 )
 [node name="UI" type="Node2D" parent="."]
 position = Vector2( -215, -145 )
 scale = Vector2( 1.5, 1.5 )
+z_index = 10
 
 [node name="pacotes" type="Label" parent="UI"]
 pause_mode = 1
@@ -155,10 +217,10 @@ texture = ExtResource( 6 )
 
 [node name="tempo" type="Label" parent="UI"]
 pause_mode = 1
-margin_left = 122.667
-margin_top = 7.33334
-margin_right = 162.667
-margin_bottom = 15.3333
+margin_left = 122.0
+margin_top = 8.0
+margin_right = 162.0
+margin_bottom = 16.0
 theme = SubResource( 4 )
 text = "tempo"
 
@@ -199,7 +261,7 @@ autostart = true
 [node name="gameOver" type="Timer" parent="timers"]
 pause_mode = 2
 process_mode = 0
-wait_time = 5.0
+wait_time = 3.0
 one_shot = true
 
 [node name="Timer" type="Timer" parent="timers"]
@@ -208,11 +270,6 @@ one_shot = true
 pause_mode = 1
 wait_time = 2.0
 autostart = true
-
-[node name="Boss-ship" parent="." instance=ExtResource( 7 )]
-pause_mode = 1
-position = Vector2( 0, -101 )
-scale = Vector2( 1.5, 1.5 )
 
 [node name="label-colorida" parent="." instance=ExtResource( 8 )]
 pause_mode = 2
@@ -229,9 +286,32 @@ scroll_active = false
 pause_mode = 2
 color = Color( 0.807843, 0.839216, 0.909804, 1 )
 
+[node name="boss" type="Node2D" parent="."]
+scale = Vector2( 1.5, 1.5 )
+
+[node name="boss_life" type="TileMap" parent="boss"]
+tile_set = SubResource( 10 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 393210, 2, 0, 393211, 1, 0, 393212, 1, 0, 393213, 1, 0, 393214, 1, 0, 393215, 1, 0, 327680, 1, 0, 327681, 1, 0, 327682, 1, 0, 327683, 1, 0, 327684, 1, 0, 327685, 0, 0 )
+
+[node name="Boss-ship" parent="boss" instance=ExtResource( 7 )]
+pause_mode = 1
+position = Vector2( 0, -66.6667 )
+z_index = 7
+
+[node name="life" type="TextureRect" parent="boss"]
+margin_left = -92.0
+margin_top = 81.0
+margin_right = 92.0
+margin_bottom = 93.0
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 2
+
 [connection signal="timeout" from="timers/tutorial" to="." method="_on_tutorial_timeout"]
 [connection signal="timeout" from="timers/gameOver" to="." method="_on_gameOver_timeout"]
 [connection signal="timeout" from="timers/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="timers/spawn-enemy" to="." method="_on_spawnenemy_timeout"]
-[connection signal="boss_killed" from="Boss-ship" to="." method="_on_Bossship_boss_killed"]
-[connection signal="player_killed" from="Boss-ship" to="." method="_on_Bossship_player_killed"]
+[connection signal="boss_killed" from="boss/Boss-ship" to="." method="_on_Bossship_boss_killed"]
+[connection signal="player_killed" from="boss/Boss-ship" to="." method="_on_Bossship_player_killed"]
