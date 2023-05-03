@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/telas.png-7383ca91cba84e1ea392c58d6d7dee16.stex"
+path="res://.import/nome-feio.png-0eea0da245706d912b8d8826f6e154ab.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/interface/telas/telas.png"
-dest_files=[ "res://.import/telas.png-7383ca91cba84e1ea392c58d6d7dee16.stex" ]
+source_file="res://assets/art/ingame/stage/minigame 5/nome-feio.png"
+dest_files=[ "res://.import/nome-feio.png-0eea0da245706d912b8d8826f6e154ab.stex" ]
 
 [params]
 
