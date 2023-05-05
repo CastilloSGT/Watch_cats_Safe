@@ -1,9 +1,13 @@
 extends Node2D
-var target: Vector2;
-var speed = 100
-var direcao = Vector2.ZERO
 
-onready var animation_tree: AnimationTree = get_node("sprite/AnimationTree")
+var target: Vector2
+var direcao: Vector2
+
+var speed = 100
+var posX = 0
+var posY = 0
+
+onready var animation_tree: AnimationTree = get_node("AnimationTree")
 onready var estado_animado = animation_tree.get("parameters/playback")
 
 func _ready():
@@ -11,9 +15,8 @@ func _ready():
 
 func _physics_process(delta):
 	self.global_position = self.global_position.move_toward(target, speed * delta)
-	
-	var pos = self.global_position - target
-	print(pos.x/abs(pos.x))
+	animacao()
+	getPos()
 
 # ANIMAÇÕES
 func animacao():
@@ -25,6 +28,20 @@ func animacao():
 		estado_animado.travel("idle")
 
 # SE MOVE POR AI ALEATORIAMENTE
+func getPos():
+	var pos = self.global_position - target
+	if(pos.x == 0):
+		posX = 0
+	else:
+		posX = pos.x/abs(pos.x)
+		
+	if(pos.y == 0):
+		posY = 0
+	else:
+		posY = pos.y/abs(pos.y)
+		
+	direcao = Vector2(posX,posY)
+
 func changePos():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()

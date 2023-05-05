@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/ingame/stage/minigame_final/caes/dog-lulu.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/ingame/stage/minigame_final/empresa.gd" type="Script" id=2]
 [ext_resource path="res://assets/art/ingame/scenario/black_space.png" type="Texture" id=3]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
@@ -56,10 +55,12 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [node name="Empresa" type="Node2D"]
 scale = Vector2( 1.5, 1.5 )
-script = ExtResource( 2 )
 
 [node name="dog-lulu" parent="." instance=ExtResource( 1 )]
 position = Vector2( 228, 169.333 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
