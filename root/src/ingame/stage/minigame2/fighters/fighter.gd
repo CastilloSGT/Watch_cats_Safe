@@ -11,6 +11,9 @@ var wait_time = 0
 var reduction = 0.2
 var is_timer_running = false #sensor
 
+func _ready():
+	 Global.vida_fighter = 1000
+
 func _physics_process(_delta: float) -> void: #roda durante todo nosso jogo
 	mexe()
 	animacao()

@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/art/ingame/stage/minigame 2/animacoes/Enemy_idle.tres" type="Animation" id=4]
 [ext_resource path="res://assets/art/ingame/stage/minigame 2/animacoes/Enemy_soco.tres" type="Animation" id=5]
 [ext_resource path="res://assets/art/ingame/stage/minigame 2/animacoes/Enemy_walk.tres" type="Animation" id=6]
-[ext_resource path="res://src/ingame/stage/minigame2/soco-area.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/art/ingame/stage/minigame 1/life.png" type="Texture" id=8]
 
 [sub_resource type="Animation" id=8]
 length = 0.001
@@ -41,9 +41,9 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 10, 14.5 )
 
-[node name="enemy" type="KinematicBody2D"]
+[node name="enemy" type="Area2D"]
+z_index = 1
 collision_layer = 4
-collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="animation" type="AnimationPlayer" parent="."]
@@ -66,5 +66,19 @@ vframes = 4
 position = Vector2( 0, 0.5 )
 shape = SubResource( 10 )
 
-[node name="soco-area" parent="." instance=ExtResource( 7 )]
-unique_name_in_owner = true
+[node name="life" type="TextureRect" parent="." groups=["enemies"]]
+margin_left = -17.0
+margin_top = -25.0
+margin_right = 18.0
+margin_bottom = -17.0
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 2
+
+[node name="ataque_delay" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_enemy_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_enemy_body_exited"]
+[connection signal="timeout" from="ataque_delay" to="." method="_on_ataque_delay_timeout"]

@@ -14,8 +14,9 @@ var Boss_life
 
 #MINIGAME 2
 var tipo_dano = -1 # 0 = desvia, 1 = soco fraco, 2 = soco forte
-var area_enemy = false #sensor
-var pontos_dano = 0 #exibe na tela a quantidade de dano causado
+var vida_total = 0 #vida de todos os personagens
+var pos_fighter
+var vida_fighter =  0
 
 
 # MINIGAME 3
