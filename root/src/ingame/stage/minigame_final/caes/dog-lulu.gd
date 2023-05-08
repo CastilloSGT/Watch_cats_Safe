@@ -12,6 +12,7 @@ onready var estado_animado = animation_tree.get("parameters/playback")
 
 func _ready():
 	changePos()
+	$Label.hide()
 
 func _physics_process(delta):
 	self.global_position = self.global_position.move_toward(target, speed * delta)
@@ -52,3 +53,9 @@ func changePos():
 
 func _on_Timer_timeout():
 	changePos()
+
+
+func _on_dog_button_mouse_exited():
+	$Label.hide()
+func _on_dog_button_pressed():
+	$Label.show()
