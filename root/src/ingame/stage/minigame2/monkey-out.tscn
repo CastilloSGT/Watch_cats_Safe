@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://src/ingame/stage/minigame2/fighters/fighter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/art/ingame/stage/minigame 2/tileset.png" type="Texture" id=2]
@@ -32,6 +32,12 @@ points = PoolVector2Array( 32, 0, 32, 0, 32, 32, 0, 32 )
 
 [sub_resource type="ConvexPolygonShape2D" id=34]
 points = PoolVector2Array( 0, 0, 32, 0, 0, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=43]
+points = PoolVector2Array( 0, 32, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=44]
+points = PoolVector2Array( 0, 0, 32, 32, 32, 32, 0, 32 )
 
 [sub_resource type="ConvexPolygonShape2D" id=7]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -346,9 +352,16 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 16/navigation_offset = Vector2( 0, 0 )
 16/shape_offset = Vector2( 0, 0 )
 16/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+16/shape = SubResource( 43 )
 16/shape_one_way = false
-16/shape_one_way_margin = 0.0
-16/shapes = [  ]
+16/shape_one_way_margin = 1.0
+16/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 43 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
 16/z_index = 0
 17/name = "ringue.png 17"
 17/texture = ExtResource( 3 )
@@ -364,6 +377,27 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 17/shape_one_way_margin = 0.0
 17/shapes = [  ]
 17/z_index = 0
+18/name = "ringue.png 18"
+18/texture = ExtResource( 3 )
+18/tex_offset = Vector2( 0, 0 )
+18/modulate = Color( 1, 1, 1, 1 )
+18/region = Rect2( 32, 64, 32, 32 )
+18/tile_mode = 0
+18/occluder_offset = Vector2( 0, 0 )
+18/navigation_offset = Vector2( 0, 0 )
+18/shape_offset = Vector2( 0, 0 )
+18/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+18/shape = SubResource( 44 )
+18/shape_one_way = false
+18/shape_one_way_margin = 1.0
+18/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 44 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+18/z_index = 0
 
 [sub_resource type="TileSet" id=36]
 0/name = "ceu.png 0"
@@ -869,7 +903,7 @@ cell_size = Vector2( 32, 32 )
 show_collision = true
 collision_layer = 2
 format = 1
-tile_data = PoolIntArray( -65539, 0, 0, -65538, 2, 0, -65537, 2, 0, -131072, 2, 0, -131071, 2, 0, -131070, 3, 0, -4, 14, 0, -3, 1, 0, -65534, 4, 0, -65533, 12, 0, 65531, 7, 0, 65532, 15, 0, 3, 13, 0, 4, 10, 0 )
+tile_data = PoolIntArray( -65539, 0, 0, -65538, 2, 0, -65537, 2, 0, -131072, 2, 0, -131071, 2, 0, -131070, 3, 0, -4, 14, 0, -3, 1, 0, -65534, 4, 0, -65533, 12, 0, 65531, 7, 0, 65532, 15, 0, 3, 13, 0, 4, 10, 0, 131067, 8, 0, 131068, 18, 0, 65539, 16, 0, 65540, 11, 0 )
 
 [node name="ringue_frente" type="TileMap" parent="background"]
 z_index = 3
@@ -878,7 +912,7 @@ cell_size = Vector2( 32, 32 )
 show_collision = true
 collision_layer = 2
 format = 1
-tile_data = PoolIntArray( 131067, 8, 0, 131068, 9, 0, 131069, 9, 0, 131070, 9, 0, 131071, 9, 0, 65536, 9, 0, 65537, 9, 0, 65538, 9, 0, 65539, 9, 0, 65540, 11, 0 )
+tile_data = PoolIntArray( 0, 17, 0, 131068, 9, 0, 131069, 9, 0, 131070, 9, 0, 131071, 9, 0, 65536, 9, 0, 65537, 9, 0, 65538, 9, 0, 65539, 9, 0 )
 
 [node name="ceu" type="TileMap" parent="background"]
 z_index = -3
@@ -905,7 +939,6 @@ pause_mode = 1
 
 [node name="delay" type="Timer" parent="fighters"]
 wait_time = 1.5
-autostart = true
 
 [node name="fighter" parent="fighters" instance=ExtResource( 1 )]
 pause_mode = 0
@@ -949,12 +982,7 @@ text = "Tempo"
 
 [node name="rounds" type="Timer" parent="legendas"]
 pause_mode = 1
-autostart = true
-
-[node name="intervalo" type="Timer" parent="legendas"]
-pause_mode = 2
-wait_time = 5.0
-one_shot = true
+wait_time = 10.0
 
 [node name="life" type="TextureRect" parent="legendas"]
 margin_left = -151.0
@@ -965,12 +993,18 @@ texture = ExtResource( 4 )
 expand = true
 stretch_mode = 2
 
-[node name="modulate" type="CanvasModulate" parent="."]
+[node name="intervalo" type="Node2D" parent="."]
 visible = false
+
+[node name="modulate" type="CanvasModulate" parent="intervalo"]
 color = Color( 0.807843, 0.839216, 0.909804, 1 )
 
-[node name="label-colorida" parent="." instance=ExtResource( 8 )]
-visible = false
+[node name="intervalo" type="Timer" parent="intervalo"]
+pause_mode = 2
+wait_time = 5.0
+one_shot = true
+
+[node name="label-colorida" parent="intervalo" instance=ExtResource( 8 )]
 margin_left = -61.0
 margin_top = 5.0
 margin_right = 64.0
@@ -990,10 +1024,10 @@ one_shot = true
 autostart = true
 
 [node name="tutorial_label" type="RichTextLabel" parent="tutorial"]
-margin_left = -74.0
-margin_top = -13.0
-margin_right = 91.0
-margin_bottom = 39.0
+margin_left = -73.0
+margin_top = -65.0
+margin_right = 92.0
+margin_bottom = -13.0
 rect_clip_content = false
 theme = SubResource( 42 )
 bbcode_enabled = true
@@ -1011,5 +1045,5 @@ scroll_active = false
 
 [connection signal="timeout" from="fighters/delay" to="." method="_on_delay_timeout"]
 [connection signal="timeout" from="legendas/rounds" to="." method="_on_rounds_timeout"]
-[connection signal="timeout" from="legendas/intervalo" to="." method="_on_intervalo_timeout"]
+[connection signal="timeout" from="intervalo/intervalo" to="." method="_on_intervalo_timeout"]
 [connection signal="timeout" from="tutorial/tutorial_timer" to="." method="_on_tutorial_timer_timeout"]
