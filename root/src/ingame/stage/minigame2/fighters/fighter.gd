@@ -12,7 +12,7 @@ var reduction = 0.2
 var is_timer_running = false #sensor
 
 func _ready():
-	Global.vida_fighter = 1000
+	Global.vida_fighter = 500
 
 func _physics_process(_delta: float) -> void: #roda durante todo nosso jogo
 	mexe()
@@ -20,8 +20,8 @@ func _physics_process(_delta: float) -> void: #roda durante todo nosso jogo
 	_on_Timer_timeout()
 	
 	if(Global.vida_fighter <= 0):
-		queue_free()
-		Global.dead = true
+		animacao.play("desmaio")
+		wait_time = 50
 	
 # move personagem
 func mexe() -> void:

@@ -995,6 +995,7 @@ stretch_mode = 2
 
 [node name="intervalo" type="Node2D" parent="."]
 visible = false
+z_index = 5
 
 [node name="modulate" type="CanvasModulate" parent="intervalo"]
 color = Color( 0.807843, 0.839216, 0.909804, 1 )
@@ -1016,7 +1017,7 @@ scroll_active = false
 
 [node name="tutorial" type="Node2D" parent="."]
 position = Vector2( 5, -27 )
-z_index = 8
+z_index = 5
 
 [node name="tutorial_timer" type="Timer" parent="tutorial"]
 wait_time = 2.0
@@ -1024,21 +1025,21 @@ one_shot = true
 autostart = true
 
 [node name="tutorial_label" type="RichTextLabel" parent="tutorial"]
-margin_left = -73.0
-margin_top = -65.0
-margin_right = 92.0
-margin_bottom = -13.0
+margin_left = -85.0
+margin_top = -13.0
+margin_right = 80.0
+margin_bottom = 39.0
 rect_clip_content = false
 theme = SubResource( 42 )
 bbcode_enabled = true
-bbcode_text = "[wave][Z] soco rapido
-[X] soco forte
-[C] desvia
+bbcode_text = "[wave]   [Z] soco rapido
+   [X] soco forte
+     [C] desvia
 
 [WASD] para se mover"
-text = "[Z] soco rapido
-[X] soco forte
-[C] desvia
+text = "   [Z] soco rapido
+   [X] soco forte
+     [C] desvia
 
 [WASD] para se mover"
 scroll_active = false

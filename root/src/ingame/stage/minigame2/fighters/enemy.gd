@@ -25,7 +25,6 @@ func _physics_process(_delta: float) -> void:
 	
 	if (Global.vida_enemy <= 0):
 		queue_free()
-		Global.dead = true
 	
 func animacao():
 	if (Global.tipo_dano == -1 && !is_timer_running):

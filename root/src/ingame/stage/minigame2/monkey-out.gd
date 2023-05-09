@@ -3,6 +3,7 @@ extends Node2D
 onready var _round = $legendas/lblRound
 onready var tempo = $legendas/rounds
 onready var intervalo = $intervalo
+onready var lblround = $"intervalo/label-colorida"
 
 var PRE_inimigo = preload("res://src/ingame/stage/minigame2/fighters/enemy.tscn")
 
@@ -19,6 +20,14 @@ func _process(delta):
 
 func rounds():
 	$intervalo/intervalo.start()
+	
+	if(Global.vida_enemy > Global.vida_fighter):
+		print("enemi")
+	if(Global.vida_fighter > Global.vida_enemy):
+		print("voce")
+	if(Global.vida_enemy == Global.vida_fighter):
+		print("empate")
+	
 	if (round_atual == 5):
 		round_atual = 0
 		get_tree().change_scene("res://src/interface/fim_prototipo.tscn")
