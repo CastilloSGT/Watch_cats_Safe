@@ -41,7 +41,7 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 10, 14.5 )
 
-[node name="enemy" type="Area2D"]
+[node name="enemy" type="Area2D" groups=["enemies"]]
 z_index = 1
 collision_layer = 4
 script = ExtResource( 2 )
@@ -66,7 +66,7 @@ vframes = 4
 position = Vector2( 0, 0.5 )
 shape = SubResource( 10 )
 
-[node name="life" type="TextureRect" parent="." groups=["enemies"]]
+[node name="life" type="TextureRect" parent="."]
 margin_left = -17.0
 margin_top = -25.0
 margin_right = 18.0

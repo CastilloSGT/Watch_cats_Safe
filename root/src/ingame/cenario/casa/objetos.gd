@@ -38,10 +38,12 @@ func acordou():
 func programando():
 	comp_animation.play("programando")
 	player.visible = false
+	$"../computador/logando".show()
+	
+	yield(comp_animation,"animation_finished")
+	$"../computador/logando".hide()
+	get_tree().change_scene("res://src/ingame/stage/computador/tela-computador.tscn")
 	
 func nao_programando():
 	comp_animation.play("vazio")
 	player.visible = true
-	
-func _on_Timer_timeout():
-	get_tree().change_scene("res://src/ingame/stage/computador/tela-computador.tscn")

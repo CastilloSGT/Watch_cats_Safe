@@ -1,8 +1,9 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://src/ingame/stage/minigame2/fighters/fighter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/art/ingame/stage/minigame 2/tileset.png" type="Texture" id=2]
 [ext_resource path="res://assets/art/ingame/stage/minigame 2/ringue.png" type="Texture" id=3]
+[ext_resource path="res://assets/art/ingame/stage/minigame 1/life.png" type="Texture" id=4]
 [ext_resource path="res://assets/art/ingame/stage/minigame 2/ceu.png" type="Texture" id=5]
 [ext_resource path="res://assets/fonts/PressStart2P.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://src/ingame/stage/minigame2/monkey-out.gd" type="Script" id=7]
@@ -902,6 +903,10 @@ tile_data = PoolIntArray( -4, 14, 0, -3, 0, 0, -2, 1, 0, -1, 1, 0, -65536, 1, 0,
 [node name="fighters" type="Node2D" parent="."]
 pause_mode = 1
 
+[node name="delay" type="Timer" parent="fighters"]
+wait_time = 1.5
+autostart = true
+
 [node name="fighter" parent="fighters" instance=ExtResource( 1 )]
 pause_mode = 0
 physics_interpolation_mode = 0
@@ -910,11 +915,6 @@ z_index = 2
 collision_mask = 18
 
 [node name="position" type="Position2D" parent="fighters"]
-position = Vector2( 0, -20 )
-
-[node name="delay" type="Timer" parent="fighters"]
-wait_time = 3.0
-autostart = true
 
 [node name="camera" type="Camera2D" parent="."]
 current = true
@@ -948,22 +948,37 @@ theme = SubResource( 40 )
 text = "Tempo"
 
 [node name="rounds" type="Timer" parent="legendas"]
+pause_mode = 1
 autostart = true
 
+[node name="intervalo" type="Timer" parent="legendas"]
+pause_mode = 2
+wait_time = 5.0
+one_shot = true
+
+[node name="life" type="TextureRect" parent="legendas"]
+margin_left = -151.0
+margin_top = -108.0
+margin_right = -81.0
+margin_bottom = -92.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 2
+
 [node name="modulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color( 0.807843, 0.839216, 0.909804, 1 )
 
 [node name="label-colorida" parent="." instance=ExtResource( 8 )]
-margin_left = -94.0
+visible = false
+margin_left = -61.0
 margin_top = 5.0
-margin_right = 112.0
-margin_bottom = 21.0
+margin_right = 64.0
+margin_bottom = 20.0
 rect_clip_content = false
-bbcode_text = "[wave]Você ganhou esse Round!![/wave]"
-text = "Você ganhou esse Round!!"
+bbcode_text = "[wave]Proximo Round!![/wave]"
+text = "Proximo Round!!"
 scroll_active = false
-
-[node name="Timer" type="Timer" parent="."]
 
 [node name="tutorial" type="Node2D" parent="."]
 position = Vector2( 5, -27 )
@@ -975,10 +990,10 @@ one_shot = true
 autostart = true
 
 [node name="tutorial_label" type="RichTextLabel" parent="tutorial"]
-margin_left = -79.0
-margin_top = -60.0
-margin_right = 94.0
-margin_bottom = -8.0
+margin_left = -74.0
+margin_top = -13.0
+margin_right = 91.0
+margin_bottom = 39.0
 rect_clip_content = false
 theme = SubResource( 42 )
 bbcode_enabled = true
@@ -995,4 +1010,6 @@ text = "[Z] soco rapido
 scroll_active = false
 
 [connection signal="timeout" from="fighters/delay" to="." method="_on_delay_timeout"]
+[connection signal="timeout" from="legendas/rounds" to="." method="_on_rounds_timeout"]
+[connection signal="timeout" from="legendas/intervalo" to="." method="_on_intervalo_timeout"]
 [connection signal="timeout" from="tutorial/tutorial_timer" to="." method="_on_tutorial_timer_timeout"]

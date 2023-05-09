@@ -14,10 +14,10 @@ var Boss_life
 
 #MINIGAME 2
 var tipo_dano = -1 # 0 = desvia, 1 = soco fraco, 2 = soco forte
-var vida_total = 0 #vida de todos os personagens
 var pos_fighter
-var vida_fighter =  0
-
+var vida_fighter = 0
+var vida_enemy = 0
+var dead = false
 
 # MINIGAME 3
 var combo = 0
