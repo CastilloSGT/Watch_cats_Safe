@@ -11,8 +11,11 @@ var reduction = 0.2
 var is_timer_running = false #sensor
 
 var vida = 500
+var caiu = false
 var area_enemy = false
 var can_attack = true
+
+signal enemy_killed()
 
 func _ready():
 	spr_vida.rect_size.x = 35
@@ -21,29 +24,35 @@ func _ready():
 func _physics_process(_delta: float) -> void:
 	_on_Timer_timeout()
 	animacao()
-	getPos(_delta)
 	
+	#DEFINIR CAIU COMO UMA GLOBAL PARA O JUIZ APARECER E CONTAR
 	if (Global.vida_enemy <= 0):
-		queue_free()
+		if(!caiu):
+			animacao.play("desmaio")
+			yield(animacao,"animation_finished")
+			caiu = true
+			nocaute()
+	else:
+		getPos(_delta)
 	
 func animacao():
-	if (Global.tipo_dano == -1 && !is_timer_running):
+	if (Global.tipo_dano == -1 && !is_timer_running && !caiu):
 		animacao.play("idle")
 		
 	if (area_enemy):
-		if (Global.tipo_dano == 1  && !is_timer_running):
+		if (Global.tipo_dano == 1  && !is_timer_running && !caiu):
 			animacao.play("dano")
 			wait_time = 10
 			Global.vida_enemy -= 50
 			spr_vida.rect_size.x -= 35/10 #tam/(vida/dano) 
 			
-		if (Global.tipo_dano == 2 && !is_timer_running):
-			animacao.play("soco_mais_forte") #teste
+		if (Global.tipo_dano == 2 && !is_timer_running && !caiu):
+			animacao.play("dano_mais_forte") #teste
 			wait_time = 20
 			Global.vida_enemy -= 100
 			spr_vida.rect_size.x -= 35/5 #tam/(vida/dano) 
-			
-		if (!is_timer_running && can_attack):
+		
+		if (!is_timer_running && can_attack && !caiu):
 			animacao.play("soco")
 			wait_time = 10
 			can_attack = false
@@ -54,6 +63,26 @@ func animacao():
 				
 			$ataque_delay.start()
 
+func nocaute():
+	$colisao.disabled = true
+	animacao.play("caido")
+	wait_time = 50
+	#yield(animacao,"animation_finished")
+	
+	#COLOCAR TIMER QUE EXECUTA 3 VEZES (3 SEGUNDOS) E MORRE
+	#animacao.play("tentando")
+	
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var num = rng.randi_range(0,1)
+	
+	if(num == 0):
+		animacao.play("caido")
+	else:
+		animacao.play("recuperado")
+		yield(animacao,"animation_finished")
+		$colisao.disabled = false
+		animacao.play("idle")
 
 func _on_Timer_timeout():
 	wait_time -= reduction
@@ -81,6 +110,7 @@ func getPos(_delta):
 
 func _on_enemy_body_entered(body):
 	area_enemy = true
+
 func _on_enemy_body_exited(body):
 	area_enemy = false
 

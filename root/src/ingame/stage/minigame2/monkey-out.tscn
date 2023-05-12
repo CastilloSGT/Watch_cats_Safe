@@ -982,7 +982,7 @@ text = "Tempo"
 
 [node name="rounds" type="Timer" parent="legendas"]
 pause_mode = 1
-wait_time = 10.0
+wait_time = 60.0
 
 [node name="life" type="TextureRect" parent="legendas"]
 margin_left = -151.0
