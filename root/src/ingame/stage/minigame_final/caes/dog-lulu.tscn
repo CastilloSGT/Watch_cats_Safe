@@ -1,13 +1,75 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=22 format=2]
 
-[ext_resource path="res://assets/fonts/PressStart2P.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/art/ingame/stage/minigame 5/lulu_walk_back.tres" type="Animation" id=1]
+[ext_resource path="res://assets/art/ingame/stage/minigame 5/lulu_walk_front.tres" type="Animation" id=2]
+[ext_resource path="res://assets/art/ingame/stage/minigame 5/lulu_idle_front.tres" type="Animation" id=3]
+[ext_resource path="res://assets/art/ingame/stage/minigame 5/lulu_idle_back.tres" type="Animation" id=4]
 [ext_resource path="res://assets/art/ingame/stage/minigame 5/lulu.png" type="Texture" id=5]
 [ext_resource path="res://src/ingame/stage/minigame_final/caes/dog-lulu.gd" type="Script" id=6]
+
+[sub_resource type="AnimationNodeAnimation" id=21]
+animation = "idle_front"
+
+[sub_resource type="AnimationNodeAnimation" id=22]
+animation = "idle_back"
+
+[sub_resource type="AnimationNodeAnimation" id=23]
+animation = "idle_back"
+
+[sub_resource type="AnimationNodeAnimation" id=24]
+animation = "idle_front"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=25]
+blend_point_0/node = SubResource( 21 )
+blend_point_0/pos = Vector2( 0, 1 )
+blend_point_1/node = SubResource( 22 )
+blend_point_1/pos = Vector2( 0, -1 )
+blend_point_2/node = SubResource( 23 )
+blend_point_2/pos = Vector2( 1, 0 )
+blend_point_3/node = SubResource( 24 )
+blend_point_3/pos = Vector2( -1, 0 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id=17]
+animation = "walk_front"
+
+[sub_resource type="AnimationNodeAnimation" id=18]
+animation = "walk_front"
+
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "walk_back"
+
+[sub_resource type="AnimationNodeAnimation" id=20]
+animation = "walk_back"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=13]
+blend_point_0/node = SubResource( 17 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 18 )
+blend_point_1/pos = Vector2( 0, 0.9 )
+blend_point_2/node = SubResource( 19 )
+blend_point_2/pos = Vector2( 0, -1 )
+blend_point_3/node = SubResource( 20 )
+blend_point_3/pos = Vector2( 1, 0 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+
+[sub_resource type="AnimationNodeStateMachine" id=4]
+states/idle/node = SubResource( 25 )
+states/idle/position = Vector2( 215, 79.8889 )
+states/walk/node = SubResource( 13 )
+states/walk/position = Vector2( 445.667, 81.5185 )
+transitions = [ "idle", "walk", SubResource( 26 ), "walk", "idle", SubResource( 27 ) ]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=5]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Lulu:frame")
+tracks/0/path = NodePath("sprite/Lulu:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -15,259 +77,50 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ 3 ]
 }
 
-[sub_resource type="Animation" id=20]
-resource_name = "idle_left_back"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Lulu:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 0, 17 ]
-}
-
-[sub_resource type="Animation" id=21]
-resource_name = "idle_left_front"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Lulu:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 3, 6 ]
-}
-
-[sub_resource type="Animation" id=22]
-resource_name = "idle_right_back"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Lulu:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 4, 9 ]
-}
-
-[sub_resource type="Animation" id=23]
-resource_name = "idle_right_front"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Lulu:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 1, 14 ]
-}
-
-[sub_resource type="Animation" id=16]
-resource_name = "walk_left_back"
-length = 0.8
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Lulu:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 15, 17, 16, 17 ]
-}
-
-[sub_resource type="Animation" id=17]
-resource_name = "walk_left_front"
-length = 0.8
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Lulu:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 6, 7, 6, 8 ]
-}
-
-[sub_resource type="Animation" id=18]
-resource_name = "walk_right_back"
-length = 0.8
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Lulu:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 9, 10, 9, 11 ]
-}
-
-[sub_resource type="Animation" id=19]
-resource_name = "walk_right_front"
-length = 0.8
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Lulu:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 12, 14, 13, 14 ]
-}
-
-[sub_resource type="AnimationNodeAnimation" id=24]
-animation = "idle_left_front"
-
-[sub_resource type="AnimationNodeAnimation" id=25]
-animation = "idle_right_front"
-
-[sub_resource type="AnimationNodeAnimation" id=26]
-animation = "idle_right_back"
-
-[sub_resource type="AnimationNodeAnimation" id=27]
-animation = "idle_left_back"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id=3]
-blend_point_0/node = SubResource( 24 )
-blend_point_0/pos = Vector2( 1, -1 )
-blend_point_1/node = SubResource( 25 )
-blend_point_1/pos = Vector2( -1, -1 )
-blend_point_2/node = SubResource( 26 )
-blend_point_2/pos = Vector2( -1, 1 )
-blend_point_3/node = SubResource( 27 )
-blend_point_3/pos = Vector2( 1, 1 )
-blend_mode = 1
-
-[sub_resource type="AnimationNodeAnimation" id=28]
-animation = "walk_right_front"
-
-[sub_resource type="AnimationNodeAnimation" id=29]
-animation = "walk_left_front"
-
-[sub_resource type="AnimationNodeAnimation" id=30]
-animation = "walk_left_back"
-
-[sub_resource type="AnimationNodeAnimation" id=31]
-animation = "walk_right_back"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id=2]
-blend_point_0/node = SubResource( 28 )
-blend_point_0/pos = Vector2( -1, -1 )
-blend_point_1/node = SubResource( 29 )
-blend_point_1/pos = Vector2( 1, -1 )
-blend_point_2/node = SubResource( 30 )
-blend_point_2/pos = Vector2( 1, 1 )
-blend_point_3/node = SubResource( 31 )
-blend_point_3/pos = Vector2( -1, 1 )
-blend_mode = 1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=4]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=7]
-
-[sub_resource type="AnimationNodeStateMachine" id=5]
-states/idle/node = SubResource( 3 )
-states/idle/position = Vector2( 171, 71 )
-states/walk/node = SubResource( 2 )
-states/walk/position = Vector2( 419, 71.4445 )
-transitions = [ "idle", "walk", SubResource( 4 ), "walk", "idle", SubResource( 7 ) ]
-start_node = "idle"
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id=6]
-
-[sub_resource type="DynamicFont" id=32]
-size = 8
-font_data = ExtResource( 1 )
-
-[sub_resource type="Theme" id=33]
-default_font = SubResource( 32 )
-
 [node name="dog-lulu" type="Node2D"]
 script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Lulu" type="Sprite" parent="."]
-position = Vector2( 14, 10 )
-texture = ExtResource( 5 )
-hframes = 3
-vframes = 6
-frame = 3
-
-[node name="animation" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 1 )
-anims/idle_left_back = SubResource( 20 )
-anims/idle_left_front = SubResource( 21 )
-anims/idle_right_back = SubResource( 22 )
-anims/idle_right_front = SubResource( 23 )
-anims/walk_left_back = SubResource( 16 )
-anims/walk_left_front = SubResource( 17 )
-anims/walk_right_back = SubResource( 18 )
-anims/walk_right_front = SubResource( 19 )
-
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 5 )
-anim_player = NodePath("../animation")
-active = true
-parameters/playback = SubResource( 6 )
-parameters/idle/blend_position = Vector2( -0.489424, -0.17052 )
-parameters/walk/blend_position = Vector2( 0.539953, -0.228324 )
-
-[node name="dog_button" type="Button" parent="."]
+[node name="Button" type="Button" parent="."]
 margin_left = -1.0
 margin_top = -2.0
 margin_right = 29.0
 margin_bottom = 26.0
-focus_mode = 0
-enabled_focus_mode = 0
 flat = true
+
+[node name="sprite" type="Node2D" parent="."]
+
+[node name="AnimationTree" type="AnimationTree" parent="sprite"]
+tree_root = SubResource( 4 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 5 )
+parameters/idle/blend_position = Vector2( 0.175676, -0.33237 )
+parameters/walk/blend_position = Vector2( -0.350764, -0.309249 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="sprite"]
+root_node = NodePath("../..")
+anims/RESET = SubResource( 1 )
+anims/idle_back = ExtResource( 4 )
+anims/idle_front = ExtResource( 3 )
+anims/walk_back = ExtResource( 1 )
+anims/walk_front = ExtResource( 2 )
+
+[node name="Lulu" type="Sprite" parent="sprite"]
+position = Vector2( 14, 10 )
+texture = ExtResource( 5 )
+hframes = 3
+vframes = 3
+frame = 3
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
 
-[node name="Label" type="Label" parent="."]
-margin_left = -7.0
-margin_top = -14.0
-margin_right = 33.0
-margin_bottom = -6.0
-theme = SubResource( 33 )
-text = "au au"
-
-[connection signal="mouse_exited" from="dog_button" to="." method="_on_dog_button_mouse_exited"]
-[connection signal="pressed" from="dog_button" to="." method="_on_dog_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
