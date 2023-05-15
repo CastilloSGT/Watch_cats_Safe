@@ -138,7 +138,3 @@ paused={
 [mono]
 
 project/assembly_name="Watch_cats"
-
-[rendering]
-
-environment/default_clear_color=Color( 0, 0, 0, 1 )
