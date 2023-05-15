@@ -60,9 +60,9 @@ func _on_delay_timeout():
 	Global.pos_fighter = $fighters/fighter.global_position
 
 func _on_rounds_timeout():
+	
 	rounds()
 	round_atual += 1
-	
 	intervalo.show()
 	get_tree().paused = true
 	

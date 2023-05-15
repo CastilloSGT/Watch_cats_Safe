@@ -18,6 +18,13 @@ var area_enemy = false
 var can_attack = true
 
 signal nocateado()
+# BUGS
+# PANDA SE MOVE DE ACORDO COM O ULTIMO MACACO CAIDO
+# QUANDO VOCE MORRE OS MACACOS TAMBEM MORREM???
+# DICAS: TRAVAR O TIMER QUANDO O ULTIMO MACACO MORRER
+# SE MACACO MORRER QUANDO TIMER ACABANDO O MACACO SEGUE ATACANDO PELA POSIÇÃO ?? QUEUE NO MACACO QUANDO TIMER ACABA???
+# MACACO SEGUE ATACANDO ENQUANTO "DESMAIADO"
+# PARA RETORNAR A "VIDA". APERTAR ESPAÇO ATÉ PREENCHER BARRINHA E ASSIM VOLTAR AO JOGO COM METADE DA VIDA
 
 func _ready():
 	spr_vida.rect_size.x = 35
@@ -112,6 +119,9 @@ func _on_VisibilityNotifier2D_screen_exited():
 	$"..".queue_free()
 
 func _on_nocaute_timeout():
+	$lblNocaute.show()
+	$lblNocaute.set_text(str(3-i))
+	
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	var num = rng.randi_range(1,5)
@@ -119,6 +129,9 @@ func _on_nocaute_timeout():
 	
 	if(num == 1):
 		$colisao.disabled = false
+		$lblNocaute.hide()
+		i = 0
+		
 		animacao.play("recuperado")
 		yield(animacao,"animation_finished")
 		
@@ -132,6 +145,9 @@ func _on_nocaute_timeout():
 		
 	if(i == 3):
 		$colisao.disabled = true
+		$nocaute.stop()
+		$lblNocaute.hide()
+		
 		animacao.play("caido")
 		emit_signal("nocateado")
 		Global.pos_enemy = self.global_position + Vector2(0,10)

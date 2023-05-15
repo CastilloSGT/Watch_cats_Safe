@@ -1025,9 +1025,9 @@ one_shot = true
 autostart = true
 
 [node name="tutorial_label" type="RichTextLabel" parent="tutorial"]
-margin_left = -88.0
+margin_left = -87.0
 margin_top = -13.0
-margin_right = 77.0
+margin_right = 78.0
 margin_bottom = 42.0
 rect_clip_content = false
 theme = SubResource( 42 )

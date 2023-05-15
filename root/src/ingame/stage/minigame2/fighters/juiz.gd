@@ -28,7 +28,7 @@ func _process(delta):
 		else:
 			self.global_position = self.global_position.move_toward(target, 30 * delta)
 	else:
-		Global.pos_enemy = Vector2(190,-5)
+		self.global_position = Vector2(190,-5)
 
 func _on_enemy_nocateado():
 	caiu = true
