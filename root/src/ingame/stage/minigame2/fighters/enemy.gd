@@ -10,22 +10,26 @@ var wait_time = 0
 var reduction = 0.2
 var is_timer_running = false #sensor
 
-var vida = 500
 var caiu = false
+var i = 0
+
+var vida = 100
 var area_enemy = false
 var can_attack = true
 
-signal enemy_killed()
+signal nocateado()
 
 func _ready():
 	spr_vida.rect_size.x = 35
 	Global.vida_enemy += vida
+	
+	var EMITTER = get_node("../juiz")
+	EMITTER.connect("pegou", self, "pegou")
 
 func _physics_process(_delta: float) -> void:
 	_on_Timer_timeout()
 	animacao()
 	
-	#DEFINIR CAIU COMO UMA GLOBAL PARA O JUIZ APARECER E CONTAR
 	if (Global.vida_enemy <= 0):
 		if(!caiu):
 			animacao.play("desmaio")
@@ -44,13 +48,13 @@ func animacao():
 			animacao.play("dano")
 			wait_time = 10
 			Global.vida_enemy -= 50
-			spr_vida.rect_size.x -= 35/10 #tam/(vida/dano) 
+			spr_vida.rect_size.x -= 35/(vida/100) #tam/(vida/dano) 
 			
 		if (Global.tipo_dano == 2 && !is_timer_running && !caiu):
 			animacao.play("dano_mais_forte") #teste
 			wait_time = 20
 			Global.vida_enemy -= 100
-			spr_vida.rect_size.x -= 35/5 #tam/(vida/dano) 
+			spr_vida.rect_size.x -= 35/((vida/100)*2) #tam/(vida/dano) 
 		
 		if (!is_timer_running && can_attack && !caiu):
 			animacao.play("soco")
@@ -65,24 +69,8 @@ func animacao():
 
 func nocaute():
 	$colisao.disabled = true
-	animacao.play("caido")
-	wait_time = 50
-	#yield(animacao,"animation_finished")
-	
-	#COLOCAR TIMER QUE EXECUTA 3 VEZES (3 SEGUNDOS) E MORRE
-	#animacao.play("tentando")
-	
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
-	var num = rng.randi_range(0,1)
-	
-	if(num == 0):
-		animacao.play("caido")
-	else:
-		animacao.play("recuperado")
-		yield(animacao,"animation_finished")
-		$colisao.disabled = false
-		animacao.play("idle")
+	animacao.play("tentando")
+	$nocaute.start()
 
 func _on_Timer_timeout():
 	wait_time -= reduction
@@ -116,3 +104,36 @@ func _on_enemy_body_exited(body):
 
 func _on_ataque_delay_timeout():
 	can_attack = true
+
+func _on_juiz_pegou():
+	$".".hide()
+
+func _on_VisibilityNotifier2D_screen_exited():
+	$"..".queue_free()
+
+func _on_nocaute_timeout():
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var num = rng.randi_range(1,5)
+	print(i)
+	
+	if(num == 1):
+		$colisao.disabled = false
+		animacao.play("recuperado")
+		yield(animacao,"animation_finished")
+		
+		Global.vida_enemy += vida/20
+		spr_vida.rect_size.x -= 35/(vida/100)
+		
+		caiu = false
+	else:
+		$nocaute.start()
+		i += 1
+		
+	if(i == 3):
+		$colisao.disabled = true
+		animacao.play("caido")
+		emit_signal("nocateado")
+		Global.pos_enemy = self.global_position + Vector2(0,10)
+		$"../juiz".show()
+		

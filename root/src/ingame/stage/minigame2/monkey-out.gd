@@ -44,7 +44,6 @@ func _on_tutorial_timer_timeout():
 	
 	tempo.start()
 	$fighters/delay.start()
-	
 
 func invocaMonkey():
 	var enemies = get_tree().get_nodes_in_group("enemies").size()

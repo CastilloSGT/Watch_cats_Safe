@@ -42,7 +42,8 @@ anims/dead = ExtResource( 5 )
 anims/enemy_walk = ExtResource( 3 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
-scale = Vector2( 0.1125, 0.175 )
+position = Vector2( -0.5625, -0.875 )
+scale = Vector2( 0.05625, 0.0875 )
 
 [connection signal="area_shape_entered" from="." to="." method="_on_enemyship_area_shape_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

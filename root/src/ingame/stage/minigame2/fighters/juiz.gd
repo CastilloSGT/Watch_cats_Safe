@@ -1,38 +1,34 @@
 extends Area2D
 
-var direcao : Vector2
-var get_enemy = false
 var target
+var initial_pos = Vector2(300,-5)
+onready var animacao = $animation
+
+var caiu = false
+signal pegou()
 
 func _ready():
-	target = Global.pos_enemy
+	animacao.play("walk")
+	
+	var EMITTER = get_node("../enemy")
+	EMITTER.connect("nocateado", self, "nocateado")
 
 func _process(delta):
-	getPos(target)
-	self.global_position = self.global_position.move_toward(target, 50 * delta)
-	
-func animacao():
-	if direcao != Vector2.ZERO:
-		$animation.play("idle")
-	else:
-		if(get_enemy):
-			$animation.play("leavin")
+	if(caiu):
+		target = Global.pos_enemy
+		if(self.global_position == target):
+			animacao.play("idle")
+			yield(animacao,"animation_finished")
+		
+			animacao.play("leavin")
+			$Juiz.set_flip_h(true)
+		
+			Global.pos_enemy = initial_pos
+			emit_signal("pegou")
 		else:
-			$animation.play("walk")
+			self.global_position = self.global_position.move_toward(target, 30 * delta)
+	else:
+		Global.pos_enemy = Vector2(190,-5)
 
-func getPos(target):
-	var pos = self.global_position - target
-	var posX
-	var posY
-	
-	if(pos.x == 0):
-		posX = 0
-	else:
-		posX = pos.x/abs(pos.x)
-		
-	if(pos.y == 0):
-		posY = 0
-	else:
-		posY = pos.y/abs(pos.y)
-		
-	direcao = Vector2(posX,posY)
+func _on_enemy_nocateado():
+	caiu = true
