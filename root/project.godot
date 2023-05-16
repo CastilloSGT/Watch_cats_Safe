@@ -24,6 +24,7 @@ default_bus_layout=""
 Global="*res://src/Global.gd"
 Music="*res://src/ingame/musics/Music.tscn"
 Casa="*res://src/ingame/musics/musics/casa.ogg"
+GlobalCanvasLayer="*res://src/ingame/options/CanvasLayer.tscn"
 
 [display]
 
@@ -119,6 +120,11 @@ Click={
 ui_space={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":32,"unicode":0,"echo":false,"script":null)
+ ]
+}
+paused={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":80,"unicode":0,"echo":false,"script":null)
  ]
 }
 
