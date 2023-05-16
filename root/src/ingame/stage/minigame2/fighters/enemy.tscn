@@ -145,7 +145,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 1, 2 ]
+"values": [ 1, 4 ]
 }
 
 [sub_resource type="Animation" id=19]
@@ -182,7 +182,7 @@ tracks/0/keys = {
 "values": [ 0, 3, 0, 6 ]
 }
 
-[node name="enemies" type="Node2D" groups=["enemies"]]
+[node name="enemies" type="Node2D"]
 z_index = 1
 
 [node name="enemy" type="Area2D" parent="."]

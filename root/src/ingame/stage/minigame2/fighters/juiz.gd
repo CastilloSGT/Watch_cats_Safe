@@ -26,7 +26,7 @@ func _process(delta):
 			Global.pos_enemy = initial_pos
 			emit_signal("pegou")
 		else:
-			self.global_position = self.global_position.move_toward(target, 30 * delta)
+			self.global_position = self.global_position.move_toward(target, 65 * delta)
 	else:
 		self.global_position = Vector2(190,-5)
 
