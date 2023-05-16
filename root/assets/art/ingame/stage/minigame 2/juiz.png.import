@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/10.png-f04d8b40fbb8639e25dd3722f2b2d35d.stex"
+path="res://.import/juiz.png-6e0ac63a69eaf251b8b729fd9b6c959a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/interface/telas/cutscene/10.png"
-dest_files=[ "res://.import/10.png-f04d8b40fbb8639e25dd3722f2b2d35d.stex" ]
+source_file="res://assets/art/ingame/stage/minigame 2/juiz.png"
+dest_files=[ "res://.import/juiz.png-6e0ac63a69eaf251b8b729fd9b6c959a.stex" ]
 
 [params]
 

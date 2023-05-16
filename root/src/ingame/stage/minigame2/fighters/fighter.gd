@@ -1,7 +1,8 @@
 extends KinematicBody2D
 # VARIAVEIS
+var vida = 500
 var velocidade: Vector2
-export(int) var speed = 60 #var para mover personagem
+var speed = 60 #var para mover personagem
 onready var animacao = $animation
 
 # TIMER
@@ -11,10 +12,18 @@ var wait_time = 0
 var reduction = 0.2
 var is_timer_running = false #sensor
 
+func _ready():
+	Global.vida_fighter = vida
+	Global.pos_fighter = self.global_position
+
 func _physics_process(_delta: float) -> void: #roda durante todo nosso jogo
 	mexe()
 	animacao()
 	_on_Timer_timeout()
+	
+	if(Global.vida_fighter <= 0):
+		animacao.play("desmaio")
+		wait_time = 50
 	
 # move personagem
 func mexe() -> void:
