@@ -8,9 +8,11 @@ onready var lblround = $"intervalo/label-colorida"
 var round_atual = 1
 var fim_round = false
 var _position
+signal reset()
 
 func _process(delta):
 	contagem()
+	perdeVida()
 	_round.set_text(str("Round ",round_atual))
 
 func rounds():
@@ -34,24 +36,24 @@ func contagem():
 	$legendas/lblTimer.set_text(msg)
 
 func _on_tutorial_timer_timeout():
+	emit_signal("reset")
 	$tutorial.hide()
 	#aparece 1 ou dois monkey
 	tempo.start()
 	$fighters/delay.start()
 
-
 func perdeVida():
-	$legendas/life.rect_size.x -= 70/10 #tam/(vida/dano) 
+	$legendas/life.rect_size.x = Global.vida_fighter/7.15 #500/70 (vida/tam)
 	
 func _on_delay_timeout():
 	Global.pos_fighter = $fighters/fighter.global_position
 
-func _on_rounds_timeout():
-	rounds()
-	round_atual += 1
-	intervalo.show()
-	get_tree().paused = true
-	
 func _on_intervalo_timeout():
 	intervalo.hide()
 	get_tree().paused = false
+
+func _on_fighter_nocateado():
+	rounds();
+	round_atual += 1
+	intervalo.show()
+	get_tree().paused = true

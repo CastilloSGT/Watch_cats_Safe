@@ -10,7 +10,7 @@ signal pegou()
 func _ready():
 	animacao.play("walk")
 	
-	var EMITTER = get_node("../enemy")
+	var EMITTER = get_node("./")
 	EMITTER.connect("nocateado", self, "nocateado")
 
 func _process(delta):

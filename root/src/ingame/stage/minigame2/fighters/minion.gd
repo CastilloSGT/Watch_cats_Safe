@@ -18,11 +18,15 @@ var vida = vida_fixo
 var area_enemy = false
 var can_attack = true
 
+signal nocateado()
+
 func _ready():
 	spr_vida.rect_size.x = 35
 	Global.vida_enemy += vida_fixo
 	Global.pos_enemy = self.global_position + Vector2(0,10)
-	Global.pos_fighter = self.global_position
+	
+	var EMITTER = get_node("juiz")
+	EMITTER.connect("pegou", self, "pegou")
 
 func _physics_process(_delta: float) -> void:
 	_on_Timer_timeout()
@@ -89,15 +93,28 @@ func _on_Timer_timeout():
 
 func getPos(_delta):
 	target = Global.pos_fighter + Vector2(0,-20)
-	self.global_position = self.global_position.move_toward(target, 50 * _delta)
 	
+	if(get_parent().name == "enemy_1"):
+		self.global_position = self.global_position.move_toward(target, 50 * _delta)
+	if(get_parent().name == "enemy_2"):
+		self.global_position = self.global_position.move_toward(target+Vector2(25,10), 60 * _delta)
+	if(get_parent().name == "enemy_3"):
+		self.global_position = self.global_position.move_toward(target+Vector2(-25,10), 40 * _delta)
+
 func _on_enemy_body_entered(body):
 	area_enemy = true
+
 func _on_enemy_body_exited(body):
 	area_enemy = false
 
 func _on_ataque_delay_timeout():
 	can_attack = true
+
+func _on_juiz_pegou():
+	$".".hide()
+
+func _on_VisibilityNotifier2D_screen_exited():
+	$"..".queue_free()
 
 func _on_nocaute_timeout():
 	$lblNocaute.show()
@@ -126,6 +143,9 @@ func _on_nocaute_timeout():
 		$lblNocaute.hide()
 		
 		animacao.play("caido")
+		emit_signal("nocateado")
+		
+		$"../juiz".show()
 
 func _on_monkeyout_reset():
 	Global.vida_enemy = vida_fixo

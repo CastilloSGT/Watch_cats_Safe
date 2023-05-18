@@ -7,14 +7,14 @@ onready var animacao = $animation
 
 # TIMER
 onready var my_timer = get_node("Timer")
-
 var wait_time = 0
 var reduction = 0.2
 var is_timer_running = false #sensor
 
+signal nocateado()
+
 func _ready():
 	Global.vida_fighter = vida
-	Global.pos_fighter = self.global_position
 
 func _physics_process(_delta: float) -> void: #roda durante todo nosso jogo
 	mexe()
@@ -23,6 +23,7 @@ func _physics_process(_delta: float) -> void: #roda durante todo nosso jogo
 	
 	if(Global.vida_fighter <= 0):
 		animacao.play("desmaio")
+		emit_signal("nocateado")
 		wait_time = 50
 	
 # move personagem
@@ -64,4 +65,6 @@ func _on_Timer_timeout():
 		wait_time = 0
 		Global.tipo_dano = -1
 		is_timer_running = false
-	
+
+func _on_monkeyout_reset():
+	Global.vida_fighter = vida
