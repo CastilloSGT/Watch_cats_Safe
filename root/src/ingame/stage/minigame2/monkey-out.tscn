@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://src/ingame/stage/minigame2/fighters/fighter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/art/ingame/stage/minigame 2/tileset.png" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://assets/art/ingame/stage/minigame 2/enemy-placar.png" type="Texture" id=12]
 [ext_resource path="res://assets/art/ingame/stage/minigame 2/estrela.png" type="Texture" id=13]
 [ext_resource path="res://assets/art/ingame/stage/minigame 2/estrela-acesa.png" type="Texture" id=14]
+[ext_resource path="res://assets/art/ingame/stage/minigame 2/vs-sprite.png" type="Texture" id=15]
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -897,6 +898,129 @@ font_data = ExtResource( 6 )
 [sub_resource type="Theme" id=42]
 default_font = SubResource( 41 )
 
+[sub_resource type="Animation" id=46]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Enemy-placar:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=47]
+resource_name = "enemy-KO"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Enemy-placar:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 4, 5 ]
+}
+
+[sub_resource type="Animation" id=48]
+resource_name = "enemy-bad"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Enemy-placar:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 2, 3 ]
+}
+
+[sub_resource type="Animation" id=45]
+resource_name = "enemy-good"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Enemy-placar:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=49]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player-placar:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=52]
+resource_name = "fighter-KO"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player-placar:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 4, 5 ]
+}
+
+[sub_resource type="Animation" id=51]
+resource_name = "fighter-bad"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player-placar:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 2, 3 ]
+}
+
+[sub_resource type="Animation" id=50]
+resource_name = "fighter-good"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player-placar:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
 [node name="monkey-out" type="Node2D"]
 pause_mode = 2
 script = ExtResource( 7 )
@@ -1009,9 +1133,9 @@ __meta__ = {
 }
 
 [node name="vida_total" type="TextureRect" parent="legendas/vidas"]
-margin_left = -141.0
+margin_left = -140.0
 margin_top = -104.0
-margin_right = -47.0
+margin_right = -44.0
 margin_bottom = -74.0
 rect_scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 13 )
@@ -1019,10 +1143,9 @@ expand = true
 stretch_mode = 2
 
 [node name="vida" type="TextureRect" parent="legendas/vidas"]
-visible = false
-margin_left = -141.0
+margin_left = -140.0
 margin_top = -104.0
-margin_right = -47.0
+margin_right = -140.0
 margin_bottom = -74.0
 rect_scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 14 )
@@ -1044,11 +1167,11 @@ one_shot = true
 [node name="label-colorida" parent="intervalo" instance=ExtResource( 8 )]
 margin_left = -61.0
 margin_top = 5.0
-margin_right = 64.0
+margin_right = 69.0
 margin_bottom = 20.0
 rect_clip_content = false
-bbcode_text = "[wave]Proximo Round!![/wave]"
-text = "Proximo Round!!"
+bbcode_text = "[wave]Proximo Round!!!"
+text = "Proximo Round!!!"
 scroll_active = false
 
 [node name="tutorial" type="Node2D" parent="."]
@@ -1094,6 +1217,12 @@ texture = ExtResource( 12 )
 hframes = 2
 vframes = 3
 
+[node name="animation" type="AnimationPlayer" parent="placar/Placar"]
+anims/RESET = SubResource( 46 )
+anims/enemy-KO = SubResource( 47 )
+anims/enemy-bad = SubResource( 48 )
+anims/enemy-good = SubResource( 45 )
+
 [node name="Placar2" type="Sprite" parent="placar"]
 position = Vector2( -75, -196.667 )
 texture = ExtResource( 10 )
@@ -1105,9 +1234,21 @@ texture = ExtResource( 11 )
 hframes = 2
 vframes = 3
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="placar/Placar2"]
+anims/RESET = SubResource( 49 )
+anims/fighter-KO = SubResource( 52 )
+anims/fighter-bad = SubResource( 51 )
+anims/fighter-good = SubResource( 50 )
+
+[node name="Vs-sprite" type="Sprite" parent="placar"]
+position = Vector2( -14.6667, -197.333 )
+scale = Vector2( 1.33333, 1.33333 )
+texture = ExtResource( 15 )
+
 [connection signal="reset" from="." to="fighters/fighter" method="_on_monkeyout_reset"]
 [connection signal="reset" from="." to="fighters/enemy" method="_on_monkeyout_reset"]
 [connection signal="timeout" from="fighters/delay" to="." method="_on_delay_timeout"]
 [connection signal="nocateado" from="fighters/fighter" to="." method="_on_fighter_nocateado"]
+[connection signal="nocateado" from="fighters/enemy" to="." method="_on_enemy_nocateado"]
 [connection signal="timeout" from="intervalo/intervalo" to="." method="_on_intervalo_timeout"]
 [connection signal="timeout" from="tutorial/tutorial_timer" to="." method="_on_tutorial_timer_timeout"]

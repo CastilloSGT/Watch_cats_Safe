@@ -53,3 +53,7 @@ shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
 pause_mode = 1
+
+[node name="nocaute" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true

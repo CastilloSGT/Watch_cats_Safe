@@ -12,6 +12,7 @@ var is_timer_running = false #sensor
 
 var caiu = false
 var i = 0
+signal nocateado()
 
 var vida_fixo = 100
 var vida = vida_fixo
@@ -23,6 +24,7 @@ func _ready():
 	Global.vida_enemy += vida_fixo
 	Global.pos_enemy = self.global_position + Vector2(0,10)
 	Global.pos_fighter = self.global_position
+	$ataque_delay.start()
 
 func _physics_process(_delta: float) -> void:
 	_on_Timer_timeout()
@@ -53,14 +55,11 @@ func animacao():
 			perde_vida(100)
 		
 		if (!is_timer_running && can_attack && !caiu):
-			animacao.play("soco")
 			wait_time = 10
 			can_attack = false
+			animacao.play("soco")
 			yield(animacao,"animation_finished")
-			
-			if(Global.tipo_dano != 0 && area_enemy):
-				Global.vida_fighter -= 100
-				
+			ataque()
 			$ataque_delay.start()
 
 func nocaute():
@@ -68,14 +67,29 @@ func nocaute():
 	animacao.play("tentando")
 	$nocaute.start()
 
+func ataque():
+	if(Global.tipo_dano != 0 && area_enemy && !caiu):
+		Global.vida_fighter -= 100
+
 func perde_vida(dano):
-	Global.vida_fighter -= dano
+	Global.vida_enemy -= dano
 	vida -= dano
 	spr_vida.rect_size.x -= 35/(vida_fixo/dano) #tam/(vida/dano) 
 
-func ganha_vida():
-	vida = vida_fixo/2
-	spr_vida.rect_size.x = 35/(vida_fixo/50)
+func ganha_vida(full_life):
+	$lblNocaute.hide()
+	i = 0
+	animacao.play("recuperado")
+	yield(animacao,"animation_finished")
+	$colisao.disabled = false
+	caiu = false
+	
+	if(full_life):
+		vida = vida_fixo
+		spr_vida.rect_size.x = 35
+	else:
+		vida = vida_fixo/2
+		spr_vida.rect_size.x = 35/(vida_fixo/50)
 
 func _on_Timer_timeout():
 	wait_time -= reduction
@@ -100,6 +114,8 @@ func _on_ataque_delay_timeout():
 	can_attack = true
 
 func _on_nocaute_timeout():
+	$ataque_delay.start()
+	
 	$lblNocaute.show()
 	$lblNocaute.set_text(str(3-i))
 	
@@ -108,14 +124,7 @@ func _on_nocaute_timeout():
 	var num = rng.randi_range(0,3)
 	
 	if(num == 1):
-		$lblNocaute.hide()
-		i = 0
-		animacao.play("recuperado")
-		yield(animacao,"animation_finished")
-		
-		ganha_vida()
-		$colisao.disabled = false
-		caiu = false
+		ganha_vida(false)
 	else:
 		$nocaute.start()
 		i += 1
@@ -124,8 +133,9 @@ func _on_nocaute_timeout():
 		$colisao.disabled = true
 		$nocaute.stop()
 		$lblNocaute.hide()
-		
 		animacao.play("caido")
+		yield(animacao,"animation_finished")
+		emit_signal("nocateado")
 
 func _on_monkeyout_reset():
-	Global.vida_enemy = vida_fixo
+	ganha_vida(true)

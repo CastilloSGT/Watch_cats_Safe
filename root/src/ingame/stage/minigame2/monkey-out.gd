@@ -10,35 +10,46 @@ var fim_round = false
 var _position
 signal reset()
 
+func _ready():
+	$legendas/vidas/vida_total.rect_size.x = 96
+	$legendas/vidas/vida.rect_size.x = 0
+
 func _process(delta):
 	contagem()
 	perdeVida()
+	mudaPlacar()
 	_round.set_text(str("Round ",round_atual))
 
 func rounds():
 	$intervalo/intervalo.start()
-	
-	if(Global.vida_enemy > Global.vida_fighter):
-		print("enemi")
-	if(Global.vida_fighter > Global.vida_enemy):
-		print("voce")
-	if(Global.vida_enemy == Global.vida_fighter):
-		print("empate")
-	
-	if (round_atual == 5):
-		round_atual = 0
-		get_tree().change_scene("res://src/interface/fim_prototipo.tscn")
-	
+	round_atual += 1
+	intervalo.show()
+	get_tree().paused = true
+
 func contagem():
 	var minutes = tempo.time_left / 60
 	var seconds = fmod(tempo.time_left, 60)
 	var msg = "%02d:%02d" % [minutes, seconds]
 	$legendas/lblTimer.set_text(msg)
 
+func mudaPlacar():
+	var porcentagem = 100/3
+	var p2 = porcentagem*2
+	var p1 = porcentagem*3
+	
+	match Global.vida_fighter:
+		p1:
+			print(1)
+		p2:
+			print(2)
+		porcentagem:
+			print(3)
+			
+	#vida do vida/3 if vida > 2/3 
+	pass
+
 func _on_tutorial_timer_timeout():
-	emit_signal("reset")
 	$tutorial.hide()
-	#aparece 1 ou dois monkey
 	tempo.start()
 	$fighters/delay.start()
 
@@ -51,9 +62,16 @@ func _on_delay_timeout():
 func _on_intervalo_timeout():
 	intervalo.hide()
 	get_tree().paused = false
+	emit_signal("reset")
+	
+	if (round_atual == 4):
+		round_atual = 0
+		get_tree().change_scene("res://src/ingame/stage/computador/tela-computador.tscn")
 
 func _on_fighter_nocateado():
 	rounds();
-	round_atual += 1
-	intervalo.show()
-	get_tree().paused = true
+	$legendas/vidas/vida_total.rect_size.x -= 96/3
+
+func _on_enemy_nocateado():
+	rounds();
+	$legendas/vidas/vida.rect_size.x += 96/3
