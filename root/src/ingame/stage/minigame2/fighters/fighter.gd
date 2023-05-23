@@ -78,17 +78,17 @@ func nocaute():
 		ganha_vida(false)
 
 func ganha_vida(full_life):
+	if(full_life):
+		Global.vida_fighter = vida
+	else:
+		Global.vida_fighter = vida/2
+	
 	$nocaute/lblNocaute.hide()
 	$nocaute/nocauteBar.rect_size.x = 0
 	animacao.play("recuperado")
 	yield(animacao,"animation_finished")
 	$colisao.disabled = false
 	caiu = false
-	
-	if(full_life):
-		Global.vida_fighter = vida
-	else:
-		Global.vida_fighter = vida/2
 
 func _on_Timer_timeout():
 	wait_time -= reduction

@@ -16,7 +16,6 @@ func _ready():
 
 func _physics_process(_delta: float) -> void:
 	contagem()
-	perdeVida()
 	mudaPlacar()
 	_round.set_text(str("Round ",round_atual))
 
@@ -33,6 +32,7 @@ func contagem():
 	$legendas/lblTimer.set_text(msg)
 
 func mudaPlacar():
+	$legendas/life.rect_size.x = Global.vida_fighter/7.15 #500/70 (vida/tam)
 	var porcentagem = 500/3
 	
 	# FIGHTER
@@ -40,7 +40,7 @@ func mudaPlacar():
 		$placar/Placar2/animation.play("fighter-KO")
 	elif Global.vida_fighter <= porcentagem*2:
 		$placar/Placar2/animation.play("fighter-bad")
-	elif Global.vida_fighter >= porcentagem*3:
+	else:
 		$placar/Placar2/animation.play("fighter-good")
 
 	# ENEMY
@@ -48,18 +48,15 @@ func mudaPlacar():
 		$placar/Placar/animation.play("enemy-KO")
 	elif Global.vida_enemy <= porcentagem*2:
 		$placar/Placar/animation.play("enemy-bad")
-	elif Global.vida_enemy >= porcentagem*3:
+	else:
 		$placar/Placar/animation.play("enemy-good")
-
+		
 
 func _on_tutorial_timer_timeout():
 	$tutorial.hide()
 	tempo.start()
 	$fighters/delay.start()
 
-func perdeVida():
-	$legendas/life.rect_size.x = Global.vida_fighter/7.15 #500/70 (vida/tam)
-	
 func _on_delay_timeout():
 	Global.pos_fighter = $fighters/fighter.global_position
 
