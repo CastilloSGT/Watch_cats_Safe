@@ -14,14 +14,13 @@ var caiu = false
 var i = 0
 signal nocateado()
 
-var vida_fixo = 100
-var vida = vida_fixo
+var vida = 500
 var area_enemy = false
 var can_attack = true
 
 func _ready():
 	spr_vida.rect_size.x = 35
-	Global.vida_enemy += vida_fixo
+	Global.vida_enemy = vida
 	Global.pos_enemy = self.global_position + Vector2(0,10)
 	Global.pos_fighter = self.global_position
 	$ataque_delay.start()
@@ -30,7 +29,7 @@ func _physics_process(_delta: float) -> void:
 	_on_Timer_timeout()
 	animacao()
 	
-	if (vida <= 0):
+	if (Global.vida_enemy  <= 0):
 		if(!caiu):
 			animacao.play("desmaio")
 			yield(animacao,"animation_finished")
@@ -73,8 +72,7 @@ func ataque():
 
 func perde_vida(dano):
 	Global.vida_enemy -= dano
-	vida -= dano
-	spr_vida.rect_size.x -= 35/(vida_fixo/dano) #tam/(vida/dano) 
+	spr_vida.rect_size.x -= 35/(vida/dano) #tam/(vida/dano) 
 
 func ganha_vida(full_life):
 	$lblNocaute.hide()
@@ -85,11 +83,11 @@ func ganha_vida(full_life):
 	caiu = false
 	
 	if(full_life):
-		vida = vida_fixo
+		Global.vida_enemy = vida
 		spr_vida.rect_size.x = 35
 	else:
-		vida = vida_fixo/2
-		spr_vida.rect_size.x = 35/(vida_fixo/50)
+		Global.vida_enemy = vida/2
+		spr_vida.rect_size.x = 35/2
 
 func _on_Timer_timeout():
 	wait_time -= reduction

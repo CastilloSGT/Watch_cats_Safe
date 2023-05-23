@@ -1234,7 +1234,7 @@ texture = ExtResource( 11 )
 hframes = 2
 vframes = 3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="placar/Placar2"]
+[node name="animation" type="AnimationPlayer" parent="placar/Placar2"]
 anims/RESET = SubResource( 49 )
 anims/fighter-KO = SubResource( 52 )
 anims/fighter-bad = SubResource( 51 )
