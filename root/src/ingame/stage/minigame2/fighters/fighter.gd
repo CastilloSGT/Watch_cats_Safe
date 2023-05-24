@@ -74,7 +74,6 @@ func nocaute():
 		
 	if($nocaute/nocauteBar.rect_size.x == 40):
 		$nocaute/nocaute.stop()
-		$nocaute/nocauteBar.rect_size.x = 0
 		ganha_vida(false)
 
 func ganha_vida(full_life):
@@ -83,8 +82,8 @@ func ganha_vida(full_life):
 	else:
 		Global.vida_fighter = vida/2
 	
-	$nocaute/lblNocaute.hide()
 	$nocaute/nocauteBar.rect_size.x = 0
+	$nocaute/lblNocaute.hide()
 	animacao.play("recuperado")
 	yield(animacao,"animation_finished")
 	$colisao.disabled = false

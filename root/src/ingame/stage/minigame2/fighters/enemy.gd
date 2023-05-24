@@ -72,7 +72,7 @@ func ataque():
 
 func perde_vida(dano):
 	Global.vida_enemy -= dano
-	spr_vida.rect_size.x -= 35/(vida/dano) #tam/(vida/dano) 
+	spr_vida.rect_size.x = Global.vida_enemy/14.3 #500/35 (vida/tam)
 
 func ganha_vida(full_life):
 	$lblNocaute.hide()

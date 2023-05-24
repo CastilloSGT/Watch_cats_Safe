@@ -108,7 +108,7 @@ pause_mode = 1
 [node name="nocauteBar" type="TextureRect" parent="nocaute"]
 margin_left = -22.0
 margin_top = -24.0
-margin_right = 18.0
+margin_right = -22.0
 margin_bottom = -19.0
 texture = ExtResource( 9 )
 expand = true

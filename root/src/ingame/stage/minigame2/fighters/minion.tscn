@@ -1,10 +1,8 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/art/ingame/stage/minigame 2/enemy_sprite.png" type="Texture" id=1]
 [ext_resource path="res://src/ingame/stage/minigame2/fighters/minion.gd" type="Script" id=2]
-[ext_resource path="res://assets/art/ingame/stage/minigame 2/animacoes/Enemy_dano.tres" type="Animation" id=3]
 [ext_resource path="res://assets/art/ingame/stage/minigame 2/animacoes/Enemy_idle.tres" type="Animation" id=4]
-[ext_resource path="res://assets/art/ingame/stage/minigame 2/animacoes/Enemy_soco.tres" type="Animation" id=5]
 [ext_resource path="res://assets/art/ingame/stage/minigame 2/animacoes/Enemy_walk.tres" type="Animation" id=6]
 [ext_resource path="res://assets/art/ingame/stage/minigame 2/juiz.png" type="Texture" id=7]
 [ext_resource path="res://src/ingame/stage/minigame2/fighters/juiz.gd" type="Script" id=9]
@@ -91,38 +89,6 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=15]
-resource_name = "caido"
-length = 0.2
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("EnemySprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 19 ]
-}
-
-[sub_resource type="Animation" id=11]
-resource_name = "dano_mais_forte"
-tracks/0/type = "value"
-tracks/0/path = NodePath("EnemySprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 0.9 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2 ]
-}
-
 [sub_resource type="Animation" id=12]
 resource_name = "desmaio"
 length = 0.8
@@ -139,6 +105,23 @@ tracks/0/keys = {
 "values": [ 16, 17, 18, 19 ]
 }
 
+[sub_resource type="Animation" id=15]
+resource_name = "levantando"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("EnemySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 19 ]
+}
+
 [sub_resource type="Animation" id=13]
 resource_name = "recuperado"
 length = 0.9
@@ -153,22 +136,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ 20, 21, 22 ]
-}
-
-[sub_resource type="Animation" id=14]
-resource_name = "tentando"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("EnemySprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 20, 21 ]
 }
 
 [sub_resource type="RectangleShape2D" id=10]
@@ -206,15 +173,11 @@ scale = Vector2( 0.1875, 0.2 )
 
 [node name="animation" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 8 )
-anims/caido = SubResource( 15 )
-anims/dano = ExtResource( 3 )
-anims/dano_mais_forte = SubResource( 11 )
+anims/atacando = ExtResource( 6 )
 anims/desmaio = SubResource( 12 )
 anims/idle = ExtResource( 4 )
+anims/levantando = SubResource( 15 )
 anims/recuperado = SubResource( 13 )
-anims/soco = ExtResource( 5 )
-anims/tentando = SubResource( 14 )
-anims/walk = ExtResource( 6 )
 
 [node name="EnemySprite" type="Sprite" parent="."]
 position = Vector2( 0, 4.5 )
@@ -236,4 +199,6 @@ one_shot = true
 
 [connection signal="body_entered" from="." to="." method="_on_minion_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_minion_body_exited"]
+[connection signal="nocateado" from="." to="juiz" method="_on_minion_nocateado"]
+[connection signal="pegou" from="juiz" to="." method="_on_juiz_pegou"]
 [connection signal="timeout" from="ataque-delay" to="." method="_on_ataquedelay_timeout"]
