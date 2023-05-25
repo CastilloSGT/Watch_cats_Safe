@@ -14,7 +14,7 @@ var caiu = false
 var i = 0
 signal nocateado()
 
-var vida = 500
+var vida = 100
 var area_enemy = false
 var can_attack = true
 
@@ -79,6 +79,7 @@ func ganha_vida(full_life):
 	i = 0
 	animacao.play("recuperado")
 	yield(animacao,"animation_finished")
+	animacao.play("idle")
 	$colisao.disabled = false
 	caiu = false
 	
