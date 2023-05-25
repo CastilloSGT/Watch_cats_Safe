@@ -201,4 +201,5 @@ one_shot = true
 [connection signal="body_exited" from="." to="." method="_on_minion_body_exited"]
 [connection signal="nocateado" from="." to="juiz" method="_on_minion_nocateado"]
 [connection signal="pegou" from="juiz" to="." method="_on_juiz_pegou"]
+[connection signal="screen_exited" from="juiz/VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="timeout" from="ataque-delay" to="." method="_on_ataquedelay_timeout"]

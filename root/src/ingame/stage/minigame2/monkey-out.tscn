@@ -1088,9 +1088,11 @@ visible = false
 position = Vector2( 0, -66 )
 
 [node name="minion_left" parent="fighters/minions" instance=ExtResource( 16 )]
+visible = false
 position = Vector2( -55, -66 )
 
 [node name="minion_right" parent="fighters/minions" instance=ExtResource( 16 )]
+visible = false
 position = Vector2( 55, -66 )
 
 [node name="camera" type="Camera2D" parent="."]

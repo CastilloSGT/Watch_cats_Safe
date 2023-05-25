@@ -14,6 +14,7 @@ var is_timer_running = false #sensor
 var attack = false
 var caiu = false
 var area_enemy = false
+var can_operate = false
 
 var posLeft: Vector2
 var posRight: Vector2
@@ -90,5 +91,9 @@ func _on_minion_body_exited(body):
 	area_enemy = false
 
 func _on_juiz_pegou():
+	can_operate = false
 	$EnemySprite.hide()
 	$colisao.disabled = true
+
+func _on_VisibilityNotifier2D_screen_exited():
+	$".".queue_free()

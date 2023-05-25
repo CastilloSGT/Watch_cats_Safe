@@ -13,6 +13,7 @@ func _ready():
 
 func _process(delta):
 	if(caiu):
+		$".".show()
 		if(!pego):
 			target = $"..".position
 		if(self.global_position == target):

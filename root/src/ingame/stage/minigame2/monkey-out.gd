@@ -13,6 +13,10 @@ signal reset()
 func _ready():
 	$legendas/vidas/vida_total.rect_size.x = 96
 	$legendas/vidas/vida.rect_size.x = 0
+	
+	$fighters/minions/minion_center.set_physics_process(false)
+	$fighters/minions/minion_right.set_physics_process(false)
+	$fighters/minions/minion_left.set_physics_process(false)
 
 func _physics_process(_delta: float) -> void:
 	contagem()
@@ -22,6 +26,7 @@ func _physics_process(_delta: float) -> void:
 func rounds():
 	$intervalo/intervalo.start()
 	round_atual += 1
+	
 	intervalo.show()
 	get_tree().paused = true
 
@@ -66,6 +71,16 @@ func _on_intervalo_timeout():
 	intervalo.hide()
 	get_tree().paused = false
 	
+	if(round_atual == 2):
+		$fighters/minions/minion_center.show()
+		$fighters/minions/minion_center.set_physics_process(true)
+		
+	if (round_atual == 3):
+		$fighters/minions/minion_right.show()
+		$fighters/minions/minion_left.show()
+		$fighters/minions/minion_right.set_physics_process(true)
+		$fighters/minions/minion_left.set_physics_process(true)
+		
 	if (round_atual == 4):
 		round_atual = 0
 		get_tree().change_scene("res://src/ingame/stage/computador/tela-computador.tscn")
