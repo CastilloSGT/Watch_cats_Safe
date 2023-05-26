@@ -1228,6 +1228,7 @@ position = Vector2( 45, -196.667 )
 texture = ExtResource( 10 )
 
 [node name="Enemy-placar" type="Sprite" parent="placar/Placar"]
+pause_mode = 1
 position = Vector2( -3, -3 )
 texture = ExtResource( 12 )
 hframes = 2
@@ -1244,6 +1245,7 @@ position = Vector2( -75, -196.667 )
 texture = ExtResource( 10 )
 
 [node name="Player-placar" type="Sprite" parent="placar/Placar2"]
+pause_mode = 1
 position = Vector2( 3, -3 )
 z_index = 1
 texture = ExtResource( 11 )

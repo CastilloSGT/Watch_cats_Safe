@@ -136,7 +136,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 11.5, 11.5 )
+extents = Vector2( 10, 11.5 )
 
 [node name="minion" type="Area2D"]
 z_index = 1
@@ -180,10 +180,16 @@ hframes = 4
 vframes = 5
 
 [node name="colisao" type="CollisionShape2D" parent="."]
-position = Vector2( 1.5, 1.5 )
+position = Vector2( 0, 1.5 )
 shape = SubResource( 10 )
 
 [node name="ataque-delay" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="recover-time" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
 
@@ -193,3 +199,4 @@ one_shot = true
 [connection signal="pegou" from="juiz" to="." method="_on_juiz_pegou"]
 [connection signal="screen_exited" from="juiz/VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="timeout" from="ataque-delay" to="." method="_on_ataquedelay_timeout"]
+[connection signal="timeout" from="recover-time" to="." method="_on_recovertime_timeout"]
