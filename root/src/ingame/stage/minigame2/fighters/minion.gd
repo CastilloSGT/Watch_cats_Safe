@@ -46,9 +46,9 @@ func animacao(delta):
 		animation.play("idle")
 		
 	if (area_enemy):
-		if (Global.tipo_dano == 1 || Global.tipo_dano == 2) && !caiu && !is_timer_running:
+		if (Global.tipo_dano == 1 || Global.tipo_dano == 2) && caiu:
+			$"ataque-delay".stop()
 			animation.play("desmaio")
-			caiu = true
 			emit_signal("nocateado")
 			
 func getPos(delta):	
@@ -59,7 +59,7 @@ func getPos(delta):
 			animation.play("atacando") 
 			wait_time = 15
 		
-		if(area_enemy):
+		if(area_enemy && Global.tipo_dano != 0):
 			#roda muito mas dboa nao vo criar outro sensor
 			Global.vida_fighter -= .5
 			
@@ -110,7 +110,7 @@ func _on_minion_body_exited(body):
 	area_enemy = false
 
 func _on_juiz_pegou():
-	$EnemySprite.hide()
+	$MinionSprite.hide()
 	$colisao.disabled = true
 
 func _on_VisibilityNotifier2D_screen_exited():

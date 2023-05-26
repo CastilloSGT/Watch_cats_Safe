@@ -14,7 +14,7 @@ var caiu = false
 var i = 0
 signal nocateado()
 
-var vida = 100
+var vida = 500
 var area_enemy = false
 var can_attack = true
 
