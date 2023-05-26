@@ -2,6 +2,7 @@
 
 [resource]
 resource_name = "desmaio"
+length = 0.9
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("PlayerSprite:frame")
