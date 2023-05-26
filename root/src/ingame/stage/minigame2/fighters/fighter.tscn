@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/art/ingame/stage/minigame 2/player_sprite.png" type="Texture" id=1]
 [ext_resource path="res://src/ingame/stage/minigame2/fighters/fighter.gd" type="Script" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://assets/art/ingame/stage/minigame 2/animacoes/Player_desvio.tres" type="Animation" id=6]
 [ext_resource path="res://assets/art/ingame/stage/minigame 2/animacoes/Player_walk.tres" type="Animation" id=7]
 [ext_resource path="res://assets/art/ingame/stage/minigame 2/animacoes/Player_soco.tres" type="Animation" id=8]
+[ext_resource path="res://assets/art/ingame/stage/minigame 1/life.png" type="Texture" id=9]
+[ext_resource path="res://assets/fonts/PressStart2P.ttf" type="DynamicFontData" id=10]
 
 [sub_resource type="Animation" id=8]
 length = 0.001
@@ -24,20 +26,67 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
+[sub_resource type="Animation" id=9]
+resource_name = "caido"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 24, 25, 26, 27 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "recuperado"
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 28, 29, 30, 29, 31 ]
+}
+
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 16 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 8
+font_data = ExtResource( 10 )
+
+[sub_resource type="Theme" id=12]
+default_font = SubResource( 11 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 8
+font_data = ExtResource( 10 )
+
+[sub_resource type="Theme" id=14]
+default_font = SubResource( 13 )
 
 [node name="fighter" type="KinematicBody2D"]
 pause_mode = 2
 physics_interpolation_mode = 2
-collision_mask = 16
+collision_mask = 48
 script = ExtResource( 2 )
 
 [node name="animation" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 8 )
+anims/caido = SubResource( 9 )
 anims/desmaio = ExtResource( 5 )
 anims/desvio = ExtResource( 6 )
 anims/idle = ExtResource( 3 )
+anims/recuperado = SubResource( 10 )
 anims/soco = ExtResource( 8 )
 anims/soco-forte = ExtResource( 4 )
 anims/walk = ExtResource( 7 )
@@ -45,7 +94,7 @@ anims/walk = ExtResource( 7 )
 [node name="PlayerSprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 4
-vframes = 6
+vframes = 8
 
 [node name="colisao" type="CollisionShape2D" parent="."]
 position = Vector2( -1, 0 )
@@ -53,3 +102,49 @@ shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
 pause_mode = 1
+
+[node name="nocaute" type="Node2D" parent="."]
+
+[node name="nocauteBar" type="TextureRect" parent="nocaute"]
+margin_left = -22.0
+margin_top = -24.0
+margin_right = -22.0
+margin_bottom = -19.0
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 7
+
+[node name="lblNocaute" type="Label" parent="nocaute"]
+visible = false
+margin_left = -9.0
+margin_top = -42.0
+margin_right = 7.0
+margin_bottom = -33.0
+theme = SubResource( 12 )
+text = "01"
+
+[node name="nocaute" type="Timer" parent="nocaute"]
+wait_time = 5.0
+one_shot = true
+
+[node name="tutorial" type="Node2D" parent="."]
+
+[node name="lbltutorial" type="RichTextLabel" parent="tutorial"]
+visible = false
+margin_left = -40.0
+margin_top = -84.0
+margin_right = 35.0
+margin_bottom = -69.0
+rect_clip_content = false
+theme = SubResource( 14 )
+bbcode_enabled = true
+bbcode_text = "[wave] aperte z"
+text = " aperte z"
+scroll_active = false
+deselect_on_focus_loss_enabled = false
+
+[node name="tutorial" type="Timer" parent="tutorial"]
+one_shot = true
+
+[connection signal="timeout" from="nocaute/nocaute" to="." method="_on_nocaute_timeout"]
+[connection signal="timeout" from="tutorial/tutorial" to="." method="_on_tutorial_timeout"]
