@@ -1,0 +1,108 @@
+{
+    "stages": [
+        {
+            "id": "0",
+            "characters": [
+                {
+                    "id": 1,
+                    "dialogue": [
+                        {
+                            "text": "A falta de caráter dessa empresa com a população é ultrajante!"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "dialogue": [
+                        {
+                            "text": "Quem mais caiu nesses golpes?"
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "dialogue": [
+                        {
+                            "text": "Eles acham que somos inferiores só porque viemos do interior, que piada!"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "1",
+            "character": "X",
+            "dialogue": [
+                {
+                    "text1": "Tudo o que você precisa saber está nesse arquivo.",
+                    "text2": "Todos sabem quem é a organização responsável pela perda de lucros da cidade...",
+                    "text3": "Só que, o que ninguém sabe é a respeito da corrupção hierárquica em que essa empresa se encontra.",
+                    "text4": "Exceto a nós, os responsáveis pela investigação, e a partir de hoje, você."
+                }
+            ]
+        },
+        {
+            "id": "2",
+            "character": "A",
+            "dialogue": [
+                {
+                    "text1": "Bem vindo ao nosso mundo, Felinux.",
+                    "text2": "Recebemos seu pedido e resolvemos lhe ajudar. Mas antes, precisamos confirmar algo...",
+                    "text3": "O que pretende fazer agora que o golpe tornou-se realidade?",
+                    "text4": "Em minhas patas possuo duas pílulas, uma lhe guiará para a verdade, e a outra para a felicidade.",
+                    "text5": "Você é quem deve escolher com sabedoria.",
+                    "choices": [
+                        {
+                            "choice1": "Deixar o golpe cair em esquecimento, junto do dinheiro de muitas famílias necessitadas.",
+                            "choice2": "Se juntar à um grupo de hackers ambiciosos, em busca de redenção."
+                        }
+                    ],
+                    "text6": "Ótima escolha, siga-me. Irei apresentá-lo a alguns de nossos membros."
+                }
+            ]
+        },
+        {
+            "id": "3",
+            "character": "B",
+            "dialogue": [
+                {
+                    "text1": "Bem vindo ao nosso mundo."
+                }
+            ]
+        },
+        {
+            "id": "4",
+            "character": "C",
+            "questions": [
+                {
+                    "question1": "Qual é a capital atual do Brasil?",
+                    "answers": [
+                        {
+                            "answer1": "São Paulo",
+                            "answer2": "Rio de Janeiro",
+                            "answer3": "Brasília"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "5",
+            "character": "D",
+            "dialogue": [
+                {
+                    "text1": "Bem vindo ao nosso mundo."
+                }
+            ]
+        },
+        {
+            "id": "6",
+            "character": "E",
+            "dialogue": [
+                {
+                    "text1": "Bem vindo ao nosso mundo."
+                }
+            ]
+        }
+    ]
+}
