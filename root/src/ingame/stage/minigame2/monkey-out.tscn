@@ -1077,21 +1077,24 @@ pause_mode = 0
 physics_interpolation_mode = 0
 position = Vector2( -2, 45 )
 z_index = 2
-collision_mask = 18
+collision_mask = 82
 
 [node name="enemy" parent="fighters" instance=ExtResource( 9 )]
 
 [node name="minions" type="Node2D" parent="fighters"]
 
 [node name="minion_center" parent="fighters/minions" instance=ExtResource( 16 )]
+pause_mode = 1
 visible = false
 position = Vector2( 0, -66 )
 
 [node name="minion_left" parent="fighters/minions" instance=ExtResource( 16 )]
+pause_mode = 1
 visible = false
 position = Vector2( -55, -66 )
 
 [node name="minion_right" parent="fighters/minions" instance=ExtResource( 16 )]
+pause_mode = 1
 visible = false
 position = Vector2( 55, -66 )
 
@@ -1130,6 +1133,7 @@ text = "Tempo"
 
 [node name="rounds" type="Timer" parent="legendas"]
 pause_mode = 1
+wait_time = 60.0
 
 [node name="life" type="TextureRect" parent="legendas"]
 margin_left = -152.0
@@ -1268,5 +1272,6 @@ texture = ExtResource( 15 )
 [connection signal="timeout" from="fighters/delay" to="." method="_on_delay_timeout"]
 [connection signal="nocateado" from="fighters/fighter" to="." method="_on_fighter_nocateado"]
 [connection signal="nocateado" from="fighters/enemy" to="." method="_on_enemy_nocateado"]
+[connection signal="timeout" from="legendas/rounds" to="." method="_on_rounds_timeout"]
 [connection signal="timeout" from="intervalo/intervalo" to="." method="_on_intervalo_timeout"]
 [connection signal="timeout" from="tutorial/tutorial_timer" to="." method="_on_tutorial_timer_timeout"]

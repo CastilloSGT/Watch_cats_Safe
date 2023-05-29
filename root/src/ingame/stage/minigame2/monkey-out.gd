@@ -8,6 +8,11 @@ onready var lblround = $"intervalo/label-colorida"
 var round_atual = 1
 var fim_round = false
 var _position
+
+# tempo crescente
+var minutes = 0
+var seconds = 0
+
 signal reset()
 
 func _ready():
@@ -31,8 +36,9 @@ func rounds():
 	get_tree().paused = true
 
 func contagem():
-	var minutes = tempo.time_left / 60
-	var seconds = fmod(tempo.time_left, 60)
+	#se não ele nao respeita o timer de tutorial
+	if($tutorial/tutorial_timer.time_left == 0):
+		seconds = 60 - tempo.time_left
 	var msg = "%02d:%02d" % [minutes, seconds]
 	$legendas/lblTimer.set_text(msg)
 
@@ -55,7 +61,6 @@ func mudaPlacar():
 		$placar/Placar/animation.play("enemy-bad")
 	else:
 		$placar/Placar/animation.play("enemy-good")
-		
 
 func _on_tutorial_timer_timeout():
 	$tutorial.hide()
@@ -92,3 +97,6 @@ func _on_fighter_nocateado():
 func _on_enemy_nocateado():
 	rounds();
 	$legendas/vidas/vida.rect_size.x += 96/3
+
+func _on_rounds_timeout():
+	minutes += 1
