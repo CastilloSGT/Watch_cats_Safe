@@ -4,11 +4,13 @@ onready var animation = $animation
 var target: Vector2
 var speed = 100
 signal nocateado()
+var PRE_BANANA = preload("res://src/ingame/stage/minigame2/fighters/banana.tscn")
 
 var attack = false
 var caiu = false
 var area_enemy = false
-var ready = false
+var ready = true
+var throw = false
 
 # TIMER
 onready var my_timer = get_node("Timer")
@@ -31,16 +33,18 @@ func _physics_process(_delta: float) -> void:
 	
 	if(ready):
 		if($"../../fighter".position.y < 10):
-				if(self.name == "minion_center" && $"../../fighter".position.x > -20 && position.x < 20):
-					attack = true
-				if(self.name == "minion_left" && $"../../fighter".position.x <= -20):
-					attack = true
-				if(self.name == "minion_right" && $"../../fighter".position.x >= 20):
-					attack = true
+			if(self.name == "minion_center" && $"../../fighter".position.x > -20 && position.x < 20):
+				attack = true
+			if(self.name == "minion_left" && $"../../fighter".position.x <= -20):
+				attack = true
+			if(self.name == "minion_right" && $"../../fighter".position.x >= 20):
+				attack = true
+		else:
+			throw = true
 	
 	if !caiu:
 		getPos(_delta)
-	
+		
 func animacao(delta):
 	if (Global.tipo_dano != 1 && Global.tipo_dano != 2) && !caiu && !is_timer_running:
 		animation.play("idle")
@@ -115,3 +119,12 @@ func _on_juiz_pegou():
 
 func _on_VisibilityNotifier2D_screen_exited():
 	$".".queue_free()
+
+func _on_invoca_BANANA_timeout():
+	var BANANAS_NO_CHAO = get_tree().get_nodes_in_group("bananas").size()
+	if(BANANAS_NO_CHAO < 5): #max de 5 bananas
+		if(throw && ready && !caiu):
+			var BANANA = PRE_BANANA.instance() #inicia o tiro
+			get_parent().add_child(BANANA)
+			BANANA.position = self.position
+			throw = false

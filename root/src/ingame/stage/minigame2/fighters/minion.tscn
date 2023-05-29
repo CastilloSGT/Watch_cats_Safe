@@ -210,6 +210,11 @@ one_shot = true
 wait_time = 3.0
 one_shot = true
 
+[node name="invoca_BANANA" type="Timer" parent="."]
+pause_mode = 1
+wait_time = 3.0
+autostart = true
+
 [connection signal="body_entered" from="." to="." method="_on_minion_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_minion_body_exited"]
 [connection signal="nocateado" from="." to="juiz" method="_on_minion_nocateado"]
@@ -217,3 +222,4 @@ one_shot = true
 [connection signal="screen_exited" from="juiz/VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="timeout" from="ataque-delay" to="." method="_on_ataquedelay_timeout"]
 [connection signal="timeout" from="recover-time" to="." method="_on_recovertime_timeout"]
+[connection signal="timeout" from="invoca_BANANA" to="." method="_on_invoca_BANANA_timeout"]
