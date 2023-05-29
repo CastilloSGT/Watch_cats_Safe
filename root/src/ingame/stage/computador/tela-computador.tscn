@@ -110,6 +110,12 @@ rect_scale = Vector2( 1.5, 1.5 )
 icon = ExtResource( 8 )
 flat = true
 
+[node name="games" type="Button" parent="icons"]
+margin_left = 72.0
+margin_top = 112.0
+margin_right = 96.0
+margin_bottom = 136.0
+
 [node name="pop-outs" type="Node2D" parent="."]
 
 [node name="pos_chat" type="Position2D" parent="pop-outs"]
@@ -127,8 +133,16 @@ position = Vector2( 256, 104 )
 [node name="pos_browser" type="Position2D" parent="pop-outs"]
 position = Vector2( 144, 88 )
 
+[node name="quit" type="Button" parent="."]
+margin_left = 64.0
+margin_top = 152.0
+margin_right = 96.0
+margin_bottom = 172.0
+
 [connection signal="pressed" from="icons/chat" to="." method="_on_chat_pressed"]
 [connection signal="pressed" from="icons/IDE" to="." method="_on_IDE_pressed"]
 [connection signal="pressed" from="icons/file" to="." method="_on_file_pressed"]
 [connection signal="pressed" from="icons/lixo" to="." method="_on_lixo_pressed"]
 [connection signal="pressed" from="icons/browser" to="." method="_on_browser_pressed"]
+[connection signal="pressed" from="icons/games" to="." method="_on_games_pressed"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]

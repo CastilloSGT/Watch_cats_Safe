@@ -6,6 +6,13 @@ var lugar
 # DIALOGO
 var obj
 var areaOn
+var dialogo_on = false
+
+# SISTEMA DE FASES
+var fase = 1
+var pontos = [0,0,0,0,0]
+var fase_concluida = false
+
 
 #MINIGAME 1
 var pacotes = 0

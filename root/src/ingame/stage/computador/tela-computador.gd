@@ -6,13 +6,18 @@ const lixo = preload("res://src/ingame/stage/computador/pop-outs/lixo.tscn")
 const file = preload("res://src/ingame/stage/computador/pop-outs/file.tscn")
 const browser = preload("res://src/ingame/stage/computador/pop-outs/browser.tscn")
 
+const games = preload("res://src/ingame/stage/computador/pop-outs/games.tscn")
+
 var pop_out
 var pop_out_name
 var _position
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if(Global.fase_concluida):
+		games_load()
 
+# ABRE POP - OUTS
 func openModal():
 	var pop_out_group = get_tree().get_nodes_in_group(pop_out_name).size() 
 	# ABRE SÓ UM POP-OUT
@@ -20,6 +25,12 @@ func openModal():
 		var telinha = pop_out.instance()
 		get_parent().add_child(telinha)
 		telinha.position = _position.global_position
+
+func games_load():
+	_position = $"pop-outs/pos_chat"
+	pop_out = games
+	pop_out_name = "games"
+	openModal()
 	
 func _on_chat_pressed():
 	_position = $"pop-outs/pos_chat"
@@ -50,3 +61,9 @@ func _on_browser_pressed():
 	pop_out = browser
 	pop_out_name = "browser"
 	openModal()
+
+func _on_games_pressed():
+	games_load()
+
+func _on_quit_pressed():
+	get_tree().change_scene("res://src/ingame/cenario/casa/quarto.tscn")

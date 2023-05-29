@@ -14,7 +14,7 @@ func _ready():
 	get_node("boss/Boss-ship/colisao").disabled = true
 	$boss.hide()
 
-	tempo.wait_time = 60
+	tempo.wait_time = 6
 	tempo.start()
 	
 	var EMITTER = get_node("boss/Boss-ship")
@@ -80,6 +80,8 @@ func _on_Timer_timeout():
 # BOSS DERROTADO
 func _on_Bossship_boss_killed():
 	$"label-colorida".set_bbcode("[wave]VOCÊ GANHOU")
+	Global.pontos[1] = int(Global.pacotes * 10)
+	Global.fase_concluida = true
 	gameOver()
 	
 func _on_Bossship_player_killed():
