@@ -32,6 +32,32 @@ func games_load():
 	pop_out_name = "games"
 	openModal()
 	
+# se não forçar ele aparece sobre o cenario
+func queue_pop_outs():
+	var games = get_tree().get_nodes_in_group("games")
+	for game in games:
+		game.queue_free()
+	
+	var chats = get_tree().get_nodes_in_group("chat")
+	for chat in chats:
+		chat.queue_free()
+		
+	var IDEs = get_tree().get_nodes_in_group("IDE")
+	for IDE in IDEs:
+		IDE.queue_free()
+		
+	var lixos = get_tree().get_nodes_in_group("lixo")
+	for lixo in lixos:
+		lixo.queue_free()
+		
+	var files = get_tree().get_nodes_in_group("file")
+	for file in files:
+		file.queue_free()
+		
+	var browsers = get_tree().get_nodes_in_group("browser")
+	for browser in browsers:
+		browser.queue_free()
+	
 func _on_chat_pressed():
 	_position = $"pop-outs/pos_chat"
 	pop_out = chat
@@ -66,4 +92,7 @@ func _on_games_pressed():
 	games_load()
 
 func _on_quit_pressed():
+	Global.fase_concluida = true
+	Global.lugar = "computador"
+	queue_pop_outs()
 	get_tree().change_scene("res://src/ingame/cenario/casa/quarto.tscn")

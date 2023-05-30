@@ -4,7 +4,8 @@ func _process(delta):
 	if(Global.fase_concluida):
 		$iniciar_game.hide()
 		$resultado.show()
-		$resultado/pontos.text = str(Global.pontos[Global.fase])
+		if(Global.fase > 6):	
+			$resultado/pontos.text = str(Global.pontos[Global.fase])
 	else:
 		$resultado.hide()
 		$iniciar_game.show()

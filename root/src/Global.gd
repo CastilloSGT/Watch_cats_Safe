@@ -13,7 +13,6 @@ var fase = 1
 var pontos = [0,0,0,0,0]
 var fase_concluida = false
 
-
 #MINIGAME 1
 var pacotes = 0
 var dano = 5
