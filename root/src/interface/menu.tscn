@@ -1,8 +1,16 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/fonts/MonsterFriendFore - Opstions.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/interface/menu.gd" type="Script" id=3]
 [ext_resource path="res://assets/art/interface/menu/menu_screen.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=4]
+size = 30
+extra_spacing_bottom = 9
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=23]
+default_font = SubResource( 4 )
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.815686, 0.152941, 0.152941, 1 )
@@ -27,12 +35,6 @@ Button/styles/focus = SubResource( 2 )
 Button/styles/hover = SubResource( 5 )
 Button/styles/normal = null
 Button/styles/pressed = null
-
-[sub_resource type="DynamicFont" id=4]
-size = 30
-outline_color = Color( 0, 0, 0, 1 )
-extra_spacing_bottom = 9
-font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxFlat" id=9]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -68,17 +70,19 @@ texture = ExtResource( 4 )
 margin_left = 50.0
 margin_top = 50.0
 margin_right = 272.0
-margin_bottom = 193.0
+margin_bottom = 216.0
 focus_neighbour_top = NodePath("btn_options")
 size_flags_vertical = 3
+theme = SubResource( 23 )
 alignment = 1
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="btn_start" type="Button" parent="menu"]
+margin_top = 11.0
 margin_right = 222.0
-margin_bottom = 45.0
+margin_bottom = 56.0
 grow_horizontal = 0
 grow_vertical = 2
 focus_neighbour_top = NodePath("../btn_options")
@@ -95,9 +99,9 @@ flat = true
 icon_align = 1
 
 [node name="btn_load" type="Button" parent="menu"]
-margin_top = 49.0
+margin_top = 60.0
 margin_right = 222.0
-margin_bottom = 94.0
+margin_bottom = 105.0
 focus_neighbour_top = NodePath("../btn_start")
 focus_neighbour_bottom = NodePath("../btn_options")
 theme = SubResource( 3 )
@@ -109,9 +113,9 @@ flat = true
 icon_align = 1
 
 [node name="btn_options" type="Button" parent="menu"]
-margin_top = 98.0
+margin_top = 109.0
 margin_right = 222.0
-margin_bottom = 143.0
+margin_bottom = 154.0
 focus_neighbour_top = NodePath("../btn_load")
 focus_neighbour_bottom = NodePath("../btn_start")
 theme = SubResource( 3 )
