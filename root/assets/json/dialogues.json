@@ -1,106 +1,263 @@
 {
-    "stages": [
+    "environment": [
         {
-            "id": "0",
-            "characters": [
+            "bedroom": [
                 {
-                    "id": 1,
-                    "dialogue": [
-                        {
-                            "text": "A falta de caráter dessa empresa com a população é ultrajante!"
-                        }
-                    ]
+                    "id": "studyDesk",
+                    "text": "Quem sabe quando você poderá estudar em paz novamente."
                 },
                 {
-                    "id": 2,
-                    "dialogue": [
-                        {
-                            "text": "Quem mais caiu nesses golpes?"
-                        }
-                    ]
+                    "id": "couch",
+                    "text": "Ótimo lugar para se descansar após um longo dia."
+                }
+            ],
+            "livingRoom": [
+                {
+                    "id": "bookShelf",
+                    "text": "'Hacking: A Arte da Exploração'. Um de seus livros prediletos."
                 },
                 {
-                    "id": 3,
-                    "dialogue": [
+                    "id": "couch",
+                    "text": "O cheiro nostalgico do veludo do sofá lhe traz lembranças de dias melhores."
+                },
+                {
+                    "id": "armChair",
+                    "text": "A poltrona onde seu pai costuma ler o jornal todas as manhãs."
+                },
+                {
+                    "id": "cityDoor",
+                    "text": "Você só poderá ir à cidade após realizar seus objetivos."
+                }
+            ],
+            "bathroom": [
+                {
+                    "id": "sink",
+                    "text": "Lavar as patas após fazer suas necessidades é importante."
+                },
+                {
+                    "id": "litterBox",
+                    "text": "Um lugar seguro e tranquilo, mas meio humilhante."
+                },
+                {
+                    "id": "bathtub",
+                    "text": "Nada melhor do que um banho para manter os pelos sedosos."
+                }
+            ],
+            "kitchen": [
+                {
+                    "id": "sink",
+                    "text": "'Lembre-se de lavar as louças. Com amor, Mamãe'."
+                },
+                {
+                    "id": "refrigerator",
+                    "text": "Farta de comida para animais, estranhamente apropriado."
+                },
+                {
+                    "id": "diningTable",
+                    "text": "Fornece os momentos que a sua família mais ama."
+                }
+            ]
+        }
+    ],
+    "intro": [
+        "O ano é 1998... Um ano comum, como qualquer outro.",
+        "Felinux, ainda adolescente, estava estudando o tópico de Cibersegurança em seu quarto, um tópico que ele sempre gostou.",
+        "Até que escutou um grito - sua mãe havia passado mal e seu pai, desesperado, começou a se preparar para levá-la ao hospital.",
+        "Felinux não fazia ideia do que havia acontecido, apenas de que algo estava errado.",
+        "[Duas horas depois]",
+        "Foi então que a realidade veio a tona - sua mãe havia caido num golpe de phishing -",
+        "Um crime deplorável e extremamente comum, que explora a fraqueza da mentalidade animal,",
+        "onde alguém engana um animal de modo a fazê-lo revelar informações sensíveis, como dados pessoais.",
+        "E com isso, o hacker conseguiu obter os dados mais valiosos da família... Seus dados bancários.",
+        "Ele sacou tudo o que eles tinham em seu nome, de forma anônima e confidencial, sem deixar um traço.",
+        "Isso significou a queda de Felinux e sua família.",
+        "[Alguns anos depois]",
+        "Por anos, eles tiveram que viver com as memórias do golpe que receberam de um cibercriminoso anônimo.",
+        "Esse evento mudou Felinux. Ele não deixaria isso passar, de forma alguma. Mas ele ainda era muito novo, e não poderia fazer nada para resolver a situação.",
+        "Foi então que ele jurou a si mesmo se dedicar totalmente à Cibersegurança, para algum dia restaurar a honra de sua família, de uma vez por todas.",
+        "Mas nem tudo é o que parece, e Felinux descobriria isso mais tarde."
+    ],
+    "complaints": [
+        "É ultrajante a falta de caráter dessa empresa com a população!",
+        "Quem mais caiu nos golpes?",
+        "Eles acham que somos inferiores só porque viemos do interior, que piada!"
+    ],
+    "newOpportunity": [
+        {
+            "character": "V",
+            "dialogue": [
+                {
+                    "text1": "Olá, Felinux.",
+                    "text2": "Recebemos seu pedido e resolvemos lhe ajudar. Mas antes, precisamos confirmar algo...",
+                    "text3": "O que pretende fazer agora que o golpe tornou-se realidade?",
+                    "text4": "Em minhas patas possuo duas pílulas, uma lhe guiará para a cruel verdade, e a outra para a ignorante alegria.",
+                    "text5": "Você deve escolher com sabedoria.",
+                    "choices": [
                         {
-                            "text": "Eles acham que somos inferiores só porque viemos do interior, que piada!"
+                            "choice1": "Deixar os golpes caírem no esquecimento, junto do dinheiro e da felicidade de sua e de muitas outras pobres famílias.",
+                            "choice2": "Se juntar à um grupo de hackers ambiciosos, em busca da redenção que tanto quis."
                         }
-                    ]
+                    ],
+                    "wrongChoice": "Tem certeza do que deseja? Vou lhe dar mais tempo para pensar a respeito.",
+                    "rightChoice": "Ótima escolha, siga-me. Irei apresentá-lo a alguns de nossos membros."
                 }
             ]
         },
         {
-            "id": "1",
-            "character": "X",
+            "character": "V",
             "dialogue": [
                 {
                     "text1": "Tudo o que você precisa saber está nesse arquivo.",
                     "text2": "Todos sabem quem é a organização responsável pela perda de lucros da cidade...",
-                    "text3": "Só que, o que ninguém sabe é a respeito da corrupção hierárquica em que essa empresa se encontra.",
+                    "text3": "Mas ninguém sabe a respeito da corrupção hierárquica em que essa empresa se encontra.",
                     "text4": "Exceto a nós, os responsáveis pela investigação, e a partir de hoje, você."
                 }
             ]
-        },
+        }
+    ],
+    "wakeup": [
         {
-            "id": "2",
-            "character": "A",
+            "character": "Marlia Mia",
             "dialogue": [
+                "Que bom que você está aqui!",
+                "Essa ala é super importante, afinal é aqui onde você verá suas conquistas.",
+                "A cada empresa que for derrotada por suas patas, você receberá alguns petiscos.",
+                "Esses petiscos servirão como doação às famílias necessitadas ao fim da nossa missão.",
+                "Aqui também teremos as missões que você deve executar para derrubar cada uma das empresas.",
+                "Para começar, você deve escolher a missão que possui uma espécie de aura em sua volta.",
+                "Caso a missão for realizada com sucesso, você desbloqueará uma nova missão.",
+                "Ao terminar todas as missões, você receberá uma missão especial que testará tudo aquilo que você aprendeu até então.",
+                "Ah, sim. Em cada missão você receberá instruções sobre qual ataque estará realizando, ",
+                "e elas serão informadas para você através de diferentes membros dos Dedcats.",
+                "Lembre-se de sempre passar por aqui sempre que quiser prosseguir com a sua jornada.",
+                "Acredito que isso seja tudo. Seja bem vindo ao nosso mundo, Felinux."
+            ]
+        }
+    ],
+    "stages": [
+        {
+            "annotationBoard": [
                 {
-                    "text1": "Bem vindo ao nosso mundo, Felinux.",
-                    "text2": "Recebemos seu pedido e resolvemos lhe ajudar. Mas antes, precisamos confirmar algo...",
-                    "text3": "O que pretende fazer agora que o golpe tornou-se realidade?",
-                    "text4": "Em minhas patas possuo duas pílulas, uma lhe guiará para a verdade, e a outra para a felicidade.",
-                    "text5": "Você é quem deve escolher com sabedoria.",
-                    "choices": [
-                        {
-                            "choice1": "Deixar o golpe cair em esquecimento, junto do dinheiro de muitas famílias necessitadas.",
-                            "choice2": "Se juntar à um grupo de hackers ambiciosos, em busca de redenção."
-                        }
+                    "id": 1,
+                    "inCharge": "Agnes",
+                    "age": "45 anos",
+                    "role": "Administradora de Redes",
+                    "text": [
+                        "Essa empresa está responsável pelo armazenamento de informações confidenciais das outras empresas.",
+                        "É o primeiro pilar para derrubar a Aumazon."
                     ],
-                    "text6": "Ótima escolha, siga-me. Irei apresentá-lo a alguns de nossos membros."
-                }
-            ]
-        },
-        {
-            "id": "3",
-            "character": "B",
-            "dialogue": [
+                    "comment": "Derrubando essa empresa, conseguiremos atacar as próximas mais facilmente."
+                },
                 {
-                    "text1": "Bem vindo ao nosso mundo."
+                    "id": 2,
+                    "inCharge": "Neilda",
+                    "age": "34 anos",
+                    "role": "Gerente de Finanças",
+                    "text": [
+                        "Essa empresa está responsável por todas as transações internas e externas das outras empresas.",
+                        "É o segundo pilar para derrubar a Aumazon."
+                    ],
+                    "comment": "Ela é responsável por esquemas de corrupção e lavagem de dinheiro."
+                },
+                {
+                    "id": 3,
+                    "inCharge": "Meteorium",
+                    "age": "56 anos",
+                    "role": "",
+                    "text": [
+                        "Essa empresa está responsável por enviar o dinheiro sujo para o exterior, servindo como uma empresa fantasma.",
+                        "É o terceiro pilar para derrubar a Aumazon."
+                    ]
+                },
+                {
+                    "id": 4,
+                    "inCharge": "",
+                    "age": "",
+                    "role": "",
+                    "text": [
+                        "Essa empresa está responsável por ",
+                        "É o quarto e último pilar para derrubar a Aumazon."
+                    ]
                 }
             ]
         },
         {
-            "id": "4",
-            "character": "C",
+            "id": "Rat Attack",
+            "character": "V",
+            "dialogue": [
+                "Enfim sua primeira missão, Felinux.",
+                "Essa é a primeira empresa que devemos atacar para chegarmos a verdade.",
+                "Nós faremos uma invasão à rede interna da empresa, visando interceptar o tráfego de seus pacotes.",
+                "Será muito parecido com um ataque chamado Network Eavesdropping, ",
+                "no qual o atacante monitora as comunicações da rede de uma empresa ou organização, ",
+                "buscando interceptar e capturar quaisquer pacotes, informações confidenciais, que estejam trafegando por ela. ",
+                "A única diferença é que não teremos tempo o suficiente para trabalharmos.",
+                "Mas através dessa interceptação, conseguiremos ter em mãos quase todas as informações confidenciais que precisamos.",
+                "Mais especificamente, teremos dados de todas as outras empresas que são cúmplices dos golpes.",
+                "Só há um problema. Essa empresa possui uma defesa cibernética formidável.",
+                "Então assim que te colocarmos dentro, o relógio estará passando. Você deve ser rápido.",
+                "Vamos ao que interessa.",
+                "Seu objetivo nessa missão é derrubar o maior número possível de trabalhadores.",
+                "A cada trabalhador que você derrubar de seu posto, você estará surrupiando um pacote de dados.",
+                "Mas seja rápido! Assim que iniciarmos a invasão, a organização enviará o administrador para resolver a situação.",
+                "O administrador, ao entrar em ação, vai colocar qualquer possível vírus em quarentena, e não pode ser derrotado.",
+                "Você deve obter a maior quantidade de pacotes possíveis, antes que o administrador chegue para acabar com a festa.",
+                "Caso contrário, não teremos informações o suficiente para nosso próximo ataque.",
+                "Esse é o fim das instruções.",
+                "Boa sorte, Felinux."
+            ]
+        },
+        {
+            "id": "Bunny Engineering",
+            "character": "V",
             "questions": [
                 {
-                    "question1": "Qual é a capital atual do Brasil?",
-                    "answers": [
+                    "question1": "Alô, quem fala?",
+                    "answers1": [
                         {
-                            "answer1": "São Paulo",
-                            "answer2": "Rio de Janeiro",
-                            "answer3": "Brasília"
+                            "answerA": "Bom dia, aqui quem fala é seu chefe.",
+                            "answerB": "Bom dia, sou um novo funcionário da empresa.",
+                            "answerC": "Quem fala é seu admirador secreto!"
+                        }
+                    ],
+                    "wrongAnswer": "Isso é um trote? Vá procurar o que fazer!",
+                    "rightAnswer": "Ah, sim. Eu ouvi falar de você.",
+
+                    "question2": "",
+                    "answers2": [
+                        {
+                            "answerA": "",
+                            "answerB": "",
+                            "answerC": ""
                         }
                     ]
                 }
             ]
         },
         {
-            "id": "5",
-            "character": "D",
+            "id": "Monkey Out",
+            "character": "V",
             "dialogue": [
                 {
-                    "text1": "Bem vindo ao nosso mundo."
+                    "text1": ""
                 }
             ]
         },
         {
-            "id": "6",
-            "character": "E",
+            "id": "Muuware",
+            "character": "V",
             "dialogue": [
                 {
-                    "text1": "Bem vindo ao nosso mundo."
+                    "text1": ""
+                }
+            ]
+        },
+        {
+            "id": "Final Stage",
+            "character": "V",
+            "dialogue": [
+                {
+                    "text1": ""
                 }
             ]
         }
