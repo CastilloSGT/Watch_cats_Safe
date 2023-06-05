@@ -3,9 +3,14 @@ extends Control
 var is_paused = false setget set_is_paused
 
 func _unhandled_input(event):
-	if event.is_action_pressed("paused"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		self.is_paused = !is_paused
+	if Global.Maps == 1:
+		Global.Maps = 1
+	else:
+		if event.is_action_pressed("paused"):
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			self.is_paused = !is_paused
+	
+	
 #SLC CASH - SSD
 
 func set_is_paused(value):

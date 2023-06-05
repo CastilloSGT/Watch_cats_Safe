@@ -35,6 +35,7 @@ var yes = false
 var Telas = false
 var AUX = 0
 var visibl = false
+var Maps = 0
 
 
 func _process(delta):
