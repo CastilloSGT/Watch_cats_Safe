@@ -4,21 +4,20 @@ func _process(delta):
 	if(Global.fase_concluida):
 		$iniciar_game.hide()
 		$resultado.show()
-		if(Global.fase > 6):	
-			$resultado/pontos.text = str(Global.pontos[Global.fase])
+		if(Global.fase < 6):
+			$resultado/textinho.set_bbcode(str("[wave] Você ganhou ", Global.pontos[Global.fase], " pontos"))
 	else:
+		$iniciar_game/Games.frame = Global.pontos[Global.fase]
 		$resultado.hide()
 		$iniciar_game.show()
-
 
 func _on_iniciar_pressed():
 	$iniciar_game.hide()
 	var game
-	
 	match Global.fase:
-		1:
+		0:
 			game = "minigame1/rat-attack.tscn"
-		2:
+		1:
 			game = "minigame2/monkey-out.tscn"
 	
 	get_tree().change_scene(str("res://src/ingame/stage/",game))

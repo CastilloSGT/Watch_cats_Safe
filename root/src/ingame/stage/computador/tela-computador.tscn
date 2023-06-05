@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/ingame/stage/computador/tela-computador.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/ingame/stage/computador/tela-computador.png" type="Texture" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://assets/art/ingame/stage/computador/icons/IDE.png" type="Texture" id=6]
 [ext_resource path="res://assets/art/ingame/scenario/home/bedroom/tileset-quarto.png" type="Texture" id=7]
 [ext_resource path="res://assets/art/ingame/stage/computador/icons/browser.png" type="Texture" id=8]
+[ext_resource path="res://assets/art/ingame/stage/computador/icons/games.png" type="Texture" id=9]
+[ext_resource path="res://assets/art/ingame/stage/computador/icons/desconnect.png" type="Texture" id=10]
 
 [sub_resource type="TileSet" id=1]
 0/name = "tileset-quarto.png 0"
@@ -112,9 +114,18 @@ flat = true
 
 [node name="games" type="Button" parent="icons"]
 margin_left = 72.0
-margin_top = 112.0
-margin_right = 96.0
+margin_top = 104.0
+margin_right = 104.0
 margin_bottom = 136.0
+flat = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Games" type="Sprite" parent="icons/games"]
+position = Vector2( 16, 16 )
+texture = ExtResource( 9 )
+hframes = 2
 
 [node name="pop-outs" type="Node2D" parent="."]
 
@@ -134,10 +145,13 @@ position = Vector2( 256, 104 )
 position = Vector2( 144, 88 )
 
 [node name="quit" type="Button" parent="."]
-margin_left = 64.0
-margin_top = 152.0
-margin_right = 96.0
-margin_bottom = 172.0
+margin_left = 312.0
+margin_top = 155.0
+margin_right = 340.0
+margin_bottom = 177.0
+rect_scale = Vector2( 0.75, 0.75 )
+icon = ExtResource( 10 )
+flat = true
 
 [connection signal="pressed" from="icons/chat" to="." method="_on_chat_pressed"]
 [connection signal="pressed" from="icons/IDE" to="." method="_on_IDE_pressed"]

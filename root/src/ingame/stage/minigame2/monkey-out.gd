@@ -12,6 +12,7 @@ var _position
 # tempo crescente
 var minutes = 0
 var seconds = 0
+var bonus = 0
 
 signal reset()
 
@@ -27,6 +28,16 @@ func _physics_process(_delta: float) -> void:
 	contagem()
 	mudaPlacar()
 	_round.set_text(str("Round ",round_atual))
+	
+	if($legendas/vidas/vida.rect_size.x > 0):
+		bonus = 4 - (96/$legendas/vidas/vida.rect_size.x)
+	
+	if(bonus >= 2):
+		print(true)
+		Global.fase_concluida = true
+		Global.pontos[1] = int((bonus*100) / (minutes * .15))
+	else:
+		Global.fase_concluida = false
 
 func rounds():
 	$intervalo/intervalo.start()

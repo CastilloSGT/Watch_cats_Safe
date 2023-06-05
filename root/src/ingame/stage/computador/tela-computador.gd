@@ -92,7 +92,6 @@ func _on_games_pressed():
 	games_load()
 
 func _on_quit_pressed():
-	Global.fase_concluida = true
 	Global.lugar = "computador"
 	queue_pop_outs()
 	get_tree().change_scene("res://src/ingame/cenario/casa/quarto.tscn")

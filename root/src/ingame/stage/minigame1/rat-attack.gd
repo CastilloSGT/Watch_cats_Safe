@@ -14,7 +14,7 @@ func _ready():
 	get_node("boss/Boss-ship/colisao").disabled = true
 	$boss.hide()
 
-	tempo.wait_time = 6
+	tempo.wait_time = 60
 	tempo.start()
 	
 	var EMITTER = get_node("boss/Boss-ship")
@@ -58,11 +58,11 @@ func gameOver():
 	$"label-colorida".show()
 	$modulate.show()
 	#força a morte das instancias
-	var inimigos = get_tree().get_nodes_in_group("enemies").size()
+	var inimigos = get_tree().get_nodes_in_group("enemies")
 	for inimigo in inimigos:
 		inimigo.queue_free()
 		
-	var tiros = get_tree().get_nodes_in_group("tiros").size()
+	var tiros = get_tree().get_nodes_in_group("tiros")
 	for tiro in tiros:
 		tiro.queue_free()
 	
@@ -89,7 +89,7 @@ func _on_Timer_timeout():
 # BOSS DERROTADO
 func _on_Bossship_boss_killed():
 	$"label-colorida".set_bbcode("[wave]VOCÊ GANHOU")
-	Global.pontos[1] = int(Global.pacotes * 10)
+	Global.pontos[0] = int(Global.pacotes * 10)
 	Global.fase_concluida = true
 	gameOver()
 	

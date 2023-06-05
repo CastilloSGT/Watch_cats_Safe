@@ -1,7 +1,7 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/fonts/PressStart2P.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://assets/art/ingame/stage/computador/icons/browser.png" type="Texture" id=2]
+[ext_resource path="res://assets/art/ingame/stage/computador/icons/games.png" type="Texture" id=2]
 [ext_resource path="res://src/ingame/stage/computador/pop-outs/games.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=3]
@@ -12,18 +12,14 @@ font_data = ExtResource( 1 )
 default_font = SubResource( 3 )
 
 [sub_resource type="DynamicFont" id=1]
+size = 8
 font_data = ExtResource( 1 )
 
 [sub_resource type="Theme" id=7]
 default_font = SubResource( 1 )
 
-[sub_resource type="DynamicFont" id=5]
-font_data = ExtResource( 1 )
-
-[sub_resource type="Theme" id=8]
-default_font = SubResource( 5 )
-
 [sub_resource type="DynamicFont" id=9]
+size = 8
 font_data = ExtResource( 1 )
 
 [sub_resource type="Theme" id=10]
@@ -46,6 +42,12 @@ margin_top = -72.0
 margin_right = 88.0
 margin_bottom = 32.0
 
+[node name="Games" type="Sprite" parent="iniciar_game"]
+position = Vector2( 88, 48 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 2 )
+hframes = 2
+
 [node name="iniciar" type="Button" parent="iniciar_game"]
 margin_left = 24.0
 margin_top = 72.0
@@ -54,20 +56,16 @@ margin_bottom = 94.0
 theme = SubResource( 6 )
 text = "Iniciar"
 
-[node name="Browser" type="Sprite" parent="iniciar_game"]
-position = Vector2( 88, 48 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 2 )
-
 [node name="textinhoinho" type="RichTextLabel" parent="iniciar_game"]
-margin_left = 24.0
-margin_top = -8.0
-margin_right = 160.0
+margin_left = 8.0
+margin_top = 16.0
+margin_right = 184.0
+margin_bottom = 56.0
 rect_clip_content = false
 theme = SubResource( 7 )
 bbcode_enabled = true
-bbcode_text = "[wave] Destruir"
-text = " Destruir"
+bbcode_text = "[wave] Pronto pra hackear?"
+text = " Pronto pra hackear?"
 scroll_active = false
 
 [node name="resultado" type="Panel" parent="."]
@@ -76,23 +74,16 @@ margin_top = -72.0
 margin_right = 88.0
 margin_bottom = 32.0
 
-[node name="pontos" type="Label" parent="resultado"]
-margin_left = 56.0
-margin_top = 48.0
-margin_right = 128.0
-margin_bottom = 72.0
-theme = SubResource( 8 )
-text = "100"
-
 [node name="textinho" type="RichTextLabel" parent="resultado"]
-margin_left = 16.0
-margin_right = 160.0
-margin_bottom = 16.0
+margin_left = 32.0
+margin_top = 24.0
+margin_right = 144.0
+margin_bottom = 56.0
 rect_clip_content = false
 theme = SubResource( 10 )
 bbcode_enabled = true
-bbcode_text = "[wave] Pontuação"
-text = " Pontuação"
+bbcode_text = "[wave] Você ganhou 9990 pontos"
+text = " Você ganhou 9990 pontos"
 scroll_active = false
 
 [node name="fechar" type="Button" parent="resultado"]
