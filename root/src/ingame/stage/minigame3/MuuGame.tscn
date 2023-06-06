@@ -550,13 +550,13 @@ autostart = true
 
 [node name="enemy-singer" parent="." instance=ExtResource( 4 )]
 pause_mode = 1
-position = Vector2( 40, 208 )
-scale = Vector2( 1.5, 1.5 )
+position = Vector2( 32, 208 )
+scale = Vector2( 1.75, 1.75 )
 
 [node name="player-singer" parent="." instance=ExtResource( 6 )]
 pause_mode = 1
-position = Vector2( 312, 208 )
-scale = Vector2( 1.5, 1.5 )
+position = Vector2( 280, 208 )
+scale = Vector2( 1.75, 1.75 )
 
 [node name="player_arrows" type="Node2D" parent="."]
 pause_mode = 1
@@ -648,14 +648,15 @@ position = Vector2( 80, 0 )
 pause_mode = 2
 
 [node name="label-colorida" parent="pause-mode" instance=ExtResource( 8 )]
-margin_left = 72.0
+margin_left = 96.0
 margin_top = 152.0
-margin_right = 264.0
+margin_right = 256.0
 margin_bottom = 168.0
 rect_clip_content = false
 custom_fonts/normal_font = SubResource( 9 )
 bbcode_text = "[wave]NOVO ROUND[/wave]"
 text = "NOVO ROUND"
+scroll_active = false
 
 [node name="modulate" type="CanvasModulate" parent="pause-mode"]
 color = Color( 0.807843, 0.839216, 0.909804, 1 )
