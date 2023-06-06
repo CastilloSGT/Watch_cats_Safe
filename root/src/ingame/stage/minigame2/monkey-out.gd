@@ -27,7 +27,13 @@ func _ready():
 func _physics_process(_delta: float) -> void:
 	contagem()
 	mudaPlacar()
-	_round.set_text(str("Round ",round_atual))
+	
+	if(round_atual < 3):
+		_round.set_text(str("Round ",round_atual))
+		_round.rect_position.x = 88
+	else:
+		_round.set_text("Round Final")
+		_round.rect_position.x = 74
 	
 	if($legendas/vidas/vida.rect_size.x > 0):
 		bonus = 4 - (96/$legendas/vidas/vida.rect_size.x)
@@ -42,7 +48,9 @@ func _physics_process(_delta: float) -> void:
 func rounds():
 	$intervalo/intervalo.start()
 	round_atual += 1
-	
+	if(round_atual == 4):
+		$"intervalo/label-colorida".set_bbcode("[wave]Fim de jogo")
+		
 	intervalo.show()
 	get_tree().paused = true
 

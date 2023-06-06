@@ -14,6 +14,8 @@ var _position
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	$icons/games/Games.frame = Global.fase
+	
 	if(Global.fase_concluida):
 		games_load()
 
