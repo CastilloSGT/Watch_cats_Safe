@@ -57,6 +57,15 @@ func invocarRato():
 func gameOver():
 	$"label-colorida".show()
 	$modulate.show()
+	#força a morte das instancias
+	var inimigos = get_tree().get_nodes_in_group("enemies")
+	for inimigo in inimigos:
+		inimigo.queue_free()
+		
+	var tiros = get_tree().get_nodes_in_group("tiros")
+	for tiro in tiros:
+		tiro.queue_free()
+	
 	get_tree().paused = true
 	$timers/gameOver.start()
 
@@ -80,10 +89,13 @@ func _on_Timer_timeout():
 # BOSS DERROTADO
 func _on_Bossship_boss_killed():
 	$"label-colorida".set_bbcode("[wave]VOCÊ GANHOU")
+	Global.pontos[0] = int(Global.pacotes * 10)
+	Global.fase_concluida = true
 	gameOver()
 	
 func _on_Bossship_player_killed():
 	$"label-colorida".set_bbcode("[wave]VOCÊ PERDEU")
+	Global.fase_concluida = false
 	gameOver()	
 
 func _on_gameOver_timeout():

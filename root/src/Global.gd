@@ -6,6 +6,12 @@ var lugar
 # DIALOGO
 var obj
 var areaOn
+var dialogo_on = false
+
+# SISTEMA DE FASES
+var fase = 0
+var pontos = [0,0,0,0,0]
+var fase_concluida = false
 
 #MINIGAME 1
 var pacotes = 0
@@ -14,8 +20,13 @@ var Boss_life
 
 #MINIGAME 2
 var tipo_dano = -1 # 0 = desvia, 1 = soco fraco, 2 = soco forte
-var area_enemy = false #sensor
-var pontos_dano = 0 #exibe na tela a quantidade de dano causado
+var BANANA_ATTACK = false
+
+var pos_fighter
+var pos_enemy
+
+var vida_fighter = 0
+var vida_enemy = 0
 
 
 # MINIGAME 3

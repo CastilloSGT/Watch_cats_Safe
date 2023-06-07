@@ -2,6 +2,7 @@
 
 [resource]
 resource_name = "desvio"
+length = 1.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1

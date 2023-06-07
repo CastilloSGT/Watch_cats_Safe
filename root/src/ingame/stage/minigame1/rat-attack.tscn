@@ -86,12 +86,12 @@ font_data = ExtResource( 4 )
 [sub_resource type="Theme" id=4]
 default_font = SubResource( 3 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=11]
 size = 8
 font_data = ExtResource( 4 )
 
 [sub_resource type="Theme" id=9]
-default_font = SubResource( 8 )
+default_font = SubResource( 11 )
 
 [sub_resource type="TileSet" id=10]
 0/name = "boss_life.png 0"
