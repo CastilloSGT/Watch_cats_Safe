@@ -80,8 +80,9 @@ __meta__ = {
 }
 
 [node name="btn_start" type="Button" parent="menu"]
+margin_top = 11.0
 margin_right = 258.0
-margin_bottom = 45.0
+margin_bottom = 56.0
 grow_horizontal = 0
 grow_vertical = 2
 focus_neighbour_top = NodePath("../btn_options")
@@ -98,9 +99,9 @@ flat = true
 icon_align = 1
 
 [node name="btn_load" type="Button" parent="menu"]
-margin_top = 49.0
+margin_top = 60.0
 margin_right = 258.0
-margin_bottom = 94.0
+margin_bottom = 105.0
 focus_neighbour_top = NodePath("../btn_start")
 focus_neighbour_bottom = NodePath("../btn_options")
 theme = SubResource( 3 )
@@ -112,9 +113,9 @@ flat = true
 icon_align = 1
 
 [node name="btn_options" type="Button" parent="menu"]
-margin_top = 98.0
+margin_top = 109.0
 margin_right = 258.0
-margin_bottom = 143.0
+margin_bottom = 154.0
 focus_neighbour_top = NodePath("../btn_load")
 focus_neighbour_bottom = NodePath("../btn_start")
 theme = SubResource( 3 )
