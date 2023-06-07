@@ -5,34 +5,28 @@ const up = preload("res://src/ingame/stage/minigame3/arrows_move/movearrow_up.ts
 const right = preload("res://src/ingame/stage/minigame3/arrows_move/movearrow_right.tscn")
 const down = preload("res://src/ingame/stage/minigame3/arrows_move/movearrow_down.tscn")
 
-onready var control_spaw = $Control_spaw
+onready var control_spaw = $timers/Control_spaw
+onready var delay_timer = $timers/delay;
+onready var my_timer = $timers/Timer;
+onready var tutorial_timer = $timers/tutorial/tutorial_timer;
+onready var reset = $timers/reset;
 
-#TIMER
-onready var my_timer = get_node("Timer")
-var wait_time = 0
-var reduction = 0.2
-var is_timer_running = false #sensor
-var novoRound = false
+var timeDefined = 0
+var _round = 0
 
 #NOTAS
 var sequence = [
-	[1,2,3,4,-1,-1], [1,2,3,4,-1,-1],
-	[1,1,1,4,2,1,-1,-1,-1], [1,1,1,4,2,1,-1,-1,-1],
-	[1,2,2,3,2,1,1,-1,-1,-1,-1,-1,-1], [1,2,2,3,2,1,1,-1,-1,-1,-1,-1,-1],
-	[1,2,3,4,-1,-1,-1,-1], [1,2,3,4,-1,-1,-1,-1]
+	#fazer json buscar o -3 e buscar um -1 pra fase
+	#[1,2,3,4,-2,-1], [1,2,3,4,-2,-1],
+	#[1,1,1,4,2,1,-3,-1], [1,1,1,4,2,1,-3,-1],
+	#[1,2,2,3,2,1,1,-4,-2], [1,2,2,3,2,1,1,-4,-1],
+	[1,2,3,4,-2,-1], [1,2,3,4,-6,-1]
 ]
-#os -1 não são lidos e dão um tempo
-#ja que nao conseguimos controlar o tempo por algum motivo
 var i = 0
 var j = 0
 
 func _process(delta):
 	maxCombo()
-	setLabels()
-	pauseTime()
-	
-func setLabels():
-	$Labels/lblScore.text = str("Score: ",Global.Score)
 	$Labels/lblCombo.text = str("x",Global.combo)
 	
 func maxCombo():
@@ -59,44 +53,44 @@ func combo(maxSubItem, j):
 		Global.yes = true
 	else:
 		Global.yes = false
-		
-func _on_Timer_timeout():
-	control_spaw.start()
-	control_spaw.set_wait_time(1)
-	var maxItem = sequence.size()
-	var maxSubItem = sequence[i].size()
-	combo(maxSubItem, j)
-	
-	if(j == maxSubItem):
-		Global.yes = true
-		i += 1
-		j = 0
-		Global.turno = !Global.turno
-		
-	if(i == maxItem):
-		i = -1
-		reset()
-		
-	if (i == 4):
-		control_spaw.set_wait_time(0.5)
-		if(!novoRound):
-			chanceCenario()
-		
-	if(i != -1):
+
+func spawnArrows():
+	verifyArrows()
+	if(delay_timer.time_left == 0):
 		if(Global.turno):
 			playerArrows(sequence[i][j])
 		else:
 			enemyArrows(sequence[i][j])
 		j += 1
+
+func verifyArrows():
+	control_spaw.start()
+	control_spaw.set_wait_time(1)
+	var maxItem = sequence.size()
+	
+	var maxSubItem = sequence[i].size() -2 #nao pega o timer
+	combo(maxSubItem, j)
+	timeDefined = abs(sequence[i][maxSubItem])
+	_round = abs(sequence[i][maxSubItem+1])
+	
+	if(j == maxSubItem):
+		Global.yes = true
+		i += 1
+		j = 0
+		delay_timer.wait_time = timeDefined
+		delay_timer.start()
 		
-func reset():
-	get_tree().change_scene("res://src/interface/fim_prototipo.tscn")
-	Global.Score = 0
-	Global.combo = 0
+	if(i == maxItem):
+		control_spaw.stop()
+		reset.start()
 	
 func chanceCenario():
-	wait_time = 20
-	novoRound = true
+	#timer
+	my_timer.start()
+	get_tree().paused = true
+	$"pause-mode".show()
+	
+	control_spaw.set_wait_time(0.5)
 	$cenario/round1.hide()
 	$cenario/round2.show()
 	
@@ -141,20 +135,25 @@ func enemyArrows(select_sets):
 		var Down = down.instance()
 		get_parent().add_child(Down)
 		Down.position = $enemy_arrows/SpawArrow/Position_down.global_position
-	
-func pauseTime():
-	if(is_timer_running):
-		get_tree().paused = true
-		$"pause-mode".show()
-	else:
-		get_tree().paused = false
-		$"pause-mode".hide()
-	
-	wait_time -= reduction
-	
-	if(wait_time > 0.0):
-		my_timer.set_wait_time(wait_time)
-		is_timer_running = true
-	else:
-		wait_time = 0
-		is_timer_running = false
+
+func _on_delay_timeout():
+	Global.turno = !Global.turno
+	if(_round == 2):
+		chanceCenario()
+
+func _on_tutorial_timer_timeout():
+	$timers/tutorial.hide()
+	self.set_process(true)
+	$timers/Control_spaw.start()
+
+func _on_Timer_timeout():
+	get_tree().paused = false
+	$"pause-mode".hide()
+
+func _on_Control_spaw_timeout():
+	spawnArrows()
+
+func _on_reset_timeout():
+	Global.pontos[2] = (Global.Score * Global.combo)
+	Global.fase_concluida = true
+	get_tree().change_scene("res://src/ingame/stage/computador/tela-computador.tscn")

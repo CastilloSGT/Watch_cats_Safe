@@ -47,18 +47,22 @@ func queueArrowsbyPlayer():
 func queueArrowsbyEnemy():
 	if sensorL:
 		if Global.sensorLeft:
+			Global.Score -= 10
 			queue_free()
 
 	if sensorR:
 		if Global.sensorRight:
+			Global.Score -= 10
 			queue_free()
 
 	if sensorU:
 		if Global.sensorTop:
+			Global.Score -= 10
 			queue_free()
 
 	if sensorD:
 		if Global.sensorDown:
+			Global.Score -= 10
 			queue_free()
 	
 func _on_movearrow_left_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):

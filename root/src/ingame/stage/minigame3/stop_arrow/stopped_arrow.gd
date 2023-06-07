@@ -82,12 +82,12 @@ func marcaPontos():
 					perdePontos()
 					
 func ganhaPontos():
-	Global.Score += 100
+	Global.Score += 20
 	if(!Global.maxCombo):
 		Global.combo += 1
 		
 func perdePontos():
-	Global.Score -= 100
+	Global.Score -= 10
 	Global.combo = 0
 
 # SENSORES 
