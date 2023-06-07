@@ -858,7 +858,7 @@ font_data = ExtResource( 6 )
 default_font = SubResource( 39 )
 
 [node name="monkey-out" type="Node2D"]
-pause_mode = 2
+pause_mode = 1
 script = ExtResource( 7 )
 
 [node name="background" type="Node2D" parent="."]

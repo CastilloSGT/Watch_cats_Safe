@@ -177,7 +177,7 @@ size = 32
 font_data = ExtResource( 1 )
 
 [node name="Stag" type="Control"]
-pause_mode = 2
+pause_mode = 1
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = SubResource( 2 )

@@ -766,8 +766,9 @@ tracks/0/keys = {
 }
 
 [node name="quarto" type="Node2D"]
+pause_mode = 1
 position = Vector2( 23, 0 )
-scale = Vector2( 1.5, 1.5 )
+scale = Vector2( 1.41913, 1.50599 )
 script = ExtResource( 12 )
 
 [node name="player" parent="." instance=ExtResource( 10 )]

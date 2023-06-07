@@ -152,9 +152,7 @@ default_font = SubResource( 8 )
 3/z_index = 0
 
 [node name="rat-attack" type="Node2D"]
-
-pause_mode = 2
-
+pause_mode = 1
 script = ExtResource( 2 )
 
 [node name="TileMap" type="TileMap" parent="."]

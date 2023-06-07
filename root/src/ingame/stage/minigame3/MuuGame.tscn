@@ -458,7 +458,7 @@ default_font = SubResource( 2 )
 font_data = ExtResource( 9 )
 
 [node name="MuuGame" type="Node2D"]
-pause_mode = 2
+pause_mode = 1
 script = ExtResource( 3 )
 
 [node name="cenario" type="Node2D" parent="."]
