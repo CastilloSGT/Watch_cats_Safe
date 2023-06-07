@@ -2,7 +2,7 @@ extends Control
 onready var btnStart = $menu/btn_start
 var entrou = false
 var opts = false
-
+var quit = false
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	btnStart.grab_focus() #as
@@ -19,6 +19,8 @@ func _process(delta):
 			#Global.Maps = 1
 			Music.scens(opts)
 			get_tree().change_scene("res://src/ingame/musics/Music.tscn")
+		elif quit:
+			get_tree().quit()
 		else:
 			return;
 
@@ -33,3 +35,9 @@ func _on_btn_options_focus_entered():
 
 func _on_btn_options_focus_exited():
 	opts = false
+
+func _on_btn_sair_focus_entered():
+	quit = true
+
+func _on_btn_sair_focus_exited():
+	quit = false

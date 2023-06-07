@@ -80,12 +80,11 @@ __meta__ = {
 }
 
 [node name="btn_start" type="Button" parent="menu"]
-margin_top = 11.0
 margin_right = 258.0
-margin_bottom = 56.0
+margin_bottom = 45.0
 grow_horizontal = 0
 grow_vertical = 2
-focus_neighbour_top = NodePath("../btn_options")
+focus_neighbour_top = NodePath("../btn_sair")
 focus_neighbour_bottom = NodePath("../btn_load")
 focus_mode = 1
 theme = SubResource( 3 )
@@ -99,9 +98,9 @@ flat = true
 icon_align = 1
 
 [node name="btn_load" type="Button" parent="menu"]
-margin_top = 60.0
+margin_top = 49.0
 margin_right = 258.0
-margin_bottom = 105.0
+margin_bottom = 94.0
 focus_neighbour_top = NodePath("../btn_start")
 focus_neighbour_bottom = NodePath("../btn_options")
 theme = SubResource( 3 )
@@ -113,11 +112,11 @@ flat = true
 icon_align = 1
 
 [node name="btn_options" type="Button" parent="menu"]
-margin_top = 109.0
+margin_top = 98.0
 margin_right = 258.0
-margin_bottom = 154.0
+margin_bottom = 143.0
 focus_neighbour_top = NodePath("../btn_load")
-focus_neighbour_bottom = NodePath("../btn_start")
+focus_neighbour_bottom = NodePath("../btn_sair")
 theme = SubResource( 3 )
 custom_colors/font_color_focus = Color( 0.482353, 0.682353, 0.623529, 1 )
 custom_fonts/font = SubResource( 4 )
@@ -126,8 +125,24 @@ text = "opcoes"
 flat = true
 icon_align = 1
 
+[node name="btn_sair" type="Button" parent="menu"]
+margin_top = 147.0
+margin_right = 258.0
+margin_bottom = 192.0
+focus_neighbour_top = NodePath("../btn_options")
+focus_neighbour_bottom = NodePath("../btn_start")
+theme = SubResource( 3 )
+custom_colors/font_color_focus = Color( 0.835294, 0.305882, 0.788235, 1 )
+custom_fonts/font = SubResource( 4 )
+custom_styles/focus = SubResource( 19 )
+text = "Sair"
+flat = true
+icon_align = 1
+
 [connection signal="focus_entered" from="menu/btn_start" to="." method="_on_btn_start_focus_entered"]
 [connection signal="focus_exited" from="menu/btn_start" to="." method="_on_btn_start_focus_exited"]
 [connection signal="pressed" from="menu/btn_load" to="." method="_on_btn_load_pressed"]
 [connection signal="focus_entered" from="menu/btn_options" to="." method="_on_btn_options_focus_entered"]
 [connection signal="focus_exited" from="menu/btn_options" to="." method="_on_btn_options_focus_exited"]
+[connection signal="focus_entered" from="menu/btn_sair" to="." method="_on_btn_sair_focus_entered"]
+[connection signal="focus_exited" from="menu/btn_sair" to="." method="_on_btn_sair_focus_exited"]
