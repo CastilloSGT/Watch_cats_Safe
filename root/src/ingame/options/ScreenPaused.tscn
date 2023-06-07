@@ -122,6 +122,7 @@ margin_right = 160.0
 margin_bottom = 185.0
 focus_neighbour_top = NodePath("../BtnResume")
 focus_neighbour_bottom = NodePath("../BtnResume")
+focus_mode = 1
 theme = SubResource( 17 )
 custom_colors/font_color_focus = Color( 0.835294, 0.305882, 0.788235, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -130,7 +131,7 @@ custom_styles/focus = SubResource( 19 )
 custom_styles/normal = SubResource( 13 )
 action_mode = 0
 enabled_focus_mode = 1
-text = "Fechar"
+text = "Sair"
 flat = true
 icon_align = 1
 
