@@ -5,7 +5,7 @@ var opts = false
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	btnStart.grab_focus()
+	btnStart.grab_focus() #as
 	Music.play_music(Global.Telas, 1)
 	Global.Maps = 1
 	
