@@ -2,6 +2,7 @@
 
 [resource]
 resource_name = "idle"
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Player:frame")
 tracks/0/interp = 1
