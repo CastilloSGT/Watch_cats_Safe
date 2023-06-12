@@ -11,6 +11,7 @@ var sensorU = false
 var sensorD = false
 
 onready var arrowName = self.name
+var maxValue = 100
 
 func _process(delta):
 	showArrows()
@@ -82,13 +83,15 @@ func marcaPontos():
 					perdePontos()
 					
 func ganhaPontos():
-	Global.Score += 20
-	if(!Global.maxCombo):
-		Global.combo += 1
+	if(Global.Score <= maxValue):
+		Global.Score += 20
+		if(!Global.maxCombo):
+			Global.combo += 1
 		
 func perdePontos():
-	Global.Score -= 10
-	Global.combo = 0
+	if(Global.Score >= - maxValue):
+		Global.Score -= 10
+		Global.combo = 0
 
 # SENSORES 
 func _on_left_arrow_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):

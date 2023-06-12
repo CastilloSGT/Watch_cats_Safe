@@ -18,7 +18,6 @@ func _ready():
 func _physics_process(_delta: float) -> void:
 	caixaAberta()
 	dia_completo()
-	print(Global.fase)
 	
 func caixaAberta():
 	if(Global.areaOn == true):

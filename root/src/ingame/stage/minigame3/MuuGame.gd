@@ -4,6 +4,7 @@ const left = preload("res://src/ingame/stage/minigame3/arrows_move/movearrow_lef
 const up = preload("res://src/ingame/stage/minigame3/arrows_move/movearrow_up.tscn")
 const right = preload("res://src/ingame/stage/minigame3/arrows_move/movearrow_right.tscn")
 const down = preload("res://src/ingame/stage/minigame3/arrows_move/movearrow_down.tscn")
+const buraco = preload("res://src/ingame/stage/minigame3/arrows_move/buraco.tscn")
 
 onready var control_spaw = $timers/Control_spaw
 onready var delay_timer = $timers/delay;
@@ -17,18 +18,23 @@ var _round = 0
 #NOTAS
 var sequence = [
 	#fazer json buscar o -3 e buscar um -1 pra fase
-	#[1,2,3,4,-2,-1], [1,2,3,4,-2,-1],
-	#[1,1,1,4,2,1,-3,-1], [1,1,1,4,2,1,-3,-1],
-	#[1,2,2,3,2,1,1,-4,-2], [1,2,2,3,2,1,1,-4,-1],
+	[1,2,3,4,-2,-1], [1,2,3,4,-2,-1],
+	[1,1,1,4,2,1,-3,-1], [1,1,1,4,2,1,-3,-1],
+	[1,2,2,3,2,1,1,-4,-2], [1,2,2,3,2,1,1,-4,-1],
 	[1,2,3,4,-2,-1], [1,2,3,4,-6,-1]
 ]
 var i = 0
 var j = 0
 
+func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
 func _process(delta):
+	changeBarPos()
 	maxCombo()
 	$Labels/lblCombo.text = str("x",Global.combo)
 	
+# COMBOS	
 func maxCombo():
 	if(Global.combo == 5):
 		Global.maxCombo = true
@@ -54,13 +60,11 @@ func combo(maxSubItem, j):
 	else:
 		Global.yes = false
 
+# SETAS
 func spawnArrows():
 	verifyArrows()
 	if(delay_timer.time_left == 0):
-		if(Global.turno):
-			playerArrows(sequence[i][j])
-		else:
-			enemyArrows(sequence[i][j])
+		arrowsPos(sequence[i][j])
 		j += 1
 
 func verifyArrows():
@@ -94,47 +98,47 @@ func chanceCenario():
 	$cenario/round1.hide()
 	$cenario/round2.show()
 	
-func playerArrows(select_sets):
-	if select_sets == 1:
-		var Left = left.instance()
-		get_parent().add_child(Left)
-		Left.position = $player_arrows/SpawArrow/Position_left.global_position
+func arrowsPos(select_sets):
+	var pos
+	var seta
+	var color
+	
+	var Buraco = buraco.instance()
+	if(Global.turno):
+		pos = "player_arrows/SpawArrow/"
+	else:
+		pos = "enemy_arrows/SpawArrow/"
+	
+	match select_sets:
+		1: 
+			seta = left.instance()
+			pos += "Position_left"
+			color = Color("#924196")
+		2:
+			seta = up.instance()
+			pos += "Position_up"
+			color = Color("#37946e")
+		3:
+			seta = right.instance()
+			pos += "Position_right"
+			color = Color("#ac3232")
+		4:
+			seta = down.instance()
+			pos += "Position_down"
+			color = Color("#5b6ee1")
+			
+	get_parent().add_child(Buraco)
+	Buraco.modulate = color
+	Buraco.position = get_node(pos).global_position
+	
+	get_parent().add_child(seta)
+	seta.position = get_node(pos).global_position
 
-	if select_sets == 2:
-		var Up = up.instance()
-		get_parent().add_child(Up)
-		Up.position = $player_arrows/SpawArrow/Position_up.global_position
-
-	if select_sets == 3:
-		var Right = right.instance()
-		get_parent().add_child(Right)
-		Right.position = $player_arrows/SpawArrow/Position_right.global_position
-		
-	if select_sets == 4:
-		var Down = down.instance()
-		get_parent().add_child(Down)
-		Down.position = $player_arrows/SpawArrow/Position_down.global_position
-
-func enemyArrows(select_sets):
-	if select_sets == 1:
-		var Left = left.instance()
-		get_parent().add_child(Left)
-		Left.position = $enemy_arrows/SpawArrow/Position_left.global_position
-
-	if select_sets == 2:
-		var Up = up.instance()
-		get_parent().add_child(Up)
-		Up.position = $enemy_arrows/SpawArrow/Position_up.global_position
-		
-	if select_sets == 3:
-		var Right = right.instance()
-		get_parent().add_child(Right)
-		Right.position = $enemy_arrows/SpawArrow/Position_right.global_position
-		
-	if select_sets == 4:
-		var Down = down.instance()
-		get_parent().add_child(Down)
-		Down.position = $enemy_arrows/SpawArrow/Position_down.global_position
+# BARRA
+func changeBarPos():
+	var icon = $Labels/barra/icons
+	if(icon.position.x <= 224 && icon.position.x >= 128):
+		icon.position.x = 168 + (Global.Score/4)
 
 func _on_delay_timeout():
 	Global.turno = !Global.turno
@@ -154,6 +158,6 @@ func _on_Control_spaw_timeout():
 	spawnArrows()
 
 func _on_reset_timeout():
-	Global.pontos[2] = (Global.Score * Global.combo)
+	Global.pontos[2] = Global.Score * Global.combo
 	Global.fase_concluida = true
 	get_tree().change_scene("res://src/ingame/stage/computador/tela-computador.tscn")

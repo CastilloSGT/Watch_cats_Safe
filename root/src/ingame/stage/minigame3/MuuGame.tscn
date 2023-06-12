@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://src/ingame/stage/minigame3/stop_arrow/stopped_arrow_enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/ingame/stage/minigame3/stop_arrow/stopped_arrow.tscn" type="PackedScene" id=2]
@@ -11,6 +11,9 @@
 [ext_resource path="res://assets/fonts/PressStart2P.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://assets/art/ingame/stage/minigame 3/cidade.png" type="Texture" id=10]
 [ext_resource path="res://assets/art/ingame/stage/minigame 3/ceu.png" type="Texture" id=11]
+[ext_resource path="res://assets/art/ingame/stage/minigame 3/damage.png" type="Texture" id=12]
+[ext_resource path="res://assets/art/ingame/stage/minigame 3/cat_icon.png" type="Texture" id=13]
+[ext_resource path="res://assets/art/ingame/stage/minigame 3/cow_icon.png" type="Texture" id=14]
 
 [sub_resource type="TileSet" id=6]
 0/name = "ceu.png 0"
@@ -532,6 +535,28 @@ text = "MAX COMBO"
 __meta__ = {
 "_editor_description_": "[wave]"
 }
+
+[node name="barra" type="Node2D" parent="Labels"]
+
+[node name="barra-cor" type="TextureRect" parent="Labels/barra"]
+margin_left = 104.0
+margin_top = 16.0
+margin_right = 232.0
+margin_bottom = 48.0
+texture = ExtResource( 12 )
+stretch_mode = 1
+
+[node name="icons" type="Node2D" parent="Labels/barra"]
+position = Vector2( 168, 32 )
+scale = Vector2( 1.5, 1.5 )
+
+[node name="CatIcon" type="Sprite" parent="Labels/barra/icons"]
+position = Vector2( 8, 0 )
+texture = ExtResource( 13 )
+
+[node name="CowIcon" type="Sprite" parent="Labels/barra/icons"]
+position = Vector2( -8, 0 )
+texture = ExtResource( 14 )
 
 [node name="enemy-singer" parent="." instance=ExtResource( 4 )]
 pause_mode = 1

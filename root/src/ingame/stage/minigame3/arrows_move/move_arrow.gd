@@ -7,6 +7,8 @@ var sensorR = false
 var sensorU = false
 var sensorD = false
 
+var maxValue = 100
+
 func _process(delta):
 	queueArrowsbyPosition(delta)
 	
@@ -19,9 +21,7 @@ func queueArrowsbyPosition(delta):
 	position.y -= speed * delta
 	
 	if position.y < -30:
-		queue_free()
-		Global.Score -= 50
-		Global.combo -= 1
+		perdePontos(true)
 
 func queueArrowsbyPlayer():
 	if sensorL:
@@ -47,23 +47,28 @@ func queueArrowsbyPlayer():
 func queueArrowsbyEnemy():
 	if sensorL:
 		if Global.sensorLeft:
-			Global.Score -= 10
-			queue_free()
+			perdePontos(false)
 
 	if sensorR:
 		if Global.sensorRight:
-			Global.Score -= 10
-			queue_free()
+			perdePontos(false)
 
 	if sensorU:
 		if Global.sensorTop:
-			Global.Score -= 10
-			queue_free()
+			perdePontos(false)
 
 	if sensorD:
 		if Global.sensorDown:
-			Global.Score -= 10
-			queue_free()
+			perdePontos(false)
+	
+func perdePontos(left_the_screen):
+	queue_free()
+	if(Global.Score > -maxValue):
+		if(left_the_screen):
+			Global.Score -= 50
+			Global.combo -= 1
+		else:
+			Global.Score -= 5
 	
 func _on_movearrow_left_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	sensorL = true
