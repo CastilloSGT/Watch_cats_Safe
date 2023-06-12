@@ -136,6 +136,15 @@ func arrowsPos(select_sets):
 
 # BARRA
 func changeBarPos():
+	var color
+	if(Global.Score <= -33):
+		color = Color("#ac3232")
+	elif(Global.Score >= 33):
+		color = Color("#5b6ee1")
+	else:
+		color = Color("#924196")
+	
+	$"Labels/barra/barra-cor".self_modulate = color
 	var icon = $Labels/barra/icons
 	if(icon.position.x <= 224 && icon.position.x >= 128):
 		icon.position.x = 168 + (Global.Score/4)
