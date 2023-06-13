@@ -27,21 +27,25 @@ func queueArrowsbyPlayer():
 	if sensorL:
 		if Global.sensorLeft:
 			if Input.is_action_just_pressed("ui_left"):
+				ganhaPontos()
 				queue_free()
 
 	if sensorR:
 		if Global.sensorRight:
 			if Input.is_action_just_pressed("ui_right"):
+				ganhaPontos()
 				queue_free()
 
 	if sensorU:
 		if Global.sensorTop:
 			if Input.is_action_just_pressed("ui_up"):
+				ganhaPontos()
 				queue_free()
 
 	if sensorD:
 		if Global.sensorDown:
 			if Input.is_action_just_pressed("ui_down"):
+				ganhaPontos()
 				queue_free()
 
 func queueArrowsbyEnemy():
@@ -70,33 +74,28 @@ func perdePontos(left_the_screen):
 		else:
 			Global.Score -= 5
 	
+func ganhaPontos():
+	if(Global.Score <= maxValue):
+		Global.Score += 20
+		if(!Global.maxCombo):
+			Global.combo += 1
+	
 func _on_movearrow_left_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	sensorL = true
-	Global.sensorLeft = true
 func _on_movearrow_left_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
 	sensorL = false
-	Global.sensorLeft = false
-
 
 func _on_movearrow_right_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	sensorR = true
-	Global.sensorRight = true
 func _on_movearrow_right_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
 	sensorR = false
-	Global.sensorRight = false
-	
 
 func _on_movearrow_up_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	sensorU = true
-	Global.sensorTop = true
 func _on_movearrow_up_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
 	sensorU = false
-	Global.sensorTop = false
-
 
 func _on_movearrow_down_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	sensorD = true
-	Global.sensorDown = true
 func _on_movearrow_down_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
 	sensorD = false
-	Global.sensorDown = false

@@ -5,11 +5,6 @@ onready var animDown = $arrow_down/Stop_down_Anim
 onready var animLeft = $arrow_left/Stop_left_Anim
 onready var animRight = $arrow_right/Stop_right_Anim
 
-var sensorL = false
-var sensorR = false
-var sensorU = false
-var sensorD = false
-
 onready var arrowName = self.name
 var maxValue = 100
 
@@ -45,49 +40,43 @@ func showArrows():
 			$arrow_right.show()
 
 func marcaPontos():
-	match arrowName:
-		"down_arrow":
-			if sensorD:
-				if Input.is_action_just_pressed("ui_down"):
-					animDown.play("Good_down")
-					ganhaPontos()
-			else:
-				if Input.is_action_just_pressed("ui_down"):
-					perdePontos()
-					
-		"up_arrow":
-			if sensorU:
-				if Input.is_action_just_pressed("ui_up"):
-					animUp.play("Good_up")
-					ganhaPontos()
-			else:
-				if Input.is_action_just_pressed("ui_up"):
-					perdePontos()
-					
-		"left_arrow":
-			if sensorL:
-				if Input.is_action_just_pressed("ui_left"):
-					animLeft.play("Good_left")
-					ganhaPontos()
-			else:
-				if Input.is_action_just_pressed("ui_left"):
-					perdePontos()
-					
-		"right_arrow":
-			if sensorR:
-				if Input.is_action_just_pressed("ui_right"):
-					animRight.play("Good_right")
-					ganhaPontos()
-			else:
-				if Input.is_action_just_pressed("ui_right"):
-					perdePontos()
-					
-func ganhaPontos():
-	if(Global.Score <= maxValue):
-		Global.Score += 20
-		if(!Global.maxCombo):
-			Global.combo += 1
-		
+	if(get_parent().get_parent().name == "player_arrows"): #nao brilha a outra seta
+		match arrowName:
+			"down_arrow":
+				if Global.sensorDown:
+					if Input.is_action_just_pressed("ui_down"):
+						animDown.play("Good_down")
+				else:
+					if Input.is_action_just_pressed("ui_down"):
+						perdePontos()
+						
+			"up_arrow":
+				if Global.sensorTop:
+					if Input.is_action_just_pressed("ui_up"):
+						animUp.play("Good_up")
+						
+				else:
+					if Input.is_action_just_pressed("ui_up"):
+						perdePontos()
+						
+			"left_arrow":
+				if Global.sensorLeft:
+					if Input.is_action_just_pressed("ui_left"):
+						animLeft.play("Good_left")
+						
+				else:
+					if Input.is_action_just_pressed("ui_left"):
+						perdePontos()
+						
+			"right_arrow":
+				if Global.sensorRight:
+					if Input.is_action_just_pressed("ui_right"):
+						animRight.play("Good_right")
+						
+				else:
+					if Input.is_action_just_pressed("ui_right"):
+						perdePontos()
+
 func perdePontos():
 	if(Global.Score >= - maxValue):
 		Global.Score -= 10
@@ -95,24 +84,21 @@ func perdePontos():
 
 # SENSORES 
 func _on_left_arrow_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
-	sensorL = true
+	Global.sensorLeft = true
 func _on_left_arrow_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
-	sensorL = false
-
+	Global.sensorLeft = false
 
 func _on_right_arrow_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
-	sensorR = true
+	Global.sensorRight = true
 func _on_right_arrow_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
-	sensorR = false
-
+	Global.sensorRight = false
 
 func _on_up_arrow_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
-	sensorU = true
+	Global.sensorTop = true
 func _on_up_arrow_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
-	sensorU = false
-
+	Global.sensorTop = false
 
 func _on_down_arrow_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
-	sensorD = true
+	Global.sensorDown = true
 func _on_down_arrow_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
-	sensorD = false
+	Global.sensorDown = false

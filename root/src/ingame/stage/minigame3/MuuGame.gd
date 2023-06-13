@@ -1,9 +1,15 @@
 extends Node2D
 
-const left = preload("res://src/ingame/stage/minigame3/arrows_move/movearrow_left.tscn")
-const up = preload("res://src/ingame/stage/minigame3/arrows_move/movearrow_up.tscn")
-const right = preload("res://src/ingame/stage/minigame3/arrows_move/movearrow_right.tscn")
-const down = preload("res://src/ingame/stage/minigame3/arrows_move/movearrow_down.tscn")
+# SETAS
+const left = preload("res://src/ingame/stage/minigame3/arrows_move/arrows/movearrow_left.tscn")
+const up = preload("res://src/ingame/stage/minigame3/arrows_move/arrows/movearrow_up.tscn")
+const right = preload("res://src/ingame/stage/minigame3/arrows_move/arrows/movearrow_right.tscn")
+const down = preload("res://src/ingame/stage/minigame3/arrows_move/arrows/movearrow_down.tscn")
+
+# SETAS LONGAS
+const longUp = preload("res://src/ingame/stage/minigame3/arrows_move/longArrows/longarrow_up.tscn")
+
+
 const buraco = preload("res://src/ingame/stage/minigame3/arrows_move/buraco.tscn")
 
 onready var control_spaw = $timers/Control_spaw
@@ -18,10 +24,11 @@ var _round = 0
 #NOTAS
 var sequence = [
 	#fazer json buscar o -3 e buscar um -1 pra fase
-	[1,2,3,4,-2,-1], [1,2,3,4,-2,-1],
-	[1,1,1,4,2,1,-3,-1], [1,1,1,4,2,1,-3,-1],
-	[1,2,2,3,2,1,1,-4,-2], [1,2,2,3,2,1,1,-4,-1],
-	[1,2,3,4,-2,-1], [1,2,3,4,-6,-1]
+	[6,6,6,6,-2,-1], [6,6,6,6,-2,-1],
+	#[1,2,3,4,-2,-1], [1,2,3,4,-2,-1],
+	#[1,1,1,4,2,1,-3,-1], [1,1,1,4,2,1,-3,-1],
+	#[1,2,2,3,2,1,1,-4,-2], [1,2,2,3,2,1,1,-4,-1],
+	#[1,2,3,4,-2,-1], [1,2,3,4,-6,-1]
 ]
 var i = 0
 var j = 0
@@ -127,6 +134,13 @@ func arrowsPos(select_sets):
 			pos += "Position_down"
 			color = Color("#5b6ee1")
 			
+		# LONG ARROW
+		
+		6:
+			seta = longUp.instance()
+			pos += "Position_up"
+			color = Color("#37946e")
+	
 	get_parent().add_child(Buraco)
 	Buraco.modulate = color
 	Buraco.position = get_node(pos).global_position
@@ -167,6 +181,11 @@ func _on_Control_spaw_timeout():
 	spawnArrows()
 
 func _on_reset_timeout():
-	Global.pontos[2] = Global.Score * Global.combo
-	Global.fase_concluida = true
+	if(Global.Score > 0):
+		Global.pontos[2] = Global.Score * Global.combo
+		Global.fase_concluida = true
+		
 	get_tree().change_scene("res://src/ingame/stage/computador/tela-computador.tscn")
+	#reset
+	Global.Score = 0
+	Global.combo = 0

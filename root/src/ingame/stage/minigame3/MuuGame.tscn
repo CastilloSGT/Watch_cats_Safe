@@ -1,6 +1,5 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://src/ingame/stage/minigame3/stop_arrow/stopped_arrow_enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/ingame/stage/minigame3/stop_arrow/stopped_arrow.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/ingame/stage/minigame3/MuuGame.gd" type="Script" id=3]
 [ext_resource path="res://src/ingame/stage/minigame3/singers/enemy-singer.tscn" type="PackedScene" id=4]
@@ -613,9 +612,6 @@ zoom = Vector2( 0.5, 0.5 )
 [node name="enemy_arrows" type="Node2D" parent="."]
 pause_mode = 1
 position = Vector2( -16, 0 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="SpawArrow" type="Node2D" parent="enemy_arrows"]
 pause_mode = 1
@@ -637,22 +633,22 @@ position = Vector2( 219, 321 )
 position = Vector2( 251, 321 )
 
 [node name="ArrowStop" type="Node2D" parent="enemy_arrows"]
-position = Vector2( 24, 32 )
+position = Vector2( -248, 0 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="left_arrow" parent="enemy_arrows/ArrowStop" instance=ExtResource( 1 )]
-position = Vector2( -16, 0 )
+[node name="left_arrow" parent="enemy_arrows/ArrowStop" instance=ExtResource( 2 )]
+position = Vector2( 256, 32 )
 
-[node name="right_arrow" parent="enemy_arrows/ArrowStop" instance=ExtResource( 1 )]
-position = Vector2( 48, 0 )
+[node name="right_arrow" parent="enemy_arrows/ArrowStop" instance=ExtResource( 2 )]
+position = Vector2( 320, 32 )
 
-[node name="up_arrow" parent="enemy_arrows/ArrowStop" instance=ExtResource( 1 )]
-position = Vector2( 16, 0 )
+[node name="up_arrow" parent="enemy_arrows/ArrowStop" instance=ExtResource( 2 )]
+position = Vector2( 288, 32 )
 
-[node name="down_arrow" parent="enemy_arrows/ArrowStop" instance=ExtResource( 1 )]
-position = Vector2( 80, 0 )
+[node name="down_arrow" parent="enemy_arrows/ArrowStop" instance=ExtResource( 2 )]
+position = Vector2( 352, 32 )
 
 [node name="pause-mode" type="Node2D" parent="."]
 pause_mode = 2
@@ -722,6 +718,14 @@ scroll_active = false
 [connection signal="area_shape_exited" from="player_arrows/ArrowStop/up_arrow" to="player_arrows/ArrowStop/up_arrow" method="_on_up_arrow_area_shape_exited"]
 [connection signal="area_shape_entered" from="player_arrows/ArrowStop/down_arrow" to="player_arrows/ArrowStop/down_arrow" method="_on_down_arrow_area_shape_entered"]
 [connection signal="area_shape_exited" from="player_arrows/ArrowStop/down_arrow" to="player_arrows/ArrowStop/down_arrow" method="_on_down_arrow_area_shape_exited"]
+[connection signal="area_shape_entered" from="enemy_arrows/ArrowStop/left_arrow" to="enemy_arrows/ArrowStop/left_arrow" method="_on_left_arrow_area_shape_entered"]
+[connection signal="area_shape_exited" from="enemy_arrows/ArrowStop/left_arrow" to="enemy_arrows/ArrowStop/left_arrow" method="_on_left_arrow_area_shape_exited"]
+[connection signal="area_shape_entered" from="enemy_arrows/ArrowStop/right_arrow" to="enemy_arrows/ArrowStop/right_arrow" method="_on_right_arrow_area_shape_entered"]
+[connection signal="area_shape_exited" from="enemy_arrows/ArrowStop/right_arrow" to="enemy_arrows/ArrowStop/right_arrow" method="_on_right_arrow_area_shape_exited"]
+[connection signal="area_shape_entered" from="enemy_arrows/ArrowStop/up_arrow" to="enemy_arrows/ArrowStop/up_arrow" method="_on_up_arrow_area_shape_entered"]
+[connection signal="area_shape_exited" from="enemy_arrows/ArrowStop/up_arrow" to="enemy_arrows/ArrowStop/up_arrow" method="_on_up_arrow_area_shape_exited"]
+[connection signal="area_shape_entered" from="enemy_arrows/ArrowStop/down_arrow" to="enemy_arrows/ArrowStop/down_arrow" method="_on_down_arrow_area_shape_entered"]
+[connection signal="area_shape_exited" from="enemy_arrows/ArrowStop/down_arrow" to="enemy_arrows/ArrowStop/down_arrow" method="_on_down_arrow_area_shape_exited"]
 [connection signal="timeout" from="timers/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="timers/Control_spaw" to="." method="_on_Control_spaw_timeout"]
 [connection signal="timeout" from="timers/delay" to="." method="_on_delay_timeout"]

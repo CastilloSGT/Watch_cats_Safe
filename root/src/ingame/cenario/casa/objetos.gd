@@ -14,6 +14,7 @@ var dormindo = false
 
 func _ready():
 	$"../computador/logando".hide()
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(_delta: float) -> void:
 	caixaAberta()
