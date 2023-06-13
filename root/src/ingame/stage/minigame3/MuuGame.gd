@@ -24,7 +24,7 @@ var _round = 0
 #NOTAS
 var sequence = [
 	#fazer json buscar o -3 e buscar um -1 pra fase
-	[6,6,6,6,-2,-1], [6,6,6,6,-2,-1],
+	[1,2,3,4,6,-3,-1], [1,2,3,4,6,-3,-1],
 	#[1,2,3,4,-2,-1], [1,2,3,4,-2,-1],
 	#[1,1,1,4,2,1,-3,-1], [1,1,1,4,2,1,-3,-1],
 	#[1,2,2,3,2,1,1,-4,-2], [1,2,2,3,2,1,1,-4,-1],
@@ -135,7 +135,6 @@ func arrowsPos(select_sets):
 			color = Color("#5b6ee1")
 			
 		# LONG ARROW
-		
 		6:
 			seta = longUp.instance()
 			pos += "Position_up"

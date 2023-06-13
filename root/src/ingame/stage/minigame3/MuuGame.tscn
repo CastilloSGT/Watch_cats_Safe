@@ -576,6 +576,7 @@ __meta__ = {
 
 [node name="SpawArrow" type="Node2D" parent="player_arrows"]
 pause_mode = 1
+position = Vector2( -3, 0 )
 
 [node name="Position_left" type="Position2D" parent="player_arrows/SpawArrow"]
 position = Vector2( 155, 321 )
@@ -612,13 +613,13 @@ zoom = Vector2( 0.5, 0.5 )
 [node name="enemy_arrows" type="Node2D" parent="."]
 pause_mode = 1
 position = Vector2( -16, 0 )
-
-[node name="SpawArrow" type="Node2D" parent="enemy_arrows"]
-pause_mode = 1
-position = Vector2( -146, -32 )
 __meta__ = {
 "_edit_group_": true
 }
+
+[node name="SpawArrow" type="Node2D" parent="enemy_arrows"]
+pause_mode = 1
+position = Vector2( -147, -32 )
 
 [node name="Position_left" type="Position2D" parent="enemy_arrows/SpawArrow"]
 position = Vector2( 155, 321 )
@@ -634,9 +635,6 @@ position = Vector2( 251, 321 )
 
 [node name="ArrowStop" type="Node2D" parent="enemy_arrows"]
 position = Vector2( -248, 0 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="left_arrow" parent="enemy_arrows/ArrowStop" instance=ExtResource( 2 )]
 position = Vector2( 256, 32 )
