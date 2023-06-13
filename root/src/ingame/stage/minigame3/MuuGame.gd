@@ -7,8 +7,10 @@ const right = preload("res://src/ingame/stage/minigame3/arrows_move/arrows/movea
 const down = preload("res://src/ingame/stage/minigame3/arrows_move/arrows/movearrow_down.tscn")
 
 # SETAS LONGAS
-const longUp = preload("res://src/ingame/stage/minigame3/arrows_move/longArrows/longarrow_up.tscn")
-
+var longUp = preload("res://src/ingame/stage/minigame3/arrows_move/longArrows/longarrow_up.tscn").duplicate()
+var longDown = preload("res://src/ingame/stage/minigame3/arrows_move/longArrows/longarrow_down.tscn").duplicate()
+var longLeft = preload("res://src/ingame/stage/minigame3/arrows_move/longArrows/longarrow_left.tscn").duplicate()
+var longRight = preload("res://src/ingame/stage/minigame3/arrows_move/longArrows/longarrow_right.tscn").duplicate()
 
 const buraco = preload("res://src/ingame/stage/minigame3/arrows_move/buraco.tscn")
 
@@ -24,11 +26,10 @@ var _round = 0
 #NOTAS
 var sequence = [
 	#fazer json buscar o -3 e buscar um -1 pra fase
-	[1,2,3,4,6,-3,-1], [1,2,3,4,6,-3,-1],
 	#[1,2,3,4,-2,-1], [1,2,3,4,-2,-1],
 	#[1,1,1,4,2,1,-3,-1], [1,1,1,4,2,1,-3,-1],
-	#[1,2,2,3,2,1,1,-4,-2], [1,2,2,3,2,1,1,-4,-1],
-	#[1,2,3,4,-2,-1], [1,2,3,4,-6,-1]
+	#[1,2,6,3,2,5,5,-4,-2], [1,2,6,3,2,5,5,-4,-2],
+	[5,6,6,6,-2,-1], [5,6,7,8,-6,-1]
 ]
 var i = 0
 var j = 0
@@ -117,7 +118,7 @@ func arrowsPos(select_sets):
 		pos = "enemy_arrows/SpawArrow/"
 	
 	match select_sets:
-		1: 
+		1 : 
 			seta = left.instance()
 			pos += "Position_left"
 			color = Color("#924196")
@@ -135,10 +136,22 @@ func arrowsPos(select_sets):
 			color = Color("#5b6ee1")
 			
 		# LONG ARROW
+		5:
+			seta = longLeft.instance()
+			pos += "Position_left"
+			color = Color("#924196")
 		6:
 			seta = longUp.instance()
 			pos += "Position_up"
 			color = Color("#37946e")
+		7:
+			seta = longRight.instance()
+			pos += "Position_right"
+			color = Color("#ac3232")
+		8:
+			seta = longDown.instance()
+			pos += "Position_down"
+			color = Color("#5b6ee1")
 	
 	get_parent().add_child(Buraco)
 	Buraco.modulate = color

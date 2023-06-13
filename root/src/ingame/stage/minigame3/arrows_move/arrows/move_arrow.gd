@@ -28,25 +28,21 @@ func queueArrowsbyPlayer():
 		if Global.sensorLeft:
 			if Input.is_action_just_pressed("ui_left"):
 				ganhaPontos()
-				queue_free()
 
 	if sensorR:
 		if Global.sensorRight:
 			if Input.is_action_just_pressed("ui_right"):
 				ganhaPontos()
-				queue_free()
 
 	if sensorU:
 		if Global.sensorTop:
 			if Input.is_action_just_pressed("ui_up"):
 				ganhaPontos()
-				queue_free()
 
 	if sensorD:
 		if Global.sensorDown:
 			if Input.is_action_just_pressed("ui_down"):
 				ganhaPontos()
-				queue_free()
 
 func queueArrowsbyEnemy():
 	if sensorL:
@@ -75,6 +71,7 @@ func perdePontos(left_the_screen):
 			Global.Score -= 5
 	
 func ganhaPontos():
+	queue_free()
 	if(Global.Score <= maxValue):
 		Global.Score += 20
 		if(!Global.maxCombo):

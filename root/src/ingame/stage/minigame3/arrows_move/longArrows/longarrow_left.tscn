@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/art/ingame/stage/minigame 3/setas/longSeta.png" type="Texture" id=2]
 [ext_resource path="res://src/ingame/stage/minigame3/arrows_move/longArrows/longarrows.gd" type="Script" id=3]
-[ext_resource path="res://assets/art/ingame/stage/minigame 3/setas/cima.png" type="Texture" id=4]
+[ext_resource path="res://assets/art/ingame/stage/minigame 3/setas/esq.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 9, 10 )
@@ -62,7 +62,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1, 0.875 ), Vector2( 1, 0.688 ), Vector2( 1, 0.5 ), Vector2( 1, 0.313 ), Vector2( 1, 0.125 ), Vector2( 1, -0.004 ) ]
 }
 
-[node name="Up" type="Area2D"]
+[node name="Left" type="Area2D"]
 script = ExtResource( 3 )
 
 [node name="Colision" type="CollisionShape2D" parent="."]
@@ -70,7 +70,6 @@ position = Vector2( 0, 1 )
 shape = SubResource( 1 )
 
 [node name="animation" type="AnimationPlayer" parent="."]
-autoplay = "RESET"
 anims/RESET = SubResource( 2 )
 anims/destroi = SubResource( 3 )
 
@@ -78,18 +77,16 @@ anims/destroi = SubResource( 3 )
 position = Vector2( 0, 19 )
 texture = ExtResource( 2 )
 
-[node name="Brilho" type="Sprite" parent="."]
-visible = false
-position = Vector2( 0, 4 )
-texture = ExtResource( 4 )
-hframes = 3
-frame = 2
-
 [node name="Seta" type="Sprite" parent="."]
-position = Vector2( 0, 4 )
 texture = ExtResource( 4 )
 hframes = 3
 frame = 1
 
-[connection signal="area_shape_entered" from="." to="." method="_on_Up_area_shape_entered"]
-[connection signal="area_shape_exited" from="." to="." method="_on_Up_area_shape_exited"]
+[node name="Brilho" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 4 )
+hframes = 3
+frame = 2
+
+[connection signal="area_shape_entered" from="." to="." method="_on_Left_area_shape_entered"]
+[connection signal="area_shape_exited" from="." to="." method="_on_Left_area_shape_exited"]
