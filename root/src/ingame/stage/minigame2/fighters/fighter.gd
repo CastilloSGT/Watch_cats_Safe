@@ -55,6 +55,10 @@ func animacao():
 		animacao.play("recuperado")
 		wait_time = 10
 		Global.BANANA_ATTACK = false
+		
+	if(Global.tipo_dano == 4 && !is_timer_running && !caiu):
+		animacao.play("dano")
+		wait_time = 2
 	
 	if (Input.is_action_just_pressed("desvia") && !is_timer_running && !caiu):
 		animacao.play("desvio")
@@ -117,3 +121,4 @@ func _on_nocaute_timeout():
 
 func _on_tutorial_timeout():
 	$tutorial/lbltutorial.hide()
+	
