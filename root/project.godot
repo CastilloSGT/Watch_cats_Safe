@@ -31,6 +31,7 @@ GlobalCanvasLayer="*res://src/ingame/options/CanvasLayer.tscn"
 
 window/size/width=800
 window/size/resizable=false
+mouse_cursor/custom_image="res://assets/art/interface/telas/cursor.png"
 
 [input]
 

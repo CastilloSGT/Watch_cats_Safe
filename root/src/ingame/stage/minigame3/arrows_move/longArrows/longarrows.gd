@@ -128,7 +128,6 @@ func ganhaPontos():
 		if(!Global.maxCombo):
 			Global.combo += 1
 
-
 func _on_Left_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	sensorL = true
 	id_ant = self.get_instance_id()

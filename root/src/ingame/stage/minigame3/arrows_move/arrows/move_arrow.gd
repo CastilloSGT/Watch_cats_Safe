@@ -65,7 +65,7 @@ func perdePontos(left_the_screen):
 	queue_free()
 	if(Global.Score > -maxValue):
 		if(left_the_screen):
-			Global.Score -= 50
+			Global.Score -= 25
 			Global.combo -= 1
 		else:
 			Global.Score -= 5
