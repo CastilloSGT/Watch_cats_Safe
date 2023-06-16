@@ -23,6 +23,8 @@ func _on_iniciar_pressed():
 			game = "minigame2/monkey-out.tscn"
 		2:
 			game = "minigame3/MuuGame.tscn"
+		3:
+			game = "minigame4/Quiz.tscn"
 	
 	get_tree().change_scene(str("res://src/ingame/stage/",game))
 	queue_free()

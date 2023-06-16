@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/barra-progresso.png-7137deb559c71ea928dae6c44003c8c9.stex"
+path="res://.import/patinha.png-44b7c65ca786f1cde33db8dbb2c28512.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/ingame/stage/minigame 4/barra-progresso.png"
-dest_files=[ "res://.import/barra-progresso.png-7137deb559c71ea928dae6c44003c8c9.stex" ]
+source_file="res://assets/art/ingame/stage/minigame 4/patinha.png"
+dest_files=[ "res://.import/patinha.png-44b7c65ca786f1cde33db8dbb2c28512.stex" ]
 
 [params]
 
