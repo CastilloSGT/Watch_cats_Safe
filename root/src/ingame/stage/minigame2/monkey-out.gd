@@ -39,7 +39,6 @@ func _physics_process(_delta: float) -> void:
 		bonus = 4 - (96/$legendas/vidas/vida.rect_size.x)
 	
 	if(bonus >= 2):
-		print(true)
 		Global.fase_concluida = true
 		Global.pontos[1] = int((bonus*100) / (minutes * .15))
 	else:
