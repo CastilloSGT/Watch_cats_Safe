@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://assets/fonts/PressStart2P.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/art/ingame/stage/minigame 4/resposta.png" type="Texture" id=2]
@@ -49,8 +49,8 @@ default_font = SubResource( 6 )
 size = 32
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=12]
-resource_name = "trim"
+[sub_resource type="Animation" id=13]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("segurador/telefone:frame")
 tracks/0/interp = 1
@@ -58,14 +58,107 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("segurador/telefone:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, -15 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("segurador:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.09375, 1 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "out"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("segurador/telefone:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [  ]
+"values": [ 0, 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("segurador/telefone:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 4.4, -19 ), Vector2( 2, -11.6 ), Vector2( 1, -11.6 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "trim"
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("segurador/telefone:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 0, 1, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("segurador/telefone:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2, 0.4, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, -15 ), Vector2( 1, -10 ), Vector2( 1, -15 ), Vector2( 1, -10 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("segurador:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.09375, 1 ), Vector2( 1, 1 ), Vector2( 1.09375, 1 ), Vector2( 1, 1 ) ]
 }
 
 [node name="Stag" type="Control"]
-pause_mode = 1
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = SubResource( 2 )
@@ -92,6 +185,7 @@ margin_bottom = 13.0
 color = Color( 0.439216, 0.54902, 0.776471, 1 )
 
 [node name="barra-de-progresso" type="TextureRect" parent="."]
+pause_mode = 1
 margin_left = 116.0
 margin_top = -16.0
 margin_right = 228.0
@@ -101,22 +195,20 @@ stretch_mode = 1
 
 [node name="Patinha" type="Sprite" parent="barra-de-progresso"]
 position = Vector2( -3.79999, 8 )
-scale = Vector2( 1, 1 )
 z_index = 1
 texture = ExtResource( 14 )
 
 [node name="vida" type="TextureRect" parent="barra-de-progresso"]
 margin_left = 5.0
 margin_top = 1.0
-margin_right = 50.0
-margin_bottom = 14.0
-rect_scale = Vector2( 1, 0.96 )
+margin_right = 56.0
+margin_bottom = 13.0
 texture = ExtResource( 15 )
 expand = true
 stretch_mode = 2
 
 [node name="tempo" type="Node2D" parent="."]
-pause_mode = 2
+pause_mode = 1
 
 [node name="Tempo" type="Label" parent="tempo"]
 pause_mode = 2
@@ -132,6 +224,10 @@ valign = 1
 
 [node name="Timer" type="Timer" parent="tempo"]
 pause_mode = 2
+wait_time = 10.0
+
+[node name="gameover" type="Timer" parent="tempo"]
+wait_time = 3.0
 one_shot = true
 
 [node name="pergunta" type="Node2D" parent="."]
@@ -241,6 +337,7 @@ current = true
 [node name="gameover" type="Node2D" parent="."]
 pause_mode = 2
 visible = false
+z_index = 2
 
 [node name="modulate" type="CanvasModulate" parent="gameover"]
 color = Color( 0.807843, 0.839216, 0.909804, 1 )
@@ -256,9 +353,22 @@ bbcode_text = "[wave]GAME OVER[/wave]"
 text = "GAME OVER"
 
 [node name="tutorial" type="Node2D" parent="."]
-position = Vector2( -140, -8 )
+pause_mode = 2
+position = Vector2( -1551, -790 )
+scale = Vector2( 5, 5 )
+z_index = 1
+
+[node name="tutorial_fundo" type="ColorRect" parent="tutorial"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 302.0
+margin_top = 150.0
+margin_right = 469.0
+margin_bottom = 279.0
+color = Color( 0.439216, 0.54902, 0.776471, 0.545098 )
 
 [node name="Fundo-tela" type="Sprite" parent="tutorial"]
+self_modulate = Color( 0.439216, 0.54902, 0.776471, 1 )
 position = Vector2( 385, 212.25 )
 scale = Vector2( 1.02564, 1.00909 )
 texture = ExtResource( 12 )
@@ -270,13 +380,14 @@ texture = ExtResource( 6 )
 
 [node name="segurador" type="Sprite" parent="tutorial"]
 position = Vector2( 385, 219 )
+scale = Vector2( 1.09375, 1 )
 texture = ExtResource( 16 )
 hframes = 2
 vframes = 2
 frame = 2
 
 [node name="telefone" type="Sprite" parent="tutorial/segurador"]
-position = Vector2( 1, -10 )
+position = Vector2( 1, -15 )
 scale = Vector2( 1.25, 1.25 )
 texture = ExtResource( 16 )
 hframes = 2
@@ -284,9 +395,19 @@ vframes = 2
 frame = 1
 
 [node name="animation" type="AnimationPlayer" parent="tutorial"]
+anims/RESET = SubResource( 13 )
+anims/out = SubResource( 14 )
 anims/trim = SubResource( 12 )
 
+[node name="tutorial" type="Timer" parent="tutorial"]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="tempo/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="tempo/gameover" to="." method="_on_gameover_timeout"]
 [connection signal="toggled" from="resposta/VBoxContainer/quest_1" to="." method="_on_item_toggled" binds= [ 0 ]]
 [connection signal="toggled" from="resposta/VBoxContainer/quest_2" to="." method="_on_item_toggled" binds= [ 1 ]]
 [connection signal="toggled" from="resposta/VBoxContainer/quest_3" to="." method="_on_item_toggled" binds= [ 2 ]]
 [connection signal="toggled" from="resposta/VBoxContainer/quest_4" to="." method="_on_item_toggled" binds= [ 3 ]]
+[connection signal="timeout" from="tutorial/tutorial" to="." method="_on_tutorial_timeout"]
