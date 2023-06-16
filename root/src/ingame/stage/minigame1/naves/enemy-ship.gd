@@ -6,11 +6,16 @@ var motion = false
 var life = Global.dano
 
 func _physics_process(delta: float) -> void:
+	var inimigos = get_tree().get_nodes_in_group("enemies")
+	for i in inimigos:
+		if(i.position.x == -246):
+			$NaveEnemy.set_flip_h(!motion)
+	
 	if(life < 1):
 		animation.play("dead")
 		yield(animation,"animation_finished")
 		queue_free()
-		
+			
 	else:
 		animation.play("enemy_walk")
 		if(motion):	
