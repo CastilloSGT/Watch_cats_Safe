@@ -25,13 +25,15 @@ func _physics_process(delta):
 		go_forward(delta)
 
 func go_forward(delta):
-	var target = $"../../ship".global_position
+	var target = Global.pos_nave
 	var inital_pos = $"../../posicoes/boss_pos".global_position
 	
 	if attack:
 		attackOrPain()
 		self.global_position = self.global_position.move_toward(target, delta * speed)
-		speed += 5
+		speed += 10
+		if(self.global_position.y == target.y):
+			attack = !attack
 	else:
 		self.global_position = self.global_position.move_toward(inital_pos, delta * speed)
 		speed = 100
@@ -66,7 +68,6 @@ func _on_Bossship_body_entered(body):
 	player_anim.play("hit")
 	
 	Global.pacotes -= dano
-	attack = !attack
 	
 	if (Global.pacotes <= 0 ):
 		player_anim.play("dead")
@@ -77,3 +78,4 @@ func _on_Bossship_body_entered(body):
 
 func _on_Timer_timeout():
 	attack = true
+	Global.pos_nave = $"../../ship".global_position

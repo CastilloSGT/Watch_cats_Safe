@@ -1,5 +1,6 @@
 extends Node2D
 
+onready var transition = get_node("transicao_foda/animation")
 onready var lblpacotes = $UI/pacotes
 onready var tempo = $timers/Timer
 onready var lbltempo = $UI/tempo
@@ -10,6 +11,8 @@ var _position
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	$transicao_foda.show()
+	transition.play("out")
 	
 	$"label-colorida".hide()
 	$modulate.hide()
@@ -40,7 +43,7 @@ func showTiros():
 func getPos():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	var num = rng.randi_range(1,3)
+	var num = rng.randi_range(4,6)
 	match num:
 		1:
 			_position = $posicoes/pos_1
@@ -48,10 +51,16 @@ func getPos():
 			_position = $posicoes/pos_2
 		3:
 			_position = $posicoes/pos_3
+		4:
+			_position = $posicoes/pos_4
+		5:
+			_position = $posicoes/pos_5
+		6:
+			_position = $posicoes/pos_6
 			
 func invocarRato():
 	getPos()
-	var inimigo = PRE_inimigo.instance() #inicia o tiro
+	var inimigo = PRE_inimigo.instance()
 	if(tempo.time_left > 3):
 		get_parent().add_child(inimigo)
 		inimigo.position = _position.global_position

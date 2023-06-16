@@ -83,7 +83,6 @@ func programando():
 		comp_animation.play("programando")
 		player.visible = false
 		$"../computador/logando".show()
-		
 		yield(comp_animation,"animation_finished")
 		get_tree().change_scene("res://src/ingame/stage/computador/tela-computador.tscn")
 	else:
