@@ -21,7 +21,8 @@ func _on_iniciar_pressed():
 			game = "minigame1/rat-attack.tscn"
 		1:
 			game = "minigame2/monkey-out.tscn"
-			
+		2:
+			game = "minigame3/MuuGame.tscn"
 		3:
 			game = "minigame4/Quiz.tscn"
 	

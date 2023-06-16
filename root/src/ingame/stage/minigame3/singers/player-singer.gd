@@ -51,6 +51,8 @@ func animation():
 		if (Global.maxCombo && Global.yes):
 			animation.play("yes")
 			wait_time = 10
+			yield(animation,"animation_finished")
+			Global.yes = false
 
 func _on_Timer_timeout():
 	wait_time -= reduction

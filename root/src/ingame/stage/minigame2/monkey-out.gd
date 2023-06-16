@@ -17,6 +17,8 @@ var bonus = 0
 signal reset()
 
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
 	$legendas/vidas/vida_total.rect_size.x = 96
 	$legendas/vidas/vida.rect_size.x = 0
 	

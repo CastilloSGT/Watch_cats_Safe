@@ -125,7 +125,7 @@ __meta__ = {
 [node name="Games" type="Sprite" parent="icons/games"]
 position = Vector2( 16, 16 )
 texture = ExtResource( 9 )
-hframes = 2
+hframes = 3
 
 [node name="pop-outs" type="Node2D" parent="."]
 
