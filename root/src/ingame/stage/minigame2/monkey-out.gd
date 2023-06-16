@@ -1,5 +1,6 @@
 extends Node2D
 
+onready var transition = get_node("transicao_foda/animation")
 onready var _round = $legendas/lblRound
 onready var tempo = $legendas/rounds
 onready var intervalo = $intervalo
@@ -17,6 +18,9 @@ var bonus = 0
 signal reset()
 
 func _ready():
+	$transicao_foda.show()
+	transition.play("out")
+	
 	$legendas/vidas/vida_total.rect_size.x = 96
 	$legendas/vidas/vida.rect_size.x = 0
 	

@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/interface/Shaders_Transition.tres" type="Shader" id=1]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/screen_width = 800.0
+shader_param/screen_height = 600.0
+shader_param/center = Vector2( 0.5, 0.5 )
+shader_param/player = Vector2( 0.5, 0.5 )
+shader_param/progress = 0.0
+shader_param/pixel_size = 15.0
+shader_param/circle_size = 1.5
+shader_param/curtains = 1.0
+shader_param/type = 1
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("fill:material:shader_param/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "in"
+tracks/0/type = "value"
+tracks/0/path = NodePath("fill:material:shader_param/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "out"
+tracks/0/type = "value"
+tracks/0/path = NodePath("fill:material:shader_param/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+
+[node name="transicao_foda" type="CanvasLayer"]
+
+[node name="fill" type="ColorRect" parent="."]
+material = SubResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="animation" type="AnimationPlayer" parent="."]
+autoplay = "RESET"
+anims/RESET = SubResource( 2 )
+anims/in = SubResource( 3 )
+anims/out = SubResource( 4 )

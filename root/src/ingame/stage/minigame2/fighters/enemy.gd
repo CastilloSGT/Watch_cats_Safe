@@ -61,14 +61,15 @@ func animacao():
 			ataque()
 			$ataque_delay.start()
 
+func ataque():
+	if(Global.tipo_dano != 0 && area_enemy && !caiu):
+		Global.tipo_dano = 4
+		Global.vida_fighter -= 100
+
 func nocaute():
 	$colisao.disabled = true
 	animacao.play("tentando")
 	$nocaute.start()
-
-func ataque():
-	if(Global.tipo_dano != 0 && area_enemy && !caiu):
-		Global.vida_fighter -= 100
 
 func perde_vida(dano):
 	Global.vida_enemy -= dano
