@@ -10,7 +10,7 @@ var areaOn
 var dialogo_on = false
 
 # SISTEMA DE FASES
-var fase = 0
+var fase = 3
 var pontos = [0,0,0,0,0]
 var fase_concluida = false
 

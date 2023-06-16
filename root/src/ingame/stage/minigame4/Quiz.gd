@@ -20,6 +20,7 @@ onready var lbltempo = $tempo/Tempo
 onready var inimigo = $inimigo/animation
 
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	totQuests = allQuest.size() #Tamanho total do Dictionary
 	quest(QuestAtt)
 	$tutorial/animation.play("trim")

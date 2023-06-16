@@ -223,10 +223,11 @@ align = 1
 valign = 1
 
 [node name="Timer" type="Timer" parent="tempo"]
-pause_mode = 2
-wait_time = 10.0
+pause_mode = 1
+wait_time = 3.0
 
 [node name="gameover" type="Timer" parent="tempo"]
+pause_mode = 2
 wait_time = 3.0
 one_shot = true
 
@@ -353,7 +354,7 @@ bbcode_text = "[wave]GAME OVER[/wave]"
 text = "GAME OVER"
 
 [node name="tutorial" type="Node2D" parent="."]
-pause_mode = 2
+pause_mode = 1
 position = Vector2( -1551, -790 )
 scale = Vector2( 5, 5 )
 z_index = 1
@@ -400,6 +401,7 @@ anims/out = SubResource( 14 )
 anims/trim = SubResource( 12 )
 
 [node name="tutorial" type="Timer" parent="tutorial"]
+pause_mode = 1
 wait_time = 3.0
 one_shot = true
 autostart = true
