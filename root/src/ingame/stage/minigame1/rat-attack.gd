@@ -10,6 +10,7 @@ var PRE_inimigo = preload("res://src/ingame/stage/minigame1/naves/enemy-ship.tsc
 var _position
 
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	$transicao_foda.show()
 	transition.play("out")
 	

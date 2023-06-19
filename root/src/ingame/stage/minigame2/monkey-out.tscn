@@ -893,12 +893,12 @@ font_data = ExtResource( 6 )
 [sub_resource type="Theme" id=40]
 default_font = SubResource( 39 )
 
-[sub_resource type="DynamicFont" id=41]
+[sub_resource type="DynamicFont" id=53]
 size = 8
 font_data = ExtResource( 6 )
 
 [sub_resource type="Theme" id=42]
-default_font = SubResource( 41 )
+default_font = SubResource( 53 )
 
 [sub_resource type="Animation" id=46]
 length = 0.001
