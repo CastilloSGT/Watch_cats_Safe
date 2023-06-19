@@ -14,11 +14,11 @@ var dormindo = false
 
 func _ready():
 	$"../computador/logando".hide()
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(_delta: float) -> void:
 	caixaAberta()
 	dia_completo()
-	print(Global.fase)
 	
 func caixaAberta():
 	if(Global.areaOn == true):
@@ -83,7 +83,6 @@ func programando():
 		comp_animation.play("programando")
 		player.visible = false
 		$"../computador/logando".show()
-		
 		yield(comp_animation,"animation_finished")
 		get_tree().change_scene("res://src/ingame/stage/computador/tela-computador.tscn")
 	else:

@@ -64,7 +64,7 @@ stretch_mode = 1
 position = Vector2( 88, 48 )
 scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 2 )
-hframes = 2
+hframes = 4
 
 [node name="iniciar" type="Button" parent="iniciar_game"]
 margin_left = 24.0

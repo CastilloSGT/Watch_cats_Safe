@@ -1,6 +1,5 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://src/ingame/stage/minigame3/stop_arrow/stopped_arrow_enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/ingame/stage/minigame3/stop_arrow/stopped_arrow.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/ingame/stage/minigame3/MuuGame.gd" type="Script" id=3]
 [ext_resource path="res://src/ingame/stage/minigame3/singers/enemy-singer.tscn" type="PackedScene" id=4]
@@ -11,6 +10,9 @@
 [ext_resource path="res://assets/fonts/PressStart2P.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://assets/art/ingame/stage/minigame 3/cidade.png" type="Texture" id=10]
 [ext_resource path="res://assets/art/ingame/stage/minigame 3/ceu.png" type="Texture" id=11]
+[ext_resource path="res://assets/art/ingame/stage/minigame 3/damage.png" type="Texture" id=12]
+[ext_resource path="res://assets/art/ingame/stage/minigame 3/cat_icon.png" type="Texture" id=13]
+[ext_resource path="res://assets/art/ingame/stage/minigame 3/cow_icon.png" type="Texture" id=14]
 
 [sub_resource type="TileSet" id=6]
 0/name = "ceu.png 0"
@@ -438,13 +440,6 @@
 1/shapes = [  ]
 1/z_index = 0
 
-[sub_resource type="DynamicFont" id=4]
-size = 8
-font_data = ExtResource( 9 )
-
-[sub_resource type="Theme" id=5]
-default_font = SubResource( 4 )
-
 [sub_resource type="DynamicFont" id=2]
 size = 8
 font_data = ExtResource( 9 )
@@ -456,6 +451,13 @@ default_font = SubResource( 2 )
 
 [sub_resource type="DynamicFont" id=9]
 font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=41]
+size = 8
+font_data = ExtResource( 9 )
+
+[sub_resource type="Theme" id=42]
+default_font = SubResource( 41 )
 
 [node name="MuuGame" type="Node2D"]
 pause_mode = 1
@@ -510,14 +512,6 @@ tile_data = PoolIntArray( 458751, 1, 0, 393216, 1, 0, 393217, 1, 0, 393218, 1, 0
 
 [node name="Labels" type="Node2D" parent="."]
 
-[node name="lblScore" type="Label" parent="Labels"]
-margin_left = 128.0
-margin_top = 24.0
-margin_right = 224.0
-margin_bottom = 40.0
-theme = SubResource( 5 )
-text = "Score"
-
 [node name="lblCombo" type="Label" parent="Labels"]
 visible = false
 margin_left = 320.0
@@ -541,12 +535,27 @@ __meta__ = {
 "_editor_description_": "[wave]"
 }
 
-[node name="Timer" type="Timer" parent="."]
-pause_mode = 2
+[node name="barra" type="Node2D" parent="Labels"]
 
-[node name="Control_spaw" type="Timer" parent="."]
-pause_mode = 1
-autostart = true
+[node name="barra-cor" type="TextureRect" parent="Labels/barra"]
+margin_left = 104.0
+margin_top = 16.0
+margin_right = 232.0
+margin_bottom = 48.0
+texture = ExtResource( 12 )
+stretch_mode = 1
+
+[node name="icons" type="Node2D" parent="Labels/barra"]
+position = Vector2( 168, 32 )
+scale = Vector2( 1.5, 1.5 )
+
+[node name="CatIcon" type="Sprite" parent="Labels/barra/icons"]
+position = Vector2( 8, 0 )
+texture = ExtResource( 13 )
+
+[node name="CowIcon" type="Sprite" parent="Labels/barra/icons"]
+position = Vector2( -8, 0 )
+texture = ExtResource( 14 )
 
 [node name="enemy-singer" parent="." instance=ExtResource( 4 )]
 pause_mode = 1
@@ -561,12 +570,10 @@ scale = Vector2( 1.75, 1.75 )
 [node name="player_arrows" type="Node2D" parent="."]
 pause_mode = 1
 position = Vector2( 96, -32 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="SpawArrow" type="Node2D" parent="player_arrows"]
 pause_mode = 1
+position = Vector2( -3, 0 )
 
 [node name="Position_left" type="Position2D" parent="player_arrows/SpawArrow"]
 position = Vector2( 155, 321 )
@@ -609,10 +616,7 @@ __meta__ = {
 
 [node name="SpawArrow" type="Node2D" parent="enemy_arrows"]
 pause_mode = 1
-position = Vector2( -146, -32 )
-__meta__ = {
-"_edit_group_": true
-}
+position = Vector2( -147, -32 )
 
 [node name="Position_left" type="Position2D" parent="enemy_arrows/SpawArrow"]
 position = Vector2( 155, 321 )
@@ -627,25 +631,23 @@ position = Vector2( 219, 321 )
 position = Vector2( 251, 321 )
 
 [node name="ArrowStop" type="Node2D" parent="enemy_arrows"]
-position = Vector2( 24, 32 )
-__meta__ = {
-"_edit_group_": true
-}
+position = Vector2( -248, 0 )
 
-[node name="left_arrow" parent="enemy_arrows/ArrowStop" instance=ExtResource( 1 )]
-position = Vector2( -16, 0 )
+[node name="left_arrow" parent="enemy_arrows/ArrowStop" instance=ExtResource( 2 )]
+position = Vector2( 256, 32 )
 
-[node name="right_arrow" parent="enemy_arrows/ArrowStop" instance=ExtResource( 1 )]
-position = Vector2( 48, 0 )
+[node name="right_arrow" parent="enemy_arrows/ArrowStop" instance=ExtResource( 2 )]
+position = Vector2( 320, 32 )
 
-[node name="up_arrow" parent="enemy_arrows/ArrowStop" instance=ExtResource( 1 )]
-position = Vector2( 16, 0 )
+[node name="up_arrow" parent="enemy_arrows/ArrowStop" instance=ExtResource( 2 )]
+position = Vector2( 288, 32 )
 
-[node name="down_arrow" parent="enemy_arrows/ArrowStop" instance=ExtResource( 1 )]
-position = Vector2( 80, 0 )
+[node name="down_arrow" parent="enemy_arrows/ArrowStop" instance=ExtResource( 2 )]
+position = Vector2( 352, 32 )
 
 [node name="pause-mode" type="Node2D" parent="."]
 pause_mode = 2
+visible = false
 
 [node name="label-colorida" parent="pause-mode" instance=ExtResource( 8 )]
 margin_left = 96.0
@@ -661,7 +663,48 @@ scroll_active = false
 [node name="modulate" type="CanvasModulate" parent="pause-mode"]
 color = Color( 0.807843, 0.839216, 0.909804, 1 )
 
-[connection signal="timeout" from="Control_spaw" to="." method="_on_Timer_timeout"]
+[node name="timers" type="Node2D" parent="."]
+
+[node name="Timer" type="Timer" parent="timers"]
+pause_mode = 2
+wait_time = 5.0
+one_shot = true
+
+[node name="Control_spaw" type="Timer" parent="timers"]
+pause_mode = 1
+
+[node name="delay" type="Timer" parent="timers"]
+one_shot = true
+
+[node name="reset" type="Timer" parent="timers"]
+wait_time = 5.0
+one_shot = true
+
+[node name="tutorial" type="Node2D" parent="timers"]
+position = Vector2( 5, -27 )
+z_index = 5
+
+[node name="tutorial_timer" type="Timer" parent="timers/tutorial"]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="tutorial_label" type="RichTextLabel" parent="timers/tutorial"]
+margin_left = 67.0
+margin_top = 163.0
+margin_right = 259.0
+margin_bottom = 203.0
+rect_clip_content = false
+theme = SubResource( 42 )
+bbcode_enabled = true
+bbcode_text = "[wave]    Use as setas ou 
+
+[WASD] para fazer pontos"
+text = "    Use as setas ou 
+
+[WASD] para fazer pontos"
+scroll_active = false
+
 [connection signal="area_shape_entered" from="player_arrows/ArrowStop/left_arrow" to="player_arrows/ArrowStop/left_arrow" method="_on_left_arrow_area_shape_entered"]
 [connection signal="area_shape_exited" from="player_arrows/ArrowStop/left_arrow" to="player_arrows/ArrowStop/left_arrow" method="_on_left_arrow_area_shape_exited"]
 [connection signal="area_shape_entered" from="player_arrows/ArrowStop/right_arrow" to="player_arrows/ArrowStop/right_arrow" method="_on_right_arrow_area_shape_entered"]
@@ -670,3 +713,16 @@ color = Color( 0.807843, 0.839216, 0.909804, 1 )
 [connection signal="area_shape_exited" from="player_arrows/ArrowStop/up_arrow" to="player_arrows/ArrowStop/up_arrow" method="_on_up_arrow_area_shape_exited"]
 [connection signal="area_shape_entered" from="player_arrows/ArrowStop/down_arrow" to="player_arrows/ArrowStop/down_arrow" method="_on_down_arrow_area_shape_entered"]
 [connection signal="area_shape_exited" from="player_arrows/ArrowStop/down_arrow" to="player_arrows/ArrowStop/down_arrow" method="_on_down_arrow_area_shape_exited"]
+[connection signal="area_shape_entered" from="enemy_arrows/ArrowStop/left_arrow" to="enemy_arrows/ArrowStop/left_arrow" method="_on_left_arrow_area_shape_entered"]
+[connection signal="area_shape_exited" from="enemy_arrows/ArrowStop/left_arrow" to="enemy_arrows/ArrowStop/left_arrow" method="_on_left_arrow_area_shape_exited"]
+[connection signal="area_shape_entered" from="enemy_arrows/ArrowStop/right_arrow" to="enemy_arrows/ArrowStop/right_arrow" method="_on_right_arrow_area_shape_entered"]
+[connection signal="area_shape_exited" from="enemy_arrows/ArrowStop/right_arrow" to="enemy_arrows/ArrowStop/right_arrow" method="_on_right_arrow_area_shape_exited"]
+[connection signal="area_shape_entered" from="enemy_arrows/ArrowStop/up_arrow" to="enemy_arrows/ArrowStop/up_arrow" method="_on_up_arrow_area_shape_entered"]
+[connection signal="area_shape_exited" from="enemy_arrows/ArrowStop/up_arrow" to="enemy_arrows/ArrowStop/up_arrow" method="_on_up_arrow_area_shape_exited"]
+[connection signal="area_shape_entered" from="enemy_arrows/ArrowStop/down_arrow" to="enemy_arrows/ArrowStop/down_arrow" method="_on_down_arrow_area_shape_entered"]
+[connection signal="area_shape_exited" from="enemy_arrows/ArrowStop/down_arrow" to="enemy_arrows/ArrowStop/down_arrow" method="_on_down_arrow_area_shape_exited"]
+[connection signal="timeout" from="timers/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="timers/Control_spaw" to="." method="_on_Control_spaw_timeout"]
+[connection signal="timeout" from="timers/delay" to="." method="_on_delay_timeout"]
+[connection signal="timeout" from="timers/reset" to="." method="_on_reset_timeout"]
+[connection signal="timeout" from="timers/tutorial/tutorial_timer" to="." method="_on_tutorial_timer_timeout"]

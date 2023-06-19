@@ -1,5 +1,6 @@
 extends Node2D
 
+onready var transition = get_node("transicao_foda/animation")
 onready var _round = $legendas/lblRound
 onready var tempo = $legendas/rounds
 onready var intervalo = $intervalo
@@ -17,6 +18,10 @@ var bonus = 0
 signal reset()
 
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	$transicao_foda.show()
+	transition.play("out")
+	
 	$legendas/vidas/vida_total.rect_size.x = 96
 	$legendas/vidas/vida.rect_size.x = 0
 	
@@ -39,7 +44,6 @@ func _physics_process(_delta: float) -> void:
 		bonus = 4 - (96/$legendas/vidas/vida.rect_size.x)
 	
 	if(bonus >= 2):
-		print(true)
 		Global.fase_concluida = true
 		Global.pontos[1] = int((bonus*100) / (minutes * .15))
 	else:

@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/fonts/MonsterFriendFore - Opstions.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://src/interface/transicao_foda.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/interface/menu.gd" type="Script" id=3]
 [ext_resource path="res://assets/art/interface/menu/menu_screen.png" type="Texture" id=4]
 
@@ -138,6 +139,9 @@ custom_styles/focus = SubResource( 19 )
 text = "Sair"
 flat = true
 icon_align = 1
+
+[node name="transicao_foda" parent="." instance=ExtResource( 2 )]
+visible = false
 
 [connection signal="focus_entered" from="menu/btn_start" to="." method="_on_btn_start_focus_entered"]
 [connection signal="focus_exited" from="menu/btn_start" to="." method="_on_btn_start_focus_exited"]

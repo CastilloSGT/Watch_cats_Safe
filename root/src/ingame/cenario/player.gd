@@ -13,6 +13,13 @@ onready var estado_animado = animation_tree.get("parameters/playback")
 func _physics_process(_delta: float) -> void: #roda durante todo nosso jogo
 	mexe()
 	
+	if(Global.secret):
+		$secret.show()
+		$sprite.hide()
+	else:
+		$secret.hide()
+		$sprite.show()
+	
 # move personagem
 func mexe() -> void:
 	# move ele em 8 direcoes mui pica

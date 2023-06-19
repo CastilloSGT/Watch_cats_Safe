@@ -2,6 +2,7 @@ extends Node2D
 
 # cria um auto load para salvar a ultima sala e assim resultar na posicao certa sla
 var lugar
+var secret = false
 
 # DIALOGO
 var obj
@@ -9,7 +10,7 @@ var areaOn
 var dialogo_on = false
 
 # SISTEMA DE FASES
-var fase = 0
+var fase = 3
 var pontos = [0,0,0,0,0]
 var fase_concluida = false
 
@@ -17,6 +18,7 @@ var fase_concluida = false
 var pacotes = 0
 var dano = 5
 var Boss_life
+var pos_nave
 
 #MINIGAME 2
 var tipo_dano = -1 # 0 = desvia, 1 = soco fraco, 2 = soco forte
