@@ -14,7 +14,7 @@ func _ready():
 	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	#Input.set_custom_mouse_cursor(cursor_alternativo)
-	grabRes.grab_focus()
+	grabQuit.grab_focus()
 	#Input.set_CUstom_mouse_cursor(vardeteste)
 	#Input.set_custom_mouse_cursor(vardeteste)
 	#grabQuit.grab_focus()
@@ -40,7 +40,7 @@ func _unhandled_input(event):
 			#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			#grabQuit.flat = true
 			#grabRes.flat = true
-			grabRes.grab_focus()
+			grabQuit.grab_focus()
 			#Input.set_custom_mouse_cursor(vardeteste)
 			self.is_paused = !is_paused
 
