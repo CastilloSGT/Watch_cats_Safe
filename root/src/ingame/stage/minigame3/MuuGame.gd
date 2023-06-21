@@ -23,8 +23,22 @@ onready var reset = $timers/reset;
 var timeDefined = 0
 var _round = 0
 
+#Json Export
+export(String, FILE, "*.json") var dialog_file
+#Array OBJ
+var dialogues = []
+var array1 = []
+
 #NOTAS
 var sequence = [
+	#fazer json buscar o -3 e buscar um -1 pra fase
+	#[1,2,3,4,-2,-1], [1,2,3,4,-2,-1],
+	#[1,1,1,4,2,1,-3,-1], [1,1,1,4,2,1,-3,-1],
+	#[1,2,6,3,2,5,5,-4,-2], [1,2,6,3,2,5,5,-4,-2],
+	[5,6,6,6,-2,-1], [5,6,7,8,-6,-1]
+]
+
+var sequence2 = [
 	#fazer json buscar o -3 e buscar um -1 pra fase
 	#[1,2,3,4,-2,-1], [1,2,3,4,-2,-1],
 	#[1,1,1,4,2,1,-3,-1], [1,1,1,4,2,1,-3,-1],
@@ -36,12 +50,27 @@ var j = 0
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	ler()
+	print(array1)
+	print(sequence)
 
 func _process(delta):
 	changeBarPos()
 	maxCombo()
 	$Labels/lblCombo.text = str("x",Global.combo)
 	
+#Json Read
+func ler():
+	var file = File.new()
+	if file.file_exists(dialog_file):
+		file.open(dialog_file,file.READ)
+		dialogues = parse_json(file.get_as_text())
+		#return parse_json(file.get_as_text())
+	
+	for i in range(dialogues[0].size()):
+		array1.append(dialogues[0][str('watch_',i+1)])
+	#print(dialogues)
+
 # COMBOS	
 func maxCombo():
 	if(Global.combo == 5):
@@ -72,24 +101,43 @@ func combo(maxSubItem, j):
 func spawnArrows():
 	verifyArrows()
 	if(delay_timer.time_left == 0):
-		arrowsPos(sequence[i][j])
+		#print(array1[i][j])
+		#print(sequence[i][j])
+		arrowsPos(int(array1[i][j]))
+		#arrowsPos(array1[i][j])
 		j += 1
 
 func verifyArrows():
 	control_spaw.start()
 	control_spaw.set_wait_time(1)
-	var maxItem = sequence.size()
+	var maxItem = array1.size()
 	
-	var maxSubItem = sequence[i].size() -2 #nao pega o timer
+	#var aux = sequence[i].size() -2
+	#var aux1 = abs(sequence[i][aux])
+	#print(aux1)
+	
+	
+	#var aux2 = array1[i].size() -2
+	#var aux11 = abs(int(array1[i][aux2]))
+	#print(aux11)
+	
+	#var maxSubItem2 = sequence[i].size() -2 #nao pega o timer
+	var maxSubItem = array1[i].size() - 2
+	#print(maxSubItem)
+	#print(maxSubItem2)
+	
+	
 	combo(maxSubItem, j)
-	timeDefined = abs(sequence[i][maxSubItem])
-	_round = abs(sequence[i][maxSubItem+1])
+	#timeDefined = abs(sequence[i][maxSubItem])
+	timeDefined = abs(int(array1[i][maxSubItem]))
+	#_round = abs(sequence[i][maxSubItem+1]) #sem ABS já q n tem -
+	_round = abs(int(array1[i][maxSubItem+1]))
 	
 	if(j == maxSubItem):
 		Global.yes = true
 		i += 1
 		j = 0
-		delay_timer.wait_time = timeDefined
+		delay_timer.wait_time = timeDefined #converter
 		delay_timer.start()
 		
 	if(i == maxItem):

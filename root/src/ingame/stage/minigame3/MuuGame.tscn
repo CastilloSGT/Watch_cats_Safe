@@ -462,6 +462,7 @@ default_font = SubResource( 41 )
 [node name="MuuGame" type="Node2D"]
 pause_mode = 1
 script = ExtResource( 3 )
+dialog_file = "res://assets/json/Json_tst.json"
 
 [node name="cenario" type="Node2D" parent="."]
 pause_mode = 1

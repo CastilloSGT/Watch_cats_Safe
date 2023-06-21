@@ -7,6 +7,17 @@ var dialogues = []
 #@export var test_dic: Dictionary = ""
 func _ready():
 	play()
+	#print(dialogues.size())	
+	#print(dialogues)
+	var j = 0
+	print(dialogues[0].size())
+	var arrayAux = []
+	for i in range(dialogues[0].size()):
+		print(i)
+		print(dialogues[0][str('watch_',i+1)])
+		arrayAux.append(dialogues[0][str('watch_',i+1)])
+	print(arrayAux)
+
 	#$NinePatchRect/RichTextLabel.text = dialogues[0]['Pergunta']
 	#$NinePatchRect/RichTextLabel2.text = dialogues[0]['ops1']
 	
@@ -33,7 +44,7 @@ func _ready():
 		
 	for n in range(8):
 		print(n)
-	"""
+	
 	var array1 = []
 	var gtx = 1
 	var gtxStr = String(gtx)
@@ -42,7 +53,7 @@ func _ready():
 	var array3 = []
 	var aux = []
 	#print(array1[array1.size() - 1])
-	"""
+	""
 	for n in array1:
 		#print(n)
 		if n == str(array1.size() - 1) || n == str(array1.size()):
@@ -53,16 +64,16 @@ func _ready():
 	for (int i = 0; i < 50; i++) {
 		printf("Value: %s\n", i, strings[i]);
 	}
-	"""
+	""
 	var x = 0
 	for i in range(array1.size()):
 		if i == array1.size() - 1:
 			#print(array1[i])
 			array2.append(array1[i])
 		elif i == array1.size() - 2:
-			array2.append(array1[i])
-		else:
 			array3.append(array1[i])
+		else:
+			aux.append(array1[i])
 			#x+=1
 			#print(array2)
 			#array2[x] = array1[i]
@@ -74,14 +85,21 @@ func _ready():
 	#print(aux)
 	print(array2)
 	print(array3)
-	#print(array1)
-	#print(array1)
+	print(aux)
+	print(array1)
 	#print(dialogues.size())
+	"""
+	
+func tentativas():
+	pass
 	
 	
+	#for in range():
+		#pass
 
 func play():
 	dialogues = carg()
+	
 
 func carg():
 	var file = File.new()
