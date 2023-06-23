@@ -877,7 +877,10 @@ texture = ExtResource( 3 )
 position = Vector2( -6, 112.667 )
 z_index = 2
 texture = ExtResource( 7 )
+<<<<<<< HEAD
 hframes = 2
+=======
+>>>>>>> dd0d9375549169274af1b9287e0fd77bef71217f
 
 [node name="pelucia_colisao" type="CollisionPolygon2D" parent="Objetos/objetos"]
 position = Vector2( 92.6667, 100 )

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_scene load_steps=48 format=2]
+=======
+[gd_scene load_steps=46 format=2]
+>>>>>>> dd0d9375549169274af1b9287e0fd77bef71217f
 
 [ext_resource path="res://assets/art/ingame/scenario/home/kitchen/tileset-ladrilho.png" type="Texture" id=1]
 [ext_resource path="res://assets/art/ingame/scenario/home/kitchen/cadeira-esq.png" type="Texture" id=2]
@@ -7,12 +11,19 @@
 [ext_resource path="res://assets/art/ingame/scenario/home/kitchen/janela-com-cortina.png" type="Texture" id=5]
 [ext_resource path="res://assets/art/ingame/scenario/home/kitchen/cadeira-dir.png" type="Texture" id=6]
 [ext_resource path="res://assets/art/ingame/scenario/home/kitchen/prateleiras.png" type="Texture" id=7]
+<<<<<<< HEAD
 [ext_resource path="res://assets/art/ingame/scenario/home/bedroom/mesa.png" type="Texture" id=8]
+=======
+[ext_resource path="res://assets/art/ingame/scenario/home/living-room/mesa-grande.png" type="Texture" id=8]
+>>>>>>> dd0d9375549169274af1b9287e0fd77bef71217f
 [ext_resource path="res://assets/art/ingame/scenario/home/kitchen/pia-grande.png" type="Texture" id=9]
 [ext_resource path="res://src/ingame/cenario/player.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/ingame/cenario/casa/porta.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/ingame/cenario/casa/casa.gd" type="Script" id=12]
+<<<<<<< HEAD
 [ext_resource path="res://assets/art/ingame/scenario/home/bedroom/vaso.png" type="Texture" id=13]
+=======
+>>>>>>> dd0d9375549169274af1b9287e0fd77bef71217f
 
 [sub_resource type="ConvexPolygonShape2D" id=27]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -577,6 +588,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 26/z_index = 0
 
 [sub_resource type="RectangleShape2D" id=44]
+<<<<<<< HEAD
 extents = Vector2( 14, 9.91667 )
 
 [sub_resource type="RectangleShape2D" id=46]
@@ -584,13 +596,25 @@ extents = Vector2( 8.5, 9.16667 )
 
 [sub_resource type="RectangleShape2D" id=45]
 extents = Vector2( 12.3333, 10.75 )
+=======
+extents = Vector2( 19, 8.5 )
+
+[sub_resource type="RectangleShape2D" id=46]
+extents = Vector2( 8, 11 )
+
+[sub_resource type="RectangleShape2D" id=45]
+extents = Vector2( 8.5, 11 )
+>>>>>>> dd0d9375549169274af1b9287e0fd77bef71217f
 
 [sub_resource type="RectangleShape2D" id=41]
 extents = Vector2( 56, 10.125 )
 
+<<<<<<< HEAD
 [sub_resource type="RectangleShape2D" id=61]
 extents = Vector2( 9.33333, 8 )
 
+=======
+>>>>>>> dd0d9375549169274af1b9287e0fd77bef71217f
 [node name="cozinha" type="Node2D"]
 position = Vector2( 1, 0 )
 scale = Vector2( 1.5, 1.5 )
@@ -620,6 +644,7 @@ texture = ExtResource( 5 )
 [node name="objetos" type="StaticBody2D" parent="Objetos"]
 
 [node name="colisao-mesa" type="CollisionShape2D" parent="Objetos/objetos"]
+<<<<<<< HEAD
 position = Vector2( 48, 101.333 )
 shape = SubResource( 44 )
 
@@ -639,6 +664,25 @@ shape = SubResource( 46 )
 
 [node name="colisao-cadeira-dir" type="CollisionShape2D" parent="Objetos/objetos"]
 position = Vector2( 76.6667, 101.417 )
+=======
+position = Vector2( 76, 87.5 )
+shape = SubResource( 44 )
+
+[node name="Cadeira-esq" type="Sprite" parent="Objetos/objetos"]
+position = Vector2( 47, 87 )
+texture = ExtResource( 2 )
+
+[node name="Cadeira-dir" type="Sprite" parent="Objetos/objetos"]
+position = Vector2( 105, 87 )
+texture = ExtResource( 6 )
+
+[node name="colisao-cadeira-esq" type="CollisionShape2D" parent="Objetos/objetos"]
+position = Vector2( 47, 87 )
+shape = SubResource( 46 )
+
+[node name="colisao-cadeira-dir" type="CollisionShape2D" parent="Objetos/objetos"]
+position = Vector2( 105.5, 87 )
+>>>>>>> dd0d9375549169274af1b9287e0fd77bef71217f
 shape = SubResource( 45 )
 
 [node name="Geladeira" type="Sprite" parent="Objetos/objetos"]
@@ -657,6 +701,7 @@ texture = ExtResource( 9 )
 position = Vector2( 86.6667, 48.6667 )
 shape = SubResource( 41 )
 
+<<<<<<< HEAD
 [node name="Vaso" type="Sprite" parent="Objetos/objetos"]
 position = Vector2( 137.333, 96 )
 z_index = 1
@@ -672,6 +717,12 @@ texture = ExtResource( 8 )
 position = Vector2( 138, 104 )
 shape = SubResource( 61 )
 
+=======
+[node name="Mesa-grande" type="Sprite" parent="Objetos/objetos"]
+position = Vector2( 76, 87 )
+texture = ExtResource( 8 )
+
+>>>>>>> dd0d9375549169274af1b9287e0fd77bef71217f
 [node name="sala" parent="." instance=ExtResource( 11 )]
 position = Vector2( 165.333, 79.3333 )
 

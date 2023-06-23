@@ -2,15 +2,24 @@
 
 importer="texture"
 type="StreamTexture"
+<<<<<<<< HEAD:root/assets/art/ingame/scenario/home/bathroom/tapete.png.import
 path="res://.import/tapete.png-77ff0267e84452117ed6940774f8e10f.stex"
+========
+path="res://.import/cesto.png-4f81267aeece84896c22a993d5d38d8b.stex"
+>>>>>>>> dd0d9375549169274af1b9287e0fd77bef71217f:root/assets/art/ingame/scenario/home/bedroom/cesto.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
+<<<<<<<< HEAD:root/assets/art/ingame/scenario/home/bathroom/tapete.png.import
 source_file="res://assets/art/ingame/scenario/home/bathroom/tapete.png"
 dest_files=[ "res://.import/tapete.png-77ff0267e84452117ed6940774f8e10f.stex" ]
+========
+source_file="res://assets/art/ingame/scenario/home/bedroom/cesto.png"
+dest_files=[ "res://.import/cesto.png-4f81267aeece84896c22a993d5d38d8b.stex" ]
+>>>>>>>> dd0d9375549169274af1b9287e0fd77bef71217f:root/assets/art/ingame/scenario/home/bedroom/cesto.png.import
 
 [params]
 
