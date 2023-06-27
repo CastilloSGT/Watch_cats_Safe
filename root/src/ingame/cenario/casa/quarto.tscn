@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://assets/art/ingame/scenario/home/bedroom/armario.png" type="Texture" id=1]
 [ext_resource path="res://assets/art/ingame/scenario/home/bedroom/cesto.png" type="Texture" id=2]
@@ -733,6 +733,12 @@ extents = Vector2( 10, 10.6667 )
 [sub_resource type="RectangleShape2D" id=118]
 extents = Vector2( 14, 9 )
 
+[sub_resource type="RectangleShape2D" id=119]
+extents = Vector2( 15.6667, 19.6667 )
+
+[sub_resource type="RectangleShape2D" id=120]
+extents = Vector2( 14, 7.33333 )
+
 [node name="quarto" type="Node2D"]
 position = Vector2( 23, 0 )
 scale = Vector2( 1.5, 1.5 )
@@ -896,11 +902,19 @@ shape = SubResource( 118 )
 position = Vector2( -6, 118 )
 shape = SubResource( 117 )
 
+[node name="cama_colisao" type="CollisionShape2D" parent="Objetos/objetos"]
+position = Vector2( 3.66667, 59 )
+shape = SubResource( 119 )
+
+[node name="comp_colisao" type="CollisionShape2D" parent="Objetos/objetos"]
+position = Vector2( 92, 50.6667 )
+shape = SubResource( 120 )
+
 [node name="sala" parent="." instance=ExtResource( 11 )]
 position = Vector2( 30.6667, 153.333 )
 
 [node name="computadorpos" type="Position2D" parent="."]
-position = Vector2( 92.6667, 78.6667 )
+position = Vector2( 90.6667, 58 )
 
 [node name="salapos" type="Position2D" parent="."]
 position = Vector2( 32.6667, 118 )
