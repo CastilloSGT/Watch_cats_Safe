@@ -38,20 +38,20 @@ func dia_completo():
 		$"../modo_noite/modulate".show()
 		
 		#tranca player no quarto
-		tilemap.set_cell(4,8,32)
-		tilemap.set_cell(5,8,32)
-		tilemap.set_cell(6,8,32)
-		tilemap.set_cell(7,8,32)
+		tilemap.set_cell(0,8,32)
+		tilemap.set_cell(1,8,32)
+		tilemap.set_cell(2,8,32)
+		tilemap.set_cell(3,8,32)
 		
 	else:
 		janela_animation.play("dia")
 		$"../modo_noite/modulate".hide()
 		
 		#destranca player do quarto
-		tilemap.set_cell(4,8,17)
-		tilemap.set_cell(5,8,30)
-		tilemap.set_cell(6,8,30)
-		tilemap.set_cell(7,8,19)
+		tilemap.set_cell(0,8,17)
+		tilemap.set_cell(1,8,30)
+		tilemap.set_cell(2,8,30)
+		tilemap.set_cell(3,8,19)
 
 #ANIMAÇÕES
 func dormiu():
