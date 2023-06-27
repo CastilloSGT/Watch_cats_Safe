@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/ingame/stage/computador/tela-computador.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/ingame/stage/computador/tela-computador.png" type="Texture" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://assets/art/ingame/scenario/home/bedroom/tileset-quarto.png" type="Texture" id=7]
 [ext_resource path="res://assets/art/ingame/stage/computador/icons/browser.png" type="Texture" id=8]
 [ext_resource path="res://assets/art/ingame/stage/computador/icons/games.png" type="Texture" id=9]
-[ext_resource path="res://assets/art/ingame/stage/computador/icons/desconnect.png" type="Texture" id=10]
 
 [sub_resource type="TileSet" id=1]
 0/name = "tileset-quarto.png 0"
@@ -52,7 +51,7 @@ scale = Vector2( 4, 4 )
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 65536, 1, 0, 65541, 1, 0, 65542, 1, 0, 131072, 1, 0, 131073, 1, 0, 131074, 1, 0, 131075, 1, 0, 131076, 1, 0, 131077, 1, 0, 131078, 1, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0 )
+tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 65536, 1, 0, 65537, 1, 0, 65538, 1, 0, 65539, 1, 0, 65540, 1, 0, 65541, 1, 0, 65542, 1, 0, 131072, 1, 0, 131073, 1, 0, 131074, 1, 0, 131075, 1, 0, 131076, 1, 0, 131077, 1, 0, 131078, 1, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 262144, 1, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0 )
 
 [node name="Tela-computador" type="Sprite" parent="."]
 position = Vector2( 200, 160 )
@@ -67,90 +66,86 @@ zoom = Vector2( 0.5, 0.5 )
 [node name="icons" type="Node2D" parent="."]
 
 [node name="chat" type="Button" parent="icons"]
-margin_left = 290.0
-margin_top = 40.0
-margin_right = 318.0
-margin_bottom = 62.0
-rect_scale = Vector2( 1.5, 1.5 )
+margin_left = 112.0
+margin_top = 80.0
+margin_right = 140.0
+margin_bottom = 102.0
 icon = ExtResource( 5 )
 flat = true
 
 [node name="IDE" type="Button" parent="icons"]
-margin_left = 64.0
-margin_top = 72.0
-margin_right = 92.0
-margin_bottom = 94.0
-rect_scale = Vector2( 1.5, 1.5 )
+margin_left = 112.0
+margin_top = 56.0
+margin_right = 140.0
+margin_bottom = 78.0
 icon = ExtResource( 6 )
 flat = true
 
 [node name="file" type="Button" parent="icons"]
-margin_left = 64.0
-margin_top = 40.0
-margin_right = 92.0
-margin_bottom = 62.0
-rect_scale = Vector2( 1.5, 1.5 )
+margin_left = 128.0
+margin_top = 135.0
+margin_right = 156.0
+margin_bottom = 157.0
 icon = ExtResource( 4 )
 flat = true
 
 [node name="lixo" type="Button" parent="icons"]
-margin_left = 290.0
-margin_top = 104.0
-margin_right = 318.0
-margin_bottom = 126.0
-rect_scale = Vector2( 1.5, 1.5 )
+margin_left = 240.0
+margin_top = 112.0
+margin_right = 268.0
+margin_bottom = 134.0
 icon = ExtResource( 3 )
 flat = true
 clip_text = true
 
 [node name="browser" type="Button" parent="icons"]
-margin_left = 290.0
-margin_top = 72.0
-margin_right = 318.0
-margin_bottom = 94.0
-rect_scale = Vector2( 1.5, 1.5 )
+margin_left = 151.0
+margin_top = 136.0
+margin_right = 179.0
+margin_bottom = 158.0
 icon = ExtResource( 8 )
 flat = true
 
 [node name="games" type="Button" parent="icons"]
-margin_left = 70.0
+margin_left = 115.0
 margin_top = 104.0
-margin_right = 102.0
-margin_bottom = 136.0
+margin_right = 139.0
+margin_bottom = 128.0
 flat = true
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Games" type="Sprite" parent="icons/games"]
-position = Vector2( 16, 16 )
+position = Vector2( 12, 12 )
+scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 9 )
 hframes = 4
 
 [node name="pop-outs" type="Node2D" parent="."]
+z_index = 1
 
 [node name="pos_chat" type="Position2D" parent="pop-outs"]
-position = Vector2( 200, 136 )
+position = Vector2( 198, 117 )
 
 [node name="pos_IDE" type="Position2D" parent="pop-outs"]
-position = Vector2( 208, 80 )
+position = Vector2( 195, 77 )
 
 [node name="pos_lixo" type="Position2D" parent="pop-outs"]
-position = Vector2( 152, 120 )
+position = Vector2( 163, 119 )
 
 [node name="pos_file" type="Position2D" parent="pop-outs"]
-position = Vector2( 256, 104 )
+position = Vector2( 231, 96 )
 
 [node name="pos_browser" type="Position2D" parent="pop-outs"]
-position = Vector2( 144, 88 )
+position = Vector2( 154, 90 )
 
 [node name="quit" type="Button" parent="."]
-margin_left = 312.0
-margin_top = 155.0
-margin_right = 340.0
-margin_bottom = 177.0
+margin_left = 281.0
+margin_top = 102.0
+margin_right = 317.0
+margin_bottom = 133.0
 rect_scale = Vector2( 0.75, 0.75 )
-icon = ExtResource( 10 )
 flat = true
 
 [connection signal="pressed" from="icons/chat" to="." method="_on_chat_pressed"]

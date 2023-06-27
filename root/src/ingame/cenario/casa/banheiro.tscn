@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/art/ingame/scenario/home/kitchen/tileset-ladrilho.png" type="Texture" id=1]
 [ext_resource path="res://assets/art/ingame/scenario/home/bathroom/tapete.png" type="Texture" id=2]
-[ext_resource path="res://assets/art/ingame/scenario/home/bathroom/banheira.png" type="Texture" id=3]
+[ext_resource path="res://assets/art/ingame/scenario/home/bathroom/chuveiro.png" type="Texture" id=3]
 [ext_resource path="res://assets/art/ingame/scenario/home/bathroom/pia-pequena.png" type="Texture" id=4]
 [ext_resource path="res://assets/art/ingame/scenario/home/bathroom/caixa-areia.png" type="Texture" id=5]
 [ext_resource path="res://src/ingame/cenario/player.tscn" type="PackedScene" id=6]
@@ -549,7 +549,7 @@ resource_local_to_scene = true
 25/texture = ExtResource( 1 )
 25/tex_offset = Vector2( 0, 0 )
 25/modulate = Color( 1, 1, 1, 1 )
-25/region = Rect2( 96, 48, 16, 16 )
+25/region = Rect2( 0, 0, 16, 16 )
 25/tile_mode = 0
 25/occluder_offset = Vector2( 0, 0 )
 25/navigation_offset = Vector2( 0, 0 )
@@ -558,10 +558,66 @@ resource_local_to_scene = true
 25/shape_one_way = false
 25/shape_one_way_margin = 0.0
 25/shapes = [  ]
-25/z_index = 0
+25/z_index = 1
+26/name = "tileset-ladrilho.png 26"
+26/texture = ExtResource( 1 )
+26/tex_offset = Vector2( 0, 0 )
+26/modulate = Color( 1, 1, 1, 1 )
+26/region = Rect2( 16, 0, 16, 16 )
+26/tile_mode = 0
+26/occluder_offset = Vector2( 0, 0 )
+26/navigation_offset = Vector2( 0, 0 )
+26/shape_offset = Vector2( 0, 0 )
+26/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+26/shape_one_way = false
+26/shape_one_way_margin = 0.0
+26/shapes = [  ]
+26/z_index = 1
+27/name = "tileset-ladrilho.png 27"
+27/texture = ExtResource( 1 )
+27/tex_offset = Vector2( 0, 0 )
+27/modulate = Color( 1, 1, 1, 1 )
+27/region = Rect2( 0, 0, 16, 16 )
+27/tile_mode = 2
+27/autotile/icon_coordinate = Vector2( 0, 0 )
+27/autotile/tile_size = Vector2( 16, 16 )
+27/autotile/spacing = 0
+27/autotile/occluder_map = [  ]
+27/autotile/navpoly_map = [  ]
+27/autotile/priority_map = [  ]
+27/autotile/z_index_map = [  ]
+27/occluder_offset = Vector2( 0, 0 )
+27/navigation_offset = Vector2( 0, 0 )
+27/shape_offset = Vector2( 0, 0 )
+27/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+27/shape_one_way = false
+27/shape_one_way_margin = 0.0
+27/shapes = [  ]
+27/z_index = 0
+28/name = "tileset-ladrilho.png 28"
+28/texture = ExtResource( 1 )
+28/tex_offset = Vector2( 0, 0 )
+28/modulate = Color( 1, 1, 1, 1 )
+28/region = Rect2( 16, 0, 16, 16 )
+28/tile_mode = 2
+28/autotile/icon_coordinate = Vector2( 0, 0 )
+28/autotile/tile_size = Vector2( 16, 16 )
+28/autotile/spacing = 0
+28/autotile/occluder_map = [  ]
+28/autotile/navpoly_map = [  ]
+28/autotile/priority_map = [  ]
+28/autotile/z_index_map = [  ]
+28/occluder_offset = Vector2( 0, 0 )
+28/navigation_offset = Vector2( 0, 0 )
+28/shape_offset = Vector2( 0, 0 )
+28/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+28/shape_one_way = false
+28/shape_one_way_margin = 0.0
+28/shapes = [  ]
+28/z_index = 0
 
 [sub_resource type="RectangleShape2D" id=37]
-extents = Vector2( 12.6667, 10.125 )
+extents = Vector2( 10, 10.3958 )
 
 [sub_resource type="RectangleShape2D" id=38]
 extents = Vector2( 12.5833, 7.25 )
@@ -579,7 +635,7 @@ tile_set = SubResource( 35 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 4
 format = 1
-tile_data = PoolIntArray( 1, 22, 0, 2, 17, 0, 3, 17, 0, 4, 17, 0, 5, 17, 0, 6, 24, 0, 65537, 22, 0, 65538, 17, 0, 65539, 17, 0, 65540, 17, 0, 65541, 17, 0, 65542, 24, 0, 131073, 5, 0, 131074, 6, 0, 131075, 6, 0, 131076, 6, 0, 131077, 6, 0, 131078, 7, 0, 196609, 11, 0, 196610, 23, 0, 196611, 23, 0, 196612, 23, 0, 196613, 23, 0, 196614, 10, 0, 262145, 23, 0, 262146, 23, 0, 262147, 23, 0, 262148, 23, 0, 262149, 23, 0, 262150, 10, 0, 327681, 23, 0, 327682, 23, 0, 327683, 23, 0, 327684, 23, 0, 327685, 23, 0, 327686, 10, 0, 393217, 13, 0, 393218, 23, 0, 393219, 23, 0, 393220, 23, 0, 393221, 23, 0, 393222, 10, 0, 458753, 19, 0, 458754, 20, 0, 458755, 20, 0, 458756, 20, 0, 458757, 20, 0, 458758, 21, 0 )
+tile_data = PoolIntArray( 1, 22, 0, 2, 17, 0, 3, 17, 0, 4, 17, 0, 5, 17, 0, 6, 24, 0, 65537, 22, 0, 65538, 17, 0, 65539, 17, 0, 65540, 17, 0, 65541, 17, 0, 65542, 24, 0, 131073, 5, 0, 131074, 6, 0, 131075, 6, 0, 131076, 6, 0, 131077, 6, 0, 131078, 7, 0, 196609, 11, 0, 196610, 27, 0, 196611, 28, 0, 196612, 23, 0, 196613, 23, 0, 196614, 10, 0, 262145, 23, 0, 262146, 23, 0, 262147, 23, 0, 262148, 23, 0, 262149, 23, 0, 262150, 10, 0, 327681, 23, 0, 327682, 23, 0, 327683, 23, 0, 327684, 23, 0, 327685, 23, 0, 327686, 10, 0, 393217, 13, 0, 393218, 23, 0, 393219, 23, 0, 393220, 23, 0, 393221, 23, 0, 393222, 10, 0, 458753, 19, 0, 458754, 20, 0, 458755, 20, 0, 458756, 20, 0, 458757, 20, 0, 458758, 21, 0 )
 
 [node name="Objetos" type="Node2D" parent="."]
 
@@ -592,17 +648,17 @@ position = Vector2( 72, 18 )
 texture = ExtResource( 9 )
 vframes = 2
 
-[node name="Banheira" type="Sprite" parent="Objetos/objetos"]
+[node name="chuveiro" type="Sprite" parent="Objetos/objetos"]
 position = Vector2( 44, 30 )
 z_index = 1
 texture = ExtResource( 3 )
 
 [node name="Pia-pequena" type="Sprite" parent="Objetos/objetos"]
-position = Vector2( 84, 76.6667 )
+position = Vector2( 83.3333, 76.6667 )
 texture = ExtResource( 4 )
 
 [node name="colisao-pia" type="CollisionShape2D" parent="Objetos/objetos"]
-position = Vector2( 84, 81.3333 )
+position = Vector2( 89.3333, 82.2708 )
 shape = SubResource( 37 )
 
 [node name="Caixa-areia" type="Sprite" parent="Objetos/objetos"]
@@ -614,7 +670,7 @@ position = Vector2( 83.3333, 104 )
 shape = SubResource( 38 )
 
 [node name="Tapete" type="Sprite" parent="Objetos/objetos"]
-position = Vector2( 45.3333, 72 )
+position = Vector2( 42.6667, 74 )
 texture = ExtResource( 2 )
 
 [node name="Vaso" type="Sprite" parent="Objetos/objetos"]
