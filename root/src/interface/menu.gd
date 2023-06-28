@@ -5,7 +5,7 @@ onready var transition = get_node("transicao_foda/animation")
 var entrou = false
 var opts = false
 var quit = false
-
+#--------------------------------
 func _ready():
 	$transicao_foda.show()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
