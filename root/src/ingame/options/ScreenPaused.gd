@@ -15,6 +15,8 @@ func _ready():
 	#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	#Input.set_custom_mouse_cursor(cursor_alternativo)
 	grabQuit.grab_focus()
+	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
 	#Input.set_CUstom_mouse_cursor(vardeteste)
 	#Input.set_custom_mouse_cursor(vardeteste)
 	#grabQuit.grab_focus()
@@ -23,12 +25,13 @@ func _process(delta):
 	#grabRes.grab_focus()
 	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if Input.is_action_pressed("ui_select"):
-		if res:
-			_on_BtnResume_pressed()
-			#self.is_paused = false
-		elif quit:
+		if quit:
 			_on_BtnStop_pressed()
 			#get_tree().quit()
+		elif res:  
+			_on_BtnResume_pressed()
+			#self.is_paused = false
+		
 		else:
 			return;
 

@@ -1,12 +1,19 @@
+
 extends Node2D
 
+var velocidade =160
 func _ready():
-	$animation.play("normal")
+	start_sequence()
 
-func _process(delta):
-	self.position.y += 1;
-	
-	if(self.position.y == 50):
+func start_sequence():
+	while true:
+		$animation.play("normal")
+		while self.position.y < 100:
+			self.position.y += velocidade * get_process_delta_time()
+			yield(get_tree().create_timer(0.1), "timeout")
+		
 		$animation.play("destroi")
 		yield($animation, "animation_finished")
-		queue_free()
+		
+
+		self.position.y = 0 
