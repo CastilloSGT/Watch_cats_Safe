@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/ingame/options/ScreenPaused.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/MonsterFriendFore - Opstions.otf" type="DynamicFontData" id=2]
@@ -21,30 +21,15 @@ font_data = ExtResource( 2 )
 [sub_resource type="Theme" id=11]
 default_font = SubResource( 4 )
 
-[sub_resource type="StyleBoxFlat" id=9]
-bg_color = Color( 0.0392157, 0.0235294, 0.0235294, 0.333333 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 2
-border_color = Color( 0.568627, 0.890196, 0.52549, 1 )
-shadow_size = 2
+[sub_resource type="Theme" id=19]
 
 [sub_resource type="StyleBoxFlat" id=18]
-bg_color = Color( 0.0745098, 0.0392157, 0.0392157, 0 )
+bg_color = Color( 0, 0, 0, 0 )
 
-[sub_resource type="Theme" id=17]
+[sub_resource type="Theme" id=20]
 
-[sub_resource type="StyleBoxFlat" id=19]
-bg_color = Color( 0.6, 0.6, 0.6, 0 )
-
-[sub_resource type="StyleBoxFlat" id=13]
-bg_color = Color( 0.0666667, 0.0431373, 0.0431373, 0.47451 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 1, 1, 1, 1 )
+[sub_resource type="StyleBoxFlat" id=21]
+bg_color = Color( 0, 0, 0, 0 )
 
 [node name="Control" type="Control"]
 pause_mode = 2
@@ -76,7 +61,7 @@ theme = SubResource( 15 )
 process_priority = 1
 modulate = Color( 0.992157, 0.984314, 0.984314, 1 )
 margin_right = 160.0
-margin_bottom = 185.0
+margin_bottom = 189.0
 size_flags_stretch_ratio = 0.0
 theme = SubResource( 11 )
 custom_constants/separation = 7
@@ -104,12 +89,13 @@ margin_right = 160.0
 margin_bottom = 141.0
 focus_neighbour_top = NodePath("../BtnStop")
 focus_neighbour_bottom = NodePath("../BtnStop")
+focus_mode = 1
+theme = SubResource( 19 )
 custom_colors/font_color_focus = Color( 0.27451, 0.752941, 0.203922, 1 )
 custom_colors/font_color = Color( 0.992188, 0.983467, 0.983467, 1 )
-custom_colors/font_color_hover = Color( 0.27451, 0.752941, 0.203922, 1 )
-custom_styles/hover = SubResource( 9 )
 custom_styles/focus = SubResource( 18 )
 action_mode = 0
+enabled_focus_mode = 1
 text = "Continuar"
 flat = true
 icon_align = 1
@@ -119,16 +105,13 @@ modulate = Color( 1, 0.996078, 0.996078, 1 )
 self_modulate = Color( 0.984314, 0.964706, 0.964706, 1 )
 margin_top = 148.0
 margin_right = 160.0
-margin_bottom = 185.0
+margin_bottom = 189.0
 focus_neighbour_top = NodePath("../BtnResume")
-focus_neighbour_bottom = NodePath("../BtnResume")
 focus_mode = 1
-theme = SubResource( 17 )
+theme = SubResource( 20 )
 custom_colors/font_color_focus = Color( 0.835294, 0.305882, 0.788235, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 0.835294, 0.305882, 0.788235, 1 )
-custom_styles/focus = SubResource( 19 )
-custom_styles/normal = SubResource( 13 )
+custom_styles/focus = SubResource( 21 )
 action_mode = 0
 enabled_focus_mode = 1
 text = "Sair"
@@ -137,6 +120,14 @@ icon_align = 1
 
 [node name="Particles2D" parent="." instance=ExtResource( 3 )]
 position = Vector2( -5, -87 )
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Position2D" type="Position2D" parent="Node2D"]
+position = Vector2( 213, -14 )
+
+[node name="positeste" type="Position2D" parent="Node2D"]
+position = Vector2( 334, 319 )
 
 [connection signal="focus_entered" from="CenterContainer/VBoxContainer/BtnResume" to="." method="_on_BtnResume_focus_entered"]
 [connection signal="focus_exited" from="CenterContainer/VBoxContainer/BtnResume" to="." method="_on_BtnResume_focus_exited"]

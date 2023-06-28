@@ -1,34 +1,40 @@
 extends Control
 
-#REFATORAR QUANDO EU TIVER COM VONTADE (OU SENTIR VERGONHA DISSO)
-
 var is_paused = false setget set_is_paused
+
 var res = false
 var quit = false
+
+var zero_cena = preload("res://src/utils/zero.tscn")
+var um_cena = preload ("res://src/utils/um.tscn")
+var position2D_node1: Position2D
+var position2D_node2: Position2D
+
 onready var grabRes = $CenterContainer/VBoxContainer/BtnResume
 onready var grabQuit = $CenterContainer/VBoxContainer/BtnStop
-#var cursor_alternativo = load("res://src/ingame/options/img/cursor.png")
-#var vardeteste = load("res://src/ingame/options/img/CursorAz.png")
 
 func _ready():
-	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	#Input.set_custom_mouse_cursor(cursor_alternativo)
-	grabRes.grab_focus()
-	#Input.set_CUstom_mouse_cursor(vardeteste)
-	#Input.set_custom_mouse_cursor(vardeteste)
-	#grabQuit.grab_focus()
+	grabQuit.grab_focus()
 	
+	position2D_node1 = $Node2D/Position2D
+	position2D_node2 = $Node2D/positeste
+	invocar_Zero()
+	invocar_Um()
+	
+func invocar_Zero():
+	var zero_instance = zero_cena.instance()
+	position2D_node1.add_child(zero_instance)
+func invocar_Um():
+	var um_instance = um_cena.instance()
+	position2D_node2.add_child(um_instance)
+		
 func _process(delta):
-	#grabRes.grab_focus()
-	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if Input.is_action_pressed("ui_select"):
 		if res:
 			_on_BtnResume_pressed()
-			#self.is_paused = false
 		elif quit:
 			_on_BtnStop_pressed()
-			#get_tree().quit()
+		
 		else:
 			return;
 
@@ -37,11 +43,8 @@ func _unhandled_input(event):
 		Global.Maps = 1
 	else:
 		if event.is_action_pressed("paused"):
-			#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			#grabQuit.flat = true
-			#grabRes.flat = true
+		
 			grabQuit.grab_focus()
-			#Input.set_custom_mouse_cursor(vardeteste)
 			self.is_paused = !is_paused
 
 func set_is_paused(value):
