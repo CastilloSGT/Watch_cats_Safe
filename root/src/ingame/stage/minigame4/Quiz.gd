@@ -90,6 +90,7 @@ func gameOver():
 	if(infos > 2):
 		Global.fase_concluida = true
 		Global.pontos[3] = points * infos 
+		Global.lost_count = 0
 
 func desliga():
 	$tutorial.show()
@@ -97,6 +98,7 @@ func desliga():
 	yield($tutorial/animation,"animation_finished")
 	$gameover.show()
 	$tempo/gameover.start()
+	Global.lost_count += 1
 	desliga = true
 
 func _on_tutorial_timeout():

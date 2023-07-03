@@ -46,8 +46,10 @@ func _physics_process(_delta: float) -> void:
 	if(bonus >= 2):
 		Global.fase_concluida = true
 		Global.pontos[1] = int((bonus*100) / (minutes * .15))
+		Global.lost_count = 0
 	else:
 		Global.fase_concluida = false
+		Global.lost_count += 1
 
 func rounds():
 	$intervalo/intervalo.start()

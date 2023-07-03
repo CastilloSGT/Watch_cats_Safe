@@ -16,8 +16,15 @@ func _ready():
 	if(Global.fase_concluida):
 		games_load()
 		
-	if (Global.lost_count > 0):
+	if (Global.lost_count == 1):
 		error_on = true
+		
+	if (Global.lost_count == 2):
+		$"tela-azul".play("glitch");
+		$"Tela-azul".show()
+		$icons.hide()
+	else:
+		$icons.show()
 
 # ABRE POP - OUTS
 func openModal():

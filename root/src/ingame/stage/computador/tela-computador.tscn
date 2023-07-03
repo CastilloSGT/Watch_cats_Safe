@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/ingame/stage/computador/tela-computador.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/ingame/stage/computador/tela-computador.png" type="Texture" id=2]
 [ext_resource path="res://assets/art/ingame/stage/computador/icons/lixo.png" type="Texture" id=3]
 [ext_resource path="res://assets/art/ingame/stage/computador/icons/file-exe.png" type="Texture" id=4]
+[ext_resource path="res://assets/art/ingame/stage/computador/tela-azul.png" type="Texture" id=5]
 [ext_resource path="res://assets/art/ingame/stage/computador/icons/IDE.png" type="Texture" id=6]
 [ext_resource path="res://assets/art/ingame/scenario/home/bedroom/tileset-quarto.png" type="Texture" id=7]
 [ext_resource path="res://assets/art/ingame/stage/computador/icons/games.png" type="Texture" id=9]
@@ -37,6 +38,23 @@
 1/shape_one_way_margin = 0.0
 1/shapes = [  ]
 1/z_index = 0
+
+[sub_resource type="Animation" id=3]
+resource_name = "glitch"
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Tela-azul:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
 
 [node name="tela-computador" type="Node2D"]
 script = ExtResource( 1 )
@@ -85,11 +103,11 @@ texture = ExtResource( 9 )
 hframes = 4
 
 [node name="File-exe" type="Sprite" parent="icons"]
-position = Vector2( 139, 146 )
+position = Vector2( 138.4, 147.2 )
 texture = ExtResource( 4 )
 
 [node name="Ide" type="Sprite" parent="icons"]
-position = Vector2( 161, 147 )
+position = Vector2( 160.4, 147.4 )
 texture = ExtResource( 6 )
 
 [node name="Lixo" type="Sprite" parent="icons"]
@@ -109,6 +127,18 @@ flat = true
 
 [node name="error_timer" type="Timer" parent="."]
 autostart = true
+
+[node name="tela-azul" type="AnimationPlayer" parent="."]
+root_node = NodePath("../TileMap")
+autoplay = "glitch"
+anims/glitch = SubResource( 3 )
+
+[node name="Tela-azul" type="Sprite" parent="."]
+visible = false
+position = Vector2( 189, 101 )
+scale = Vector2( 4.5, 4.5 )
+texture = ExtResource( 5 )
+hframes = 2
 
 [connection signal="pressed" from="icons/games" to="." method="_on_games_pressed"]
 [connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]

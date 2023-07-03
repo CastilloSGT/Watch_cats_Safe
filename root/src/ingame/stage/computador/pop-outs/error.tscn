@@ -1,7 +1,24 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/art/ingame/stage/computador/error.png" type="Texture" id=1]
 [ext_resource path="res://src/ingame/stage/computador/pop-outs/pop-out.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "popin"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Error:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
 
 [node name="error" type="Node2D" groups=["errors"]]
 z_index = 2
@@ -9,6 +26,7 @@ script = ExtResource( 2 )
 
 [node name="Error" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+hframes = 2
 
 [node name="close" type="Button" parent="."]
 margin_left = 12.0
@@ -16,5 +34,9 @@ margin_top = -38.0
 margin_right = 40.0
 margin_bottom = -18.0
 flat = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "popin"
+anims/popin = SubResource( 1 )
 
 [connection signal="pressed" from="close" to="." method="_on_close_pressed"]

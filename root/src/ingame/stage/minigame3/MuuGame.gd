@@ -26,10 +26,10 @@ var _round = 0
 #NOTAS
 var sequence = [
 	#fazer json buscar o -3 e buscar um -1 pra fase
-	#[1,2,3,4,-2,-1], [1,2,3,4,-2,-1],
-	#[1,1,1,4,2,1,-3,-1], [1,1,1,4,2,1,-3,-1],
+	[1,2,3,4,-2,-1], [1,2,3,4,-2,-1],
+	[1,1,1,4,2,1,-3,-1], [1,1,1,4,2,1,-3,-1],
 	#[1,2,6,3,2,5,5,-4,-2], [1,2,6,3,2,5,5,-4,-2],
-	[5,6,6,6,-2,-1], [5,6,7,8,-6,-1]
+	#[5,6,6,6,-2,-1], [5,6,7,8,-6,-1]
 ]
 var i = 0
 var j = 0
@@ -196,6 +196,10 @@ func _on_reset_timeout():
 	if(Global.Score > 0):
 		Global.pontos[2] = Global.Score * Global.combo
 		Global.fase_concluida = true
+		Global.lost_count = 0
+	else:
+		Global.lost_count += 1
+		Global.fase_concluida = false
 		
 	get_tree().change_scene("res://src/ingame/stage/computador/tela-computador.tscn")
 	#reset
