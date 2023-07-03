@@ -13,6 +13,7 @@ var dialogo_on = false
 var fase = 3
 var pontos = [0,0,0,0,0]
 var fase_concluida = false
+var lost_count = 1
 
 #MINIGAME 1
 var pacotes = 0

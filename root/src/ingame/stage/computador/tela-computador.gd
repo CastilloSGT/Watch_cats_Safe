@@ -1,16 +1,13 @@
 extends Node2D
 
-const chat = preload("res://src/ingame/stage/computador/pop-outs/chat.tscn")
-const IDE = preload("res://src/ingame/stage/computador/pop-outs/IDE.tscn")
-const lixo = preload("res://src/ingame/stage/computador/pop-outs/lixo.tscn")
-const file = preload("res://src/ingame/stage/computador/pop-outs/file.tscn")
-const browser = preload("res://src/ingame/stage/computador/pop-outs/browser.tscn")
-
 const games = preload("res://src/ingame/stage/computador/pop-outs/games.tscn")
+const error = preload("res://src/ingame/stage/computador/pop-outs/error.tscn")
 
 var pop_out
 var pop_out_name
 var _position
+
+var error_on = false
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -18,82 +15,56 @@ func _ready():
 	
 	if(Global.fase_concluida):
 		games_load()
+		
+	if (Global.lost_count > 0):
+		error_on = true
 
 # ABRE POP - OUTS
 func openModal():
+	var telinha = pop_out.instance()
+	get_parent().add_child(telinha)
+	telinha.position = _position
+	
+func games_load():
+	_position = $pos_games.global_position
+	pop_out = games
+	pop_out_name = "games"
+	
 	var pop_out_group = get_tree().get_nodes_in_group(pop_out_name).size() 
 	# ABRE SÓ UM POP-OUT
 	if(pop_out_group < 1):
-		var telinha = pop_out.instance()
-		get_parent().add_child(telinha)
-		telinha.position = _position.global_position
+		openModal()
 
-func games_load():
-	_position = $"pop-outs/pos_chat"
-	pop_out = games
-	pop_out_name = "games"
-	openModal()
+func error():
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var x = rng.randi_range(155,225)
+	var y = rng.randi_range(75,125)
 	
-# se não forçar ele aparece sobre o cenario
-func queue_pop_outs():
-	var games = get_tree().get_nodes_in_group("games")
-	for game in games:
-		game.queue_free()
+	_position = Vector2(x,y)
+	pop_out = error
 	
-	var chats = get_tree().get_nodes_in_group("chat")
-	for chat in chats:
-		chat.queue_free()
-		
-	var IDEs = get_tree().get_nodes_in_group("IDE")
-	for IDE in IDEs:
-		IDE.queue_free()
-		
-	var lixos = get_tree().get_nodes_in_group("lixo")
-	for lixo in lixos:
-		lixo.queue_free()
-		
-	var files = get_tree().get_nodes_in_group("file")
-	for file in files:
-		file.queue_free()
-		
-	var browsers = get_tree().get_nodes_in_group("browser")
-	for browser in browsers:
-		browser.queue_free()
-	
-func _on_chat_pressed():
-	_position = $"pop-outs/pos_chat"
-	pop_out = chat
-	pop_out_name = "chat"
-	openModal()
+	var pop_out_group = get_tree().get_nodes_in_group("errors").size()
+	if (pop_out_group < 5):	
+		openModal()
 
-func _on_IDE_pressed():
-	_position = $"pop-outs/pos_IDE"
-	pop_out = IDE
-	pop_out_name = "IDE"
-	openModal()
-
-func _on_lixo_pressed():
-	_position = $"pop-outs/pos_lixo"
-	pop_out = lixo
-	pop_out_name = "lixo"
-	openModal()
-
-func _on_file_pressed():
-	_position = $"pop-outs/pos_file"
-	pop_out = file
-	pop_out_name = "file"
-	openModal()
-
-func _on_browser_pressed():
-	_position = $"pop-outs/pos_browser"
-	pop_out = browser
-	pop_out_name = "browser"
-	openModal()
+func queueAll():
+	var errors = get_tree().get_nodes_in_group("errors")
+	if (errors.size() > 0):
+		for error in errors:
+			error.queue_free()
 
 func _on_games_pressed():
+	error_on = false
+	queueAll()
 	games_load()
 
 func _on_quit_pressed():
 	Global.lugar = "computador"
-	queue_pop_outs()
+	error_on = false
+	queueAll()
 	get_tree().change_scene("res://src/ingame/cenario/casa/quarto.tscn")
+
+func _on_error_timer_timeout():
+	if (error_on):
+		error()
