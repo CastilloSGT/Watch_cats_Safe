@@ -21,7 +21,7 @@ func animation():
 			if Global.sensorDown:
 				animation.play("down")
 				wait_time = 20
-				addware_time(Color("#37946e"))
+				addware_time(Color("#5b6ee1"))
 			else:
 				animation.play("down_fail")
 				wait_time = 10

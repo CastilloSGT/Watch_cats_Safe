@@ -115,6 +115,9 @@ func _on_intervalo_timeout():
 		round_atual = 0
 		get_tree().change_scene("res://src/ingame/stage/computador/tela-computador.tscn")
 
+func background():
+	pass
+
 func _on_fighter_nocateado():
 	rounds();
 	$legendas/vidas/vida_total.rect_size.x -= 96/3
