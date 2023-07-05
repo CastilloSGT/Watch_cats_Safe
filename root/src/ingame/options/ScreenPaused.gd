@@ -1,40 +1,59 @@
 extends Control
-
 var is_paused = false setget set_is_paused
-
 var res = false
 var quit = false
 
 var zero_cena = preload("res://src/utils/zero.tscn")
-var um_cena = preload ("res://src/utils/um.tscn")
-var position2D_node1: Position2D
-var position2D_node2: Position2D
+var um_cena = preload("res://src/utils/um.tscn")
+
+onready var position_esq: Position2D = $Node2D/position2D
+onready var position_dir: Position2D = $Node2D/positeste
+
 
 onready var grabRes = $CenterContainer/VBoxContainer/BtnResume
 onready var grabQuit = $CenterContainer/VBoxContainer/BtnStop
 
+
+var dir: Node2D 
+var esq: Node2D
+var timer : Timer
+
 func _ready():
 	grabQuit.grab_focus()
+	spawn_sprites()
+	timer= Timer.new()
+	timer.set_wait_time(5.0)
+	timer.set_one_shot(false)
+	timer.connect("timeout", self, "_on_timer_timeout")
+	timer.start()
+
+func spawn_sprites():
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var num = rng.randi_range(0, 1)
 	
-	position2D_node1 = $Node2D/Position2D
-	position2D_node2 = $Node2D/positeste
-	invocar_Zero()
-	invocar_Um()
+	if num ==0:
+			esq = um_cena.instance()
+			dir = zero_cena.instance()
+	else:
+			esq = zero_cena.instance()
+			dir = um_cena.instance()
+			
+	position_esq.add_child(esq)
+	position_dir.add_child(dir)
+	esq.set_global_position(position_esq.global_position)
+	dir.set_global_position(position_dir.global_position)
 	
-func invocar_Zero():
-	var zero_instance = zero_cena.instance()
-	position2D_node1.add_child(zero_instance)
-func invocar_Um():
-	var um_instance = um_cena.instance()
-	position2D_node2.add_child(um_instance)
-		
+func _on_timer_timeout():
+	 spawn_sprites()
+	
 func _process(delta):
+
 	if Input.is_action_pressed("ui_select"):
 		if res:
 			_on_BtnResume_pressed()
 		elif quit:
 			_on_BtnStop_pressed()
-		
 		else:
 			return;
 

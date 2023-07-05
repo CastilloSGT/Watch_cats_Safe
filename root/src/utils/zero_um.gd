@@ -1,38 +1,30 @@
 extends Node2D
 
-var velocidade = 130
-var sprite_node: Sprite
-var sprite_node2: Sprite
-var rng: RandomNumberGenerator
+var position_subida: Position2D
+var position_descida: Position2D
+var velocidade = 100
+var animation: AnimationPlayer
 
 func _ready():
-	sprite_node = $"0"
-	sprite_node2 = $"1"
-	rng = RandomNumberGenerator.new()
+	position_subida = get_node("/root/GlobalCanvasLayer/Control/Node2D/position2D")
+	position_descida = get_node("/root/GlobalCanvasLayer/Control/Node2D/positeste")
+	animation = $animation
 	start_sequence()
-
-func set_random_sprite():
-	var sprite_index = rng.randi_range(0, 1)  
-	set_sprite(sprite_index)
-
-func set_sprite(sprite_index: int):
-	match sprite_index:
-		0:
-			sprite_node.visible = true
-			sprite_node2.visible = false
-		1:
-			sprite_node.visible = false
-			sprite_node2.visible = true
 
 func start_sequence():
 	while true:
-		$animation.play("normal")
-		while self.position.y < 450:
-			self.position.y += velocidade * get_process_delta_time()
+		animation.play("normal")
+
+		while position_subida.position.y > 130 or position_descida.position.y < 300:
+			if position_subida.position.y > 130:
+				position_subida.position.y -= velocidade * get_process_delta_time()
+			if position_descida.position.y < 300:
+				position_descida.position.y += velocidade * get_process_delta_time()
 			yield(get_tree().create_timer(0.1), "timeout")
 
-		$animation.play("destroi")
-		yield($animation, "animation_finished")
+		animation.play("destroi")
+		yield(animation, "animation_finished")
 
-		self.position.y = 0
-		set_random_sprite()
+		position_subida.position.y = 300
+		position_descida.position.y = 130
+
