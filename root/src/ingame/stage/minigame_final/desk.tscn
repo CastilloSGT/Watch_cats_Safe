@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/art/ingame/stage/minigame 5/desk.png" type="Texture" id=1]
+
+[node name="desk" type="Button"]
+margin_right = 32.0
+margin_bottom = 37.0
+flat = true
+
+[node name="Desk" type="Sprite" parent="."]
+position = Vector2( 18, 19.25 )
+scale = Vector2( 1.0625, 1.01282 )
+texture = ExtResource( 1 )
+hframes = 2
