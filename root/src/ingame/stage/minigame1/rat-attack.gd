@@ -91,6 +91,7 @@ func _on_Timer_timeout():
 	
 	if(Global.pacotes <= 0):
 		$"label-colorida".set_bbcode("[wave]VOCÊ PERDEU")
+		Global.lost_count += 1
 		gameOver()
 	else:
 		$boss.show()
@@ -107,6 +108,7 @@ func _on_Bossship_boss_killed():
 func _on_Bossship_player_killed():
 	$"label-colorida".set_bbcode("[wave]VOCÊ PERDEU")
 	Global.fase_concluida = false
+	Global.lost_count += 1
 	gameOver()	
 
 func _on_gameOver_timeout():

@@ -1083,6 +1083,7 @@ collision_mask = 82
 [node name="enemy" parent="fighters" instance=ExtResource( 9 )]
 
 [node name="minions" type="Node2D" parent="fighters"]
+position = Vector2( -1, -147 )
 
 [node name="minion_center" parent="fighters/minions" instance=ExtResource( 16 )]
 pause_mode = 1
