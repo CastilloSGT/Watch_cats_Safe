@@ -1,0 +1,114 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://src/ingame/stage/minigame funcional 5/affz/img/bryuh.gd" type="Script" id=1]
+[ext_resource path="res://src/ingame/stage/minigame funcional 5/affz/card_game/HARRYP__.TTF" type="DynamicFontData" id=2]
+[ext_resource path="res://src/ingame/stage/minigame funcional 5/affz/card_game/card.png" type="Texture" id=3]
+[ext_resource path="res://src/ingame/stage/minigame funcional 5/affz/card_game/mask.png" type="Texture" id=4]
+
+[sub_resource type="CanvasItemMaterial" id=4]
+light_mode = 2
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+outline_color = Color( 0.152941, 0.0901961, 0.886275, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 38
+outline_color = Color( 0.152941, 0.0901961, 0.886275, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 34
+outline_size = 1
+outline_color = Color( 0.235294, 0.223529, 0.380392, 1 )
+font_data = ExtResource( 2 )
+
+[node name="Cards" type="Node2D"]
+script = ExtResource( 1 )
+cracha = "res://src/ingame/stage/minigame funcional 5/affz/json/eueueu.json"
+
+[node name="Control" type="Control" parent="."]
+margin_left = 75.0
+margin_top = 13.0
+margin_right = 327.0
+margin_bottom = 409.0
+
+[node name="IMG" type="TextureRect" parent="Control"]
+material = SubResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 179.0
+margin_top = 40.0
+margin_right = 236.0
+margin_bottom = 23.0
+expand = true
+
+[node name="card" type="TextureRect" parent="Control"]
+margin_left = 145.0
+margin_top = 13.0
+margin_right = 545.0
+margin_bottom = 583.0
+texture = ExtResource( 3 )
+
+[node name="INTELIGENCIA" type="Label" parent="Control"]
+margin_left = 148.0
+margin_top = 70.0
+margin_right = 270.0
+margin_bottom = 127.0
+rect_pivot_offset = Vector2( 61, 29 )
+custom_fonts/font = SubResource( 1 )
+text = "0"
+align = 1
+valign = 1
+
+[node name="EMOCAO" type="Label" parent="Control"]
+margin_left = 147.0
+margin_top = 500.0
+margin_right = 276.0
+margin_bottom = 557.0
+rect_pivot_offset = Vector2( 61, 29 )
+custom_fonts/font = SubResource( 1 )
+text = "0"
+align = 1
+valign = 1
+
+[node name="Label3" type="Label" parent="Control"]
+margin_left = 436.0
+margin_top = 502.0
+margin_right = 558.0
+margin_bottom = 559.0
+rect_pivot_offset = Vector2( 61, 29 )
+custom_fonts/font = SubResource( 1 )
+text = "0"
+align = 1
+valign = 1
+
+[node name="CARGO" type="Label" parent="Control"]
+margin_left = 206.0
+margin_top = 312.0
+margin_right = 489.0
+margin_bottom = 357.0
+rect_rotation = -0.201689
+rect_pivot_offset = Vector2( 61, 29 )
+custom_fonts/font = SubResource( 2 )
+align = 1
+valign = 1
+
+[node name="DESCRIPT" type="Label" parent="Control"]
+margin_left = 177.0
+margin_top = 343.0
+margin_right = 486.0
+margin_bottom = 482.0
+rect_rotation = 0.122534
+rect_pivot_offset = Vector2( 61, 29 )
+custom_fonts/font = SubResource( 3 )
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Light2D" type="Light2D" parent="Control"]
+position = Vector2( 345, 191 )
+scale = Vector2( 0.821918, 0.773537 )
+texture = ExtResource( 4 )
+mode = 2

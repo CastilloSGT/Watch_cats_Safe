@@ -10,13 +10,13 @@ func _ready():
 	#print(dialogues.size())	
 	#print(dialogues)
 	var j = 0
-	print(dialogues[0].size())
+	#print(dialogues[0].size())
 	var arrayAux = []
 	for i in range(dialogues[0].size()):
 		print(i)
 		print(dialogues[0][str('watch_',i+1)])
 		arrayAux.append(dialogues[0][str('watch_',i+1)])
-	print(arrayAux)
+	#print(arrayAux)
 
 	#$NinePatchRect/RichTextLabel.text = dialogues[0]['Pergunta']
 	#$NinePatchRect/RichTextLabel2.text = dialogues[0]['ops1']

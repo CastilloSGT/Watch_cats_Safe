@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/card_borda.jpg-a551d5da827fae616e5eb0d135e48dd8.stex"
+path="res://.import/cards.jpg-934b226c9d79871de1a3e7663a8d9fdc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/ingame/stage/minigame funcional 5/img/card_borda.jpg"
-dest_files=[ "res://.import/card_borda.jpg-a551d5da827fae616e5eb0d135e48dd8.stex" ]
+source_file="res://src/ingame/stage/minigame funcional 5/affz/card_game/cards.jpg"
+dest_files=[ "res://.import/cards.jpg-934b226c9d79871de1a3e7663a8d9fdc.stex" ]
 
 [params]
 
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
