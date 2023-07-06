@@ -10,11 +10,11 @@ onready var grabQuit = $CenterContainer/VBoxContainer/BtnStop
 #var cursor_alternativo = load("res://src/ingame/options/img/cursor.png")
 #var vardeteste = load("res://src/ingame/options/img/CursorAz.png")
 
-func _ready():
+#func _ready():
 	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	#Input.set_custom_mouse_cursor(cursor_alternativo)
-	grabRes.grab_focus()
+	#grabRes.grab_focus()
 	#Input.set_CUstom_mouse_cursor(vardeteste)
 	#Input.set_custom_mouse_cursor(vardeteste)
 	#grabQuit.grab_focus()
@@ -37,10 +37,10 @@ func _unhandled_input(event):
 		Global.Maps = 1
 	else:
 		if event.is_action_pressed("paused"):
-			#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			#grabQuit.flat = true
 			#grabRes.flat = true
-			grabQuit.grab_focus()
+			#grabQuit.grab_focus()
 			#Input.set_custom_mouse_cursor(vardeteste)
 			self.is_paused = !is_paused
 
