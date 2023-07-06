@@ -25,7 +25,6 @@ func _process(delta):
 			
 		elif opts:
 			#Global.Maps = 1
-			Music.scens(opts)
 			get_tree().change_scene("res://src/ingame/musics/Music.tscn")
 		elif quit:
 			get_tree().quit()
