@@ -53,6 +53,7 @@ func marcaPontos():
 			"up_arrow":
 				if Global.sensorTop:
 					if Input.is_action_just_pressed("ui_up"):
+						
 						animUp.play("Good_up")
 						
 				else:

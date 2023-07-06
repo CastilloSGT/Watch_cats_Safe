@@ -46,8 +46,10 @@ func _physics_process(_delta: float) -> void:
 	if(bonus >= 2):
 		Global.fase_concluida = true
 		Global.pontos[1] = int((bonus*100) / (minutes * .15))
+		Global.lost_count = 0
 	else:
 		Global.fase_concluida = false
+		Global.lost_count += 1
 
 func rounds():
 	$intervalo/intervalo.start()
@@ -112,6 +114,9 @@ func _on_intervalo_timeout():
 	if (round_atual == 4):
 		round_atual = 0
 		get_tree().change_scene("res://src/ingame/stage/computador/tela-computador.tscn")
+
+func background():
+	pass
 
 func _on_fighter_nocateado():
 	rounds();

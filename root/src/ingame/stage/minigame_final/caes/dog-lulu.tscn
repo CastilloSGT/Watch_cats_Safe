@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://assets/fonts/PressStart2P.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/art/ingame/stage/minigame 5/lulu.png" type="Texture" id=5]
@@ -218,7 +218,11 @@ font_data = ExtResource( 1 )
 [sub_resource type="Theme" id=33]
 default_font = SubResource( 32 )
 
-[node name="dog-lulu" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=34]
+extents = Vector2( 15.5, 13 )
+
+[node name="dog-lulu" type="KinematicBody2D"]
+collision_mask = 2
 script = ExtResource( 6 )
 
 [node name="Lulu" type="Sprite" parent="."]
@@ -267,6 +271,10 @@ margin_right = 33.0
 margin_bottom = -6.0
 theme = SubResource( 33 )
 text = "au au"
+
+[node name="colision" type="CollisionShape2D" parent="."]
+position = Vector2( 13.5, 12 )
+shape = SubResource( 34 )
 
 [connection signal="mouse_exited" from="dog_button" to="." method="_on_dog_button_mouse_exited"]
 [connection signal="pressed" from="dog_button" to="." method="_on_dog_button_pressed"]

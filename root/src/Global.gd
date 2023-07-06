@@ -10,9 +10,10 @@ var areaOn
 var dialogo_on = false
 
 # SISTEMA DE FASES
-var fase = 3
+var fase = 0
 var pontos = [0,0,0,0,0]
 var fase_concluida = false
+var lost_count = 0
 
 #MINIGAME 1
 var pacotes = 0
