@@ -237,10 +237,16 @@
                 "Dito isso, você fará um ataque de Social Engineering chamado Impersonation,",
                 "que tem como objetivo se passar por uma pessoa confiável ou figura de autoridade, para enganar indivíduos,",
                 "os fazendo divulgar informações sensíveis ou até mesmo fornecer privilégios de acesso.",
-                "Para isso, você se passará por um novo funcionário na empresa, em busca de informações relevantes.",
+                "Para isso, você se passará por um novo funcionário na empresa, em busca de quaisquer informações relevantes.",
                 "Tente obter informações sobre quais sistemas de defesa a empresa possui, qual a rede interna utilizada e como acessá-la.",
-                "Mas seja cauteloso, responder erroneamente as perguntas do funcionário fará com que sua confiança diminua, o impossibilitando de obter as informações desejadas.",
-                "Boa sorte, Felinux. Você irá precisar."
+                "Mas seja cauteloso, responder erroneamente as perguntas do funcionário fará com que sua confiança diminua, ",
+                "o impossibilitando de obter as informações que precisamos.",
+                "A parte boa é que conseguimos obter acesso à linha de uma atendente recém contratada,",
+                "então a chance de sucesso é muito alta, uma vez que ela talvez ainda não tenha tido treinamento sobre Cibersegurança.",
+                "Outra coisa, Felinux. Caso você não consiga persuadir a atendente a tempo, ",
+                "o ataque será considerado mal sucedido e você terá que tentar novamente.",
+                "Esse é o fim das instruções.",
+                "Boa sorte, Felinux."
             ],
             "questions": [
                 {
@@ -252,19 +258,88 @@
                             "answerC": "Sou eu, seu admirador secreto!"
                         }
                     ],
-                    "expectedOutcome": [
-                        "Ah, sim. Eu ouvi falar sobre você."
+                    "rightAnswer1": [
+                        "Ah, sim. Eu ouvi falar sobre os novos funcionários."
                     ],
-                    "wrongOutcome": [
-                        "Isso é um trote? Vá procurar o que fazer!"
+                    "wrongAnswer1": [
+                        "Isso é um trote?! Vá procurar o que fazer!"
                     ],
-                    "question2": "",
+                    "question2": "É sempre bom ter novos colegas de trabalho. Qual é seu nome?",
                     "answers2": [
+                        {
+                            "answerA": "Me chamo Felinux e sou um hacker em ascensão!",
+                            "answerB": "Me chamo Felinux e sou um administrador de redes junior!",
+                            "answerC": "Me chamo Felinux e sou um gato soldado!"
+                        }
+                    ],
+                    "rightAnswer2": [
+                        "Que legal! Muito prazer, Felinux."
+                    ],
+                    "wrongAnswer2": [
+                        "Isso é um trote?! Vá procurar o que fazer!"
+                    ],
+                    "question3": "",
+                    "answers3": [
                         {
                             "answerA": "",
                             "answerB": "",
                             "answerC": ""
                         }
+                    ],
+                    "rightAnswer3": [
+                        ""
+                    ],
+                    "wrongAnswer3": [
+                        ""
+                    ],
+                    "question4": "Mas então, Felinux, do que você precisa?",
+                    "answers4": [
+                        {
+                            "answerA": "Preciso de papel higiênico para meu banheiro.",
+                            "answerB": "Preciso entrar na máquina virtual da empresa, mas não sei qual é a rede que está sendo utilizada.",
+                            "answerC": "Preciso de acesso aos documentos confidenciais da empresa."
+                        }
+                    ],
+                    "rightAnswer4": [
+                        "Certo, você é novo aqui então faz sentido!"
+                    ],
+                    "wrongAnswer4": [
+                        "Isso é um trote? Vá procurar o que fazer!"
+                    ],
+                    "question5": "Mas espera, todos recebem um e-mail com a rede de acesso da empresa... Isso é suspeito, como posso ter certeza de que você trabalha aqui?",
+                    "answers5": [
+                        {
+                            "answerA": "Eu não cheguei a receber o e-mail de acesso, até chequei minha caixa de spam mas não há nada nela.",
+                            "answerB": "Mas é claro que eu trabalho aqui, inclusive comecei junto de você!",
+                            "answerC": "E do que você tem certeza, além do inevitável abraço da morte?"
+                        }
+                    ],
+                    "rightAnswer5": [
+                        "Verdade, recentemente o sistema não está mandando os e-mails para novos funcionários."
+                    ],
+                    "wrongAnswer5": [
+                        "Isso é um trote? Vá procurar o que fazer!"
+                    ],
+                    "question6": "Mudando de assunto, seu cargo me interessa. Você também gosta de Cibersegurança?",
+                    "answers6": [
+                        {
+                            "answerA": "Eu até gosto de Cibersegurança, mas não tenho certeza se é mesmo para mim.",
+                            "answerB": "Claro que não! Eu trabalho com isso apenas pelo dinheiro.",
+                            "answerC": "Eu amo Cibersegurança! Estou aprendendo sobre ela para tentar ajudar as pessoas. E você?"
+                        }
+                    ],
+                    "rightAnswer6": [
+                        "Que espírito nobre! Eu também amo tudo a respeito da Cibersegurança, foi justamente por isso que decidi entrar na empresa."
+                    ],
+                    "wrongAnswer6": [
+                        "Isso é um trote? Vá procurar o que fazer!"
+                    ],
+                    "success": [
+                        "Alguém que assim como eu também ama a Cibersegurança, não pode ser uma pessoa ruim.",
+                        "Sendo assim, acabei de fazer um cadastro com dados temporários para você.",
+                        "Estarei lhe enviando seu cadastro por e-mail, para que você tenha acesso à sua máquina virtual.",
+                        "Também vou lhe enviar informações a respeito dos departamentos da empresa, nossos turnos de trabalho e mais alguns outros detalhes.",
+                        "Tenha um bom dia, Felinux."
                     ]
                 }
             ]
@@ -280,10 +355,20 @@
                 "que tem como objetivo infectar e corromper os dados de uma empresa ou organização.",
                 "Nós enviaremos um vírus ao sistema interno da empresa Z, e para que o ataque funcione,",
                 "você deve tomar o controle do vírus e derrotar o administrador que virá para combatê-lo.",
-                "Essa missão será diferente das anteriores. Ela terá quatro rounds, e a dificuldade aumentará em cada um deles.",
-                "O administrador dessa vez é extremamente competente e habilidoso, então você deve tomar cuidado.",
-                "Cada um de seus ataques tirá uma quantidade enorme da sua vida, e uma vez que você estiver atordoado, será mais difícil de voltar à luta.",
-                "Para que o vírus faça seu trabalho, você deve derrotar o administrador em todos os rounds e voltar para a base.",
+                "O administrador, por sua vez, será como o Firewall da empresa.",
+                "Ah, você não sabe o que é um Firewall? Fique tranquilo.",
+                "Um Firewall é um software ou dispositivo de segurança que age como uma barreira entre redes internas e externas.",
+                "Sua principal função é monitorar e controlar a entrada e a saída do tráfego de rede de um sistema.",
+                "Além disso, Firewalls são essenciais para a segurança de redes, ",
+                "já que ajudam a proteger contra possíveis atividades maliciosas e acesso não autorizado por Hackers e afins.",
+                "Ou seja, o administrador irá fazer o possível para derrubá-lo da rede interna, então você deve ser rápido!",
+                "Dito isso, essa missão será diferente das anteriores. ",
+                "Ela terá três rounds, e a dificuldade aumentará em cada um deles.",
+                "O administrador é extremamente competente e habilidoso, então você deve tomar muito cuidado.",
+                "Cada um de seus ataques tirá uma quantidade enorme da sua vida, diminuindo a eficiência do vírus, ",
+                "E uma vez que você estiver atordoado, será mais difícil de voltar à luta.",
+                "Para que tenhamos sucesso, você deve derrotar o administrador em todos os rounds.",
+                "Após isso, seu trabalho estará feito e você deverá voltar para a base",
                 "Esse é o fim das instruções.",
                 "Boa sorte, Felinux. Você vai precisar dessa vez."
             ]
