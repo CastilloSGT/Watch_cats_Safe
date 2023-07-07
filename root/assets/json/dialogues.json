@@ -84,7 +84,7 @@
     ],
     "opportunity": [
         {
-            "character": "V",
+            "characterId": "V",
             "dialogue": [
                 {
                     "text1": "Olá, Felinux.",
@@ -106,13 +106,13 @@
     ],
     "briefing": [
         {
-            "companies": [
+            "company": [
                 {
                     "id": 1,
-                    "name": "Agnes",
+                    "responsible": "Agnes",
                     "age": "45 anos",
                     "role": "Administradora de Redes",
-                    "text": [
+                    "selectionText": [
                         "Essa empresa é responsável pelo armazenamento de informações confidenciais das outras empresas.",
                         "É o primeiro pilar para derrubar a Aumazon Corporation.",
                         "Derrubando essa empresa, conseguiremos atacar as próximas mais facilmente."
@@ -120,10 +120,10 @@
                 },
                 {
                     "id": 2,
-                    "name": "Nellia",
+                    "responsible": "Nellia",
                     "age": "34 anos",
                     "role": "Gerente de Finanças",
-                    "text": [
+                    "selectionText": [
                         "Essa empresa é responsável por todas as transações internas e externas das outras empresas.",
                         "Ela organiza todos esquemas de corrupção e lavagem de dinheiro.",
                         "É o segundo pilar para derrubar a Aumazon Corporation."
@@ -131,20 +131,21 @@
                 },
                 {
                     "id": 3,
-                    "name": "Meteorium",
+                    "responsible": "Meteorium",
                     "age": "29 anos",
                     "role": "Gerente bancário",
-                    "text": [
-                        "Essa empresa é responsável por enviar o dinheiro sujo para o exterior, servindo como uma empresa fantasma.",
+                    "selectionText": [
+                        "Essa empresa é responsável por enviar o dinheiro sujo para o exterior.",
+                        "Ninguém realmente trabalha nela, ela serve apenas como uma empresa fantasma.",
                         "É o terceiro pilar para derrubar a Aumazon Corporation."
                     ]
                 },
                 {
                     "id": 4,
-                    "name": "Plenia",
+                    "responsible": "Plenia",
                     "age": "60 anos",
                     "role": "CEO",
-                    "text": [
+                    "selectionText": [
                         "Essa organização é responsável pela orquestração de todas as outras empresas.",
                         "Ela é a própria matriz e raíz da destruição, Aumazon Corporation."
                     ]
@@ -152,7 +153,7 @@
             ]
         },
         {
-            "character": "V",
+            "characterId": "V",
             "dialogue": [
                 "Tudo o que você precisa saber está nesse arquivo.",
                 "Todos sabem quem é a organização responsável pelos golpes ocorrendo na cidade...",
@@ -161,7 +162,7 @@
             ]
         },
         {
-            "character": "D",
+            "characterId": "D",
             "dialogue": [
                 "Como você já deve saber, a Aumazon Corporation é a organização que atualmente corrói a cidade de dentro, para fora.",
                 "Ela possui diversos esquemas de corrupção com diversas empresas e orgãos importantes da cidade, possibilitando suas ações malignas.",
@@ -181,7 +182,7 @@
     ],
     "wakeup": [
         {
-            "character": "Marlia Mia",
+            "characterId": "Marlia Mia",
             "dialogue": [
                 "Que bom que você está aqui!",
                 "Essa ala é super importante, afinal é aqui onde você verá suas conquistas.",
@@ -201,8 +202,8 @@
     "stages": [
         {
             "id": "Rat Attack",
-            "character": "D",
-            "dialogue": [
+            "characterId": "D",
+            "briefing": [
                 "Enfim sua primeira missão, Felinux.",
                 "Essa é a primeira empresa que devemos atacar para chegarmos a verdade.",
                 "Nós faremos uma invasão à rede interna da empresa, visando interceptar o tráfego de seus pacotes.",
@@ -228,7 +229,7 @@
         },
         {
             "id": "Bunny Engineering",
-            "character": "D",
+            "characterId": "D",
             "briefing": [
                 "Felinux, para essa missão você deve fazer uso de uma técnica manipulativa chamada Social Engineering.",
                 "Social Engineering se refere a manipulação de indivíduos ou grupos de indivíduos, através de táticas psicológicas,",
@@ -238,12 +239,15 @@
                 "que tem como objetivo se passar por uma pessoa confiável ou figura de autoridade, para enganar indivíduos,",
                 "os fazendo divulgar informações sensíveis ou até mesmo fornecer privilégios de acesso.",
                 "Para isso, você se passará por um novo funcionário na empresa, em busca de quaisquer informações relevantes.",
-                "Tente obter informações sobre quais sistemas de defesa a empresa possui, qual a rede interna utilizada e como acessá-la.",
-                "Mas seja cauteloso, responder erroneamente as perguntas do funcionário fará com que sua confiança diminua, ",
+                "Mas não se preocupe, nós conseguimos obter o e-mail de um dos novos funcionários da empresa. ", 
+                "Você deve usá-lo para provar que é confiável, caso contrário nossa tática não funcionará!",
+                "Preste atenção, o e-mail é: gavion.dev@animail.com",
+                "Tente obter informações sobre qual é a rede interna utilizada e como acessá-la, coisas desse tipo.",
+                "Mas seja cauteloso, responder erroneamente as perguntas da atendente fará com que sua confiança diminua, ",
                 "o impossibilitando de obter as informações que precisamos.",
                 "A parte boa é que conseguimos obter acesso à linha de uma atendente recém contratada,",
-                "então a chance de sucesso é muito alta, uma vez que ela talvez ainda não tenha tido treinamento sobre Cibersegurança.",
-                "Outra coisa, Felinux. Caso você não consiga persuadir a atendente a tempo, ",
+                "então a chance de sucesso é alta, uma vez que ela pode ainda não ter tido treinamentos sobre Cibersegurança.",
+                "Outra coisa, Felinux. Caso você não consiga persuadir a atendente, ",
                 "o ataque será considerado mal sucedido e você terá que tentar novamente.",
                 "Esse é o fim das instruções.",
                 "Boa sorte, Felinux."
@@ -262,92 +266,78 @@
                         "Ah, sim. Eu ouvi falar sobre os novos funcionários."
                     ],
                     "wrongAnswer1": [
-                        "Isso é um trote?! Vá procurar o que fazer!"
+                        "Até parece! Vá procurar o que fazer!"
                     ],
-                    "question2": "É sempre bom ter novos colegas de trabalho. Qual é seu nome?",
+                    "question2": "Certo, me fale seu e-mail cadastrado para eu confirmar sua identidade.",
                     "answers2": [
                         {
-                            "answerA": "Me chamo Felinux e sou um hacker em ascensão!",
-                            "answerB": "Me chamo Felinux e sou um administrador de redes junior!",
-                            "answerC": "Me chamo Felinux e sou um gato soldado!"
+                            "answerA": "Claro! Meu e-mail é: crowka.dev@animail.com",
+                            "answerB": "Claro! Meu e-mail é: gavion.dev@animail.com",
+                            "answerC": "Claro! Meu e-mail é: elephesis.dev@animail.com"
                         }
                     ],
                     "rightAnswer2": [
-                        "Que legal! Muito prazer, Felinux."
+                        "Muito bem, confirmei que você é um de nossos novos funcionários."
                     ],
                     "wrongAnswer2": [
-                        "Isso é um trote?! Vá procurar o que fazer!"
+                        "Esse e-mail não está cadastrado em nosso sistema! Isso é um trote?!"
                     ],
-                    "question3": "",
+                    "question3": "Mas então, Gavion, do que você precisa?",
                     "answers3": [
                         {
-                            "answerA": "",
-                            "answerB": "",
-                            "answerC": ""
-                        }
-                    ],
-                    "rightAnswer3": [
-                        ""
-                    ],
-                    "wrongAnswer3": [
-                        ""
-                    ],
-                    "question4": "Mas então, Felinux, do que você precisa?",
-                    "answers4": [
-                        {
                             "answerA": "Preciso de papel higiênico para meu banheiro.",
-                            "answerB": "Preciso entrar na máquina virtual da empresa, mas não sei qual é a rede que está sendo utilizada.",
+                            "answerB": "Preciso mudar o e-mail cadastrado, eu perdi acesso à ele.",
                             "answerC": "Preciso de acesso aos documentos confidenciais da empresa."
                         }
                     ],
-                    "rightAnswer4": [
-                        "Certo, você é novo aqui então faz sentido!"
+                    "rightAnswer3": [
+                        "Nossa! Isso é realmente um problema."
                     ],
-                    "wrongAnswer4": [
+                    "wrongAnswer3": [
                         "Isso é um trote? Vá procurar o que fazer!"
                     ],
-                    "question5": "Mas espera, todos recebem um e-mail com a rede de acesso da empresa... Isso é suspeito, como posso ter certeza de que você trabalha aqui?",
+                    "question4": "Então você não leu o e-mail enviado a todos os novos funcionários, eu assumo?",
+                    "answers4": [
+                        {
+                            "answerA": "Não, perdi acesso ao meu e-mail há pouco tempo.",
+                            "answerB": "Não, um cachorro comeu meu computador antes que eu pudesse ler!",
+                            "answerC": "Não, mas se for a respeito de uma festa de boas vindas, tenho interesse."
+                        }
+                    ],
+                    "rightAnswer4": [
+                        "Muito bem. Vou estar mudando seu e-mail em breve."
+                    ],
+                    "wrongAnswer4": [
+                        "Você está de brincadeira comigo? Isso é um trote?!"
+                    ],
+                    "question5": "Mas antes disso, tenho uma pergunta. Você gosta da área de Cibersegurança?",
                     "answers5": [
                         {
-                            "answerA": "Eu não cheguei a receber o e-mail de acesso, até chequei minha caixa de spam mas não há nada nela.",
-                            "answerB": "Mas é claro que eu trabalho aqui, inclusive comecei junto de você!",
-                            "answerC": "E do que você tem certeza, além do inevitável abraço da morte?"
+                            "answerA": "Eu até gosto de Cibersegurança, mas não tenho certeza se é mesmo para mim.",
+                            "answerB": "Claro que não! Eu trabalho com isso apenas pelo dinheiro e pela fama.",
+                            "answerC": "Eu amo essa área! Estou focando em aprender mais sobre ela para tentar ajudar as pessoas."
                         }
                     ],
                     "rightAnswer5": [
-                        "Verdade, recentemente o sistema não está mandando os e-mails para novos funcionários."
+                        "Que espírito nobre! Não conheço muito a respeito dessa área, mas tenho enorme respeito por animais de bom coração."
                     ],
                     "wrongAnswer5": [
-                        "Isso é um trote? Vá procurar o que fazer!"
-                    ],
-                    "question6": "Mudando de assunto, seu cargo me interessa. Você também gosta de Cibersegurança?",
-                    "answers6": [
-                        {
-                            "answerA": "Eu até gosto de Cibersegurança, mas não tenho certeza se é mesmo para mim.",
-                            "answerB": "Claro que não! Eu trabalho com isso apenas pelo dinheiro.",
-                            "answerC": "Eu amo Cibersegurança! Estou aprendendo sobre ela para tentar ajudar as pessoas. E você?"
-                        }
-                    ],
-                    "rightAnswer6": [
-                        "Que espírito nobre! Eu também amo tudo a respeito da Cibersegurança, foi justamente por isso que decidi entrar na empresa."
-                    ],
-                    "wrongAnswer6": [
-                        "Isso é um trote? Vá procurar o que fazer!"
+                        "A biografia do seu antigo e-mail diz que você ama a área, isso é um trote?!"
                     ],
                     "success": [
-                        "Alguém que assim como eu também ama a Cibersegurança, não pode ser uma pessoa ruim.",
-                        "Sendo assim, acabei de fazer um cadastro com dados temporários para você.",
-                        "Estarei lhe enviando seu cadastro por e-mail, para que você tenha acesso à sua máquina virtual.",
-                        "Também vou lhe enviar informações a respeito dos departamentos da empresa, nossos turnos de trabalho e mais alguns outros detalhes.",
-                        "Tenha um bom dia, Felinux."
+                        "Alguém bondoso como você, não pode ser uma pessoa de má índole.",
+                        "Certo! Estarei lhe enviando em breve um e-mail em seu novo e-mail cadastrado.",
+                        "Nesse e-mail você terá acesso à informações a respeito da rede interna da empresa,",
+                        "dos nossos departamentos, dos turnos de trabalho e de mais alguns outros detalhes.",
+                        "Espero que você goste da sua estadia aqui, Gavion."
                     ]
                 }
             ]
         },
         {
             "id": "Monkey Out",
-            "character": "D",
-            "dialogue": [
+            "characterId": "D",
+            "briefing": [
                 "Você chegou a sua terceira missão, esse é um grande dia!",
                 "Estamos muito perto de trazer a tona a verdade e acabar com anos de corrupção.",
                 "Agora, vamos ao que interessa.",
@@ -375,8 +365,8 @@
         },
         {
             "id": "Muuware",
-            "character": "D",
-            "dialogue": [
+            "characterId": "D",
+            "briefing": [
                 "Felinux, você chegou a penúltima missão. Falta muito pouco para chegarmos ao nosso objetivo.",
                 "Vamos iniciar o detalhamento da missão.",
                 "Dessa vez, você deve batalhar contra o administrador em um jogo de ritmo, com o intuito de derrubá-lo de seu posto.",
@@ -393,8 +383,8 @@
         },
         {
             "id": "Final Stage",
-            "character": "V",
-            "dialogue": [
+            "characterId": "V",
+            "briefing": [
                 "Chegou a hora, Felinux. Agora é hora da batalha final que decidirá o futuro da cidade!"
             ]
         }
