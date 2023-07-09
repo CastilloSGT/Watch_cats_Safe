@@ -1,13 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/ingame/stage/computador/tela-computador.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/ingame/stage/computador/tela-computador.png" type="Texture" id=2]
 [ext_resource path="res://assets/art/ingame/stage/computador/icons/lixo.png" type="Texture" id=3]
 [ext_resource path="res://assets/art/ingame/stage/computador/icons/file-exe.png" type="Texture" id=4]
-[ext_resource path="res://assets/art/ingame/stage/computador/icons/chat.png" type="Texture" id=5]
+[ext_resource path="res://assets/art/ingame/stage/computador/tela-azul.png" type="Texture" id=5]
 [ext_resource path="res://assets/art/ingame/stage/computador/icons/IDE.png" type="Texture" id=6]
 [ext_resource path="res://assets/art/ingame/scenario/home/bedroom/tileset-quarto.png" type="Texture" id=7]
-[ext_resource path="res://assets/art/ingame/stage/computador/icons/browser.png" type="Texture" id=8]
+[ext_resource path="res://assets/art/ingame/stage/computador/icons/games.png" type="Texture" id=9]
 
 [sub_resource type="TileSet" id=1]
 0/name = "tileset-quarto.png 0"
@@ -39,6 +39,23 @@
 1/shapes = [  ]
 1/z_index = 0
 
+[sub_resource type="Animation" id=3]
+resource_name = "glitch"
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Tela-azul:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
 [node name="tela-computador" type="Node2D"]
 script = ExtResource( 1 )
 __meta__ = {
@@ -50,12 +67,15 @@ scale = Vector2( 4, 4 )
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 65536, 1, 0, 65541, 1, 0, 65542, 1, 0, 131072, 1, 0, 131073, 1, 0, 131074, 1, 0, 131075, 1, 0, 131076, 1, 0, 131077, 1, 0, 131078, 1, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0 )
+tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 65536, 1, 0, 65537, 1, 0, 65538, 1, 0, 65539, 1, 0, 65540, 1, 0, 65541, 1, 0, 65542, 1, 0, 131072, 1, 0, 131073, 1, 0, 131074, 1, 0, 131075, 1, 0, 131076, 1, 0, 131077, 1, 0, 131078, 1, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 262144, 1, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0 )
 
 [node name="Tela-computador" type="Sprite" parent="."]
 position = Vector2( 200, 160 )
 scale = Vector2( 4.5, 4.5 )
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 200, 152 )
@@ -63,72 +83,63 @@ current = true
 zoom = Vector2( 0.5, 0.5 )
 
 [node name="icons" type="Node2D" parent="."]
+position = Vector2( -35, -40 )
+scale = Vector2( 1.25, 1.25 )
 
-[node name="chat" type="Button" parent="icons"]
-margin_left = 290.0
-margin_top = 40.0
-margin_right = 318.0
-margin_bottom = 62.0
-rect_scale = Vector2( 1.5, 1.5 )
-icon = ExtResource( 5 )
+[node name="games" type="Button" parent="icons"]
+margin_left = 116.8
+margin_top = 93.2
+margin_right = 140.8
+margin_bottom = 117.2
+flat = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Games" type="Sprite" parent="icons/games"]
+position = Vector2( 12, 12 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 9 )
+hframes = 4
+
+[node name="File-exe" type="Sprite" parent="icons"]
+position = Vector2( 138.4, 147.2 )
+texture = ExtResource( 4 )
+
+[node name="Ide" type="Sprite" parent="icons"]
+position = Vector2( 160.4, 147.4 )
+texture = ExtResource( 6 )
+
+[node name="Lixo" type="Sprite" parent="icons"]
+position = Vector2( 128.8, 83.2 )
+texture = ExtResource( 3 )
+
+[node name="pos_games" type="Position2D" parent="."]
+position = Vector2( 189, 120 )
+
+[node name="quit" type="Button" parent="."]
+margin_left = 281.0
+margin_top = 102.0
+margin_right = 317.0
+margin_bottom = 133.0
+rect_scale = Vector2( 0.75, 0.75 )
 flat = true
 
-[node name="IDE" type="Button" parent="icons"]
-margin_left = 64.0
-margin_top = 72.0
-margin_right = 92.0
-margin_bottom = 94.0
-rect_scale = Vector2( 1.5, 1.5 )
-icon = ExtResource( 6 )
-flat = true
+[node name="error_timer" type="Timer" parent="."]
+autostart = true
 
-[node name="file" type="Button" parent="icons"]
-margin_left = 64.0
-margin_top = 40.0
-margin_right = 92.0
-margin_bottom = 62.0
-rect_scale = Vector2( 1.5, 1.5 )
-icon = ExtResource( 4 )
-flat = true
+[node name="tela-azul" type="AnimationPlayer" parent="."]
+root_node = NodePath("../TileMap")
+autoplay = "glitch"
+anims/glitch = SubResource( 3 )
 
-[node name="lixo" type="Button" parent="icons"]
-margin_left = 290.0
-margin_top = 104.0
-margin_right = 318.0
-margin_bottom = 126.0
-rect_scale = Vector2( 1.5, 1.5 )
-icon = ExtResource( 3 )
-flat = true
-clip_text = true
+[node name="Tela-azul" type="Sprite" parent="."]
+visible = false
+position = Vector2( 189, 101 )
+scale = Vector2( 4.5, 4.5 )
+texture = ExtResource( 5 )
+hframes = 2
 
-[node name="browser" type="Button" parent="icons"]
-margin_left = 290.0
-margin_top = 72.0
-margin_right = 318.0
-margin_bottom = 94.0
-rect_scale = Vector2( 1.5, 1.5 )
-icon = ExtResource( 8 )
-flat = true
-
-[node name="pop-outs" type="Node2D" parent="."]
-
-[node name="pos_chat" type="Position2D" parent="pop-outs"]
-position = Vector2( 200, 136 )
-
-[node name="pos_IDE" type="Position2D" parent="pop-outs"]
-position = Vector2( 208, 80 )
-
-[node name="pos_lixo" type="Position2D" parent="pop-outs"]
-position = Vector2( 152, 120 )
-
-[node name="pos_file" type="Position2D" parent="pop-outs"]
-position = Vector2( 256, 104 )
-
-[node name="pos_browser" type="Position2D" parent="pop-outs"]
-position = Vector2( 144, 88 )
-
-[connection signal="pressed" from="icons/chat" to="." method="_on_chat_pressed"]
-[connection signal="pressed" from="icons/IDE" to="." method="_on_IDE_pressed"]
-[connection signal="pressed" from="icons/file" to="." method="_on_file_pressed"]
-[connection signal="pressed" from="icons/lixo" to="." method="_on_lixo_pressed"]
-[connection signal="pressed" from="icons/browser" to="." method="_on_browser_pressed"]
+[connection signal="pressed" from="icons/games" to="." method="_on_games_pressed"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
+[connection signal="timeout" from="error_timer" to="." method="_on_error_timer_timeout"]

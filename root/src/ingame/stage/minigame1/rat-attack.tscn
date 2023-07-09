@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://src/ingame/stage/minigame1/naves/ship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/ingame/stage/minigame1/rat-attack.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://src/utils/label-colorida.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/art/ingame/stage/minigame 1/boss_life.png" type="Texture" id=9]
 [ext_resource path="res://assets/art/ingame/stage/minigame 1/life.png" type="Texture" id=10]
+[ext_resource path="res://src/interface/transicao_foda.tscn" type="PackedScene" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=7]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -152,7 +153,7 @@ default_font = SubResource( 11 )
 3/z_index = 0
 
 [node name="rat-attack" type="Node2D"]
-pause_mode = 2
+pause_mode = 1
 script = ExtResource( 2 )
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -178,21 +179,27 @@ zoom = Vector2( 0.5, 0.5 )
 
 [node name="posicoes" type="Node2D" parent="."]
 position = Vector2( 240, -72 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="boss_pos" type="Position2D" parent="posicoes"]
 position = Vector2( -240, -29 )
 
-[node name="pos_3" type="Position2D" parent="posicoes"]
-position = Vector2( 2, 98 )
+[node name="pos_1" type="Position2D" parent="posicoes"]
+position = Vector2( 2, 2 )
 
 [node name="pos_2" type="Position2D" parent="posicoes"]
 position = Vector2( 2, 50 )
 
-[node name="pos_1" type="Position2D" parent="posicoes"]
-position = Vector2( 2, 2 )
+[node name="pos_3" type="Position2D" parent="posicoes"]
+position = Vector2( 2, 98 )
+
+[node name="pos_4" type="Position2D" parent="posicoes"]
+position = Vector2( -486, 2 )
+
+[node name="pos_5" type="Position2D" parent="posicoes"]
+position = Vector2( -486, 50 )
+
+[node name="pos_6" type="Position2D" parent="posicoes"]
+position = Vector2( -486, 98 )
 
 [node name="UI" type="Node2D" parent="."]
 position = Vector2( -215, -145 )
@@ -308,6 +315,9 @@ margin_bottom = 93.0
 texture = ExtResource( 10 )
 expand = true
 stretch_mode = 2
+
+[node name="transicao_foda" parent="." instance=ExtResource( 11 )]
+visible = false
 
 [connection signal="timeout" from="timers/tutorial" to="." method="_on_tutorial_timeout"]
 [connection signal="timeout" from="timers/gameOver" to="." method="_on_gameOver_timeout"]

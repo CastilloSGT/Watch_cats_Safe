@@ -1,5 +1,6 @@
 extends Node2D
 
+onready var transition = get_node("transicao_foda/animation")
 onready var _round = $legendas/lblRound
 onready var tempo = $legendas/rounds
 onready var intervalo = $intervalo
@@ -8,9 +9,19 @@ onready var lblround = $"intervalo/label-colorida"
 var round_atual = 1
 var fim_round = false
 var _position
+
+# tempo crescente
+var minutes = 0
+var seconds = 0
+var bonus = 0
+
 signal reset()
 
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	$transicao_foda.show()
+	transition.play("out")
+	
 	$legendas/vidas/vida_total.rect_size.x = 96
 	$legendas/vidas/vida.rect_size.x = 0
 	
@@ -21,18 +32,38 @@ func _ready():
 func _physics_process(_delta: float) -> void:
 	contagem()
 	mudaPlacar()
-	_round.set_text(str("Round ",round_atual))
+	
+	if(round_atual < 3):
+		_round.set_text(str("Round ",round_atual))
+		_round.rect_position.x = 88
+	else:
+		_round.set_text("Round Final")
+		_round.rect_position.x = 74
+	
+	if($legendas/vidas/vida.rect_size.x > 0):
+		bonus = 4 - (96/$legendas/vidas/vida.rect_size.x)
+	
+	if(bonus >= 2):
+		Global.fase_concluida = true
+		Global.pontos[1] = int((bonus*100) / (minutes * .15))
+		Global.lost_count = 0
+	else:
+		Global.fase_concluida = false
+		Global.lost_count += 1
 
 func rounds():
 	$intervalo/intervalo.start()
 	round_atual += 1
-	
+	if(round_atual == 4):
+		$"intervalo/label-colorida".set_bbcode("[wave]Fim de jogo")
+		
 	intervalo.show()
 	get_tree().paused = true
 
 func contagem():
-	var minutes = tempo.time_left / 60
-	var seconds = fmod(tempo.time_left, 60)
+	#se não ele nao respeita o timer de tutorial
+	if($tutorial/tutorial_timer.time_left == 0):
+		seconds = 60 - tempo.time_left
 	var msg = "%02d:%02d" % [minutes, seconds]
 	$legendas/lblTimer.set_text(msg)
 
@@ -55,7 +86,6 @@ func mudaPlacar():
 		$placar/Placar/animation.play("enemy-bad")
 	else:
 		$placar/Placar/animation.play("enemy-good")
-		
 
 func _on_tutorial_timer_timeout():
 	$tutorial.hide()
@@ -85,6 +115,9 @@ func _on_intervalo_timeout():
 		round_atual = 0
 		get_tree().change_scene("res://src/ingame/stage/computador/tela-computador.tscn")
 
+func background():
+	pass
+
 func _on_fighter_nocateado():
 	rounds();
 	$legendas/vidas/vida_total.rect_size.x -= 96/3
@@ -92,3 +125,6 @@ func _on_fighter_nocateado():
 func _on_enemy_nocateado():
 	rounds();
 	$legendas/vidas/vida.rect_size.x += 96/3
+
+func _on_rounds_timeout():
+	minutes += 1

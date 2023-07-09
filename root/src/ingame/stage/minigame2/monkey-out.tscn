@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://src/ingame/stage/minigame2/fighters/fighter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/art/ingame/stage/minigame 2/tileset.png" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://assets/art/ingame/stage/minigame 2/estrela-acesa.png" type="Texture" id=14]
 [ext_resource path="res://assets/art/ingame/stage/minigame 2/vs-sprite.png" type="Texture" id=15]
 [ext_resource path="res://src/ingame/stage/minigame2/fighters/minion.tscn" type="PackedScene" id=16]
+[ext_resource path="res://src/interface/transicao_foda.tscn" type="PackedScene" id=17]
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -892,12 +893,12 @@ font_data = ExtResource( 6 )
 [sub_resource type="Theme" id=40]
 default_font = SubResource( 39 )
 
-[sub_resource type="DynamicFont" id=41]
+[sub_resource type="DynamicFont" id=53]
 size = 8
 font_data = ExtResource( 6 )
 
 [sub_resource type="Theme" id=42]
-default_font = SubResource( 41 )
+default_font = SubResource( 53 )
 
 [sub_resource type="Animation" id=46]
 length = 0.001
@@ -1077,21 +1078,25 @@ pause_mode = 0
 physics_interpolation_mode = 0
 position = Vector2( -2, 45 )
 z_index = 2
-collision_mask = 18
+collision_mask = 82
 
 [node name="enemy" parent="fighters" instance=ExtResource( 9 )]
 
 [node name="minions" type="Node2D" parent="fighters"]
+position = Vector2( -1, -147 )
 
 [node name="minion_center" parent="fighters/minions" instance=ExtResource( 16 )]
+pause_mode = 1
 visible = false
 position = Vector2( 0, -66 )
 
 [node name="minion_left" parent="fighters/minions" instance=ExtResource( 16 )]
+pause_mode = 1
 visible = false
 position = Vector2( -55, -66 )
 
 [node name="minion_right" parent="fighters/minions" instance=ExtResource( 16 )]
+pause_mode = 1
 visible = false
 position = Vector2( 55, -66 )
 
@@ -1113,10 +1118,10 @@ editor_draw_drag_margin = true
 position = Vector2( -1, -13 )
 
 [node name="lblRound" type="Label" parent="legendas"]
-margin_left = 87.0
-margin_top = -111.0
-margin_right = 127.0
-margin_bottom = -97.0
+margin_left = 88.0
+margin_top = -113.0
+margin_right = 128.0
+margin_bottom = -99.0
 theme = SubResource( 40 )
 text = "Round"
 
@@ -1130,6 +1135,7 @@ text = "Tempo"
 
 [node name="rounds" type="Timer" parent="legendas"]
 pause_mode = 1
+wait_time = 60.0
 
 [node name="life" type="TextureRect" parent="legendas"]
 margin_left = -152.0
@@ -1263,10 +1269,14 @@ position = Vector2( -14.6667, -197.333 )
 scale = Vector2( 1.33333, 1.33333 )
 texture = ExtResource( 15 )
 
+[node name="transicao_foda" parent="." instance=ExtResource( 17 )]
+visible = false
+
 [connection signal="reset" from="." to="fighters/fighter" method="_on_monkeyout_reset"]
 [connection signal="reset" from="." to="fighters/enemy" method="_on_monkeyout_reset"]
 [connection signal="timeout" from="fighters/delay" to="." method="_on_delay_timeout"]
 [connection signal="nocateado" from="fighters/fighter" to="." method="_on_fighter_nocateado"]
 [connection signal="nocateado" from="fighters/enemy" to="." method="_on_enemy_nocateado"]
+[connection signal="timeout" from="legendas/rounds" to="." method="_on_rounds_timeout"]
 [connection signal="timeout" from="intervalo/intervalo" to="." method="_on_intervalo_timeout"]
 [connection signal="timeout" from="tutorial/tutorial_timer" to="." method="_on_tutorial_timer_timeout"]

@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/art/ingame/stage/minigame 3/little_error.png" type="Texture" id=1]
+[ext_resource path="res://src/ingame/stage/minigame3/arrows_move/little_error.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("LittleError:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "close"
+length = 1.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("LittleError:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.2, 1.4, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[node name="little_error" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="LittleError" type="Sprite" parent="."]
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 1 )
+vframes = 4
+
+[node name="animation" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/close = SubResource( 2 )

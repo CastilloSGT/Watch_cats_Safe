@@ -51,6 +51,15 @@ func mexe() -> void:
 		animacao.play("idle")
 
 func animacao():
+	if(Global.BANANA_ATTACK):
+		animacao.play("recuperado")
+		wait_time = 10
+		Global.BANANA_ATTACK = false
+		
+	if(Global.tipo_dano == 4 && !is_timer_running && !caiu):
+		animacao.play("dano")
+		wait_time = 2
+	
 	if (Input.is_action_just_pressed("desvia") && !is_timer_running && !caiu):
 		animacao.play("desvio")
 		wait_time = 15
@@ -72,8 +81,9 @@ func nocaute():
 	if Input.is_action_just_pressed("soco"):
 		$nocaute/nocauteBar.rect_size.x += 4
 		
-	if($nocaute/nocauteBar.rect_size.x == 40):
+	if($nocaute/nocauteBar.rect_size.x >= 40):
 		$nocaute/nocaute.stop()
+		$nocaute/nocauteBar.rect_size.x = 40
 		ganha_vida(false)
 
 func ganha_vida(full_life):
@@ -82,12 +92,12 @@ func ganha_vida(full_life):
 	else:
 		Global.vida_fighter = vida/2
 	
-	$nocaute/nocauteBar.rect_size.x = 0
 	$nocaute/lblNocaute.hide()
 	animacao.play("recuperado")
 	yield(animacao,"animation_finished")
 	$colisao.disabled = false
 	caiu = false
+	$nocaute/nocauteBar.rect_size.x = 0
 
 func _on_Timer_timeout():
 	wait_time -= reduction
@@ -111,3 +121,4 @@ func _on_nocaute_timeout():
 
 func _on_tutorial_timeout():
 	$tutorial/lbltutorial.hide()
+	

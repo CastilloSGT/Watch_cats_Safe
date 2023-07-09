@@ -4,7 +4,7 @@
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource( 2 )
-dialog_file = "res://src/ingame/stage/jsonTest/dialog.json"
+dialog_file = "res://src/ingame/stage/jsonTest/Json/array.json"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 margin_right = 128.0
@@ -13,7 +13,7 @@ margin_bottom = 128.0
 [node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect"]
 margin_left = 8.0
 margin_top = 8.0
-margin_right = 72.0
+margin_right = 146.0
 margin_bottom = 24.0
 tab_size = 1
 text = "Ques"

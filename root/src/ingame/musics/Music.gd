@@ -2,7 +2,7 @@ extends Node2D
 
 onready var batids_menu = load("res://src/ingame/musics/musics/menu.ogg")
 onready var batids_casa = load("res://src/ingame/musics/musics/casa.ogg")
-var visblMus = Global.visibl 
+var visblMus = Global.visibl
 
 func _ready():
 	visib(visblMus)

@@ -1,4 +1,4 @@
-extends Node2D
+extends KinematicBody2D
 
 var target: Vector2
 var direcao: Vector2
@@ -46,8 +46,8 @@ func getPos():
 func changePos():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	var posX = rng.randi_range(0, 512)
-	var posY = rng.randi_range(0, 512)
+	var posX = rng.randi_range(3, 485)
+	var posY = rng.randi_range(200, 375)
 	
 	target = Vector2(posX,posY)
 

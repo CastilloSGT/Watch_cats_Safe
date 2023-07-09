@@ -24,6 +24,10 @@ func animation():
 		"computador":
 			if Input.is_action_just_pressed("ui_down") || Input.is_action_just_pressed("ui_left"):
 				Global.areaOn = false
+	
+	if(Global.obj == "tv" || Global.obj == "geladeira" || Global.obj == "pia" || Global.obj == "chuveiro"):
+		if Input.is_action_just_pressed("ui_down") ||  Input.is_action_just_pressed("ui_right") || Input.is_action_just_pressed("ui_left"):
+				Global.areaOn = false
 
 # LETRINHA FLUTUANDO
 func showKey():

@@ -1,5 +1,6 @@
 extends Node2D
 
+onready var transition = get_node("transicao_foda/animation")
 onready var lblpacotes = $UI/pacotes
 onready var tempo = $timers/Timer
 onready var lbltempo = $UI/tempo
@@ -9,6 +10,10 @@ var PRE_inimigo = preload("res://src/ingame/stage/minigame1/naves/enemy-ship.tsc
 var _position
 
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	$transicao_foda.show()
+	transition.play("out")
+	
 	$"label-colorida".hide()
 	$modulate.hide()
 	get_node("boss/Boss-ship/colisao").disabled = true
@@ -38,7 +43,7 @@ func showTiros():
 func getPos():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	var num = rng.randi_range(1,3)
+	var num = rng.randi_range(4,6)
 	match num:
 		1:
 			_position = $posicoes/pos_1
@@ -46,10 +51,16 @@ func getPos():
 			_position = $posicoes/pos_2
 		3:
 			_position = $posicoes/pos_3
+		4:
+			_position = $posicoes/pos_4
+		5:
+			_position = $posicoes/pos_5
+		6:
+			_position = $posicoes/pos_6
 			
 func invocarRato():
 	getPos()
-	var inimigo = PRE_inimigo.instance() #inicia o tiro
+	var inimigo = PRE_inimigo.instance()
 	if(tempo.time_left > 3):
 		get_parent().add_child(inimigo)
 		inimigo.position = _position.global_position
@@ -57,6 +68,15 @@ func invocarRato():
 func gameOver():
 	$"label-colorida".show()
 	$modulate.show()
+	#força a morte das instancias
+	var inimigos = get_tree().get_nodes_in_group("enemies")
+	for inimigo in inimigos:
+		inimigo.queue_free()
+		
+	var tiros = get_tree().get_nodes_in_group("tiros")
+	for tiro in tiros:
+		tiro.queue_free()
+	
 	get_tree().paused = true
 	$timers/gameOver.start()
 
@@ -71,6 +91,7 @@ func _on_Timer_timeout():
 	
 	if(Global.pacotes <= 0):
 		$"label-colorida".set_bbcode("[wave]VOCÊ PERDEU")
+		Global.lost_count += 1
 		gameOver()
 	else:
 		$boss.show()
@@ -80,10 +101,14 @@ func _on_Timer_timeout():
 # BOSS DERROTADO
 func _on_Bossship_boss_killed():
 	$"label-colorida".set_bbcode("[wave]VOCÊ GANHOU")
+	Global.pontos[0] = int(Global.pacotes * 10)
+	Global.fase_concluida = true
 	gameOver()
 	
 func _on_Bossship_player_killed():
 	$"label-colorida".set_bbcode("[wave]VOCÊ PERDEU")
+	Global.fase_concluida = false
+	Global.lost_count += 1
 	gameOver()	
 
 func _on_gameOver_timeout():

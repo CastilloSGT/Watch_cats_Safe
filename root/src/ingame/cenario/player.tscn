@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://src/ingame/cenario/player.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/ingame/scenario/player/player_animation.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/art/ingame/scenario/player/walk_left.tres" type="Animation" id=8]
 [ext_resource path="res://assets/art/ingame/scenario/player/idle_right.tres" type="Animation" id=9]
 [ext_resource path="res://assets/art/ingame/scenario/player/idle_left.tres" type="Animation" id=10]
+[ext_resource path="res://assets/art/ingame/scenario/player/catneta_azul.png" type="Texture" id=11]
 
 [sub_resource type="Animation" id=16]
 length = 0.001
@@ -23,6 +24,18 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("secret:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
 "values": [ 0 ]
 }
 
@@ -93,6 +106,7 @@ extents = Vector2( 5, 5 )
 [sub_resource type="RectangleShape2D" id=18]
 
 [node name="player" type="KinematicBody2D"]
+pause_mode = 1
 position = Vector2( -1, 1 )
 collision_mask = 6
 script = ExtResource( 1 )
@@ -131,6 +145,12 @@ parameters/walk/blend_position = Vector2( 0.10953, -0.713873 )
 
 [node name="sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
+hframes = 3
+vframes = 8
+
+[node name="secret" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 11 )
 hframes = 3
 vframes = 8
 

@@ -1,0 +1,125 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://assets/fonts/PressStart2P.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/art/ingame/stage/computador/icons/games.png" type="Texture" id=2]
+[ext_resource path="res://src/ingame/stage/computador/pop-outs/games.gd" type="Script" id=3]
+[ext_resource path="res://assets/art/interface/utils/box.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=3]
+size = 8
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=6]
+default_font = SubResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+draw_center = false
+border_color = Color( 0.8, 0.8, 0.8, 0 )
+
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+draw_center = false
+border_color = Color( 0.8, 0.8, 0.8, 0 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 8
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=7]
+default_font = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 8
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=12]
+default_font = SubResource( 11 )
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+draw_center = false
+border_color = Color( 0.8, 0.8, 0.8, 0 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 8
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=10]
+default_font = SubResource( 9 )
+
+[node name="games" type="Node2D" groups=["games"]]
+script = ExtResource( 3 )
+
+[node name="iniciar_game" type="TextureRect" parent="."]
+visible = false
+margin_left = -88.0
+margin_top = -72.0
+margin_right = 88.0
+margin_bottom = 32.0
+texture = ExtResource( 4 )
+stretch_mode = 1
+
+[node name="Games" type="Sprite" parent="iniciar_game"]
+position = Vector2( 88, 48 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 2 )
+hframes = 4
+
+[node name="iniciar" type="Button" parent="iniciar_game"]
+margin_left = 24.0
+margin_top = 72.0
+margin_right = 148.0
+margin_bottom = 94.0
+theme = SubResource( 6 )
+custom_colors/font_color_hover = Color( 0.52549, 0.733333, 0.0313726, 1 )
+custom_styles/hover = SubResource( 15 )
+custom_styles/focus = SubResource( 16 )
+text = "Iniciar"
+flat = true
+
+[node name="textinhoinho" type="RichTextLabel" parent="iniciar_game"]
+margin_left = 8.0
+margin_top = 16.0
+margin_right = 184.0
+margin_bottom = 56.0
+rect_clip_content = false
+theme = SubResource( 7 )
+bbcode_enabled = true
+bbcode_text = "[wave] Pronto pra hackear?"
+text = " Pronto pra hackear?"
+scroll_active = false
+
+[node name="resultado" type="TextureRect" parent="."]
+margin_left = -88.0
+margin_top = -72.0
+margin_right = 88.0
+margin_bottom = 32.0
+texture = ExtResource( 4 )
+stretch_mode = 1
+
+[node name="fechar" type="Button" parent="resultado"]
+margin_left = 24.0
+margin_top = 72.0
+margin_right = 148.0
+margin_bottom = 94.0
+theme = SubResource( 12 )
+custom_colors/font_color_hover = Color( 0.52549, 0.733333, 0.0313726, 1 )
+custom_styles/focus = SubResource( 14 )
+text = "fechar"
+flat = true
+
+[node name="textinho" type="RichTextLabel" parent="resultado"]
+margin_left = 32.0
+margin_top = 24.0
+margin_right = 144.0
+margin_bottom = 56.0
+rect_clip_content = false
+theme = SubResource( 10 )
+bbcode_enabled = true
+bbcode_text = "[wave] Você ganhou 9990 pontos"
+text = " Você ganhou 9990 pontos"
+scroll_active = false
+
+[connection signal="pressed" from="iniciar_game/iniciar" to="." method="_on_iniciar_pressed"]
+[connection signal="pressed" from="resultado/fechar" to="." method="_on_fechar_pressed"]
