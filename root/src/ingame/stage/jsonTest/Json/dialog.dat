@@ -1,5 +1,11 @@
 [
-    {"Pergunta:":"1 Pergunts","ops1": ["1 R","2 R","3 R"]},
+    {
+	"Pergunta:": "1 Pergunts",
+	"ops1": [
+		"1 R",
+		"2 R",
+		"3 R"
+		]},
     {"Pergunta:":"2 Pergunts","ops1": ["1 R","2 R","3 R"]},
     {"Pergunta:":"3 Pergunts","ops1": ["1 R","2 R","3 R"]},
     {"Pergunta:":"4 Pergunts","ops1": ["1 R","2 R","3 R"]},
