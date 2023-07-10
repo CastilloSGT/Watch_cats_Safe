@@ -223,6 +223,7 @@ extents = Vector2( 15.5, 13 )
 
 [node name="dog-lulu" type="KinematicBody2D"]
 collision_mask = 2
+collision/safe_margin = 1.0
 script = ExtResource( 6 )
 
 [node name="Lulu" type="Sprite" parent="."]

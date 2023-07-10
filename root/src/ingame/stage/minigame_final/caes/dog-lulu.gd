@@ -46,16 +46,17 @@ func getPos():
 func changePos():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	var posX = rng.randi_range(3, 485)
-	var posY = rng.randi_range(200, 375)
-	
+	var posX = rng.randi_range(216, 600)
+	var posY = rng.randi_range(220, 300)
 	target = Vector2(posX,posY)
 
 func _on_Timer_timeout():
 	changePos()
 
-
 func _on_dog_button_mouse_exited():
 	$Label.hide()
 func _on_dog_button_pressed():
 	$Label.show()
+
+func _on_colision_body_entered(body):
+	changePos()
